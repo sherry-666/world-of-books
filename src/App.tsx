@@ -148,7 +148,7 @@ export default function App() {
       {/* Masthead */}
       <header className="chrome masthead">
         <p className="eyebrow">An Atlas of Stories</p>
-        <h1>World of Books</h1>
+        <h1>Map of Books</h1>
         <div className="rule"><i /></div>
         <p className="sub">Every pin a place a great book is set in — or about.</p>
       </header>
