@@ -105,6 +105,69 @@ export const BOOKS: Book[] = [
     },
   },
 
+  {
+    id: 'hundredyears',
+    author: 'Gabriel García Márquez',
+    year: 1967,
+    place: 'Macondo (Aracataca)',
+    country: 'Colombia',
+    lng: -74.19, lat: 10.59,
+    tier: 1,
+    relation: 'set',
+    rating: 4.04,
+    languages: ['English', 'Chinese'],
+    titles: {
+      English: 'One Hundred Years of Solitude',
+      Chinese: '百年孤独',
+    },
+    blurbs: {
+      English: 'Seven generations of the Buendía family in the magical, doomed town of Macondo.',
+      Chinese: '布恩迪亚家族七代人的兴衰，与那座充满奇幻与宿命的小镇马孔多。',
+    },
+  },
+  {
+    id: 'cholera',
+    author: 'Gabriel García Márquez',
+    year: 1985,
+    place: 'Cartagena',
+    country: 'Colombia',
+    lng: -75.51, lat: 10.40,
+    tier: 1,
+    relation: 'set',
+    rating: 3.90,
+    languages: ['English', 'Chinese'],
+    titles: {
+      English: 'Love in the Time of Cholera',
+      Chinese: '霍乱时期的爱情',
+    },
+    blurbs: {
+      English: 'A man waits fifty-one years, nine months, and four days for the woman he loves.',
+      Chinese: '一个男人痴痴等待了五十一年九个月零四天，只为与挚爱重续前缘。',
+    },
+  },
+  {
+    id: 'notredame',
+    author: 'Victor Hugo',
+    year: 1831,
+    place: 'Paris (Notre-Dame)',
+    country: 'France',
+    lng: 2.3499, lat: 48.8530,
+    tier: 1,
+    relation: 'set',
+    rating: 4.01,
+    languages: ['English', 'Chinese', 'French'],
+    titles: {
+      English: 'The Hunchback of Notre-Dame',
+      Chinese: '巴黎圣母院',
+      French: 'Notre-Dame de Paris',
+    },
+    blurbs: {
+      English: 'A hunchback bell-ringer, a gypsy dancer, and a corrupted archdeacon in medieval Paris.',
+      Chinese: '中世纪巴黎，驼背敲钟人卡西莫多守护吉卜赛女郎爱斯梅拉达，与副主教的欲望交织成悲剧。',
+      French: 'Le sonneur de cloches bossu, la danseuse gitane et l\'archidiacre corrompu dans le Paris médiéval.',
+    },
+  },
+
   // ============================================================
   // English (19) — Kite Runner is in the multi-language section
   // ============================================================
