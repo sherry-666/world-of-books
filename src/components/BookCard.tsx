@@ -14,10 +14,9 @@ interface BookCardProps {
   book: Book;
   displayLanguage: string;
   onClose: () => void;
-  onCenter: () => void;
 }
 
-export function BookCard({ book, displayLanguage, onClose, onCenter }: BookCardProps) {
+export function BookCard({ book, displayLanguage, onClose }: BookCardProps) {
   const title = book.titles[displayLanguage] ?? book.titles[book.languages[0]];
   const blurb = book.blurbs[displayLanguage] ?? book.blurbs[book.languages[0]];
   const initials = coverInitials(title);
@@ -69,12 +68,6 @@ export function BookCard({ book, displayLanguage, onClose, onCenter }: BookCardP
         >
           Get this Book
         </a>
-        <button
-          className="card-fly"
-          onClick={(e) => { e.stopPropagation(); onCenter(); }}
-        >
-          Center on map →
-        </button>
       </div>
     </>
   );

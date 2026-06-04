@@ -924,7 +924,6 @@ html.no-anim .mk-inner { animation-play-state: paused; }
   border-radius: 9px;
   cursor: pointer;
   transition: .16s;
-  margin-bottom: 8px;
 }
 
 .card-buy:hover {

@@ -184,7 +184,6 @@ export default function App() {
             book={openBook}
             displayLanguage={openLanguage}
             onClose={closeCard}
-            onCenter={() => zoomTo(openBook)}
           />
         )}
       </div>
