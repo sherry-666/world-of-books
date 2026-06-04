@@ -261,6 +261,10 @@ export const BOOKS: Book[] = [
   // ============================================================
   // Chinese (20)
   // ============================================================
+  { id:'fusang', author:'严歌苓 Geling Yan', year:1998, place:'San Francisco Chinatown', country:'USA', lng:-122.4065, lat:37.7955, tier:2, relation:'set', rating:4.05, ratingSource:'Douban',
+    languages:['Chinese'], titles:{Chinese:'扶桑'}, blurbs:{Chinese:'十九世纪旧金山唐人街，一个中国女子扶桑在异乡的苦难与救赎。'} },
+  { id:'newyorkers', author:'白先勇 Bai Xianyong', year:1974, place:'New York', country:'USA', lng:-73.98, lat:40.75, tier:2, relation:'set', rating:4.35, ratingSource:'Douban',
+    languages:['Chinese'], titles:{Chinese:'纽约客'}, blurbs:{Chinese:'漂泊纽约的华人群像，在异国都市中寻找认同与归属的故事。'} },
   // Tier 1
   { id:'redchamber', author:'曹雪芹 Cao Xueqin', year:1791, place:'北京 Beijing (恭王府)', country:'China', lng:116.3856, lat:39.9320, tier:1, relation:'set', rating:4.13,
     languages:['Chinese'], titles:{Chinese:'红楼梦'}, blurbs:{Chinese:'清代豪门大宅中贵族家族的衰落与少年情爱。'} },

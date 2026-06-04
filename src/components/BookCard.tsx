@@ -55,7 +55,7 @@ export function BookCard({ book, displayLanguage, onClose }: BookCardProps) {
           <div className="card-rating">
             <span className="card-rating-star">★</span>
             <span className="card-rating-num">{book.rating.toFixed(2)}</span>
-            <span className="card-rating-src">Goodreads</span>
+            <span className="card-rating-src">{book.ratingSource ?? 'Goodreads'}</span>
           </div>
         )}
         <p className="card-blurb">{blurb}</p>

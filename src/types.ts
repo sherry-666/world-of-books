@@ -18,8 +18,10 @@ export interface Book {
   titles: Record<string, string>;
   /** Blurb per language, keyed by language name. */
   blurbs: Record<string, string>;
-  /** Goodreads average rating (0–5). */
+  /** Average rating (0–5). */
   rating?: number;
+  /** Source of the rating, defaults to 'Goodreads'. */
+  ratingSource?: string;
 }
 
 export interface MapTweaks {
