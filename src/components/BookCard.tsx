@@ -61,7 +61,7 @@ export function BookCard({ book, displayLanguage, onClose }: BookCardProps) {
         <p className="card-blurb">{blurb}</p>
         <a
           className="card-buy"
-          href={`https://www.amazon.com/s?k=${encodeURIComponent(title + ' ' + book.author)}&tag=worldofboo0a6-20`}
+          href={`https://www.amazon.com/s?k=${encodeURIComponent((book.titles['English'] ?? title) + ' ' + book.author)}&tag=worldofboo0a6-20`}
           target="_blank"
           rel="noopener noreferrer"
           onClick={(e) => e.stopPropagation()}
