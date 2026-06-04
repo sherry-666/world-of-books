@@ -28,7 +28,14 @@ export default function App() {
   const [loaderGone,   setLoaderGone]   = useState(false);
   const [tweaks,       setTweaks]       = useState<MapTweaks>(DEFAULT_TWEAKS);
   const [tweaksOpen,   setTweaksOpen]   = useState(false);
-  const [languages,    setLanguages]    = useState<Set<string>>(() => new Set(LANGUAGE_OPTIONS));
+  const [languages,    setLanguages]    = useState<Set<string>>(() => {
+    const param = new URLSearchParams(location.search).get('lang');
+    if (param) {
+      const valid = param.split(',').filter(l => (LANGUAGE_OPTIONS as readonly string[]).includes(l));
+      if (valid.length) return new Set(valid);
+    }
+    return new Set(LANGUAGE_OPTIONS);
+  });
   const [zoomK,        setZoomK]        = useState(1);
 
   // Refs let the async onLoaded callback read the latest filter values
@@ -82,9 +89,16 @@ export default function App() {
     mapHandle.current?.applyTweaks(tweaks);
   }, [tweaks]);
 
-  // Push language filter to the map engine
+  // Push language filter to the map engine and sync URL
   useEffect(() => {
     mapHandle.current?.setLanguageFilter(Array.from(languages));
+    const url = new URL(location.href);
+    if (languages.size === LANGUAGE_OPTIONS.length) {
+      url.searchParams.delete('lang');
+    } else {
+      url.searchParams.set('lang', Array.from(languages).join(','));
+    }
+    history.replaceState(null, '', url);
   }, [languages]);
 
   // Close the open card if its book no longer matches any selected language
