@@ -169,6 +169,26 @@ export const BOOKS: Book[] = [
   },
 
   {
+    id: 'gatsby',
+    author: 'F. Scott Fitzgerald',
+    year: 1925,
+    place: 'West Egg, Long Island',
+    country: 'USA',
+    lng: -73.70, lat: 40.80,
+    tier: 1,
+    relation: 'set',
+    rating: 3.93,
+    languages: ['English', 'Chinese'],
+    titles: {
+      English: 'The Great Gatsby',
+      Chinese: '了不起的盖茨比',
+    },
+    blurbs: {
+      English: 'A mysterious millionaire\'s obsession with a married woman across the bay in Jazz Age Long Island.',
+      Chinese: '爵士时代的长岛，一个神秘百万富翁对湾对岸那个已婚女人无法自拔的痴迷。',
+    },
+  },
+  {
     id: 'empiresun',
     author: 'J.G. Ballard',
     year: 1984,
@@ -198,7 +218,7 @@ export const BOOKS: Book[] = [
   { id:'balzac', author:'Dai Sijie', year:2000, place:'Phoenix Mountain, Sichuan', country:'China', lng:104.50, lat:29.00, tier:2, relation:'set', rating:3.74,
     languages:['English'], titles:{English:'Balzac and the Little Chinese Seamstress'}, blurbs:{English:'Two city boys sent to a remote mountain for re-education discover a suitcase of forbidden Western novels.'} },
   { id:'mockingbird', author:'Harper Lee', year:1960, place:'Monroeville, AL', country:'USA', lng:-87.3247, lat:31.5269, tier:1, relation:'set', rating:4.27,
-    languages:['English'], titles:{English:'To Kill a Mockingbird'}, blurbs:{English:'Childhood and injustice in a small Alabama town.'} },
+    languages:['English', 'Chinese'], titles:{English:'To Kill a Mockingbird', Chinese:'杀死一只知更鸟'}, blurbs:{English:'Childhood and injustice in a small Alabama town.', Chinese:'阿拉巴马小镇的童年岁月，与一场关于种族与正义的审判。'} },
   { id:'nineteen84', author:'George Orwell', year:1949, place:'London', country:'UK', lng:-0.1276, lat:51.5074, tier:1, relation:'set', rating:4.19,
     languages:['English'], titles:{English:'1984'}, blurbs:{English:'A man crushed under a total surveillance state.'} },
   { id:'eden', author:'John Steinbeck', year:1952, place:'Salinas, CA', country:'USA', lng:-121.6555, lat:36.6777, tier:1, relation:'set', rating:4.39,
