@@ -168,10 +168,35 @@ export const BOOKS: Book[] = [
     },
   },
 
+  {
+    id: 'empiresun',
+    author: 'J.G. Ballard',
+    year: 1984,
+    place: 'Shanghai (Lunghua Camp)',
+    country: 'China',
+    lng: 121.45, lat: 31.17,
+    tier: 1,
+    relation: 'set',
+    rating: 4.06,
+    languages: ['English', 'Chinese'],
+    titles: {
+      English: 'Empire of the Sun',
+      Chinese: '太阳帝国',
+    },
+    blurbs: {
+      English: 'An English boy survives the Japanese occupation of Shanghai alone, interned in a WWII camp.',
+      Chinese: '二战期间，一个英国男孩在日军占领的上海独自求生，被关押在龙华集中营中。',
+    },
+  },
+
   // ============================================================
   // English (19) — Kite Runner is in the multi-language section
   // ============================================================
   // Tier 1
+  { id:'shogun', author:'James Clavell', year:1975, place:'Osaka (feudal)', country:'Japan', lng:135.47, lat:34.65, tier:1, relation:'set', rating:4.40,
+    languages:['English'], titles:{English:'Shōgun'}, blurbs:{English:'An English navigator shipwrecked in feudal Japan becomes embroiled in a warlord\'s bid for power.'} },
+  { id:'balzac', author:'Dai Sijie', year:2000, place:'Phoenix Mountain, Sichuan', country:'China', lng:104.50, lat:29.00, tier:2, relation:'set', rating:3.74,
+    languages:['English'], titles:{English:'Balzac and the Little Chinese Seamstress'}, blurbs:{English:'Two city boys sent to a remote mountain for re-education discover a suitcase of forbidden Western novels.'} },
   { id:'mockingbird', author:'Harper Lee', year:1960, place:'Monroeville, AL', country:'USA', lng:-87.3247, lat:31.5269, tier:1, relation:'set', rating:4.27,
     languages:['English'], titles:{English:'To Kill a Mockingbird'}, blurbs:{English:'Childhood and injustice in a small Alabama town.'} },
   { id:'nineteen84', author:'George Orwell', year:1949, place:'London', country:'UK', lng:-0.1276, lat:51.5074, tier:1, relation:'set', rating:4.19,
