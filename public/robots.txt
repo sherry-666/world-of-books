@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://world-of-books.up.railway.app/sitemap.xml
