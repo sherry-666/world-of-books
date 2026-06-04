@@ -60,6 +60,15 @@ export function BookCard({ book, displayLanguage, onClose, onCenter }: BookCardP
           </div>
         )}
         <p className="card-blurb">{blurb}</p>
+        <a
+          className="card-buy"
+          href={`https://www.amazon.com/s?k=${encodeURIComponent(title + ' ' + book.author)}&tag=worldofboo0a6-20`}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(e) => e.stopPropagation()}
+        >
+          Get this Book
+        </a>
         <button
           className="card-fly"
           onClick={(e) => { e.stopPropagation(); onCenter(); }}

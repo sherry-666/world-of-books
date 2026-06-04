@@ -911,6 +911,26 @@ html.no-anim .mk-inner { animation-play-state: paused; }
   text-wrap: pretty;
 }
 
+.card-buy {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font-label);
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 9px 14px;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: .16s;
+  margin-bottom: 8px;
+}
+
+.card-buy:hover {
+  opacity: .85;
+}
+
 .card-fly {
   appearance: none;
   border: .5px solid var(--hair);
