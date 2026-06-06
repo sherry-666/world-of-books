@@ -965,6 +965,11 @@ html.no-anim .mk-inner { animation-play-state: paused; }
   margin-bottom: 11px;
 }
 
+.card-readtime {
+  font-style: normal;
+  opacity: .7;
+}
+
 .card-rating {
   display: inline-flex;
   align-items: baseline;

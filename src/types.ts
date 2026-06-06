@@ -18,6 +18,8 @@ export interface Book {
   titles: Record<string, string>;
   /** Blurb per language, keyed by language name. */
   blurbs: Record<string, string>;
+  /** Page count (used to compute reading time). */
+  pages?: number;
   /** Average rating (0–5). */
   rating?: number;
   /** Source of the rating, defaults to 'Goodreads'. */

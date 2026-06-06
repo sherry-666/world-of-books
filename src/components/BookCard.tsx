@@ -50,7 +50,10 @@ export function BookCard({ book, displayLanguage, onClose }: BookCardProps) {
           {rel} {book.place}, {book.country}
         </div>
         <h2 className="card-title">{title}</h2>
-        <div className="card-meta">{book.author} · {book.year}</div>
+        <div className="card-meta">
+          {book.author} · {book.year}
+          {book.pages && <span className="card-readtime"> · ~{Math.round(book.pages / 60)} hr read</span>}
+        </div>
         {book.rating !== undefined && (
           <div className="card-rating">
             <span className="card-rating-star">★</span>
