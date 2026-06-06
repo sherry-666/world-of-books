@@ -5,7 +5,9 @@ import { BookCard } from './components/BookCard';
 import { TweaksPanel } from './components/TweaksPanel';
 import { LanguageFilter, LANGUAGE_OPTIONS } from './components/LanguageFilter';
 import { ZoomScale } from './components/ZoomScale';
+import { SearchBar } from './components/SearchBar';
 import { pickDisplayLanguage } from './types';
+import type { SearchLocation } from './searchLocations';
 import type { Book, MapTweaks, MapHandle } from './types';
 
 const DEFAULT_TWEAKS: MapTweaks = {
@@ -121,7 +123,7 @@ export default function App() {
 
   const zoomBy   = (factor: number) => mapHandle.current?.zoomBy(factor);
   const zoomHome = () => { closeCard(); mapHandle.current?.zoomHome(); };
-  const zoomTo   = (book: Book)     => mapHandle.current?.zoomToBook(book);
+  const panTo    = (loc: SearchLocation) => mapHandle.current?.panToLocation(loc.lng, loc.lat, loc.zoom);
 
   // Escape key closes card and tweaks panel
   useEffect(() => {
@@ -152,6 +154,9 @@ export default function App() {
         <div className="rule"><i /></div>
         <p className="sub">Every pin a place a great book is set in — or about.</p>
       </header>
+
+      {/* Search bar */}
+      <SearchBar onSelect={panTo} />
 
       {/* Language filter */}
       <LanguageFilter selected={languages} onChange={setLanguages} />

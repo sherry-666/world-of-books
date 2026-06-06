@@ -515,6 +515,16 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
         .transition().duration(720).ease(d3.easeCubicInOut)
         .call(zoomBehavior.transform, d3.zoomIdentity.translate(tx, ty).scale(k));
     },
+    panToLocation(lng: number, lat: number, zoom: number) {
+      const p = projection([lng, lat]);
+      if (!p) return;
+      const k = zoom;
+      const tx = W / 2 - k * p[0];
+      const ty = H / 2 - k * p[1];
+      (svg as d3.Selection<SVGSVGElement, unknown, null, undefined>)
+        .transition().duration(720).ease(d3.easeCubicInOut)
+        .call(zoomBehavior.transform, d3.zoomIdentity.translate(tx, ty).scale(k));
+    },
     setLanguageFilter(langs: string[]) {
       languageFilter = new Set(langs);
       // If the open card's book has no remaining matching language, close it

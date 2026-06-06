@@ -38,6 +38,7 @@ export interface MapHandle {
   zoomHome: () => void;
   zoomToBook: (book: Book) => void;
   zoomToScale: (k: number) => void;
+  panToLocation: (lng: number, lat: number, zoom: number) => void;
   applyTweaks: (tweaks: MapTweaks) => void;
   setLanguageFilter: (languages: string[]) => void;
   cleanup: () => void;
