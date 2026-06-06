@@ -106,6 +106,26 @@ export const BOOKS: Book[] = [
   },
 
   {
+    id: 'cityofgod',
+    author: 'Paulo Lins',
+    year: 1997,
+    place: 'Cidade de Deus, Rio de Janeiro',
+    country: 'Brazil',
+    lng: -43.37, lat: -22.94,
+    tier: 2,
+    relation: 'set',
+    rating: 3.94, pages: 550,
+    languages: ['English', 'Chinese'],
+    titles: {
+      English: 'City of God',
+      Chinese: '上帝之城',
+    },
+    blurbs: {
+      English: 'Two decades of drug lords, gangs, and survival in a Rio de Janeiro housing project.',
+      Chinese: '里约热内卢贫民窟二十年间毒枭、帮派与生存的残酷史诗。',
+    },
+  },
+  {
     id: 'likewater',
     author: 'Laura Esquivel',
     year: 1989,
