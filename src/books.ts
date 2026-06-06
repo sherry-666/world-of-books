@@ -106,6 +106,26 @@ export const BOOKS: Book[] = [
   },
 
   {
+    id: 'likewater',
+    author: 'Laura Esquivel',
+    year: 1989,
+    place: 'Coahuila, northern Mexico',
+    country: 'Mexico',
+    lng: -100.52, lat: 28.70,
+    tier: 1,
+    relation: 'set',
+    rating: 3.87, pages: 245,
+    languages: ['English', 'Chinese'],
+    titles: {
+      English: 'Like Water for Chocolate',
+      Chinese: '恰似水之于巧克力',
+    },
+    blurbs: {
+      English: 'A Mexican woman forbidden to marry pours her longing into her cooking, which magically affects all who eat it.',
+      Chinese: '一个被禁止出嫁的墨西哥女孩，将毕生情感倾注于烹饪，令食者感同身受。',
+    },
+  },
+  {
     id: 'hundredyears',
     author: 'Gabriel García Márquez',
     year: 1967,
