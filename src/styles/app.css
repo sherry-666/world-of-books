@@ -126,6 +126,25 @@ body {
 
 .map-svg { display: block; }
 
+.map-svg .ocean-fill {
+  fill: var(--ocean-hi);
+  filter: url(#ocean-ripple);
+  animation: ocean-shimmer 13s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes ocean-shimmer {
+  0%, 100% { opacity: 0.38; }
+  30%      { opacity: 0.62; }
+  65%      { opacity: 0.48; }
+}
+
+html.no-anim .map-svg .ocean-fill {
+  animation: none;
+  opacity: 0.45;
+  filter: none;
+}
+
 .map-svg .sphere {
   fill: transparent;
   stroke: var(--sphere-stroke);

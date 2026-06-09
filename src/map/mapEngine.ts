@@ -59,6 +59,29 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
     .attr('role', 'application')
     .attr('aria-label', 'World of Books — interactive literary map');
 
+  // Water ripple filter — static feTurbulence texture; CSS animation drives shimmer
+  const defs = (svg as d3.Selection<SVGSVGElement, unknown, null, undefined>).append('defs');
+  const waterFilter = defs.append('filter')
+    .attr('id', 'ocean-ripple')
+    .attr('x', '-5%').attr('y', '-5%')
+    .attr('width', '110%').attr('height', '110%');
+  waterFilter.append('feTurbulence')
+    .attr('type', 'fractalNoise')
+    .attr('baseFrequency', '0.014 0.005')
+    .attr('numOctaves', '2')
+    .attr('seed', '11')
+    .attr('result', 'noise');
+  waterFilter.append('feGaussianBlur')
+    .attr('in', 'noise')
+    .attr('stdDeviation', '1.2')
+    .attr('result', 'softNoise');
+  waterFilter.append('feDisplacementMap')
+    .attr('in', 'SourceGraphic')
+    .attr('in2', 'softNoise')
+    .attr('scale', '4')
+    .attr('xChannelSelector', 'R')
+    .attr('yChannelSelector', 'G');
+
   const gStars    = svg.append('g').attr('class', 'stars-layer');
   const gZoom     = svg.append('g').attr('class', 'zoom-layer');
   const gGrat     = gZoom.append('g').attr('class', 'grat-layer');
@@ -119,6 +142,13 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
     gGrat.append('path')
       .datum(graticule as unknown as GeoJSON.MultiLineString)
       .attr('class', 'graticule')
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .attr('d', geoPath as any);
+
+    // Animated ocean fill — sits below the sphere stroke and land
+    gLand.append('path')
+      .datum({ type: 'Sphere' } as d3.GeoSphere)
+      .attr('class', 'ocean-fill')
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .attr('d', geoPath as any);
 

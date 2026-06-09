@@ -36,7 +36,15 @@ export default function App() {
       const valid = param.split(',').filter(l => (LANGUAGE_OPTIONS as readonly string[]).includes(l));
       if (valid.length) return new Set(valid);
     }
-    return new Set(LANGUAGE_OPTIONS);
+    // Auto-detect from browser language preferences
+    const bcp47ToApp: Record<string, string> = { en: 'English', fr: 'French', zh: 'Chinese' };
+    const detected = new Set<string>(['English']); // English always included
+    for (const tag of navigator.languages) {
+      const mapped = bcp47ToApp[tag.split('-')[0].toLowerCase()];
+      if (mapped && (LANGUAGE_OPTIONS as readonly string[]).includes(mapped)) detected.add(mapped);
+    }
+    // If only English detected, show all (user likely hasn't customised their browser)
+    return detected.size === 1 ? new Set(LANGUAGE_OPTIONS) : detected;
   });
   const [zoomK,        setZoomK]        = useState(1);
 
