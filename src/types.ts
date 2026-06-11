@@ -35,6 +35,29 @@ export interface MapTweaks {
   animate: boolean;
 }
 
+export interface AuthorEvent {
+  year: number;
+  yearEnd?: number;
+  place: string;
+  country: string;
+  lng: number;
+  lat: number;
+  type: 'birth' | 'lived' | 'traveled' | 'wrote' | 'died';
+  note?: string;
+}
+
+export interface Author {
+  id: string;        // URL slug, e.g. "garcia-marquez"
+  nameKey: string;   // exact match for Book.author field
+  name: string;      // display name
+  born: number;
+  died?: number;
+  nationality: string;
+  blurb: string;
+  bookIds: string[];
+  events: AuthorEvent[];
+}
+
 export interface MapHandle {
   zoomBy: (factor: number) => void;
   zoomHome: () => void;
@@ -43,6 +66,8 @@ export interface MapHandle {
   panToLocation: (lng: number, lat: number, zoom: number) => void;
   applyTweaks: (tweaks: MapTweaks) => void;
   setLanguageFilter: (languages: string[]) => void;
+  showAuthor: (author: Author) => void;
+  clearAuthor: () => void;
   cleanup: () => void;
 }
 

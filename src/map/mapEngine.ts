@@ -3,7 +3,7 @@ import { feature, mesh } from 'topojson-client';
 import { BOOKS } from '../books';
 import { CITIES } from '../cities';
 import { pickDisplayLanguage } from '../types';
-import type { Book, MapTweaks, MapHandle } from '../types';
+import type { Book, MapTweaks, MapHandle, Author, AuthorEvent } from '../types';
 import type { City } from '../cities';
 
 const GEO_URL = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json';
@@ -19,6 +19,7 @@ export interface MapCallbacks {
   onZoomChange?: (k: number) => void;
   setCardPosition: (left: number, top: number, flip: boolean) => void;
   onLoaded: () => void;
+  onEventHover?: (event: AuthorEvent | null, x: number, y: number) => void;
 }
 
 function mulberry32(seed: number): () => number {
@@ -59,34 +60,57 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
     .attr('role', 'application')
     .attr('aria-label', 'World of Books — interactive literary map');
 
-  // Water ripple filter — static feTurbulence texture; CSS animation drives shimmer
+  // Water shimmer filter:
+  //   feTurbulence → feColorMatrix (noise → blue-tinted highlights with varying alpha)
+  //   → feComposite (clip to sphere shape) → feBlend screen (lighten ocean)
+  // feDisplacementMap on a solid fill is invisible (all interior pixels are the same
+  // colour, shifting them changes nothing), so we generate colour variation instead.
   const defs = (svg as d3.Selection<SVGSVGElement, unknown, null, undefined>).append('defs');
   const waterFilter = defs.append('filter')
     .attr('id', 'ocean-ripple')
-    .attr('x', '-5%').attr('y', '-5%')
-    .attr('width', '110%').attr('height', '110%');
-  waterFilter.append('feTurbulence')
+    .attr('x', '0%').attr('y', '0%')
+    .attr('width', '100%').attr('height', '100%')
+    .attr('color-interpolation-filters', 'sRGB');
+
+  const turbEl = waterFilter.append('feTurbulence')
     .attr('type', 'fractalNoise')
-    .attr('baseFrequency', '0.014 0.005')
-    .attr('numOctaves', '2')
-    .attr('seed', '11')
+    .attr('baseFrequency', '0.006 0.002')
+    .attr('numOctaves', '4')
+    .attr('seed', '5')
     .attr('result', 'noise');
-  waterFilter.append('feGaussianBlur')
+  // SMIL: slowly shift the frequency so the pattern drifts like water
+  turbEl.append('animate')
+    .attr('attributeName', 'baseFrequency')
+    .attr('values', '0.006 0.002;0.005 0.003;0.007 0.0015;0.006 0.002')
+    .attr('dur', '20s')
+    .attr('repeatCount', 'indefinite');
+
+  // Map noise R-channel to blue-tinted highlight; alpha = 0.65 × R_noise
+  waterFilter.append('feColorMatrix')
     .attr('in', 'noise')
-    .attr('stdDeviation', '1.2')
-    .attr('result', 'softNoise');
-  waterFilter.append('feDisplacementMap')
+    .attr('type', 'matrix')
+    .attr('values', '0 0 0 0 0.08  0 0 0 0 0.22  0 0 0 0 0.45  0.65 0 0 0 0')
+    .attr('result', 'highlight');
+
+  // Clip highlight to sphere silhouette
+  waterFilter.append('feComposite')
+    .attr('in', 'highlight')
+    .attr('in2', 'SourceGraphic')
+    .attr('operator', 'in')
+    .attr('result', 'clipped');
+
+  // Screen-blend: lightens the ocean where the highlight is bright
+  waterFilter.append('feBlend')
     .attr('in', 'SourceGraphic')
-    .attr('in2', 'softNoise')
-    .attr('scale', '4')
-    .attr('xChannelSelector', 'R')
-    .attr('yChannelSelector', 'G');
+    .attr('in2', 'clipped')
+    .attr('mode', 'screen');
 
   const gStars    = svg.append('g').attr('class', 'stars-layer');
   const gZoom     = svg.append('g').attr('class', 'zoom-layer');
   const gGrat     = gZoom.append('g').attr('class', 'grat-layer');
   const gLand     = gZoom.append('g').attr('class', 'land-layer');
   const gCities   = svg.append('g').attr('class', 'cities-layer');
+  const gAuthors  = svg.append('g').attr('class', 'authors-layer');
   const gMarkers  = svg.append('g').attr('class', 'markers-layer');
 
   let projection!: d3.GeoProjection;
@@ -97,6 +121,85 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
   let openId: string | null = null;
   let resizeTimer: ReturnType<typeof setTimeout>;
   let languageFilter: Set<string> | null = null;
+
+  // ---- author layer ----
+  type PEvent = AuthorEvent & { _x: number; _y: number };
+  let pEvents: PEvent[] = [];
+  let authorPathEl: d3.Selection<SVGPathElement, unknown, null, undefined> | null = null;
+  let authorDotSel: d3.Selection<SVGGElement, PEvent, SVGGElement, unknown> | null = null;
+
+  const authorLine = d3.line<[number, number]>()
+    .x(d => d[0]).y(d => d[1])
+    .curve(d3.curveCatmullRom.alpha(0.5));
+
+  function projectAuthorEvents() {
+    for (const e of pEvents) {
+      const p = projection([e.lng, e.lat]);
+      e._x = p ? p[0] : -9999;
+      e._y = p ? p[1] : -9999;
+    }
+  }
+
+  function updateAuthorLayer() {
+    if (!authorPathEl || !authorDotSel || !pEvents.length) return;
+    const pts = pEvents.map(e => [current.applyX(e._x), current.applyY(e._y)] as [number, number]);
+    authorPathEl.attr('d', authorLine(pts) ?? '');
+    authorDotSel.each(function(_, i) {
+      (this as SVGGElement).setAttribute('transform', `translate(${pts[i][0]},${pts[i][1]})`);
+    });
+  }
+
+  function buildAuthorLayer(events: PEvent[]) {
+    gAuthors.selectAll('*').remove();
+    authorPathEl = null;
+    authorDotSel = null;
+    if (!events.length) return;
+
+    authorPathEl = gAuthors.append('path').attr('class', 'author-path');
+
+    authorDotSel = gAuthors.selectAll<SVGGElement, PEvent>('g.author-event')
+      .data(events)
+      .enter()
+      .append('g')
+      .attr('class', e => `author-event ${e.type}`);
+
+    authorDotSel.append('circle')
+      .attr('class', 'author-event-dot')
+      .attr('r', e => (e.type === 'birth' || e.type === 'died') ? 7 : 5);
+
+    // Transparent hit area + hover callbacks
+    authorDotSel.each(function(e) {
+      const node = this as SVGGElement;
+      d3.select(node).append('circle')
+        .attr('class', 'author-event-hit')
+        .attr('r', 18)
+        .style('fill', 'transparent')
+        .style('cursor', 'pointer');
+      node.addEventListener('pointerenter', (ev) => {
+        callbacks.onEventHover?.(e, ev.clientX, ev.clientY);
+      });
+      node.addEventListener('pointerleave', () => {
+        callbacks.onEventHover?.(null, 0, 0);
+      });
+    });
+  }
+
+  function fitToAuthor() {
+    if (!pEvents.length) return;
+    const xs = pEvents.map(e => e._x);
+    const ys = pEvents.map(e => e._y);
+    const x0 = Math.min(...xs), x1 = Math.max(...xs);
+    const y0 = Math.min(...ys), y1 = Math.max(...ys);
+    const pad = 90;
+    const kx = (W - 2 * pad) / Math.max(x1 - x0, 1);
+    const ky = (H - 2 * pad) / Math.max(y1 - y0, 1);
+    const k = Math.min(Math.max(1.5, Math.min(kx, ky)), 24);
+    const cx = (x0 + x1) / 2;
+    const cy = (y0 + y1) / 2;
+    (svg as d3.Selection<SVGSVGElement, unknown, null, undefined>)
+      .transition().duration(900).ease(d3.easeCubicInOut)
+      .call(zoomBehavior.transform, d3.zoomIdentity.translate(W / 2 - k * cx, H / 2 - k * cy).scale(k));
+  }
 
   const graticule = d3.geoGraticule10();
 
@@ -380,6 +483,7 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
     updateBorders();
     updateMarkers();
     updateCities();
+    updateAuthorLayer();
     callbacks.onZoomChange?.(current.k);
   }
 
@@ -457,9 +561,11 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
     if (zoomBehavior) {
       zoomBehavior.translateExtent([[-W * 0.15, -H * 0.15], [W * 1.15, H * 1.15]]);
     }
+    projectAuthorEvents();
     updateBorders();
     updateMarkers();
     updateCities();
+    updateAuthorLayer();
   }
 
   // ---- async init ----
@@ -554,6 +660,19 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
       (svg as d3.Selection<SVGSVGElement, unknown, null, undefined>)
         .transition().duration(720).ease(d3.easeCubicInOut)
         .call(zoomBehavior.transform, d3.zoomIdentity.translate(tx, ty).scale(k));
+    },
+    showAuthor(author: Author) {
+      pEvents = author.events.map(e => ({ ...e, _x: 0, _y: 0 }));
+      projectAuthorEvents();
+      buildAuthorLayer(pEvents);
+      updateAuthorLayer();
+      fitToAuthor();
+    },
+    clearAuthor() {
+      pEvents = [];
+      gAuthors.selectAll('*').remove();
+      authorPathEl = null;
+      authorDotSel = null;
     },
     setLanguageFilter(langs: string[]) {
       languageFilter = new Set(langs);

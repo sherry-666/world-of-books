@@ -1,12 +1,11 @@
-import type { Book } from '../types';
+import type { Book, Author } from '../types';
+import { findAuthorByNameKey } from '../authors';
 
 function coverInitials(title: string): string {
-  // For Latin-script titles, take the first letter of up to 3 words.
   const latin = title.replace(/[^A-Za-z ]/g, '').trim();
   if (latin) {
     return latin.split(/\s+/).filter(Boolean).slice(0, 3).map(w => w[0]).join('');
   }
-  // For non-Latin scripts (e.g. CJK), use the first character of the title.
   return Array.from(title)[0] ?? '';
 }
 
@@ -14,14 +13,17 @@ interface BookCardProps {
   book: Book;
   displayLanguage: string;
   onClose: () => void;
+  /** Called when the user clicks "Explore author" on the author map page. */
+  onAuthorSelect?: (author: Author) => void;
 }
 
-export function BookCard({ book, displayLanguage, onClose }: BookCardProps) {
+export function BookCard({ book, displayLanguage, onClose, onAuthorSelect }: BookCardProps) {
   const title = book.titles[displayLanguage] ?? book.titles[book.languages[0]];
   const blurb = book.blurbs[displayLanguage] ?? book.blurbs[book.languages[0]];
   const initials = coverInitials(title);
   const rel = book.relation === 'set' ? 'Set in' : 'A portrait of';
   const eyebrow = book.relation === 'set' ? 'A NOVEL' : 'A PORTRAIT';
+  const authorEntry = findAuthorByNameKey(book.author);
 
   return (
     <>
@@ -71,6 +73,25 @@ export function BookCard({ book, displayLanguage, onClose }: BookCardProps) {
         >
           Get this Book
         </a>
+
+        {authorEntry && (
+          onAuthorSelect ? (
+            <button
+              className="card-author-link"
+              onClick={(e) => { e.stopPropagation(); onAuthorSelect(authorEntry); }}
+            >
+              Explore {authorEntry.name}'s journey →
+            </button>
+          ) : (
+            <a
+              className="card-author-link"
+              href={`/authors?author=${authorEntry.id}`}
+              onClick={(e) => e.stopPropagation()}
+            >
+              Explore {authorEntry.name}'s journey →
+            </a>
+          )
+        )}
       </div>
     </>
   );

@@ -24,6 +24,7 @@ body {
   --bg: #070d17;
   --ocean: #0e1a2c;
   --ocean-hi: #16233a;
+  --author-path: rgba(212, 167, 64, 0.75);
   --sphere-stroke: rgba(220, 184, 110, .38);
   --land: #1b2c45;
   --land-stroke: rgba(220, 184, 110, .42);
@@ -55,6 +56,7 @@ body {
   --bg: #c8b385;
   --ocean: #ece0c2;
   --ocean-hi: #f3e9cf;
+  --author-path: rgba(100, 55, 20, 0.7);
   --sphere-stroke: rgba(110, 76, 40, .5);
   --land: #d9c49b;
   --land-stroke: rgba(110, 76, 40, .5);
@@ -86,6 +88,7 @@ body {
   --bg: #06101a;
   --ocean: #0a1622;
   --ocean-hi: #10212f;
+  --author-path: rgba(76, 201, 240, 0.8);
   --sphere-stroke: rgba(76, 201, 240, .3);
   --land: #142a3d;
   --land-stroke: rgba(76, 201, 240, .3);
@@ -127,23 +130,22 @@ body {
 .map-svg { display: block; }
 
 .map-svg .ocean-fill {
-  fill: var(--ocean-hi);
+  fill: var(--ocean);
   filter: url(#ocean-ripple);
-  animation: ocean-shimmer 13s ease-in-out infinite;
+  animation: ocean-shimmer 16s ease-in-out infinite;
   pointer-events: none;
 }
 
 @keyframes ocean-shimmer {
-  0%, 100% { opacity: 0.38; }
-  30%      { opacity: 0.62; }
-  65%      { opacity: 0.48; }
+  0%, 100% { opacity: 0.55; }
+  40%      { opacity: 1.0; }
+  75%      { opacity: 0.72; }
 }
 
-html.no-anim .map-svg .ocean-fill {
-  animation: none;
-  opacity: 0.45;
-  filter: none;
-}
+/* Parchment ocean is light — screen blend would wash it out */
+[data-theme='parchment'] .map-svg .ocean-fill { display: none; }
+
+html.no-anim .map-svg .ocean-fill { display: none; }
 
 .map-svg .sphere {
   fill: transparent;
@@ -1337,3 +1339,415 @@ html.no-anim .mk-inner { animation-play-state: paused; }
   box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
   cursor: pointer;
 }
+
+/* ================= AUTHOR MAP ================= */
+
+/* Dim book markers in author mode */
+html[data-mode='author'] .markers-layer .marker.on { opacity: 0.22; }
+
+/* ---- Author life path (SVG layer) ---- */
+
+.author-path {
+  fill: none;
+  stroke: var(--author-path);
+  stroke-width: 1.8;
+  stroke-dasharray: 5 4;
+  pointer-events: none;
+}
+
+.author-event-dot {
+  stroke: var(--card-bg, #142640);
+  stroke-width: 1.4;
+  transition: r .15s ease;
+}
+
+.author-event.birth   .author-event-dot { fill: #f0c060; }
+.author-event.lived   .author-event-dot { fill: #4a9edd; }
+.author-event.traveled .author-event-dot { fill: #50c8a0; }
+.author-event.wrote   .author-event-dot { fill: #f0a040; }
+.author-event.died    .author-event-dot { fill: #9aa0aa; }
+
+.author-event:hover .author-event-dot { r: 9; }
+
+/* ---- Author panel (left sidebar) ---- */
+
+.author-panel {
+  position: fixed;
+  z-index: 25;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100dvh;
+  background: var(--chrome-bg);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  border-right: .5px solid var(--hair);
+  box-shadow: 6px 0 32px rgba(0, 0, 0, .3);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 24px 20px 40px;
+  transform: translateX(-100%);
+  transition: transform .3s cubic-bezier(.3, .8, .35, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.author-panel.open { transform: translateX(0); }
+
+.author-panel-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  background: transparent;
+  color: var(--card-sub);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  transition: .15s;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.author-panel-close:hover { color: var(--card-ink); background: var(--accent-soft); }
+
+.author-panel-header {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 14px;
+  margin-top: 4px;
+}
+
+.author-avatar {
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: .02em;
+}
+
+.author-name {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--card-ink);
+  margin: 0 0 3px;
+  line-height: 1.2;
+}
+
+.author-meta {
+  font-family: var(--font-label);
+  font-size: 12px;
+  letter-spacing: .08em;
+  color: var(--card-sub);
+  text-transform: uppercase;
+}
+
+.author-blurb {
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: var(--card-sub);
+  margin: 0 0 18px;
+}
+
+.author-section-label {
+  font-family: var(--font-label);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--card-sub);
+  opacity: .7;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: .5px solid var(--hair);
+}
+
+/* Timeline */
+.author-timeline {
+  list-style: none;
+  margin: 0 0 20px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.author-tl-item {
+  display: flex;
+  gap: 12px;
+  position: relative;
+  padding: 0 0 14px;
+}
+
+.author-tl-item:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 12px;
+  bottom: 0;
+  width: 1px;
+  background: var(--hair);
+}
+
+.tl-dot {
+  flex-shrink: 0;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  margin-top: 3px;
+  border: 1.5px solid var(--card-bg2, #0f1d33);
+  position: relative;
+  z-index: 1;
+}
+
+.tl-body { flex: 1; min-width: 0; }
+
+.tl-type {
+  font-family: var(--font-label);
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.tl-year {
+  font-family: var(--font-label);
+  font-size: 11px;
+  color: var(--card-sub);
+  margin-left: 6px;
+}
+
+.tl-place {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--card-ink);
+  margin-top: 1px;
+}
+
+.tl-note {
+  font-family: var(--font-body);
+  font-size: 11.5px;
+  color: var(--card-sub);
+  line-height: 1.5;
+  margin-top: 2px;
+  font-style: italic;
+}
+
+/* Author books section */
+.author-books {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.author-book-chip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: var(--accent-soft);
+  border: .5px solid var(--hair);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: .15s;
+  gap: 8px;
+}
+
+.author-book-chip:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.author-book-title {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--card-ink);
+  font-style: italic;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.author-book-year {
+  font-family: var(--font-label);
+  font-size: 11px;
+  color: var(--card-sub);
+  flex-shrink: 0;
+}
+
+/* Empty panel — browse all authors */
+.author-panel-empty { padding-top: 100px; }
+
+.author-panel-empty p {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--card-sub);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.author-panel-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.author-thumb {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: .15s;
+}
+
+.author-thumb:hover { background: var(--accent-soft); }
+
+.author-thumb-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  border: 1px solid var(--hair);
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.author-thumb-name {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--card-ink);
+  font-weight: 500;
+}
+
+.author-thumb-dates {
+  font-family: var(--font-label);
+  font-size: 10.5px;
+  color: var(--card-sub);
+  letter-spacing: .04em;
+}
+
+/* ---- Event tooltip ---- */
+
+.event-tooltip {
+  position: fixed;
+  z-index: 50;
+  pointer-events: none;
+  background: var(--card-bg);
+  border: .5px solid var(--hair);
+  border-radius: 9px;
+  padding: 10px 13px;
+  max-width: 220px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, .4);
+  animation: tooltip-in .12s ease;
+}
+
+@keyframes tooltip-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.event-tooltip-type {
+  font-family: var(--font-label);
+  font-size: 9.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.ev-birth    { color: #f0c060; }
+.ev-lived    { color: #4a9edd; }
+.ev-traveled { color: #50c8a0; }
+.ev-wrote    { color: #f0a040; }
+.ev-died     { color: #9aa0aa; }
+
+.event-tooltip-year {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--card-ink);
+  line-height: 1.1;
+}
+
+.event-tooltip-place {
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  color: var(--card-sub);
+  margin-top: 1px;
+}
+
+.event-tooltip-note {
+  font-family: var(--font-body);
+  font-size: 11.5px;
+  color: var(--card-sub);
+  line-height: 1.5;
+  margin-top: 5px;
+  padding-top: 5px;
+  border-top: .5px solid var(--hair);
+  font-style: italic;
+}
+
+/* ---- Author masthead variant ---- */
+
+.masthead-authors {
+  left: 316px;
+}
+
+.masthead-back {
+  font-family: var(--font-label);
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--card-sub);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 8px;
+  opacity: .7;
+  transition: opacity .15s;
+}
+
+.masthead-back:hover { opacity: 1; }
+
+/* ---- Book card: explore author link ---- */
+
+.card-author-link {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--font-label);
+  font-size: 12px;
+  letter-spacing: .05em;
+  color: var(--accent);
+  text-decoration: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  transition: opacity .15s;
+}
+
+.card-author-link:hover { opacity: .75; }
