@@ -2,7 +2,6 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { BOOKS } from './books';
 import { initMap } from './map/mapEngine';
 import { BookCard } from './components/BookCard';
-import { TweaksPanel } from './components/TweaksPanel';
 import { LanguageFilter, LANGUAGE_OPTIONS } from './components/LanguageFilter';
 import { ZoomScale } from './components/ZoomScale';
 import { SearchBar } from './components/SearchBar';
@@ -32,8 +31,7 @@ export default function App() {
   const [visibleCount, setVisibleCount] = useState(0);
   const [loaded,       setLoaded]       = useState(false);
   const [loaderGone,   setLoaderGone]   = useState(false);
-  const [tweaks,       setTweaks]       = useState<MapTweaks>(DEFAULT_TWEAKS);
-  const [tweaksOpen,   setTweaksOpen]   = useState(false);
+  const [tweaks] = useState<MapTweaks>(DEFAULT_TWEAKS);
   const [primaryLanguage, setPrimaryLanguageRaw] = useState<string>(() => {
     const bcp47ToApp: Record<string, string> = { en: 'English', fr: 'French', zh: 'Chinese' };
     for (const tag of navigator.languages) {
@@ -144,21 +142,12 @@ export default function App() {
 
   const t = getUI(primaryLanguage);
 
-  const setTweak = useCallback(
-    <K extends keyof MapTweaks>(key: K, value: MapTweaks[K]) =>
-      setTweaks(prev => ({ ...prev, [key]: value })),
-    [],
-  );
-
   const zoomBy   = (factor: number) => mapHandle.current?.zoomBy(factor);
   const zoomHome = () => { closeCard(); mapHandle.current?.zoomHome(); };
   const panTo    = (loc: SearchLocation) => mapHandle.current?.panToLocation(loc.lng, loc.lat, loc.zoom);
 
-  // Escape key closes card and tweaks panel
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') { closeCard(); setTweaksOpen(false); }
-    };
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') closeCard(); };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [closeCard]);
@@ -256,25 +245,6 @@ export default function App() {
         )}
       </div>
 
-      {/* Tweaks gear button */}
-      <button
-        className="tweaks-toggle"
-        onClick={() => setTweaksOpen(o => !o)}
-        aria-label="Toggle tweaks"
-        title="Tweaks"
-      >
-        ⚙
-      </button>
-
-      {/* Tweaks panel */}
-      {tweaksOpen && (
-        <TweaksPanel
-          tweaks={tweaks}
-          setTweak={setTweak}
-          onClose={() => setTweaksOpen(false)}
-          t={t}
-        />
-      )}
     </div>
   );
 }

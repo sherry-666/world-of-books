@@ -1,7 +1,7 @@
 export const UI = {
   English: {
     eyebrow:          'An Atlas of Stories',
-    title:            'Map of Books',
+    title:            'Map of Stories',
     tagline:          'Every pin a place a great book is set in — or about.',
     loading:          'Charting the world…',
     zoomHint:         'Zoom in to uncover more stories.',
@@ -22,7 +22,7 @@ export const UI = {
   },
   French: {
     eyebrow:          'Un Atlas de Romans',
-    title:            'Carte des Livres',
+    title:            'Carte des Histoires',
     tagline:          'Chaque épingle, un lieu où un grand livre se déroule.',
     loading:          'Cartographie en cours…',
     zoomHint:         'Zoomez pour découvrir plus d\'histoires.',
@@ -43,7 +43,7 @@ export const UI = {
   },
   Chinese: {
     eyebrow:          '故事地图集',
-    title:            '书之地图',
+    title:            '故事地图',
     tagline:          '每一枚图钉，都是一部伟大作品的发生之地。',
     loading:          '绘制世界地图中……',
     zoomHint:         '放大以发现更多故事。',
