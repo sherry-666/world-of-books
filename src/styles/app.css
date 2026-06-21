@@ -280,6 +280,10 @@ html.show-stars .stars-layer { opacity: 1; }
 
 .mk-hit {
   fill: transparent;
+  pointer-events: none;
+}
+
+.marker.on .mk-hit {
   pointer-events: all;
 }
 
