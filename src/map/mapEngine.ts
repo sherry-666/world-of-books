@@ -60,51 +60,6 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
     .attr('role', 'application')
     .attr('aria-label', 'World of Books — interactive literary map');
 
-  // Water shimmer filter:
-  //   feTurbulence → feColorMatrix (noise → blue-tinted highlights with varying alpha)
-  //   → feComposite (clip to sphere shape) → feBlend screen (lighten ocean)
-  // feDisplacementMap on a solid fill is invisible (all interior pixels are the same
-  // colour, shifting them changes nothing), so we generate colour variation instead.
-  const defs = (svg as d3.Selection<SVGSVGElement, unknown, null, undefined>).append('defs');
-  const waterFilter = defs.append('filter')
-    .attr('id', 'ocean-ripple')
-    .attr('x', '0%').attr('y', '0%')
-    .attr('width', '100%').attr('height', '100%')
-    .attr('color-interpolation-filters', 'sRGB');
-
-  const turbEl = waterFilter.append('feTurbulence')
-    .attr('type', 'fractalNoise')
-    .attr('baseFrequency', '0.006 0.002')
-    .attr('numOctaves', '4')
-    .attr('seed', '5')
-    .attr('result', 'noise');
-  // SMIL: slowly shift the frequency so the pattern drifts like water
-  turbEl.append('animate')
-    .attr('attributeName', 'baseFrequency')
-    .attr('values', '0.006 0.002;0.005 0.003;0.007 0.0015;0.006 0.002')
-    .attr('dur', '20s')
-    .attr('repeatCount', 'indefinite');
-
-  // Map noise R-channel to blue-tinted highlight; alpha = 0.65 × R_noise
-  waterFilter.append('feColorMatrix')
-    .attr('in', 'noise')
-    .attr('type', 'matrix')
-    .attr('values', '0 0 0 0 0.08  0 0 0 0 0.22  0 0 0 0 0.45  0.65 0 0 0 0')
-    .attr('result', 'highlight');
-
-  // Clip highlight to sphere silhouette
-  waterFilter.append('feComposite')
-    .attr('in', 'highlight')
-    .attr('in2', 'SourceGraphic')
-    .attr('operator', 'in')
-    .attr('result', 'clipped');
-
-  // Screen-blend: lightens the ocean where the highlight is bright
-  waterFilter.append('feBlend')
-    .attr('in', 'SourceGraphic')
-    .attr('in2', 'clipped')
-    .attr('mode', 'screen');
-
   const gStars    = svg.append('g').attr('class', 'stars-layer');
   const gZoom     = svg.append('g').attr('class', 'zoom-layer');
   const gGrat     = gZoom.append('g').attr('class', 'grat-layer');

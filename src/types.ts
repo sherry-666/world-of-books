@@ -18,6 +18,8 @@ export interface Book {
   titles: Record<string, string>;
   /** Blurb per language, keyed by language name. */
   blurbs: Record<string, string>;
+  /** Genre label shown in the book card. */
+  genre?: string;
   /** Page count (used to compute reading time). */
   pages?: number;
   /** Average rating (0–5). */
