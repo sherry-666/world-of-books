@@ -68,7 +68,7 @@ export const UI = {
   },
   Chinese: {
     eyebrow:          '故事地图集',
-    title:            '故事地图',
+    title:            '书迹地图',
     tagline:          '每一枚图钉，都是一部伟大作品的发生之地。',
     loading:          '绘制世界地图中……',
     zoomHint:         '放大以发现更多故事。',
