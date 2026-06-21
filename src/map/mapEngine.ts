@@ -14,6 +14,7 @@ type PCity = City & { _x: number; _y: number };
 
 export interface MapCallbacks {
   onBookOpen: (book: Book) => void;
+  onClusterOpen?: (books: Book[]) => void;
   onBookClose: () => void;
   onVisibleCountChange: (count: number) => void;
   onZoomChange?: (k: number) => void;
@@ -76,6 +77,8 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
   let openId: string | null = null;
   let resizeTimer: ReturnType<typeof setTimeout>;
   let languageFilter: Set<string> | null = null;
+  // leadId → [lead, ...members] — recomputed on every zoom/pan
+  let currentClusters = new Map<string, PBook[]>();
 
   // ---- author layer ----
   type PEvent = AuthorEvent & { _x: number; _y: number };
@@ -369,6 +372,13 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
       if (lab) lab.textContent = d.titles[d.languages[0]] ?? '';
     });
 
+    // Cluster count badge (circle + text), hidden via CSS when not is-cluster
+    markerSel.each(function () {
+      const g = d3.select(this as SVGGElement).append('g').attr('class', 'mk-badge-group');
+      g.append('circle').attr('class', 'mk-badge-bg').attr('cx', 9).attr('cy', -10).attr('r', 7);
+      g.append('text').attr('class', 'mk-badge').attr('x', 9).attr('y', -6.5).attr('text-anchor', 'middle');
+    });
+
     // Stagger animation delays so markers animate out of sync
     markerSel.each(function (_d, i) {
       const node = this as SVGGElement;
@@ -379,30 +389,43 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
     });
   }
 
-  // Greedy spatial deduplication: sort books by priority (tier asc, rating desc),
-  // then show each only if its screen-space center is >= THRESHOLD px from every
-  // already-accepted marker. At k >= 200 (street-level zoom) show everything.
-  function computeVisibleSet(): Set<string> {
-    if (current.k >= 200) return new Set(pbooks.map(b => b.id));
-
-    const THRESHOLD = 36 / (tweaks.reveal || 1); // reveal slider scales density
-    const sorted = [...pbooks].sort((a, b) =>
+  // Greedy spatial deduplication. Sort books by priority (tier asc, rating desc),
+  // then show each only if its screen center is >= THRESHOLD px from every
+  // already-accepted marker. At k >= 200, group overlapping books into clusters
+  // so a single marker represents several books.
+  function computeClusters(): Map<string, PBook[]> {
+    const eligible = pbooks.filter(b => pickDisplayLanguage(b, languageFilter) !== null);
+    const sorted = [...eligible].sort((a, b) =>
       a.tier !== b.tier ? a.tier - b.tier : (b.rating ?? 0) - (a.rating ?? 0),
     );
 
-    const visible = new Set<string>();
-    const occupied: Array<[number, number]> = [];
+    const THRESHOLD = 36 / (tweaks.reveal || 1);
+    const clusterMap = new Map<string, PBook[]>();
+    const occupied: Array<{ leadId: string; sx: number; sy: number }> = [];
 
     for (const b of sorted) {
       const sx = current.applyX(b._x);
       const sy = current.applyY(b._y);
-      const blocked = occupied.some(([ox, oy]) => Math.hypot(sx - ox, sy - oy) < THRESHOLD);
-      if (!blocked) {
-        visible.add(b.id);
-        occupied.push([sx, sy]);
+
+      if (current.k >= 200) {
+        // At max zoom: group nearby books into a cluster under the highest-priority leader
+        const hit = occupied.find(o => Math.hypot(sx - o.sx, sy - o.sy) < 28);
+        if (hit) {
+          clusterMap.get(hit.leadId)!.push(b);
+        } else {
+          clusterMap.set(b.id, [b]);
+          occupied.push({ leadId: b.id, sx, sy });
+        }
+      } else {
+        // Normal dedup: only show if no nearby leader
+        const blocked = occupied.some(o => Math.hypot(sx - o.sx, sy - o.sy) < THRESHOLD);
+        if (!blocked) {
+          clusterMap.set(b.id, [b]);
+          occupied.push({ leadId: b.id, sx, sy });
+        }
       }
     }
-    return visible;
+    return clusterMap;
   }
 
   function updateMarkers() {
@@ -410,19 +433,27 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
     const k = current.k;
     const labelsShow = tweaks.labels && k >= 1.3;
     let shown = 0;
-    const visibleSet = computeVisibleSet();
+    currentClusters = computeClusters();
 
     markerSel.each(function (d) {
       const node = this as SVGGElement;
       const displayLang = pickDisplayLanguage(d, languageFilter);
+      const clusterBooks = currentClusters.get(d.id);
+      const isLead = clusterBooks !== undefined;
       // Always keep the open card's marker visible so it doesn't vanish mid-interaction
-      const vis = (visibleSet.has(d.id) || d.id === openId) && displayLang !== null;
+      const vis = (isLead || d.id === openId) && displayLang !== null;
       if (vis) shown++;
 
       const x = current.applyX(d._x);
       const y = current.applyY(d._y);
       node.setAttribute('transform', `translate(${x},${y})`);
       node.classList.toggle('on', vis);
+
+      // Cluster badge: visible only when this marker represents multiple books
+      const clusterSize = clusterBooks?.length ?? 0;
+      node.classList.toggle('is-cluster', clusterSize > 1);
+      const badge = node.querySelector<SVGTextElement>('.mk-badge');
+      if (badge) badge.textContent = clusterSize > 1 ? String(clusterSize) : '';
 
       const lab = (node as any)._lab as SVGTextElement | undefined
         || node.querySelector<SVGTextElement>('.mk-label') || undefined;
@@ -495,7 +526,12 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
   function openCard(d: PBook, node: SVGGElement) {
     openId = d.id;
     raise(node);
-    callbacks.onBookOpen(d);
+    const cluster = currentClusters.get(d.id) ?? [d];
+    if (cluster.length > 1 && callbacks.onClusterOpen) {
+      callbacks.onClusterOpen(cluster);
+    } else {
+      callbacks.onBookOpen(cluster[0] ?? d);
+    }
     positionCard();
   }
 

@@ -1068,6 +1068,67 @@ html.no-anim .mk-inner { animation-play-state: paused; }
   opacity: .85;
 }
 
+/* ---- cluster marker badge ---- */
+.mk-badge-group { display: none; }
+.marker.on.is-cluster .mk-badge-group { display: block; }
+.mk-badge-bg { fill: var(--accent); }
+.mk-badge {
+  fill: #fff;
+  font-size: 7.5px;
+  font-weight: 700;
+  font-family: var(--font-label);
+  letter-spacing: 0;
+}
+
+/* ---- cluster card header & navigation ---- */
+.card-cluster-header {
+  font-family: var(--font-label);
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+  opacity: .85;
+}
+
+.card-cluster-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: .5px solid var(--hair);
+}
+
+.cnav-btn {
+  appearance: none;
+  background: none;
+  border: .5px solid var(--hair);
+  border-radius: 5px;
+  color: var(--fg, var(--card-ink));
+  font-size: 18px;
+  line-height: 1;
+  padding: 3px 11px 5px;
+  cursor: pointer;
+  opacity: .75;
+  transition: opacity .14s, background .14s;
+}
+.cnav-btn:hover:not(:disabled) {
+  opacity: 1;
+  background: rgba(255, 255, 255, .05);
+}
+.cnav-btn:disabled { opacity: .25; cursor: default; }
+
+.cnav-pos {
+  font-family: var(--font-label);
+  font-size: 11px;
+  letter-spacing: .07em;
+  opacity: .6;
+  min-width: 36px;
+  text-align: center;
+}
+
 .card-fly {
   appearance: none;
   border: .5px solid var(--hair);

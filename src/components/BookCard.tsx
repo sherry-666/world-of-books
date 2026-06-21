@@ -15,9 +15,15 @@ interface BookCardProps {
   onClose: () => void;
   /** Called when the user clicks "Explore author" on the author map page. */
   onAuthorSelect?: (author: Author) => void;
+  /** Cluster navigation — only set when 2+ books share the same marker. */
+  clusterTotal?: number;
+  clusterIndex?: number;
+  clusterPlace?: string;
+  onPrev?: () => void;
+  onNext?: () => void;
 }
 
-export function BookCard({ book, displayLanguage, onClose, onAuthorSelect }: BookCardProps) {
+export function BookCard({ book, displayLanguage, onClose, onAuthorSelect, clusterTotal, clusterIndex, clusterPlace, onPrev, onNext }: BookCardProps) {
   const title = book.titles[displayLanguage] ?? book.titles[book.languages[0]];
   const blurb = book.blurbs[displayLanguage] ?? book.blurbs[book.languages[0]];
   const initials = coverInitials(title);
@@ -47,6 +53,11 @@ export function BookCard({ book, displayLanguage, onClose, onAuthorSelect }: Boo
       </div>
 
       <div className="card-body">
+        {clusterTotal !== undefined && clusterTotal > 1 && (
+          <div className="card-cluster-header">
+            {clusterTotal} books in {clusterPlace}
+          </div>
+        )}
         <div className="card-kicker">
           <span className="pin" />
           {rel} {book.place}, {book.country}
@@ -74,6 +85,14 @@ export function BookCard({ book, displayLanguage, onClose, onAuthorSelect }: Boo
         >
           Get this Book
         </a>
+
+        {clusterTotal !== undefined && clusterTotal > 1 && (
+          <div className="card-cluster-nav">
+            <button className="cnav-btn" onClick={onPrev} disabled={!onPrev}>‹</button>
+            <span className="cnav-pos">{(clusterIndex ?? 0) + 1} / {clusterTotal}</span>
+            <button className="cnav-btn" onClick={onNext} disabled={!onNext}>›</button>
+          </div>
+        )}
 
         {authorEntry && (
           onAuthorSelect ? (

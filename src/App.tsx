@@ -24,7 +24,10 @@ export default function App() {
   const cardRef    = useRef<HTMLDivElement>(null);
   const mapHandle  = useRef<MapHandle | null>(null);
 
-  const [openBook,     setOpenBook]     = useState<Book | null>(null);
+  // openCluster holds the current cluster (1 book = normal open, 2+ = cluster card)
+  const [openCluster,  setOpenCluster]  = useState<{ books: Book[]; index: number } | null>(null);
+  const openBook = openCluster ? openCluster.books[openCluster.index] : null;
+
   const [visibleCount, setVisibleCount] = useState(0);
   const [loaded,       setLoaded]       = useState(false);
   const [loaderGone,   setLoaderGone]   = useState(false);
@@ -64,7 +67,7 @@ export default function App() {
     el.classList.toggle('flip', flip);
   }, []);
 
-  const closeCard = useCallback(() => setOpenBook(null), []);
+  const closeCard = useCallback(() => setOpenCluster(null), []);
 
   // Init map once; cleanup handles React StrictMode double-invoke
   useEffect(() => {
@@ -72,7 +75,8 @@ export default function App() {
     if (!stage) return;
 
     const handle = initMap(stage, {
-      onBookOpen:            setOpenBook,
+      onBookOpen:            (book) => setOpenCluster({ books: [book], index: 0 }),
+      onClusterOpen:         (books) => setOpenCluster({ books, index: 0 }),
       onBookClose:           closeCard,
       onVisibleCountChange:  setVisibleCount,
       onZoomChange:          setZoomK,
@@ -114,7 +118,7 @@ export default function App() {
   // Close the open card if its book no longer matches any selected language
   useEffect(() => {
     if (openBook && pickDisplayLanguage(openBook, languages) === null) {
-      setOpenBook(null);
+      setOpenCluster(null);
     }
   }, [openBook, languages]);
 
@@ -141,6 +145,12 @@ export default function App() {
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [closeCard]);
+
+  const clusterTotal = openCluster?.books.length ?? 1;
+  const clusterIndex = openCluster?.index ?? 0;
+  const clusterPlace = clusterTotal > 1
+    ? `${openCluster!.books[0].place}, ${openCluster!.books[0].country}`
+    : undefined;
 
   return (
     <div className="app">
@@ -211,6 +221,15 @@ export default function App() {
             book={openBook}
             displayLanguage={openLanguage}
             onClose={closeCard}
+            clusterTotal={clusterTotal}
+            clusterIndex={clusterIndex}
+            clusterPlace={clusterPlace}
+            onPrev={clusterIndex > 0
+              ? () => setOpenCluster(c => c && { ...c, index: c.index - 1 })
+              : undefined}
+            onNext={clusterIndex < clusterTotal - 1
+              ? () => setOpenCluster(c => c && { ...c, index: c.index + 1 })
+              : undefined}
           />
         )}
       </div>
