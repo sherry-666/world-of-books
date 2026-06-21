@@ -12,6 +12,7 @@ export const UI = {
     aPORTRAIT:        'A PORTRAIT',
     getBook:          'Get this Book',
     authorJourney:    (name: string) => `Explore ${name}'s journey →`,
+    authorLife:       'Explore life →',
     booksIn:          (n: number, place: string) => `${n} books in ${place}`,
     tweaksTitle:      'Tweaks',
     mapDetail:        'Map detail',
@@ -34,6 +35,7 @@ export const UI = {
     aPORTRAIT:        'UN PORTRAIT',
     getBook:          'Obtenir ce livre',
     authorJourney:    (name: string) => `Explorer le parcours de ${name} →`,
+    authorLife:       'Explorer la vie →',
     booksIn:          (n: number, place: string) => `${n} livres à ${place}`,
     tweaksTitle:      'Réglages',
     mapDetail:        'Détails de la carte',
@@ -79,6 +81,7 @@ export const UI = {
     aPORTRAIT:        '传 记',
     getBook:          '获取此书',
     authorJourney:    (name: string) => `探索${name}的人生旅程 →`,
+    authorLife:       '探索人生旅程 →',
     booksIn:          (n: number, place: string) => `${place}的 ${n} 本书`,
     tweaksTitle:      '设置',
     mapDetail:        '地图细节',
@@ -126,6 +129,7 @@ export type UIStrings = {
   aPORTRAIT: string;
   getBook: string;
   authorJourney: (name: string) => string;
+  authorLife: string;
   booksIn: (n: number, place: string) => string;
   tweaksTitle: string;
   mapDetail: string;

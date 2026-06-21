@@ -67,8 +67,29 @@ export function BookCard({ book, displayLanguage, onClose, t, onAuthorSelect, cl
         </div>
         <h2 className="card-title">{title}</h2>
         <div className="card-meta">
-          {book.author} · {book.year}
-          {book.pages && <span className="card-readtime"> · ~{Math.round(book.pages / 60)} hr read</span>}
+          <span className="card-meta-author">
+            {book.author}
+            {authorEntry && (
+              onAuthorSelect ? (
+                <button
+                  className="card-author-link"
+                  onClick={(e) => { e.stopPropagation(); onAuthorSelect(authorEntry); }}
+                >
+                  {t.authorLife}
+                </button>
+              ) : (
+                <a
+                  className="card-author-link"
+                  href={`/authors?author=${authorEntry.id}`}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {t.authorLife}
+                </a>
+              )
+            )}
+          </span>
+          <span className="card-meta-year">· {book.year}</span>
+          {book.pages && <div className="card-readtime">~{Math.round(book.pages / 60)} hr read</div>}
         </div>
         {book.genre && <span className="card-genre">{t.genres[book.genre] ?? book.genre}</span>}
         {book.rating !== undefined && (
@@ -95,25 +116,6 @@ export function BookCard({ book, displayLanguage, onClose, t, onAuthorSelect, cl
             <span className="cnav-pos">{(clusterIndex ?? 0) + 1} / {clusterTotal}</span>
             <button className="cnav-btn" onClick={onNext} disabled={!onNext}>›</button>
           </div>
-        )}
-
-        {authorEntry && (
-          onAuthorSelect ? (
-            <button
-              className="card-author-link"
-              onClick={(e) => { e.stopPropagation(); onAuthorSelect(authorEntry); }}
-            >
-              {t.authorJourney(authorEntry.name)}
-            </button>
-          ) : (
-            <a
-              className="card-author-link"
-              href={`/authors?author=${authorEntry.id}`}
-              onClick={(e) => e.stopPropagation()}
-            >
-              {t.authorJourney(authorEntry.name)}
-            </a>
-          )
         )}
       </div>
     </>

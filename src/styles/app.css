@@ -1017,9 +1017,21 @@ html.no-anim .mk-inner { animation-play-state: paused; }
   margin-bottom: 11px;
 }
 
+.card-meta-author {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.card-meta-year {
+  display: block;
+}
+
 .card-readtime {
   font-style: normal;
   opacity: .7;
+  margin-top: 2px;
 }
 
 .card-genre {
@@ -1846,18 +1858,19 @@ html[data-mode='author'] .markers-layer .marker.on { opacity: 0.22; }
 /* ---- Book card: explore author link ---- */
 
 .card-author-link {
-  display: block;
-  margin-top: 8px;
+  display: inline-block;
   font-family: var(--font-label);
-  font-size: 12px;
+  font-size: 11px;
   letter-spacing: .05em;
   color: var(--accent);
   text-decoration: none;
   background: transparent;
-  border: 0;
-  padding: 0;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  padding: 1px 6px;
   cursor: pointer;
-  text-align: left;
+  font-style: normal;
+  white-space: nowrap;
   transition: opacity .15s;
 }
 
