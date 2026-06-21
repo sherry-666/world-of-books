@@ -1,5 +1,6 @@
 import type { Book, Author } from '../types';
 import type { UIStrings } from '../i18n';
+import { translatePlace, translateCountry } from '../placeNames';
 import { findAuthorByNameKey } from '../authors';
 
 function coverInitials(title: string): string {
@@ -62,7 +63,7 @@ export function BookCard({ book, displayLanguage, onClose, t, onAuthorSelect, cl
         )}
         <div className="card-kicker">
           <span className="pin" />
-          {rel} {book.place}, {book.country}
+          {rel} {translatePlace(book.place, displayLanguage)}, {translateCountry(book.country, displayLanguage)}
         </div>
         <h2 className="card-title">{title}</h2>
         <div className="card-meta">
