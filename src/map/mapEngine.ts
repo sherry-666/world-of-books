@@ -391,7 +391,7 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
 
   // Greedy spatial deduplication. Sort books by priority (tier asc, rating desc),
   // then show each only if its screen center is >= THRESHOLD px from every
-  // already-accepted marker. At k >= 200, group overlapping books into clusters
+  // already-accepted marker. At k >= 100, group overlapping books into clusters
   // so a single marker represents several books.
   function computeClusters(): Map<string, PBook[]> {
     const eligible = pbooks.filter(b => pickDisplayLanguage(b, languageFilter) !== null);
@@ -407,7 +407,7 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
       const sx = current.applyX(b._x);
       const sy = current.applyY(b._y);
 
-      if (current.k >= 200) {
+      if (current.k >= 100) {
         // At max zoom: group nearby books into a cluster under the highest-priority leader
         const hit = occupied.find(o => Math.hypot(sx - o.sx, sy - o.sy) < 28);
         if (hit) {
