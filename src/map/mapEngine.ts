@@ -379,11 +379,30 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
     });
   }
 
-  function tierVisible(tier: 1 | 2 | 3, k: number): boolean {
-    const r = tweaks.reveal || 1;
-    if (tier === 1) return true;
-    if (tier === 2) return k >= 1.75 / r;
-    return k >= 3.1 / r;
+  // Greedy spatial deduplication: sort books by priority (tier asc, rating desc),
+  // then show each only if its screen-space center is >= THRESHOLD px from every
+  // already-accepted marker. At k >= 200 (street-level zoom) show everything.
+  function computeVisibleSet(): Set<string> {
+    if (current.k >= 200) return new Set(pbooks.map(b => b.id));
+
+    const THRESHOLD = 36 / (tweaks.reveal || 1); // reveal slider scales density
+    const sorted = [...pbooks].sort((a, b) =>
+      a.tier !== b.tier ? a.tier - b.tier : (b.rating ?? 0) - (a.rating ?? 0),
+    );
+
+    const visible = new Set<string>();
+    const occupied: Array<[number, number]> = [];
+
+    for (const b of sorted) {
+      const sx = current.applyX(b._x);
+      const sy = current.applyY(b._y);
+      const blocked = occupied.some(([ox, oy]) => Math.hypot(sx - ox, sy - oy) < THRESHOLD);
+      if (!blocked) {
+        visible.add(b.id);
+        occupied.push([sx, sy]);
+      }
+    }
+    return visible;
   }
 
   function updateMarkers() {
@@ -391,11 +410,13 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
     const k = current.k;
     const labelsShow = tweaks.labels && k >= 1.3;
     let shown = 0;
+    const visibleSet = computeVisibleSet();
 
     markerSel.each(function (d) {
       const node = this as SVGGElement;
       const displayLang = pickDisplayLanguage(d, languageFilter);
-      const vis = tierVisible(d.tier, k) && displayLang !== null;
+      // Always keep the open card's marker visible so it doesn't vanish mid-interaction
+      const vis = (visibleSet.has(d.id) || d.id === openId) && displayLang !== null;
       if (vis) shown++;
 
       const x = current.applyX(d._x);
