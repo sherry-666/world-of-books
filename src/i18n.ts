@@ -19,6 +19,7 @@ export const UI = {
     placeLabels:      'Place labels',
     graticule:        'Graticule',
     searchPlaceholder:'Search country or region…',
+    genres: {} as Record<string, string>,
   },
   French: {
     eyebrow:          'Un Atlas de Romans',
@@ -40,6 +41,30 @@ export const UI = {
     placeLabels:      'Noms de lieux',
     graticule:        'Graticule',
     searchPlaceholder:'Rechercher un pays ou une région…',
+    genres: {
+      'Adventure Fiction':  'Roman d\'aventure',
+      'Classic Fiction':    'Fiction classique',
+      'Coming-of-Age':      'Roman d\'apprentissage',
+      'Drama':              'Drame',
+      'Dystopian Fiction':  'Fiction dystopique',
+      'Fable':              'Fable',
+      'Fantasy':            'Fantaisie',
+      'Gothic Fiction':     'Fiction gothique',
+      'Historical Epic':    'Épopée historique',
+      'Historical Fiction': 'Roman historique',
+      'History':            'Histoire',
+      'Literary Fiction':   'Fiction littéraire',
+      'Magical Realism':    'Réalisme magique',
+      'Memoir':             'Mémoires',
+      'Mystery':            'Roman policier',
+      'Philosophical Fiction':'Fiction philosophique',
+      'Romance':            'Roman sentimental',
+      'Satire':             'Satire',
+      'Science Fiction':    'Science-fiction',
+      'Short Stories':      'Nouvelles',
+      'Social Realism':     'Réalisme social',
+      'Western':            'Western',
+    },
   },
   Chinese: {
     eyebrow:          '故事地图集',
@@ -61,6 +86,30 @@ export const UI = {
     placeLabels:      '地名标注',
     graticule:        '经纬线',
     searchPlaceholder:'搜索国家或地区……',
+    genres: {
+      'Adventure Fiction':  '冒险小说',
+      'Classic Fiction':    '古典小说',
+      'Coming-of-Age':      '成长小说',
+      'Drama':              '戏剧',
+      'Dystopian Fiction':  '反乌托邦小说',
+      'Fable':              '寓言',
+      'Fantasy':            '奇幻小说',
+      'Gothic Fiction':     '哥特式小说',
+      'Historical Epic':    '历史长篇',
+      'Historical Fiction': '历史小说',
+      'History':            '历史',
+      'Literary Fiction':   '文学小说',
+      'Magical Realism':    '魔幻现实主义',
+      'Memoir':             '回忆录',
+      'Mystery':            '悬疑小说',
+      'Philosophical Fiction':'哲学小说',
+      'Romance':            '言情小说',
+      'Satire':             '讽刺小说',
+      'Science Fiction':    '科幻小说',
+      'Short Stories':      '短篇小说集',
+      'Social Realism':     '社会现实主义',
+      'Western':            '西部小说',
+    },
   },
 } as const satisfies Record<string, UIStrings>;
 
@@ -84,6 +133,7 @@ export type UIStrings = {
   placeLabels: string;
   graticule: string;
   searchPlaceholder: string;
+  genres: Record<string, string>;
 };
 
 export function getUI(lang: string): UIStrings {
