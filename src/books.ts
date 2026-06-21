@@ -550,6 +550,13 @@ export const BOOKS: Book[] = [
     languages:['French'], titles:{French:'Un long dimanche de fiançailles'}, blurbs:{French:'Une femme cherche son fiancé déclaré mort dans les tranchées.'} },
   { id:'hussardtoit', author:'Jean Giono', year:1951, place:'Manosque (Provence)', country:'France', lng:5.7855, lat:43.8284, tier:3, relation:'set', genre:'Historical Fiction', rating:4.05, pages:376,
     languages:['French'], titles:{French:'Le Hussard sur le toit'}, blurbs:{French:'Un jeune hussard italien fuit le choléra par les toits de Provence.'} },
+  { id:'bonheurocc', author:'Gabrielle Roy', year:1945, place:'Montréal (Saint-Henri)', country:'Canada', lng:-73.5929, lat:45.4720, tier:1, relation:'set', genre:'Literary Fiction', rating:4.10, pages:380,
+    languages:['French', 'English'],
+    titles: { French: 'Bonheur d\'occasion', English: 'The Tin Flute' },
+    blurbs: {
+      French: 'Une famille ouvrière de Saint-Henri à Montréal lutte contre la misère pendant la Seconde Guerre mondiale.',
+      English: 'A poor working-class family in Montréal\'s Saint-Henri neighbourhood struggles through the Great Depression into wartime.',
+    } },
 
   // Placed last so it renders on top of the French Paris cluster and is directly clickable
   {
