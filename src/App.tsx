@@ -7,6 +7,7 @@ import { LanguageFilter, LANGUAGE_OPTIONS } from './components/LanguageFilter';
 import { ZoomScale } from './components/ZoomScale';
 import { SearchBar } from './components/SearchBar';
 import { pickDisplayLanguage } from './types';
+import { getUI } from './i18n';
 import type { SearchLocation } from './searchLocations';
 import type { Book, MapTweaks, MapHandle } from './types';
 
@@ -33,6 +34,15 @@ export default function App() {
   const [loaderGone,   setLoaderGone]   = useState(false);
   const [tweaks,       setTweaks]       = useState<MapTweaks>(DEFAULT_TWEAKS);
   const [tweaksOpen,   setTweaksOpen]   = useState(false);
+  const [primaryLanguage, setPrimaryLanguageRaw] = useState<string>(() => {
+    const bcp47ToApp: Record<string, string> = { en: 'English', fr: 'French', zh: 'Chinese' };
+    for (const tag of navigator.languages) {
+      const mapped = bcp47ToApp[tag.split('-')[0].toLowerCase()];
+      if (mapped) return mapped;
+    }
+    return 'English';
+  });
+
   const [languages,    setLanguages]    = useState<Set<string>>(() => {
     const param = new URLSearchParams(location.search).get('lang');
     if (param) {
@@ -124,8 +134,15 @@ export default function App() {
 
   // Resolve the display language for the open book (drives card content)
   const openLanguage = openBook
-    ? (pickDisplayLanguage(openBook, languages) ?? openBook.languages[0])
+    ? (pickDisplayLanguage(openBook, languages, primaryLanguage) ?? openBook.languages[0])
     : null;
+
+  const setPrimaryLanguage = useCallback((lang: string) => {
+    setPrimaryLanguageRaw(lang);
+    setLanguages(prev => prev.has(lang) ? prev : new Set([...prev, lang]));
+  }, []);
+
+  const t = getUI(primaryLanguage);
 
   const setTweak = useCallback(
     <K extends keyof MapTweaks>(key: K, value: MapTweaks[K]) =>
@@ -161,23 +178,28 @@ export default function App() {
       {!loaderGone && (
         <div id="loader" className={loaded ? 'gone' : ''}>
           <div className="compass" />
-          <div className="ld-text">Charting the world…</div>
+          <div className="ld-text">{t.loading}</div>
         </div>
       )}
 
       {/* Masthead */}
       <header className="chrome masthead">
-        <p className="eyebrow">An Atlas of Stories</p>
-        <h1>Map of Books</h1>
+        <p className="eyebrow">{t.eyebrow}</p>
+        <h1>{t.title}</h1>
         <div className="rule"><i /></div>
-        <p className="sub">Every pin a place a great book is set in — or about.</p>
+        <p className="sub">{t.tagline}</p>
       </header>
 
       {/* Search bar */}
-      <SearchBar onSelect={panTo} />
+      <SearchBar onSelect={panTo} placeholder={t.searchPlaceholder} />
 
       {/* Language filter */}
-      <LanguageFilter selected={languages} onChange={setLanguages} />
+      <LanguageFilter
+        selected={languages}
+        onChange={setLanguages}
+        primaryLanguage={primaryLanguage}
+        onPrimaryChange={setPrimaryLanguage}
+      />
 
       {/* Zoom controls */}
       <div className="chrome zoomctl">
@@ -200,12 +222,11 @@ export default function App() {
             <path d="M11 11l3.5 3.5" />
             <path d="M7 5v4M5 7h4" />
           </svg>
-          <span>Zoom in to uncover more stories.</span>
+          <span>{t.zoomHint}</span>
         </div>
         <div className="countpill">
           <span className="dot" />
-          <span className="num">{visibleCount}</span>
-          <span className="lbl">of {BOOKS.length} books in view</span>
+          <span className="lbl">{t.ofBooks(visibleCount, BOOKS.length)}</span>
         </div>
       </div>
 
@@ -221,6 +242,7 @@ export default function App() {
             book={openBook}
             displayLanguage={openLanguage}
             onClose={closeCard}
+            t={t}
             clusterTotal={clusterTotal}
             clusterIndex={clusterIndex}
             clusterPlace={clusterPlace}
@@ -250,6 +272,7 @@ export default function App() {
           tweaks={tweaks}
           setTweak={setTweak}
           onClose={() => setTweaksOpen(false)}
+          t={t}
         />
       )}
     </div>

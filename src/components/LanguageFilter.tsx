@@ -5,13 +5,14 @@ export const LANGUAGE_OPTIONS = ['English', 'French', 'Chinese'] as const;
 interface Props {
   selected: Set<string>;
   onChange: (next: Set<string>) => void;
+  primaryLanguage: string;
+  onPrimaryChange: (lang: string) => void;
 }
 
-export function LanguageFilter({ selected, onChange }: Props) {
+export function LanguageFilter({ selected, onChange, primaryLanguage, onPrimaryChange }: Props) {
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
 
-  // Close when clicking outside
   useEffect(() => {
     if (!open) return;
     const onDoc = (e: MouseEvent) => {
@@ -22,13 +23,14 @@ export function LanguageFilter({ selected, onChange }: Props) {
   }, [open]);
 
   const toggle = (lang: string) => {
+    if (lang === primaryLanguage) return; // primary cannot be deselected
     const next = new Set(selected);
     if (next.has(lang)) next.delete(lang); else next.add(lang);
     onChange(next);
   };
 
   const label =
-    selected.size === 0           ? 'No language' :
+    selected.size === 0                  ? 'No language' :
     selected.size === LANGUAGE_OPTIONS.length ? 'All languages' :
     Array.from(selected).join(' · ');
 
@@ -45,16 +47,30 @@ export function LanguageFilter({ selected, onChange }: Props) {
       </button>
       {open && (
         <div className="langfilter-menu" role="listbox">
-          {LANGUAGE_OPTIONS.map(lang => (
-            <label key={lang} className="langfilter-row">
-              <input
-                type="checkbox"
-                checked={selected.has(lang)}
-                onChange={() => toggle(lang)}
-              />
-              <span>{lang}</span>
-            </label>
-          ))}
+          {LANGUAGE_OPTIONS.map(lang => {
+            const isPrimary = lang === primaryLanguage;
+            return (
+              <div key={lang} className="langfilter-row">
+                <label className="langfilter-check-label">
+                  <input
+                    type="checkbox"
+                    checked={selected.has(lang)}
+                    disabled={isPrimary}
+                    onChange={() => toggle(lang)}
+                  />
+                  <span>{lang}</span>
+                </label>
+                <button
+                  className={`langfilter-star${isPrimary ? ' active' : ''}`}
+                  title={isPrimary ? 'Primary language' : `Set ${lang} as primary`}
+                  onClick={(e) => { e.stopPropagation(); onPrimaryChange(lang); }}
+                  aria-label={`Set ${lang} as primary language`}
+                >
+                  {isPrimary ? '★' : '☆'}
+                </button>
+              </div>
+            );
+          })}
         </div>
       )}
     </div>

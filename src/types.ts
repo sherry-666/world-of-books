@@ -73,9 +73,13 @@ export interface MapHandle {
   cleanup: () => void;
 }
 
-/** Resolves the display language for a book given the current filter (highest-ranked match). */
-export function pickDisplayLanguage(book: Book, filter: Set<string> | null): string | null {
-  if (filter === null) return book.languages[0] ?? null;
-  for (const lang of book.languages) if (filter.has(lang)) return lang;
-  return null;
+/** Resolves the display language for a book. Primary language is preferred when available. */
+export function pickDisplayLanguage(book: Book, filter: Set<string> | null, primary?: string): string | null {
+  if (filter === null) {
+    return primary && book.languages.includes(primary) ? primary : (book.languages[0] ?? null);
+  }
+  const eligible = book.languages.filter(l => filter.has(l));
+  if (!eligible.length) return null;
+  if (primary && eligible.includes(primary)) return primary;
+  return eligible[0];
 }

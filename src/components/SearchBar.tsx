@@ -4,9 +4,10 @@ import type { SearchLocation } from '../searchLocations';
 
 interface SearchBarProps {
   onSelect: (loc: SearchLocation) => void;
+  placeholder?: string;
 }
 
-export function SearchBar({ onSelect }: SearchBarProps) {
+export function SearchBar({ onSelect, placeholder = 'Search country or region…' }: SearchBarProps) {
   const [query,       setQuery]       = useState('');
   const [results,     setResults]     = useState<SearchLocation[]>([]);
   const [activeIndex, setActiveIndex] = useState(-1);
@@ -78,7 +79,7 @@ export function SearchBar({ onSelect }: SearchBarProps) {
           ref={inputRef}
           className="searchbar-input"
           type="text"
-          placeholder="Search country or region…"
+          placeholder={placeholder}
           value={query}
           onChange={handleChange}
           onKeyDown={handleKeyDown}

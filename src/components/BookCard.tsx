@@ -1,4 +1,5 @@
 import type { Book, Author } from '../types';
+import type { UIStrings } from '../i18n';
 import { findAuthorByNameKey } from '../authors';
 
 function coverInitials(title: string): string {
@@ -13,6 +14,7 @@ interface BookCardProps {
   book: Book;
   displayLanguage: string;
   onClose: () => void;
+  t: UIStrings;
   /** Called when the user clicks "Explore author" on the author map page. */
   onAuthorSelect?: (author: Author) => void;
   /** Cluster navigation — only set when 2+ books share the same marker. */
@@ -23,12 +25,12 @@ interface BookCardProps {
   onNext?: () => void;
 }
 
-export function BookCard({ book, displayLanguage, onClose, onAuthorSelect, clusterTotal, clusterIndex, clusterPlace, onPrev, onNext }: BookCardProps) {
+export function BookCard({ book, displayLanguage, onClose, t, onAuthorSelect, clusterTotal, clusterIndex, clusterPlace, onPrev, onNext }: BookCardProps) {
   const title = book.titles[displayLanguage] ?? book.titles[book.languages[0]];
   const blurb = book.blurbs[displayLanguage] ?? book.blurbs[book.languages[0]];
   const initials = coverInitials(title);
-  const rel = book.relation === 'set' ? 'Set in' : 'A portrait of';
-  const eyebrow = book.relation === 'set' ? 'A NOVEL' : 'A PORTRAIT';
+  const rel = book.relation === 'set' ? t.setIn : t.portraitOf;
+  const eyebrow = book.relation === 'set' ? t.aNOVEL : t.aPORTRAIT;
   const authorEntry = findAuthorByNameKey(book.author);
 
   return (
@@ -55,7 +57,7 @@ export function BookCard({ book, displayLanguage, onClose, onAuthorSelect, clust
       <div className="card-body">
         {clusterTotal !== undefined && clusterTotal > 1 && (
           <div className="card-cluster-header">
-            {clusterTotal} books in {clusterPlace}
+            {t.booksIn(clusterTotal, clusterPlace ?? '')}
           </div>
         )}
         <div className="card-kicker">
@@ -83,7 +85,7 @@ export function BookCard({ book, displayLanguage, onClose, onAuthorSelect, clust
           rel="noopener noreferrer"
           onClick={(e) => e.stopPropagation()}
         >
-          Get this Book
+          {t.getBook}
         </a>
 
         {clusterTotal !== undefined && clusterTotal > 1 && (
@@ -100,7 +102,7 @@ export function BookCard({ book, displayLanguage, onClose, onAuthorSelect, clust
               className="card-author-link"
               onClick={(e) => { e.stopPropagation(); onAuthorSelect(authorEntry); }}
             >
-              Explore {authorEntry.name}'s journey →
+              {t.authorJourney(authorEntry.name)}
             </button>
           ) : (
             <a
@@ -108,7 +110,7 @@ export function BookCard({ book, displayLanguage, onClose, onAuthorSelect, clust
               href={`/authors?author=${authorEntry.id}`}
               onClick={(e) => e.stopPropagation()}
             >
-              Explore {authorEntry.name}'s journey →
+              {t.authorJourney(authorEntry.name)}
             </a>
           )
         )}

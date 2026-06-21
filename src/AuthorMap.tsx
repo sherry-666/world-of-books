@@ -5,6 +5,7 @@ import { EventTooltip } from './components/EventTooltip';
 import { BookCard } from './components/BookCard';
 import { ZoomScale } from './components/ZoomScale';
 import { findAuthorById } from './authors';
+import { getUI } from './i18n';
 import type { Author, AuthorEvent, Book, MapHandle } from './types';
 
 export default function AuthorMap() {
@@ -139,6 +140,7 @@ export default function AuthorMap() {
             book={openBook}
             displayLanguage={openBook.languages[0]}
             onClose={closeCard}
+            t={getUI(openBook.languages[0])}
             onAuthorSelect={handleSelectAuthor}
           />
         )}
