@@ -33,6 +33,8 @@ export default function App() {
   const [loaderGone,   setLoaderGone]   = useState(false);
   const [tweaks] = useState<MapTweaks>(DEFAULT_TWEAKS);
   const [primaryLanguage, setPrimaryLanguageRaw] = useState<string>(() => {
+    const param = new URLSearchParams(location.search).get('primary');
+    if (param && (LANGUAGE_OPTIONS as readonly string[]).includes(param)) return param;
     const bcp47ToApp: Record<string, string> = { en: 'English', fr: 'French', zh: 'Chinese' };
     for (const tag of navigator.languages) {
       const mapped = bcp47ToApp[tag.split('-')[0].toLowerCase()];
@@ -122,6 +124,17 @@ export default function App() {
     }
     history.replaceState(null, '', url);
   }, [languages]);
+
+  // Sync primary language to URL
+  useEffect(() => {
+    const url = new URL(location.href);
+    if (primaryLanguage === 'English') {
+      url.searchParams.delete('primary');
+    } else {
+      url.searchParams.set('primary', primaryLanguage);
+    }
+    history.replaceState(null, '', url);
+  }, [primaryLanguage]);
 
   // Close the open card if its book no longer matches any selected language
   useEffect(() => {
