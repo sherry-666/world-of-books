@@ -11,12 +11,12 @@ import type { SearchLocation } from './searchLocations';
 import type { Book, MapTweaks, MapHandle } from './types';
 
 const DEFAULT_TWEAKS: MapTweaks = {
-  theme: 'atlas',
-  markerStyle: 'spine',
+  theme: 'atlas',       // fixed — Vintage only
+  markerStyle: 'spine', // fixed — Spine only
+  animate: true,        // fixed — always animated
   graticule: false,
   labels: false,
   reveal: 0.9,
-  animate: true,
 };
 
 export default function App() {

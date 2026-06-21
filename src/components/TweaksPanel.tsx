@@ -6,46 +6,6 @@ interface TweaksPanelProps {
   onClose: () => void;
 }
 
-interface SegOption<T> {
-  value: T;
-  label: string;
-}
-
-function SegControl<T extends string>({
-  value,
-  options,
-  onChange,
-}: {
-  value: T;
-  options: SegOption<T>[];
-  onChange: (v: T) => void;
-}) {
-  const idx = Math.max(0, options.findIndex(o => o.value === value));
-  const n = options.length;
-  return (
-    <div className="twk-seg">
-      <div
-        className="twk-seg-thumb"
-        style={{
-          left: `calc(2px + ${idx} * (100% - 4px) / ${n})`,
-          width: `calc((100% - 4px) / ${n})`,
-        }}
-      />
-      {options.map(o => (
-        <button
-          key={o.value}
-          type="button"
-          role="radio"
-          aria-checked={o.value === value}
-          onClick={() => onChange(o.value)}
-        >
-          {o.label}
-        </button>
-      ))}
-    </div>
-  );
-}
-
 function Toggle({ value, onChange }: { value: boolean; onChange: (v: boolean) => void }) {
   return (
     <button
@@ -69,39 +29,6 @@ export function TweaksPanel({ tweaks, setTweak, onClose }: TweaksPanelProps) {
         <button className="twk-x" aria-label="Close tweaks" onClick={onClose}>✕</button>
       </div>
       <div className="twk-body">
-
-        <div className="twk-sect">Atlas style</div>
-
-        <div className="twk-row">
-          <div className="twk-lbl"><span>Theme</span></div>
-          <SegControl
-            value={tweaks.theme}
-            options={[
-              { value: 'atlas' as const,     label: 'Vintage'   },
-              { value: 'parchment' as const, label: 'Parchment' },
-              { value: 'modern' as const,    label: 'Modern'    },
-            ]}
-            onChange={v => setTweak('theme', v)}
-          />
-        </div>
-
-        <div className="twk-row">
-          <div className="twk-lbl"><span>Markers</span></div>
-          <SegControl
-            value={tweaks.markerStyle}
-            options={[
-              { value: 'spine' as const, label: 'Spine' },
-              { value: 'dot'   as const, label: 'Pin'   },
-              { value: 'cover' as const, label: 'Cover' },
-            ]}
-            onChange={v => setTweak('markerStyle', v)}
-          />
-        </div>
-
-        <div className="twk-row twk-row-h">
-          <div className="twk-lbl"><span>Animate markers</span></div>
-          <Toggle value={tweaks.animate} onChange={v => setTweak('animate', v)} />
-        </div>
 
         <div className="twk-sect">Map detail</div>
 
