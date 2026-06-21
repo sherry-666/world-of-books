@@ -279,6 +279,49 @@ export const BOOKS: Book[] = [
     },
   },
 
+  {
+    id: 'alchemist',
+    author: 'Paulo Coelho',
+    year: 1988,
+    place: 'Giza (Egyptian Pyramids)',
+    country: 'Egypt',
+    lng: 31.1342, lat: 29.9792,
+    tier: 1,
+    relation: 'set',
+    genre: 'Philosophical Fiction',
+    rating: 3.87, pages: 163,
+    languages: ['English', 'Chinese'],
+    titles: {
+      English: 'The Alchemist',
+      Chinese: '牧羊少年奇幻之旅',
+    },
+    blurbs: {
+      English: 'A young Andalusian shepherd follows omens across the Sahara to Egypt in pursuit of his personal legend.',
+      Chinese: '安达卢西亚少年牧羊人聆听心灵之声，穿越撒哈拉，追寻藏于金字塔旁的宝藏与人生传奇。',
+    },
+  },
+  {
+    id: 'thingsfallapart',
+    author: 'Chinua Achebe',
+    year: 1958,
+    place: 'Umuofia (Igboland)',
+    country: 'Nigeria',
+    lng: 6.8833, lat: 6.1167,
+    tier: 1,
+    relation: 'set',
+    genre: 'Literary Fiction',
+    rating: 3.96, pages: 209,
+    languages: ['English', 'Chinese'],
+    titles: {
+      English: 'Things Fall Apart',
+      Chinese: '瓦解',
+    },
+    blurbs: {
+      English: 'The proud Igbo warrior Okonkwo struggles to hold his world together as British colonialism dismantles everything he values.',
+      Chinese: '骄傲的伊博族勇士奥孔克沃，眼睁睁看着英国殖民浪潮将他所珍视的一切土崩瓦解。',
+    },
+  },
+
   // ============================================================
   // English (19) — Kite Runner is in the multi-language section
   // ============================================================
