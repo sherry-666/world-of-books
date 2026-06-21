@@ -91,7 +91,7 @@ export function BookCard({ book, displayLanguage, onClose, t, onAuthorSelect, cl
           <span className="card-meta-year">· {book.year}</span>
           {book.pages && <div className="card-readtime">~{Math.round(book.pages / 60)} hr read</div>}
         </div>
-        {book.genre && <span className="card-genre">{t.genres[book.genre] ?? book.genre}</span>}
+
         {book.rating !== undefined && (
           <div className="card-rating">
             <span className="card-rating-star">★</span>
