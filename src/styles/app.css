@@ -377,6 +377,11 @@ html.no-anim .mk-inner { animation-play-state: paused; }
   text-shadow: 0 1px 0 rgba(255, 255, 255, .4);
 }
 
+[data-primary-lang="Chinese"] .masthead h1 {
+  font-family: 'Ma Shan Zheng', var(--font-display);
+  letter-spacing: .06em;
+}
+
 .masthead .rule {
   display: flex;
   align-items: center;

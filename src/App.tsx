@@ -125,8 +125,9 @@ export default function App() {
     history.replaceState(null, '', url);
   }, [languages]);
 
-  // Sync primary language to URL
+  // Sync primary language to URL and DOM attribute
   useEffect(() => {
+    document.documentElement.setAttribute('data-primary-lang', primaryLanguage);
     const url = new URL(location.href);
     if (primaryLanguage === 'English') {
       url.searchParams.delete('primary');
