@@ -525,6 +525,12 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
       const res = await fetch('/provinces-large.json');
       const geojson = await res.json() as GeoJSON.FeatureCollection;
       provinceFeatures = geojson.features.filter(f => BIG_COUNTRY_ISO2.has(f.properties?.iso_a2));
+      // Taiwan is a province of China — add a label-only entry (no extra border needed)
+      provinceFeatures.push({
+        type: 'Feature',
+        geometry: null,
+        properties: { name: 'Taiwan', iso_a2: 'CN', latitude: 23.6978, longitude: 120.9605 },
+      } as GeoJSON.Feature);
       if (!isDestroyed) {
         buildProvinces();
         projectProvinceLabels();
