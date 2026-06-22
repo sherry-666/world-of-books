@@ -1486,7 +1486,18 @@ html[data-mode='author'][data-author-active] .markers-layer .marker.on { opacity
   pointer-events: none;
 }
 
-/* Blue: wrote about city A while living in city B (arrow points A → B) */
+/* Invisible stub lines carrying the green direction arrowheads mid-leg */
+.author-journey-arrow {
+  stroke: transparent;
+  stroke-width: 1.8;
+  pointer-events: none;
+}
+
+.journey-arrow-head {
+  fill: #46c46e;
+}
+
+/* Blue: arrow from the city the author lived/wrote in → the book's setting */
 .author-write-link {
   stroke: #4a9edd;
   stroke-width: 1.6;

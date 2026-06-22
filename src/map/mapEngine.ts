@@ -61,9 +61,10 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
     .attr('role', 'application')
     .attr('aria-label', 'World of Books — interactive literary map');
 
+  const defs = svg.append('defs');
+
   // Arrowhead marker for the blue "wrote about A while living in B" links
-  svg.append('defs')
-    .append('marker')
+  defs.append('marker')
     .attr('id', 'write-arrow')
     .attr('viewBox', '0 0 10 10')
     .attr('refX', 9).attr('refY', 5)
@@ -72,6 +73,17 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
     .append('path')
     .attr('d', 'M0,0 L10,5 L0,10 z')
     .attr('class', 'write-arrow-head');
+
+  // Green arrowhead marker for the chronological journey path
+  defs.append('marker')
+    .attr('id', 'journey-arrow')
+    .attr('viewBox', '0 0 10 10')
+    .attr('refX', 5).attr('refY', 5)
+    .attr('markerWidth', 5).attr('markerHeight', 5)
+    .attr('orient', 'auto')
+    .append('path')
+    .attr('d', 'M0,0 L10,5 L0,10 z')
+    .attr('class', 'journey-arrow-head');
 
   const gStars    = svg.append('g').attr('class', 'stars-layer');
   const gZoom     = svg.append('g').attr('class', 'zoom-layer');
@@ -103,6 +115,9 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
   type WriteLink = { ax: number; ay: number; bx: number; by: number };
   let writeLinks: WriteLink[] = [];
   let writeLinkSel: d3.Selection<SVGLineElement, WriteLink, SVGGElement, unknown> | null = null;
+  // Green direction arrows at the midpoint of each journey leg
+  let journeyArrows: WriteLink[] = [];
+  let journeyArrowSel: d3.Selection<SVGLineElement, WriteLink, SVGGElement, unknown> | null = null;
 
   const authorLine = d3.line<[number, number]>()
     .x(d => d[0]).y(d => d[1])
@@ -124,11 +139,24 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
       (this as SVGGElement).setAttribute('transform', `translate(${pts[i][0]},${pts[i][1]})`);
     });
     writeLinkSel?.each(function(d) {
+      // Arrow points from the city the author lived/wrote in (B) → the book's setting (A)
       const el = this as SVGLineElement;
-      el.setAttribute('x1', String(current.applyX(d.ax)));
-      el.setAttribute('y1', String(current.applyY(d.ay)));
-      el.setAttribute('x2', String(current.applyX(d.bx)));
-      el.setAttribute('y2', String(current.applyY(d.by)));
+      el.setAttribute('x1', String(current.applyX(d.bx)));
+      el.setAttribute('y1', String(current.applyY(d.by)));
+      el.setAttribute('x2', String(current.applyX(d.ax)));
+      el.setAttribute('y2', String(current.applyY(d.ay)));
+    });
+    journeyArrowSel?.each(function(d) {
+      // Transparent stub ending at the leg's midpoint so the arrowhead sits
+      // mid-leg (not hidden under the event dots) and points A → B over time
+      const el = this as SVGLineElement;
+      const ax = current.applyX(d.ax), ay = current.applyY(d.ay);
+      const bx = current.applyX(d.bx), by = current.applyY(d.by);
+      const mx = (ax + bx) / 2, my = (ay + by) / 2;
+      el.setAttribute('x1', String(ax));
+      el.setAttribute('y1', String(ay));
+      el.setAttribute('x2', String(mx));
+      el.setAttribute('y2', String(my));
     });
   }
 
@@ -137,6 +165,7 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
     authorPathEl = null;
     authorDotSel = null;
     writeLinkSel = null;
+    journeyArrowSel = null;
     if (!events.length) return;
 
     // Blue links beneath the journey path: book setting (A) → writing place (B)
@@ -157,6 +186,21 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
       .attr('marker-end', 'url(#write-arrow)');
 
     authorPathEl = gAuthors.append('path').attr('class', 'author-path');
+
+    // Direction arrows at the midpoint of each leg of the journey
+    journeyArrows = [];
+    for (let i = 0; i < events.length - 1; i++) {
+      journeyArrows.push({
+        ax: events[i]._x, ay: events[i]._y,
+        bx: events[i + 1]._x, by: events[i + 1]._y,
+      });
+    }
+    journeyArrowSel = gAuthors.selectAll<SVGLineElement, WriteLink>('line.author-journey-arrow')
+      .data(journeyArrows)
+      .enter()
+      .append('line')
+      .attr('class', 'author-journey-arrow')
+      .attr('marker-end', 'url(#journey-arrow)');
 
     authorDotSel = gAuthors.selectAll<SVGGElement, PEvent>('g.author-event')
       .data(events)
@@ -745,10 +789,12 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
       pEvents = [];
       authorBookIds = null;
       writeLinks = [];
+      journeyArrows = [];
       gAuthors.selectAll('*').remove();
       authorPathEl = null;
       authorDotSel = null;
       writeLinkSel = null;
+      journeyArrowSel = null;
       updateMarkers();
     },
     setLanguageFilter(langs: string[]) {
