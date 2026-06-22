@@ -495,8 +495,8 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
       const sx = current.applyX(b._x);
       const sy = current.applyY(b._y);
 
-      if (current.k >= 100) {
-        // At max zoom: group nearby books into a cluster under the highest-priority leader
+      if (current.k >= 30) {
+        // At 30x+ zoom: group nearby books into a cluster under the highest-priority leader
         const hit = occupied.find(o => Math.hypot(sx - o.sx, sy - o.sy) < 28);
         if (hit) {
           clusterMap.get(hit.leadId)!.push(b);
