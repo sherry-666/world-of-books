@@ -598,6 +598,13 @@ export const BOOKS: Book[] = [
     languages:['English'], titles:{English:'A Little Life'}, blurbs:{English:'Four friends in Manhattan over decades of love and damage.'} },
   { id:'lonesomedove', author:'Larry McMurtry', year:1985, place:'Lonesome Dove, TX', country:'USA', lng:-99.00, lat:26.40, tier:2, relation:'set', genre:'Western', rating:4.55, pages:945,
     languages:['English'], titles:{English:'Lonesome Dove'}, blurbs:{English:'Aging Texas Rangers drive cattle from the Rio Grande to Montana.'} },
+  { id:'goldencompass', author:'Philip Pullman', year:1995, place:'Svalbard', country:'Norway', lng:15.65, lat:78.22, tier:1, relation:'set', genre:'Fantasy', rating:4.22, pages:399,
+    languages:['English', 'Chinese'],
+    titles:{ English:'Northern Lights', Chinese:'黄金罗盘' },
+    blurbs:{
+      English:'Lyra follows kidnapped children to the frozen North, where armoured bears rule and a terrifying experiment is underway beneath the aurora.',
+      Chinese:'莱拉追寻被掠走的孩子踏入极北之地，那里甲胄熊称王，极光之下正进行着一场骇人的实验。',
+    } },
   { id:'prideprej', author:'Jane Austen', year:1813, place:'Meryton (Hertfordshire)', country:'UK', lng:-0.0850, lat:51.7889, tier:2, relation:'set', genre:'Romance', rating:4.29, pages:432,
     languages:['English'], titles:{English:'Pride and Prejudice'}, blurbs:{English:'The Bennets, a country estate, and Mr Darcy.'} },
   { id:'gentleman', author:'Amor Towles', year:2016, place:'Moscow', country:'Russia', lng:37.6173, lat:55.7558, tier:2, relation:'set', genre:'Historical Fiction', rating:4.35, pages:462,
