@@ -1,7 +1,7 @@
 import type { Book, Author } from '../types';
 import type { UIStrings } from '../i18n';
 import { translatePlace, translateCountry } from '../placeNames';
-import { findAuthorByNameKey } from '../authors';
+import { findAuthorByNameKey, localize } from '../authors';
 
 function coverInitials(title: string): string {
   const latin = title.replace(/[^A-Za-z ]/g, '').trim();
@@ -35,6 +35,9 @@ export function BookCard({ book, displayLanguage, onClose, t, onAuthorSelect, pr
   const rel = book.relation === 'set' ? t.setIn : t.portraitOf;
   const eyebrow = book.relation === 'set' ? t.aNOVEL : t.aPORTRAIT;
   const authorEntry = findAuthorByNameKey(book.author);
+  const authorDisplayName = authorEntry?.localizedName && primaryLanguage
+    ? localize(authorEntry.localizedName, primaryLanguage)
+    : book.author;
 
   return (
     <>
@@ -51,7 +54,7 @@ export function BookCard({ book, displayLanguage, onClose, t, onAuthorSelect, pr
           <div className="cover-top">{eyebrow}</div>
           <div className="cover-title">{title}</div>
           <div className="cover-rule" />
-          <div className="cover-author">{book.author}</div>
+          <div className="cover-author">{authorDisplayName}</div>
           <div className="cover-mark">{initials}</div>
         </div>
         <div className="cover-spine" />
@@ -70,7 +73,7 @@ export function BookCard({ book, displayLanguage, onClose, t, onAuthorSelect, pr
         <h2 className="card-title">{title}</h2>
         <div className="card-meta">
           <span className="card-meta-author">
-            {book.author}
+            {authorDisplayName}
             <span className="card-meta-year">· {book.year}</span>
           </span>
           {authorEntry && (
