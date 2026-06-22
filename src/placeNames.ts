@@ -69,6 +69,7 @@ const PLACE_ZH: Record<string, string> = {
   'Jinan':                          '济南',
   'Hong Kong':                      '香港',
   'Los Angeles':                    '洛杉矶',
+  'Chengdu':                        '成都',
   'Shaoxing':                       '绍兴',
   'Sendai':                         '仙台',
   'Tokyo':                          '东京',
