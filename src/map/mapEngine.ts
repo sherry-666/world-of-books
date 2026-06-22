@@ -61,6 +61,18 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
     .attr('role', 'application')
     .attr('aria-label', 'World of Books — interactive literary map');
 
+  // Arrowhead marker for the blue "wrote about A while living in B" links
+  svg.append('defs')
+    .append('marker')
+    .attr('id', 'write-arrow')
+    .attr('viewBox', '0 0 10 10')
+    .attr('refX', 9).attr('refY', 5)
+    .attr('markerWidth', 6).attr('markerHeight', 6)
+    .attr('orient', 'auto-start-reverse')
+    .append('path')
+    .attr('d', 'M0,0 L10,5 L0,10 z')
+    .attr('class', 'write-arrow-head');
+
   const gStars    = svg.append('g').attr('class', 'stars-layer');
   const gZoom     = svg.append('g').attr('class', 'zoom-layer');
   const gGrat     = gZoom.append('g').attr('class', 'grat-layer');
@@ -87,6 +99,10 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
   let authorBookIds: Set<string> | null = null;
   let authorPathEl: d3.Selection<SVGPathElement, unknown, null, undefined> | null = null;
   let authorDotSel: d3.Selection<SVGGElement, PEvent, SVGGElement, unknown> | null = null;
+  // Blue links: from a book's setting (A) to where the author wrote it (B)
+  type WriteLink = { ax: number; ay: number; bx: number; by: number };
+  let writeLinks: WriteLink[] = [];
+  let writeLinkSel: d3.Selection<SVGLineElement, WriteLink, SVGGElement, unknown> | null = null;
 
   const authorLine = d3.line<[number, number]>()
     .x(d => d[0]).y(d => d[1])
@@ -107,13 +123,38 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
     authorDotSel.each(function(_, i) {
       (this as SVGGElement).setAttribute('transform', `translate(${pts[i][0]},${pts[i][1]})`);
     });
+    writeLinkSel?.each(function(d) {
+      const el = this as SVGLineElement;
+      el.setAttribute('x1', String(current.applyX(d.ax)));
+      el.setAttribute('y1', String(current.applyY(d.ay)));
+      el.setAttribute('x2', String(current.applyX(d.bx)));
+      el.setAttribute('y2', String(current.applyY(d.by)));
+    });
   }
 
   function buildAuthorLayer(events: PEvent[]) {
     gAuthors.selectAll('*').remove();
     authorPathEl = null;
     authorDotSel = null;
+    writeLinkSel = null;
     if (!events.length) return;
+
+    // Blue links beneath the journey path: book setting (A) → writing place (B)
+    writeLinks = [];
+    for (const e of events) {
+      if (!e.bookId) continue;
+      const book = BOOKS.find(b => b.id === e.bookId);
+      if (!book) continue;
+      const a = projection([book.lng, book.lat]);
+      if (!a) continue;
+      writeLinks.push({ ax: a[0], ay: a[1], bx: e._x, by: e._y });
+    }
+    writeLinkSel = gAuthors.selectAll<SVGLineElement, WriteLink>('line.author-write-link')
+      .data(writeLinks)
+      .enter()
+      .append('line')
+      .attr('class', 'author-write-link')
+      .attr('marker-end', 'url(#write-arrow)');
 
     authorPathEl = gAuthors.append('path').attr('class', 'author-path');
 
@@ -703,9 +744,11 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
     clearAuthor() {
       pEvents = [];
       authorBookIds = null;
+      writeLinks = [];
       gAuthors.selectAll('*').remove();
       authorPathEl = null;
       authorDotSel = null;
+      writeLinkSel = null;
       updateMarkers();
     },
     setLanguageFilter(langs: string[]) {

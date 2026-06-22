@@ -49,6 +49,11 @@ export interface AuthorEvent {
   lat: number;
   type: 'birth' | 'lived' | 'traveled' | 'wrote' | 'died';
   note?: Localized;
+  /**
+   * For 'wrote' events: the book finished here. Draws a blue link from the
+   * book's setting (city written about) to this writing location.
+   */
+  bookId?: string;
 }
 
 export interface Author {
