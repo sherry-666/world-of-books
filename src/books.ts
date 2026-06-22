@@ -789,7 +789,9 @@ export const BOOKS: Book[] = [
   // ============================================================
   // Tier 1
   { id:'lesmis', author:'Victor Hugo', year:1862, place:'Paris', country:'France', lng:2.370, lat:48.864, tier:1, relation:'set', genre:'Historical Fiction', rating:4.21, pages:1463,
-    languages:['French'], titles:{French:'Les Misérables'}, blurbs:{French:'Barricades, rédemption et bas-fonds du Paris du XIXᵉ siècle.'} },
+    languages:['French', 'Chinese'],
+    titles:{ French:'Les Misérables', Chinese:'悲惨世界' },
+    blurbs:{ French:'Barricades, rédemption et bas-fonds du Paris du XIXᵉ siècle.', Chinese:'冉·阿让从苦役犯到圣人的救赎之路，在十九世纪巴黎的街垒与阴影中展开。' } },
   { id:'proust', author:'Marcel Proust', year:1913, place:'Illiers-Combray', country:'France', lng:1.2469, lat:48.2997, tier:1, relation:'set', genre:'Literary Fiction', rating:4.06, pages:3000,
     languages:['French'], titles:{French:'À la recherche du temps perdu'}, blurbs:{French:'La mémoire dévidée par le goût d\'une seule madeleine.'} },
   { id:'stranger', author:'Albert Camus', year:1942, place:'Alger', country:'Algeria', lng:3.0588, lat:36.7538, tier:1, relation:'set', genre:'Philosophical Fiction', rating:4.02, pages:123,
