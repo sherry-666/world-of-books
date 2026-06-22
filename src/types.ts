@@ -59,7 +59,8 @@ export interface AuthorEvent {
 export interface Author {
   id: string;        // URL slug, e.g. "garcia-marquez"
   nameKey: string;   // exact match for Book.author field
-  name: string;      // display name
+  name: string;      // display name (English canonical)
+  localizedName?: Localized;
   born: number;
   died?: number;
   nationality: Localized;

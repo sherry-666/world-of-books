@@ -1,5 +1,6 @@
 import { BOOKS } from '../books';
 import { AUTHORS, localize } from '../authors';
+import type { Localized } from '../types';
 import { translatePlace } from '../placeNames';
 import type { Author, AuthorEvent } from '../types';
 import type { UIStrings } from '../i18n';
@@ -42,10 +43,11 @@ export function AuthorPanel({ author, open, onClose, t, primaryLanguage, onEvent
           <div className="author-section-label">{t.authorsList}</div>
           <div className="author-panel-grid">
             {AUTHORS.map(a => {
+              const displayName = localize(a.localizedName ?? { English: a.name } as Localized, primaryLanguage);
               const inner = (
                 <>
                   <div className="author-thumb-avatar">{coverInitials(a.name)}</div>
-                  <div className="author-thumb-name">{a.name}</div>
+                  <div className="author-thumb-name">{displayName}</div>
                   <div className="author-thumb-dates">{a.born}–{a.died ?? t.present}</div>
                 </>
               );
@@ -67,7 +69,7 @@ export function AuthorPanel({ author, open, onClose, t, primaryLanguage, onEvent
           <div className="author-panel-header">
             <div className="author-avatar">{coverInitials(author.name)}</div>
             <div>
-              <h2 className="author-name">{author.name}</h2>
+              <h2 className="author-name">{localize(author.localizedName ?? { English: author.name } as Localized, primaryLanguage)}</h2>
               <div className="author-meta">
                 {author.born}–{author.died ?? t.present} · {localize(author.nationality, primaryLanguage)}
               </div>
