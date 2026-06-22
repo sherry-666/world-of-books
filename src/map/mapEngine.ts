@@ -119,9 +119,10 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
   let journeyArrows: WriteLink[] = [];
   let journeyArrowSel: d3.Selection<SVGLineElement, WriteLink, SVGGElement, unknown> | null = null;
 
+  // Straight legs so the mid-leg direction arrows sit exactly on the line
   const authorLine = d3.line<[number, number]>()
     .x(d => d[0]).y(d => d[1])
-    .curve(d3.curveCatmullRom.alpha(0.5));
+    .curve(d3.curveLinear);
 
   function projectAuthorEvents() {
     for (const e of pEvents) {
