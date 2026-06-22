@@ -41,7 +41,6 @@ export function AuthorPanel({ author, open, onClose, t, primaryLanguage, onEvent
     <div className={`author-panel ${open ? 'open' : ''}`}>
       {!author ? (
         <div className="author-panel-empty">
-          <button className="author-panel-close" onClick={onClose} aria-label="Close">×</button>
           <div className="author-section-label">{t.authorsList}</div>
           <div className="author-panel-grid">
             {AUTHORS.map(a => {
