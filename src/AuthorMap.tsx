@@ -6,7 +6,19 @@ import { BookCard } from './components/BookCard';
 import { ZoomScale } from './components/ZoomScale';
 import { findAuthorById } from './authors';
 import { getUI } from './i18n';
+import { LANGUAGE_OPTIONS } from './components/LanguageFilter';
 import type { Author, AuthorEvent, Book, MapHandle } from './types';
+
+function detectPrimaryLanguage(): string {
+  const param = new URLSearchParams(location.search).get('primary');
+  if (param && (LANGUAGE_OPTIONS as readonly string[]).includes(param)) return param;
+  const bcp47ToApp: Record<string, string> = { en: 'English', fr: 'French', zh: 'Chinese' };
+  for (const tag of navigator.languages) {
+    const mapped = bcp47ToApp[tag.split('-')[0].toLowerCase()];
+    if (mapped) return mapped;
+  }
+  return 'English';
+}
 
 export default function AuthorMap() {
   const stageRef  = useRef<HTMLDivElement>(null);
@@ -19,6 +31,8 @@ export default function AuthorMap() {
   const [openBook,   setOpenBook]   = useState<Book | null>(null);
   const [zoomK,      setZoomK]      = useState(1);
   const [hoveredEvent, setHoveredEvent] = useState<{ event: AuthorEvent; x: number; y: number } | null>(null);
+  const [primaryLanguage] = useState<string>(detectPrimaryLanguage);
+  const t = getUI(primaryLanguage);
 
   const authorRef = useRef<Author | null>(null);
   authorRef.current = author;
@@ -38,6 +52,12 @@ export default function AuthorMap() {
     document.documentElement.setAttribute('data-mode', 'author');
     return () => document.documentElement.removeAttribute('data-mode');
   }, []);
+
+  // Flag whether an author is currently selected — the author's own books are
+  // shown at full prominence, while ambient browsing keeps them dimmed.
+  useEffect(() => {
+    document.documentElement.toggleAttribute('data-author-active', author !== null);
+  }, [author]);
 
   useEffect(() => {
     const stage = stageRef.current;
@@ -106,20 +126,22 @@ export default function AuthorMap() {
       {!loaderGone && (
         <div id="loader" className={loaded ? 'gone' : ''}>
           <div className="compass" />
-          <div className="ld-text">Charting lives…</div>
+          <div className="ld-text">{t.authorsLoading}</div>
         </div>
       )}
 
       <header className="chrome masthead masthead-authors">
-        <a className="masthead-back" href="/">← Map of Books</a>
-        <h1>Map of Authors</h1>
+        <a className="masthead-back" href={`/?primary=${primaryLanguage}`}>{t.authorBack}</a>
+        <h1>{t.authorsTitle}</h1>
         <div className="rule"><i /></div>
-        <p className="sub">Trace where the writers lived, wandered, and wrote.</p>
+        <p className="sub">{t.authorsTagline}</p>
       </header>
 
       <AuthorPanel
         author={author}
         onClose={handleClosePanel}
+        t={t}
+        primaryLanguage={primaryLanguage}
       />
 
       <div className="chrome zoomctl">
@@ -138,9 +160,9 @@ export default function AuthorMap() {
         {openBook && (
           <BookCard
             book={openBook}
-            displayLanguage={openBook.languages[0]}
+            displayLanguage={openBook.languages.includes(primaryLanguage) ? primaryLanguage : openBook.languages[0]}
             onClose={closeCard}
-            t={getUI(openBook.languages[0])}
+            t={t}
             onAuthorSelect={handleSelectAuthor}
           />
         )}
@@ -151,6 +173,8 @@ export default function AuthorMap() {
           event={hoveredEvent.event}
           x={hoveredEvent.x}
           y={hoveredEvent.y}
+          t={t}
+          primaryLanguage={primaryLanguage}
         />
       )}
     </div>

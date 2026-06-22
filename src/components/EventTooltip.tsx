@@ -1,20 +1,16 @@
 import type { AuthorEvent } from '../types';
-
-const TYPE_LABEL: Record<AuthorEvent['type'], string> = {
-  birth: 'Born',
-  lived: 'Lived here',
-  traveled: 'Traveled',
-  wrote: 'Wrote here',
-  died: 'Died',
-};
+import type { UIStrings } from '../i18n';
+import { translatePlace, translateCountry } from '../placeNames';
 
 interface Props {
   event: AuthorEvent;
   x: number;
   y: number;
+  t: UIStrings;
+  primaryLanguage: string;
 }
 
-export function EventTooltip({ event, x, y }: Props) {
+export function EventTooltip({ event, x, y, t, primaryLanguage }: Props) {
   const yearRange = event.yearEnd
     ? `${event.year}–${event.yearEnd}`
     : String(event.year);
@@ -26,9 +22,9 @@ export function EventTooltip({ event, x, y }: Props) {
 
   return (
     <div className="event-tooltip" style={style}>
-      <div className={`event-tooltip-type ev-${event.type}`}>{TYPE_LABEL[event.type]}</div>
+      <div className={`event-tooltip-type ev-${event.type}`}>{t.eventLabels[event.type]}</div>
       <div className="event-tooltip-year">{yearRange}</div>
-      <div className="event-tooltip-place">{event.place}, {event.country}</div>
+      <div className="event-tooltip-place">{translatePlace(event.place, primaryLanguage)}, {translateCountry(event.country, primaryLanguage)}</div>
       {event.note && <div className="event-tooltip-note">{event.note}</div>}
     </div>
   );

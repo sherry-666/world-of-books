@@ -18,6 +18,8 @@ interface BookCardProps {
   t: UIStrings;
   /** Called when the user clicks "Explore author" on the author map page. */
   onAuthorSelect?: (author: Author) => void;
+  /** Current primary language — carried into the author-map link so it persists. */
+  primaryLanguage?: string;
   /** Cluster navigation — only set when 2+ books share the same marker. */
   clusterTotal?: number;
   clusterIndex?: number;
@@ -26,7 +28,7 @@ interface BookCardProps {
   onNext?: () => void;
 }
 
-export function BookCard({ book, displayLanguage, onClose, t, onAuthorSelect, clusterTotal, clusterIndex, clusterPlace, onPrev, onNext }: BookCardProps) {
+export function BookCard({ book, displayLanguage, onClose, t, onAuthorSelect, primaryLanguage, clusterTotal, clusterIndex, clusterPlace, onPrev, onNext }: BookCardProps) {
   const title = book.titles[displayLanguage] ?? book.titles[book.languages[0]];
   const blurb = book.blurbs[displayLanguage] ?? book.blurbs[book.languages[0]];
   const initials = coverInitials(title);
@@ -69,26 +71,26 @@ export function BookCard({ book, displayLanguage, onClose, t, onAuthorSelect, cl
         <div className="card-meta">
           <span className="card-meta-author">
             {book.author}
-            {authorEntry && (
-              onAuthorSelect ? (
-                <button
-                  className="card-author-link"
-                  onClick={(e) => { e.stopPropagation(); onAuthorSelect(authorEntry); }}
-                >
-                  {t.authorLife}
-                </button>
-              ) : (
-                <a
-                  className="card-author-link"
-                  href={`/authors?author=${authorEntry.id}`}
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  {t.authorLife}
-                </a>
-              )
-            )}
+            <span className="card-meta-year">· {book.year}</span>
           </span>
-          <span className="card-meta-year">· {book.year}</span>
+          {authorEntry && (
+            onAuthorSelect ? (
+              <button
+                className="card-author-link"
+                onClick={(e) => { e.stopPropagation(); onAuthorSelect(authorEntry); }}
+              >
+                {t.authorLife}
+              </button>
+            ) : (
+              <a
+                className="card-author-link"
+                href={`/authors?author=${authorEntry.id}${primaryLanguage ? `&primary=${primaryLanguage}` : ''}`}
+                onClick={(e) => e.stopPropagation()}
+              >
+                {t.authorLife}
+              </a>
+            )
+          )}
           {book.pages && <div className="card-readtime">~{Math.round(book.pages / 60)} hr read</div>}
         </div>
 

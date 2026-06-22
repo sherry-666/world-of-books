@@ -20,6 +20,16 @@ export const UI = {
     placeLabels:      'Place labels',
     graticule:        'Graticule',
     searchPlaceholder:'Search country or region…',
+    authorBack:       '← Map of Books',
+    authorsTitle:     'Map of Authors',
+    authorsTagline:   'Trace where the writers lived, wandered, and wrote.',
+    authorsLoading:   'Charting lives…',
+    lifeJourney:      'Life Journey',
+    booksOnThisMap:   'Books on this map',
+    authorEmptyPrompt:'Open a book on the map, then tap Explore the author to trace their life journey.',
+    present:          'present',
+    timelineLabels:   { birth: 'Born', lived: 'Lived', traveled: 'Visited', wrote: 'Wrote', died: 'Died' },
+    eventLabels:      { birth: 'Born', lived: 'Lived here', traveled: 'Traveled', wrote: 'Wrote here', died: 'Died' },
     genres: {} as Record<string, string>,
   },
   French: {
@@ -43,6 +53,16 @@ export const UI = {
     placeLabels:      'Noms de lieux',
     graticule:        'Graticule',
     searchPlaceholder:'Rechercher un pays ou une région…',
+    authorBack:       '← Carte des Livres',
+    authorsTitle:     'Carte des Auteurs',
+    authorsTagline:   'Suivez les lieux où les écrivains ont vécu, voyagé et écrit.',
+    authorsLoading:   'Cartographie des vies…',
+    lifeJourney:      'Parcours de vie',
+    booksOnThisMap:   'Livres sur cette carte',
+    authorEmptyPrompt:'Ouvrez un livre sur la carte, puis touchez Explorer l\'auteur pour suivre son parcours de vie.',
+    present:          'présent',
+    timelineLabels:   { birth: 'Né', lived: 'A vécu', traveled: 'A visité', wrote: 'A écrit', died: 'Décédé' },
+    eventLabels:      { birth: 'Naissance', lived: 'A vécu ici', traveled: 'A voyagé', wrote: 'A écrit ici', died: 'Décès' },
     genres: {
       'Adventure Fiction':  'Roman d\'aventure',
       'Classic Fiction':    'Fiction classique',
@@ -89,6 +109,16 @@ export const UI = {
     placeLabels:      '地名标注',
     graticule:        '经纬线',
     searchPlaceholder:'搜索国家或地区……',
+    authorBack:       '← 书籍地图',
+    authorsTitle:     '作者地图',
+    authorsTagline:   '追寻作家们生活、漫游与写作的足迹。',
+    authorsLoading:   '绘制人生轨迹中……',
+    lifeJourney:      '人生旅程',
+    booksOnThisMap:   '地图上的著作',
+    authorEmptyPrompt:'在地图上打开一本书，然后点击“探索作者”，追溯其人生旅程。',
+    present:          '至今',
+    timelineLabels:   { birth: '出生', lived: '居住', traveled: '到访', wrote: '写作', died: '逝世' },
+    eventLabels:      { birth: '出生', lived: '曾居于此', traveled: '游历', wrote: '在此写作', died: '逝世' },
     genres: {
       'Adventure Fiction':  '冒险小说',
       'Classic Fiction':    '古典小说',
@@ -137,6 +167,16 @@ export type UIStrings = {
   placeLabels: string;
   graticule: string;
   searchPlaceholder: string;
+  authorBack: string;
+  authorsTitle: string;
+  authorsTagline: string;
+  authorsLoading: string;
+  lifeJourney: string;
+  booksOnThisMap: string;
+  authorEmptyPrompt: string;
+  present: string;
+  timelineLabels: Record<string, string>;
+  eventLabels: Record<string, string>;
   genres: Record<string, string>;
 };
 

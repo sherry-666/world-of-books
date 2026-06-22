@@ -83,6 +83,8 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
   // ---- author layer ----
   type PEvent = AuthorEvent & { _x: number; _y: number };
   let pEvents: PEvent[] = [];
+  // When an author is active, only their books stay on the map; the rest are hidden.
+  let authorBookIds: Set<string> | null = null;
   let authorPathEl: d3.Selection<SVGPathElement, unknown, null, undefined> | null = null;
   let authorDotSel: d3.Selection<SVGGElement, PEvent, SVGGElement, unknown> | null = null;
 
@@ -440,8 +442,10 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
       const displayLang = pickDisplayLanguage(d, languageFilter);
       const clusterBooks = currentClusters.get(d.id);
       const isLead = clusterBooks !== undefined;
+      // In author mode, hide every book that isn't one of the active author's works
+      const authorMatch = authorBookIds === null || authorBookIds.has(d.id);
       // Always keep the open card's marker visible so it doesn't vanish mid-interaction
-      const vis = (isLead || d.id === openId) && displayLang !== null;
+      const vis = (isLead || d.id === openId) && displayLang !== null && authorMatch;
       if (vis) shown++;
 
       const x = current.applyX(d._x);
@@ -675,16 +679,20 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
     },
     showAuthor(author: Author) {
       pEvents = author.events.map(e => ({ ...e, _x: 0, _y: 0 }));
+      authorBookIds = new Set(author.bookIds);
       projectAuthorEvents();
       buildAuthorLayer(pEvents);
       updateAuthorLayer();
+      updateMarkers();
       fitToAuthor();
     },
     clearAuthor() {
       pEvents = [];
+      authorBookIds = null;
       gAuthors.selectAll('*').remove();
       authorPathEl = null;
       authorDotSel = null;
+      updateMarkers();
     },
     setLanguageFilter(langs: string[]) {
       languageFilter = new Set(langs);

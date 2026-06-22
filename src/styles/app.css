@@ -1030,7 +1030,7 @@ html.no-anim .mk-inner { animation-play-state: paused; }
 }
 
 .card-meta-year {
-  display: block;
+  display: inline;
 }
 
 .card-readtime {
@@ -1470,8 +1470,10 @@ html.no-anim .mk-inner { animation-play-state: paused; }
 
 /* ================= AUTHOR MAP ================= */
 
-/* Dim book markers in author mode */
+/* Dim book markers while ambiently browsing the author map (no author chosen) */
 html[data-mode='author'] .markers-layer .marker.on { opacity: 0.22; }
+/* Once an author is selected, only their books remain — show them at full strength */
+html[data-mode='author'][data-author-active] .markers-layer .marker.on { opacity: 1; }
 
 /* ---- Author life path (SVG layer) ---- */
 
@@ -1877,6 +1879,7 @@ html[data-mode='author'] .markers-layer .marker.on { opacity: 0.22; }
   font-style: normal;
   white-space: nowrap;
   transition: opacity .15s;
+  margin-top: 6px;
 }
 
 .card-author-link:hover { opacity: .75; }

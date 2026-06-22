@@ -125,15 +125,12 @@ export default function App() {
     history.replaceState(null, '', url);
   }, [languages]);
 
-  // Sync primary language to URL and DOM attribute
+  // Sync primary language to URL and DOM attribute. Always persist the choice —
+  // including English — so the URL stays accurate when switching back to it.
   useEffect(() => {
     document.documentElement.setAttribute('data-primary-lang', primaryLanguage);
     const url = new URL(location.href);
-    if (primaryLanguage === 'English') {
-      url.searchParams.delete('primary');
-    } else {
-      url.searchParams.set('primary', primaryLanguage);
-    }
+    url.searchParams.set('primary', primaryLanguage);
     history.replaceState(null, '', url);
   }, [primaryLanguage]);
 
@@ -246,6 +243,7 @@ export default function App() {
             displayLanguage={openLanguage}
             onClose={closeCard}
             t={t}
+            primaryLanguage={primaryLanguage}
             clusterTotal={clusterTotal}
             clusterIndex={clusterIndex}
             clusterPlace={clusterPlace}
