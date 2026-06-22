@@ -28,9 +28,11 @@ interface Props {
   onEventSelect?: (event: AuthorEvent) => void;
   /** Select an author from the browse list (in-page, no reload). */
   onSelectAuthor?: (author: Author) => void;
+  /** Open a book's card on this map (in-page, no redirect). */
+  onBookSelect?: (bookId: string) => void;
 }
 
-export function AuthorPanel({ author, open, onClose, t, primaryLanguage, onEventSelect, onSelectAuthor }: Props) {
+export function AuthorPanel({ author, open, onClose, t, primaryLanguage, onEventSelect, onSelectAuthor, onBookSelect }: Props) {
   const authorBooks = author
     ? BOOKS.filter(b => author.bookIds.includes(b.id))
     : [];
@@ -114,18 +116,26 @@ export function AuthorPanel({ author, open, onClose, t, primaryLanguage, onEvent
               <div className="author-books">
                 {authorBooks.map(b => {
                   const chipTitle = b.titles[primaryLanguage] ?? b.titles['English'] ?? b.titles[b.languages[0]];
-                  return (
-                  <a
-                    key={b.id}
-                    className="author-book-chip"
-                    href={`/?book=${b.id}&primary=${primaryLanguage}`}
-                    title={chipTitle}
-                  >
-                    <span className="author-book-title">
-                      {chipTitle}
-                    </span>
-                    <span className="author-book-year">{b.year}</span>
-                  </a>
+                  return onBookSelect ? (
+                    <button
+                      key={b.id}
+                      className="author-book-chip"
+                      title={chipTitle}
+                      onClick={() => onBookSelect(b.id)}
+                    >
+                      <span className="author-book-title">{chipTitle}</span>
+                      <span className="author-book-year">{b.year}</span>
+                    </button>
+                  ) : (
+                    <a
+                      key={b.id}
+                      className="author-book-chip"
+                      href={`/?book=${b.id}&primary=${primaryLanguage}`}
+                      title={chipTitle}
+                    >
+                      <span className="author-book-title">{chipTitle}</span>
+                      <span className="author-book-year">{b.year}</span>
+                    </a>
                   );
                 })}
               </div>

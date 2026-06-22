@@ -156,6 +156,7 @@ export default function AuthorMap() {
         primaryLanguage={primaryLanguage}
         onEventSelect={(e) => mapHandle.current?.panToLocation(e.lng, e.lat, Math.max(zoomK, 6))}
         onSelectAuthor={handleSelectAuthor}
+        onBookSelect={(id) => mapHandle.current?.openBookById(id)}
       />
 
       <div className="chrome zoomctl">
