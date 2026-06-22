@@ -1691,6 +1691,7 @@ html[data-mode='author'][data-author-active] .markers-layer .marker.on { opacity
   font-size: 13px;
   color: var(--card-ink);
   margin-top: 4px;
+  margin-left: 8px;
 }
 
 /* Clickable timeline place — zooms the map to that location */
