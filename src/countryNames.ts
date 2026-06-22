@@ -23,7 +23,7 @@ export const COUNTRY_NAMES: Readonly<Record<number, string>> = {
   414: 'Kuwait', 417: 'Kyrgyzstan', 418: 'Laos', 422: 'Lebanon', 458: 'Malaysia',
   496: 'Mongolia', 104: 'Myanmar', 524: 'Nepal', 408: 'North Korea', 512: 'Oman',
   586: 'Pakistan', 608: 'Philippines', 634: 'Qatar', 682: 'Saudi Arabia',
-  410: 'South Korea', 144: 'Sri Lanka', 760: 'Syria', 158: 'Taiwan',
+  410: 'South Korea', 144: 'Sri Lanka', 760: 'Syria',
   762: 'Tajikistan', 764: 'Thailand', 626: 'Timor-Leste', 795: 'Turkmenistan',
   784: 'United Arab Emirates', 860: 'Uzbekistan', 704: 'Vietnam', 887: 'Yemen',
   // Europe
