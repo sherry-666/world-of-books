@@ -1,7 +1,7 @@
 export const UI = {
   English: {
-    eyebrow:          'An Atlas of Stories',
-    title:            'Map of Stories',
+    eyebrow:          'An Atlas of Literature',
+    title:            'Map of Literature',
     tagline:          'Every pin a place a great book is set in — or about.',
     loading:          'Charting the world…',
     zoomHint:         'Zoom in to uncover more stories.',
@@ -20,7 +20,7 @@ export const UI = {
     placeLabels:      'Place labels',
     graticule:        'Graticule',
     searchPlaceholder:'Search country or region…',
-    authorBack:       '← Map of Stories',
+    authorBack:       '← Map of Literature',
     authorsTitle:     'Atlas of Lives',
     authorsTagline:   'Trace where the writers lived, wandered, and wrote.',
     authorsLoading:   'Charting lives…',
@@ -36,8 +36,8 @@ export const UI = {
     genres: {} as Record<string, string>,
   },
   French: {
-    eyebrow:          'Un Atlas de Romans',
-    title:            'Carte des Histoires',
+    eyebrow:          'Un Atlas de Littérature',
+    title:            'Carte de la Littérature',
     tagline:          'Chaque épingle, un lieu où un grand livre se déroule.',
     loading:          'Cartographie en cours…',
     zoomHint:         'Zoomez pour découvrir plus d\'histoires.',
@@ -56,7 +56,7 @@ export const UI = {
     placeLabels:      'Noms de lieux',
     graticule:        'Graticule',
     searchPlaceholder:'Rechercher un pays ou une région…',
-    authorBack:       '← Carte des Histoires',
+    authorBack:       '← Carte de la Littérature',
     authorsTitle:     'Atlas des Vies',
     authorsTagline:   'Suivez les lieux où les écrivains ont vécu, voyagé et écrit.',
     authorsLoading:   'Cartographie des vies…',
@@ -95,7 +95,7 @@ export const UI = {
     },
   },
   Chinese: {
-    eyebrow:          '故事地图集',
+    eyebrow:          '文学地图集',
     title:            '文海坐标',
     tagline:          '每一处印记，都是一部伟大作品的发生之地。',
     loading:          '绘制世界地图中……',
