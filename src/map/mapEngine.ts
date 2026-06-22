@@ -5,12 +5,31 @@ import { CITIES } from '../cities';
 import { pickDisplayLanguage } from '../types';
 import type { Book, MapTweaks, MapHandle, Author, AuthorEvent } from '../types';
 import type { City } from '../cities';
+import { COUNTRY_NAMES, BIG_COUNTRY_IDS, BIG_COUNTRY_ISO2 } from '../countryNames';
 
 const GEO_URL = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json';
 const CACHE_KEY = 'wob_geo_110m_v1';
 
 type PBook = Book & { _x: number; _y: number };
 type PCity = City & { _x: number; _y: number };
+
+interface CountryLabel {
+  id: number;
+  name: string;
+  isBig: boolean;
+  lng: number;
+  lat: number;
+  _x: number;
+  _y: number;
+}
+
+interface ProvinceLabel {
+  name: string;
+  lng: number;
+  lat: number;
+  _x: number;
+  _y: number;
+}
 
 export interface MapCallbacks {
   onBookOpen: (book: Book) => void;
@@ -85,13 +104,16 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
     .attr('d', 'M0,0 L10,5 L0,10 z')
     .attr('class', 'journey-arrow-head');
 
-  const gStars    = svg.append('g').attr('class', 'stars-layer');
-  const gZoom     = svg.append('g').attr('class', 'zoom-layer');
-  const gGrat     = gZoom.append('g').attr('class', 'grat-layer');
-  const gLand     = gZoom.append('g').attr('class', 'land-layer');
-  const gCities   = svg.append('g').attr('class', 'cities-layer');
-  const gAuthors  = svg.append('g').attr('class', 'authors-layer');
-  const gMarkers  = svg.append('g').attr('class', 'markers-layer');
+  const gStars         = svg.append('g').attr('class', 'stars-layer');
+  const gZoom          = svg.append('g').attr('class', 'zoom-layer');
+  const gGrat          = gZoom.append('g').attr('class', 'grat-layer');
+  const gLand          = gZoom.append('g').attr('class', 'land-layer');
+  const gProvinces     = gZoom.append('g').attr('class', 'provinces-layer');
+  const gCountryLabels = svg.append('g').attr('class', 'country-labels-layer');
+  const gProvinceLabels = svg.append('g').attr('class', 'province-labels-layer');
+  const gCities        = svg.append('g').attr('class', 'cities-layer');
+  const gAuthors       = svg.append('g').attr('class', 'authors-layer');
+  const gMarkers       = svg.append('g').attr('class', 'markers-layer');
 
   let projection!: d3.GeoProjection;
   let geoPath!: d3.GeoPath;
@@ -103,6 +125,14 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
   let languageFilter: Set<string> | null = null;
   // leadId → [lead, ...members] — recomputed on every zoom/pan
   let currentClusters = new Map<string, PBook[]>();
+
+  // Country and province label data
+  let countryLabels: CountryLabel[] = [];
+  let countryLabelSel: d3.Selection<SVGTextElement, CountryLabel, SVGGElement, unknown> | null = null;
+  let provinceFeatures: GeoJSON.Feature[] = [];
+  let provinceLabels: ProvinceLabel[] = [];
+  let provinceLabelSel: d3.Selection<SVGTextElement, ProvinceLabel, SVGGElement, unknown> | null = null;
+  let provinceDataLoaded = false;
 
   // ---- author layer ----
   type PEvent = AuthorEvent & { _x: number; _y: number };
@@ -371,6 +401,141 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
     });
   }
 
+  // ---- country labels ----
+
+  function buildCountryLabels() {
+    gCountryLabels.selectAll('*').remove();
+    countryLabels = (landData.features as GeoJSON.Feature[]).flatMap(f => {
+      const id = Number(f.id ?? -1);
+      const name = COUNTRY_NAMES[id];
+      if (!name) return [];
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const [lng, lat] = d3.geoCentroid(f as any);
+      return [{ id, name, isBig: BIG_COUNTRY_IDS.has(id), lng, lat, _x: 0, _y: 0 }];
+    });
+    countryLabelSel = gCountryLabels
+      .selectAll<SVGTextElement, CountryLabel>('text.country-label')
+      .data(countryLabels, d => String(d.id))
+      .enter()
+      .append('text')
+      .attr('class', d => `country-label${d.isBig ? ' country-label-big' : ''}`)
+      .attr('text-anchor', 'middle')
+      .attr('dominant-baseline', 'middle')
+      .text(d => d.name);
+  }
+
+  function projectCountryLabels() {
+    for (const c of countryLabels) {
+      const p = projection([c.lng, c.lat]);
+      c._x = p ? p[0] : -9999;
+      c._y = p ? p[1] : -9999;
+    }
+  }
+
+  function updateCountryLabels() {
+    if (!countryLabelSel) return;
+    const k = current.k;
+    const showBig = k >= 4;
+    const showAll = k >= 10;
+    if (!showBig) {
+      (gCountryLabels.node() as SVGGElement | null)?.style.setProperty('opacity', '0');
+      return;
+    }
+    (gCountryLabels.node() as SVGGElement | null)?.style.setProperty('opacity', '1');
+    countryLabelSel.each(function (d) {
+      const show = d.isBig ? showBig : showAll;
+      (this as SVGTextElement).style.display = show ? '' : 'none';
+      if (!show) return;
+      const x = current.applyX(d._x);
+      const y = current.applyY(d._y);
+      (this as SVGTextElement).setAttribute('transform', `translate(${x},${y})`);
+    });
+  }
+
+  // ---- province / state borders ----
+
+  function buildProvinces() {
+    gProvinces.selectAll('*').remove();
+    gProvinceLabels.selectAll('*').remove();
+    provinceLabelSel = null;
+    if (!provinceFeatures.length) return;
+
+    gProvinces
+      .selectAll<SVGPathElement, GeoJSON.Feature>('path.province')
+      .data(provinceFeatures)
+      .enter()
+      .append('path')
+      .attr('class', 'province')
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .attr('d', f => geoPath(f as any) ?? '');
+
+    provinceLabels = provinceFeatures
+      .filter(f => f.properties?.latitude != null && f.properties?.longitude != null && f.properties?.name)
+      .map(f => ({
+        name: f.properties!.name as string,
+        lng: f.properties!.longitude as number,
+        lat: f.properties!.latitude as number,
+        _x: 0, _y: 0,
+      }));
+
+    provinceLabelSel = gProvinceLabels
+      .selectAll<SVGTextElement, ProvinceLabel>('text.province-label')
+      .data(provinceLabels)
+      .enter()
+      .append('text')
+      .attr('class', 'province-label')
+      .attr('text-anchor', 'middle')
+      .attr('dominant-baseline', 'middle')
+      .text(d => d.name);
+  }
+
+  function projectProvinceLabels() {
+    for (const p of provinceLabels) {
+      const pt = projection([p.lng, p.lat]);
+      p._x = pt ? pt[0] : -9999;
+      p._y = pt ? pt[1] : -9999;
+    }
+  }
+
+  function updateProvinces() {
+    if (!provinceDataLoaded) {
+      if (current.k >= 10) loadProvinceData();
+      return;
+    }
+    const k = current.k;
+    const bordersOpacity = k < 10 ? 0 : k >= 14 ? 0.7 : (k - 10) / 4 * 0.7;
+    (gProvinces.node() as SVGGElement | null)?.style.setProperty('opacity', String(bordersOpacity));
+
+    const labelsOpacity = k < 15 ? 0 : k >= 20 ? 0.75 : (k - 15) / 5 * 0.75;
+    (gProvinceLabels.node() as SVGGElement | null)?.style.setProperty('opacity', String(labelsOpacity));
+
+    if (provinceLabelSel && labelsOpacity > 0) {
+      provinceLabelSel.each(function (d) {
+        const x = current.applyX(d._x);
+        const y = current.applyY(d._y);
+        (this as SVGTextElement).setAttribute('transform', `translate(${x},${y})`);
+      });
+    }
+  }
+
+  async function loadProvinceData() {
+    if (provinceDataLoaded) return;
+    provinceDataLoaded = true; // set early to prevent concurrent loads
+    try {
+      const res = await fetch('/provinces-large.json');
+      const geojson = await res.json() as GeoJSON.FeatureCollection;
+      provinceFeatures = geojson.features.filter(f => BIG_COUNTRY_ISO2.has(f.properties?.iso_a2));
+      if (!isDestroyed) {
+        buildProvinces();
+        projectProvinceLabels();
+        updateProvinces();
+      }
+    } catch (_e) {
+      // Province data unavailable — feature silently disabled
+      provinceFeatures = [];
+    }
+  }
+
   function markerShape(sel: d3.Selection<SVGGElement, unknown, null, undefined>) {
     sel.selectAll('*').remove();
     const style = tweaks.markerStyle;
@@ -581,6 +746,8 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
     updateMarkers();
     updateCities();
     updateAuthorLayer();
+    updateCountryLabels();
+    updateProvinces();
     callbacks.onZoomChange?.(current.k);
   }
 
@@ -650,6 +817,13 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
   // ---- resize ----
 
   function relayout() {
+    // Capture geographic view centre before changing the projection so we can
+    // restore the same geographic view after a browser-zoom change (JIN-19).
+    const svgCx = (W / 2 - current.x) / current.k;
+    const svgCy = (H / 2 - current.y) / current.k;
+    const geoCentre = projection.invert ? projection.invert([svgCx, svgCy]) : null;
+    const savedK   = current.k;
+
     W = stage.clientWidth;
     H = stage.clientHeight;
     (svg as d3.Selection<SVGSVGElement, unknown, null, undefined>)
@@ -664,10 +838,31 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
       zoomBehavior.translateExtent([[-W * 0.15, -H * 0.15], [W * 1.15, H * 1.15]]);
     }
     projectAuthorEvents();
+    projectCountryLabels();
+    if (provinceDataLoaded) {
+      buildProvinces();
+      projectProvinceLabels();
+    }
+
+    // Restore the same geographic centre with the same zoom scale.
+    // This corrects marker/card positions after a browser-zoom change.
+    if (geoCentre && zoomBehavior) {
+      const p = projection(geoCentre);
+      if (p) {
+        const tx = W / 2 - savedK * p[0];
+        const ty = H / 2 - savedK * p[1];
+        (svg as d3.Selection<SVGSVGElement, unknown, null, undefined>)
+          .call(zoomBehavior.transform, d3.zoomIdentity.translate(tx, ty).scale(savedK));
+        return; // onZoom handles all visual layer updates
+      }
+    }
+
     updateBorders();
     updateMarkers();
     updateCities();
     updateAuthorLayer();
+    updateCountryLabels();
+    updateProvinces();
   }
 
   // ---- async init ----
@@ -693,12 +888,16 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
     drawBase(landData, bordersData);
     projectBooks();
     projectCities();
+    buildCountryLabels();
+    projectCountryLabels();
     buildMarkers();
     buildCities();
     setupZoom();
     updateBorders();
     updateMarkers();
     updateCities();
+    updateCountryLabels();
+    updateProvinces();
 
     callbacks.onLoaded();
 

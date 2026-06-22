@@ -720,6 +720,8 @@ export const BOOKS: Book[] = [
   // Tier 1
   { id:'redchamber', author:'曹雪芹 Cao Xueqin', year:1791, place:'北京 Beijing (恭王府)', country:'China', lng:116.3856, lat:39.9320, tier:1, relation:'set', genre:'Classic Fiction', rating:4.13, pages:1000,
     languages:['Chinese'], titles:{Chinese:'红楼梦'}, blurbs:{Chinese:'清代豪门大宅中贵族家族的衰落与少年情爱。'} },
+  { id:'watermargin', author:'施耐庵 Shi Nai\'an', year:1400, place:'梁山 Liangshan', country:'China', lng:116.1050, lat:35.8100, tier:1, relation:'set', genre:'Historical Epic', rating:4.07, pages:1000,
+    languages:['Chinese'], titles:{Chinese:'水浒传'}, blurbs:{Chinese:'一百零八位好汉聚义梁山，替天行道，反抗腐败朝廷的英雄史诗。'} },
   { id:'threek', author:'罗贯中 Luo Guanzhong', year:1400, place:'洛阳 Luoyang', country:'China', lng:112.4540, lat:34.6196, tier:1, relation:'set', genre:'Historical Epic', rating:4.06, pages:800,
     languages:['Chinese'], titles:{Chinese:'三国演义'}, blurbs:{Chinese:'魏蜀吴三国争霸，定义中国战略思维的史诗巨作。'} },
   { id:'journeywest', author:'吴承恩 Wu Cheng\'en', year:1592, place:'西安 (长安) Xi\'an', country:'China', lng:108.9398, lat:34.3416, tier:1, relation:'set', genre:'Fantasy', rating:4.10, pages:800,

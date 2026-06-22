@@ -193,6 +193,68 @@ html.show-stars .stars-layer { opacity: 1; }
 
 .star { fill: var(--star); }
 
+/* ================= COUNTRY NAME LABELS ================= */
+.country-labels-layer {
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+
+.country-label {
+  font-family: var(--font-label);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  fill: var(--label);
+  opacity: .55;
+  paint-order: stroke;
+  stroke: var(--label-halo);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+.country-label-big {
+  font-size: 12px;
+  opacity: .72;
+  letter-spacing: .18em;
+}
+
+/* ================= PROVINCE / STATE BORDERS ================= */
+.provinces-layer {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.province {
+  fill: none;
+  stroke: var(--land-stroke);
+  stroke-width: .3;
+  stroke-dasharray: 2.5 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+
+.province-labels-layer {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.province-label {
+  font-family: var(--font-label);
+  font-size: 9px;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  fill: var(--card-sub);
+  opacity: .7;
+  paint-order: stroke;
+  stroke: var(--label-halo);
+  stroke-width: 2.5px;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
 /* ================= WORLD CITIES (CAPITALS + MAJOR) ================= */
 /* Whole layer opacity is driven inline from JS (fades in at high zoom). */
 .cities-layer {
