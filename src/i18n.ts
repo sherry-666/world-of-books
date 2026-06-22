@@ -96,7 +96,7 @@ export const UI = {
   },
   Chinese: {
     eyebrow:          '故事地图集',
-    title:            '书迹地图',
+    title:            '文海坐标',
     tagline:          '每一处印记，都是一部伟大作品的发生之地。',
     loading:          '绘制世界地图中……',
     zoomHint:         '放大以发现更多故事。',
@@ -115,7 +115,7 @@ export const UI = {
     placeLabels:      '地名标注',
     graticule:        '经纬线',
     searchPlaceholder:'搜索国家或地区……',
-    authorBack:       '← 书迹地图',
+    authorBack:       '← 文海坐标',
     authorsTitle:     '文人足迹',
     authorsTagline:   '追寻作家们生活、漫游与写作的足迹。',
     authorsLoading:   '绘制人生轨迹中……',
