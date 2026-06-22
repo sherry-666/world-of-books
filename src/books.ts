@@ -685,7 +685,7 @@ export const BOOKS: Book[] = [
   { id:'brothers', author:'余华 Yu Hua', year:2005, place:'small-town China', country:'China', lng:120.18, lat:30.28, tier:3, relation:'set', genre:'Literary Fiction', rating:4.05, pages:640,
     languages:['Chinese'], titles:{Chinese:'兄弟'}, blurbs:{Chinese:'一对继兄弟在文革与改革开放中迥异的命运。'} },
   { id:'family', author:'巴金 Ba Jin', year:1933, place:'成都 Chengdu', country:'China', lng:104.0668, lat:30.5828, tier:3, relation:'set', genre:'Literary Fiction', rating:4.07, pages:300,
-    languages:['Chinese'], titles:{Chinese:'家'}, blurbs:{Chinese:'成都一个旧式大家族中年轻一代对封建礼教的反抗。'} },
+    languages:['Chinese'], titles:{Chinese:'家'}, blurbs:{Chinese:'激流三部曲第一部：成都一个旧式大家族中年轻一代对封建礼教的反抗。'} },
   { id:'chun', author:'巴金 Ba Jin', year:1938, place:'成都 Chengdu', country:'China', lng:104.0668, lat:30.5828, tier:3, relation:'set', genre:'Literary Fiction', rating:4.02, pages:280,
     languages:['Chinese'], titles:{Chinese:'春'}, blurbs:{Chinese:'激流三部曲第二部：淑英在觉慧出走后寻找属于自己的出路。'} },
   { id:'qiu', author:'巴金 Ba Jin', year:1940, place:'成都 Chengdu', country:'China', lng:104.0668, lat:30.5828, tier:3, relation:'set', genre:'Literary Fiction', rating:4.10, pages:295,
