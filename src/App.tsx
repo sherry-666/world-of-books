@@ -202,7 +202,11 @@ export default function App() {
       {/* Masthead */}
       <header className="chrome masthead">
         <p className="eyebrow">{t.eyebrow}</p>
-        <h1>{t.title}</h1>
+        <h1>
+          <img className="masthead-logo logo-dark" src="/icon-dark.svg" alt="" width="36" height="36" aria-hidden="true" />
+          <img className="masthead-logo logo-light" src="/icon-light.svg" alt="" width="36" height="36" aria-hidden="true" />
+          {t.title}
+        </h1>
         <div className="rule"><i /></div>
         <p className="sub">{t.tagline}</p>
       </header>

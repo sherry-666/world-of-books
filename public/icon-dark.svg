@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 112 112" width="112" height="112">
+  <defs></defs>
+  
+    
+    <circle cx="56" cy="56" r="50" stroke="#e0bd72" stroke-width="1" opacity="0.9"></circle>
+    
+    <ellipse cx="56" cy="56" rx="50" ry="17" stroke="#e0bd72" stroke-width="0.55" opacity="0.4"></ellipse>
+    <ellipse cx="56" cy="56" rx="50" ry="35" stroke="#e0bd72" stroke-width="0.55" opacity="0.28"></ellipse>
+    <line x1="6" y1="56" x2="106" y2="56" stroke="#e0bd72" stroke-width="0.55" opacity="0.4"></line>
+    
+    <ellipse cx="56" cy="56" rx="17" ry="50" stroke="#e0bd72" stroke-width="0.55" opacity="0.4"></ellipse>
+    <ellipse cx="56" cy="56" rx="35" ry="50" stroke="#e0bd72" stroke-width="0.55" opacity="0.28"></ellipse>
+    
+    <rect x="48" y="40" width="16" height="26" rx="2.2" fill="#e0bd72"></rect>
+    
+    <rect x="48" y="40" width="5.5" height="26" rx="2.2" fill="#c9a25a" opacity="0.6"></rect>
+    
+    <line x1="48" y1="47" x2="64" y2="47" stroke="#0e1a2c" stroke-width="1.3"></line>
+    <line x1="48" y1="59" x2="64" y2="59" stroke="#0e1a2c" stroke-width="1.3"></line>
+    
+    <circle cx="56" cy="53" r="1.5" fill="#0e1a2c"></circle>
+    
+    <circle cx="56" cy="53" r="20" stroke="#e0bd72" stroke-width="0.7" opacity="0.55"></circle>
+</svg>

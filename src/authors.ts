@@ -268,11 +268,11 @@ export const AUTHORS: Author[] = [
     wiki: loc('https://en.wikipedia.org/wiki/Lao_She', 'https://fr.wikipedia.org/wiki/Lao_She', 'https://zh.wikipedia.org/wiki/%E8%80%81%E8%88%8D'),
     born: 1899,
     died: 1966,
-    nationality: loc('Chinese (Manchu)', 'Chinois (mandchou)', '中国（满族）'),
+    nationality: loc('Chinese', 'Chinois', '中国'),
     blurb: loc(
-      'Born Shu Qingchun into a poor Manchu family in Beijing, Lao She became the most beloved chronicler of the city\'s hutong life. He spent years teaching at SOAS in London and touring America before returning to the People\'s Republic — only to be beaten to death by Red Guards during the Cultural Revolution.',
-      'Né Shu Qingchun dans une famille mandchoue pauvre à Pékin, Lao She devint le chroniqueur le plus aimé de la vie des hutong. Il passa des années à enseigner à la SOAS de Londres et à parcourir l\'Amérique avant de rentrer en République populaire — avant d\'être battu à mort par des gardes rouges pendant la Révolution culturelle.',
-      '老舍，本名舒庆春，生于北京贫苦满族家庭，是胡同市井生活最深情的记录者。他曾在伦敦大学亚非学院执教，后游历美国，归国后却在文化大革命中惨遭红卫兵迫害致死。',
+      'Born Shu Qingchun in Beijing, Lao She became the most beloved chronicler of the city\'s hutong life. He spent years teaching at SOAS in London and touring America before returning to the People\'s Republic — only to take his own life at Taiping Lake during the Cultural Revolution.',
+      'Né Shu Qingchun à Pékin, Lao She devint le chroniqueur le plus aimé de la vie des hutong. Il passa des années à enseigner à la SOAS de Londres et à parcourir l\'Amérique avant de rentrer en République populaire — avant de mettre fin à ses jours au lac Taiping pendant la Révolution culturelle.',
+      '老舍，本名舒庆春，生于北京，是胡同市井生活最深情的记录者。他曾在伦敦大学亚非学院执教，后游历美国，归国后受文化大革命影响，于北京太平湖投湖自尽。',
     ),
     bookIds: ['rickshaw', 'teahouse'],
     events: [
@@ -282,7 +282,7 @@ export const AUTHORS: Author[] = [
       { year: 1938, yearEnd: 1945, place: 'Chongqing', country: 'China', lng: 106.5516, lat: 29.5630, type: 'lived', note: loc('Fled the Japanese invasion to the wartime capital; led the All-China Resistance Association of Writers and Artists', 'Fuit l\'invasion japonaise vers la capitale de guerre ; dirigea l\'Association nationale des écrivains et artistes pour la résistance', '避日军入侵撤至陪都重庆，主持全国文艺界抗敌协会工作') },
       { year: 1946, yearEnd: 1949, place: 'New York', country: 'USA', lng: -73.9857, lat: 40.7484, type: 'lived', note: loc('Invited to the United States as a cultural envoy; translated his works into English; was preparing to stay when the PRC was founded', 'Invité aux États-Unis comme envoyé culturel ; traduisit ses œuvres en anglais ; se préparait à rester quand la République populaire fut fondée', '受邀赴美担任文化使者，亲自将作品译成英文；中华人民共和国成立时，他正准备留居美国') },
       { year: 1949, yearEnd: 1966, place: 'Beijing', country: 'China', lng: 116.3974, lat: 39.9087, type: 'wrote', bookId: 'teahouse', note: loc('Returned to the newly founded PRC; acclaimed as a national writer; wrote Teahouse (茶馆, 1957), his masterpiece mapping Beijing\'s decline across three eras', 'Rentra dans la toute nouvelle République populaire, acclamé comme écrivain national ; écrivit La Maison de thé (茶馆, 1957), chef-d\'œuvre cartographiant le déclin de Pékin sur trois époques', '回到新成立的中华人民共和国，以著名作家之身受到礼遇；写下《茶馆》（1957），以三个时代的更迭呈现北京的沧桑兴衰') },
-      { year: 1966, place: 'Beijing', country: 'China', lng: 116.3974, lat: 39.9087, type: 'died', note: loc('Beaten by Red Guards during the Cultural Revolution; found drowned in Taiping Lake the following morning', 'Battu par des gardes rouges pendant la Révolution culturelle ; retrouvé noyé dans le lac Taiping le lendemain matin', '文化大革命中遭红卫兵毒打，翌日被发现溺死于太平湖') },
+      { year: 1966, place: 'Beijing', country: 'China', lng: 116.3974, lat: 39.9087, type: 'died', note: loc('Died during the Cultural Revolution; found drowned in Taiping Lake the following morning', 'Décédé pendant la Révolution culturelle ; retrouvé noyé dans le lac Taiping le lendemain matin', '受文化大革命影响，老舍于北京太平湖投湖自尽') },
     ],
   },
   {

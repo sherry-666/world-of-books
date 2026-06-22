@@ -143,7 +143,11 @@ export default function AuthorMap() {
 
       <header className="chrome masthead masthead-authors">
         <a className="masthead-back" href={`/?primary=${primaryLanguage}`}>{t.authorBack}</a>
-        <h1>{t.authorsTitle}</h1>
+        <h1>
+          <img className="masthead-logo logo-dark" src="/icon-dark.svg" alt="" width="36" height="36" aria-hidden="true" />
+          <img className="masthead-logo logo-light" src="/icon-light.svg" alt="" width="36" height="36" aria-hidden="true" />
+          {t.authorsTitle}
+        </h1>
         <div className="rule"><i /></div>
         <p className="sub">{t.authorsTagline}</p>
       </header>
