@@ -530,7 +530,7 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
         type: 'Feature',
         geometry: null,
         properties: { name: 'Taiwan', iso_a2: 'CN', latitude: 23.6978, longitude: 120.9605 },
-      } as GeoJSON.Feature);
+      } as unknown as GeoJSON.Feature);
       if (!isDestroyed) {
         buildProvinces();
         projectProvinceLabels();
