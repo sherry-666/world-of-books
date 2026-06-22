@@ -97,7 +97,7 @@ export const UI = {
   Chinese: {
     eyebrow:          '故事地图集',
     title:            '书迹地图',
-    tagline:          '每一枚图钉，都是一部伟大作品的发生之地。',
+    tagline:          '每一处印记，都是一部伟大作品的发生之地。',
     loading:          '绘制世界地图中……',
     zoomHint:         '放大以发现更多故事。',
     ofBooks:          (n: number, total: number) => `共 ${total} 本，显示 ${n} 本`,
