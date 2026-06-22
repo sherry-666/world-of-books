@@ -614,6 +614,13 @@ export const BOOKS: Book[] = [
     languages:['English'], titles:{English:'Alias Grace'}, blurbs:{English:'A nineteenth-century servant convicted of murder tells her story to a young psychiatrist.'} },
   { id:'picnic', author:'Joan Lindsay', year:1967, place:'Hanging Rock, Victoria', country:'Australia', lng:144.5817, lat:-37.3826, tier:2, relation:'set', genre:'Mystery', rating:3.87, pages:175,
     languages:['English'], titles:{English:'Picnic at Hanging Rock'}, blurbs:{English:'Three schoolgirls vanish without trace on a Valentine\'s Day outing to a volcanic rock formation in Victoria.'} },
+  { id:'thornbirds', author:'Colleen McCullough', year:1977, place:'New South Wales', country:'Australia', lng:148.50, lat:-31.50, tier:1, relation:'set', genre:'Literary Fiction', rating:4.22, pages:533,
+    languages:['English', 'Chinese'],
+    titles:{ English:'The Thorn Birds', Chinese:'荆棘鸟' },
+    blurbs:{
+      English:'A forbidden love between a Catholic priest and a woman spans four decades on a vast sheep station in the Australian Outback.',
+      Chinese:'一位天主教神父与一名女子之间横跨四十年的禁忌之恋，在澳大利亚内陆的广袤牧场上缓缓展开。',
+    } },
   // Tier 3
   { id:'thehelp', author:'Kathryn Stockett', year:2009, place:'Jackson, MS', country:'USA', lng:-90.1848, lat:32.2988, tier:3, relation:'set', genre:'Historical Fiction', rating:4.46, pages:444,
     languages:['English'], titles:{English:'The Help'}, blurbs:{English:'Black maids speak out in 1960s Mississippi.'} },
