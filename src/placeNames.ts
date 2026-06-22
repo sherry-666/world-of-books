@@ -110,6 +110,7 @@ const PLACE_ZH: Record<string, string> = {
   'Danzig (Gdańsk)':                '但泽（格但斯克）',
   'Giza (Egyptian Pyramids)':       '吉萨（埃及金字塔）',
   'Hanging Rock, Victoria':         '悬岩（维多利亚州）',
+  'New South Wales':                '新南威尔士州',
   'Ilhéus, Bahia':                  '伊列乌斯，巴伊亚',
   'Illiers-Combray':                '伊利耶-孔布雷',
   'Issy-l\'Évêque (Burgundy)':      '伊西勒韦克（勃艮第）',
