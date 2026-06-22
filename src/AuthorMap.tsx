@@ -28,6 +28,8 @@ export default function AuthorMap() {
   const [loaded,     setLoaded]     = useState(false);
   const [loaderGone, setLoaderGone] = useState(false);
   const [author,     setAuthor]     = useState<Author | null>(null);
+  // When true (and no author selected), the panel shows the browse-by-author list
+  const [showList,   setShowList]   = useState(false);
   const [openBook,   setOpenBook]   = useState<Book | null>(null);
   const [zoomK,      setZoomK]      = useState(1);
   const [hoveredEvent, setHoveredEvent] = useState<{ event: AuthorEvent; x: number; y: number } | null>(null);
@@ -97,6 +99,7 @@ export default function AuthorMap() {
 
   const handleSelectAuthor = useCallback((a: Author) => {
     setAuthor(a);
+    setShowList(false);
     mapHandle.current?.showAuthor(a);
     const url = new URL(location.href);
     url.searchParams.set('author', a.id);
@@ -104,11 +107,18 @@ export default function AuthorMap() {
   }, []);
 
   const handleClosePanel = useCallback(() => {
-    setAuthor(null);
-    mapHandle.current?.clearAuthor();
-    const url = new URL(location.href);
-    url.searchParams.delete('author');
-    history.replaceState(null, '', url);
+    if (authorRef.current) {
+      // Dismiss the current author → fall back to the browse-by-author list
+      setAuthor(null);
+      setShowList(true);
+      mapHandle.current?.clearAuthor();
+      const url = new URL(location.href);
+      url.searchParams.delete('author');
+      history.replaceState(null, '', url);
+    } else {
+      // Already on the list → close the panel entirely
+      setShowList(false);
+    }
   }, []);
 
   useEffect(() => {
@@ -139,10 +149,12 @@ export default function AuthorMap() {
 
       <AuthorPanel
         author={author}
+        open={author !== null || showList}
         onClose={handleClosePanel}
         t={t}
         primaryLanguage={primaryLanguage}
         onEventSelect={(e) => mapHandle.current?.panToLocation(e.lng, e.lat, Math.max(zoomK, 6))}
+        onSelectAuthor={handleSelectAuthor}
       />
 
       <div className="chrome zoomctl">

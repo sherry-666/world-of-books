@@ -18,31 +18,47 @@ const TYPE_COLOR: Record<string, string> = {
 
 interface Props {
   author: Author | null;
+  /** Whether the panel is slid into view (author detail or browse list). */
+  open: boolean;
   onClose: () => void;
   t: UIStrings;
   primaryLanguage: string;
   /** Zoom the map to a timeline event's location when its place is clicked. */
   onEventSelect?: (event: AuthorEvent) => void;
+  /** Select an author from the browse list (in-page, no reload). */
+  onSelectAuthor?: (author: Author) => void;
 }
 
-export function AuthorPanel({ author, onClose, t, primaryLanguage, onEventSelect }: Props) {
+export function AuthorPanel({ author, open, onClose, t, primaryLanguage, onEventSelect, onSelectAuthor }: Props) {
   const authorBooks = author
     ? BOOKS.filter(b => author.bookIds.includes(b.id))
     : [];
 
   return (
-    <div className={`author-panel ${author ? 'open' : ''}`}>
+    <div className={`author-panel ${open ? 'open' : ''}`}>
       {!author ? (
         <div className="author-panel-empty">
-          <p>{t.authorEmptyPrompt}</p>
+          <button className="author-panel-close" onClick={onClose} aria-label="Close">×</button>
+          <div className="author-section-label">{t.authorsList}</div>
           <div className="author-panel-grid">
-            {AUTHORS.map(a => (
-              <a key={a.id} className="author-thumb" href={`/authors?author=${a.id}&primary=${primaryLanguage}`}>
-                <div className="author-thumb-avatar">{coverInitials(a.name)}</div>
-                <div className="author-thumb-name">{a.name}</div>
-                <div className="author-thumb-dates">{a.born}–{a.died ?? t.present}</div>
-              </a>
-            ))}
+            {AUTHORS.map(a => {
+              const inner = (
+                <>
+                  <div className="author-thumb-avatar">{coverInitials(a.name)}</div>
+                  <div className="author-thumb-name">{a.name}</div>
+                  <div className="author-thumb-dates">{a.born}–{a.died ?? t.present}</div>
+                </>
+              );
+              return onSelectAuthor ? (
+                <button key={a.id} className="author-thumb" onClick={() => onSelectAuthor(a)}>
+                  {inner}
+                </button>
+              ) : (
+                <a key={a.id} className="author-thumb" href={`/authors?author=${a.id}&primary=${primaryLanguage}`}>
+                  {inner}
+                </a>
+              );
+            })}
           </div>
         </div>
       ) : (

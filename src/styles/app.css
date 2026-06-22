@@ -1779,7 +1779,8 @@ html[data-mode='author'][data-author-active] .markers-layer .marker.on { opacity
 }
 
 /* Empty panel — browse all authors */
-.author-panel-empty { padding-top: 100px; }
+.author-panel-empty { padding-top: 44px; }
+.author-panel-empty .author-section-label { margin-bottom: 12px; }
 
 .author-panel-empty p {
   font-family: var(--font-body);
@@ -1803,6 +1804,13 @@ html[data-mode='author'][data-author-active] .markers-layer .marker.on { opacity
   border-radius: 10px;
   text-decoration: none;
   transition: .15s;
+  /* Reset for when rendered as a <button> */
+  width: 100%;
+  border: none;
+  background: transparent;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
 }
 
 .author-thumb:hover { background: var(--accent-soft); }

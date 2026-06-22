@@ -27,6 +27,7 @@ export const UI = {
     lifeJourney:      'Life Journey',
     booksOnThisMap:   'Books on this map',
     authorEmptyPrompt:'Open a book on the map, then tap Explore the author to trace their life journey.',
+    authorsList:      'Explore an author',
     zoomToPlace:      'Zoom to this place',
     present:          'present',
     timelineLabels:   { birth: 'Born', lived: 'Lived', traveled: 'Visited', wrote: 'Wrote', died: 'Died' },
@@ -61,6 +62,7 @@ export const UI = {
     lifeJourney:      'Parcours de vie',
     booksOnThisMap:   'Livres sur cette carte',
     authorEmptyPrompt:'Ouvrez un livre sur la carte, puis touchez Explorer l\'auteur pour suivre son parcours de vie.',
+    authorsList:      'Explorer un auteur',
     zoomToPlace:      'Zoomer sur ce lieu',
     present:          'présent',
     timelineLabels:   { birth: 'Né', lived: 'A vécu', traveled: 'A visité', wrote: 'A écrit', died: 'Décédé' },
@@ -118,6 +120,7 @@ export const UI = {
     lifeJourney:      '人生旅程',
     booksOnThisMap:   '地图上的著作',
     authorEmptyPrompt:'在地图上打开一本书，然后点击“探索作者”，追溯其人生旅程。',
+    authorsList:      '探索作家',
     zoomToPlace:      '缩放至此地',
     present:          '至今',
     timelineLabels:   { birth: '出生', lived: '居住', traveled: '到访', wrote: '写作', died: '逝世' },
@@ -177,6 +180,7 @@ export type UIStrings = {
   lifeJourney: string;
   booksOnThisMap: string;
   authorEmptyPrompt: string;
+  authorsList: string;
   zoomToPlace: string;
   present: string;
   timelineLabels: Record<string, string>;
