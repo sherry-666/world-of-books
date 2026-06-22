@@ -630,6 +630,72 @@ export const BOOKS: Book[] = [
   { id:'paintedbird', author:'Jerzy Kosiński', year:1965, place:'Rural Poland', country:'Poland', lng:20.9806, lat:50.0647, tier:3, relation:'set', genre:'Historical Fiction', rating:3.80, pages:234,
     languages:['English'], titles:{English:'The Painted Bird'}, blurbs:{English:'A dark-haired boy wanders alone through Eastern European villages during WWII, surviving unimaginable brutality at every turn.'} },
 
+  // Portrait masterpieces
+  { id:'istanbulmemoir', author:'Orhan Pamuk', year:2003, place:'Istanbul', country:'Türkiye', lng:28.9784, lat:41.0082, tier:1, relation:'about', genre:'Memoir', rating:4.06, pages:384,
+    languages:['English','French','Chinese'],
+    titles:{English:'Istanbul: Memories and the City', French:'Istanbul: Souvenirs d\'une ville', Chinese:'伊斯坦布尔：一座城市的记忆'},
+    blurbs:{
+      English:'Orhan Pamuk\'s memoir of growing up amid Istanbul\'s ruins — tracing the city\'s hüzün, its particular melancholy, through crumbling mansions, fogbound Bosphorus mornings, and the ghost of a lost empire.',
+      French:'Le mémoire d\'Orhan Pamuk sur son enfance parmi les ruines d\'Istanbul — retraçant le hüzün de la ville à travers des manoirs décrépits, des matins brumeux sur le Bosphore et le fantôme d\'un empire disparu.',
+      Chinese:'帕慕克追忆在伊斯坦布尔废墟之间成长的岁月，以"呼愁"（hüzün）命名这座城市特有的忧郁——颓败的豪宅、雾气中的博斯普鲁斯清晨，以及一个逝去帝国的幽灵。'
+    } },
+  { id:'hereisnewyork', author:'E.B. White', year:1949, place:'New York', country:'USA', lng:-73.9857, lat:40.7484, tier:1, relation:'about', genre:'Memoir', rating:4.13, pages:54,
+    languages:['English','French','Chinese'],
+    titles:{English:'Here Is New York', French:'Voici New York', Chinese:'这就是纽约'},
+    blurbs:{
+      English:'A 54-page essay written in a single summer of 1948 — capturing New York\'s impossible, anonymous energy and prophesying, with uncanny precision, the city\'s vulnerability.',
+      French:'Un essai de 54 pages écrit en un seul été de 1948 — capturant l\'énergie impossible et anonyme de New York et prophétisant, avec une troublante précision, la vulnérabilité de la ville.',
+      Chinese:'1948年夏天一挥而就的五十四页小品——捕捉了纽约那种难以言说的匿名能量，并以惊人的预见力道出了这座城市的脆弱。'
+    } },
+  { id:'goodbyeberlin', author:'Christopher Isherwood', year:1939, place:'Berlin', country:'Germany', lng:13.4050, lat:52.5200, tier:1, relation:'about', genre:'Literary Fiction', rating:4.00, pages:240,
+    languages:['English','French','Chinese'],
+    titles:{English:'Goodbye to Berlin', French:'Adieu à Berlin', Chinese:'再见柏林'},
+    blurbs:{
+      English:'Six interlinked portraits of Weimar Berlin on the eve of the Nazi rise — cabaret singers, Jewish families, landladies — told through Isherwood\'s cool, cinematic eye. "I am a camera."',
+      French:'Six portraits entrelacés du Berlin de Weimar à la veille de la montée du nazisme — chanteuses de cabaret, familles juives, propriétaires — vus par l\'œil froid et cinématographique d\'Isherwood. « Je suis un appareil photo. »',
+      Chinese:'纳粹崛起前夕，魏玛柏林六幅众生相——歌舞厅歌手、犹太家庭、房东太太——经由石沃德那双冷静的摄影机之眼呈现。"我是一台相机。"'
+    } },
+  { id:'homagetocatalonia', author:'George Orwell', year:1938, place:'Barcelona', country:'Spain', lng:2.1734, lat:41.3851, tier:1, relation:'about', genre:'Memoir', rating:4.11, pages:232,
+    languages:['English','French','Chinese'],
+    titles:{English:'Homage to Catalonia', French:'Hommage à la Catalogne', Chinese:'向加泰罗尼亚致敬'},
+    blurbs:{
+      English:'Orwell\'s memoir of fighting for the Republic in the Spanish Civil War — the mud of the Aragon trenches, the euphoria of revolutionary Barcelona, and the bitter disillusionment that followed.',
+      French:'Le récit d\'Orwell sur ses combats pour la République pendant la guerre civile espagnole — la boue des tranchées d\'Aragon, l\'euphorie de Barcelone révolutionnaire et la désillusion amère qui s\'ensuivit.',
+      Chinese:'奥威尔记述在西班牙内战中为共和国而战的亲身经历——阿拉贡战壕的泥泞、革命巴塞罗那的狂喜，以及随之而来的彻底幻灭。'
+    } },
+  { id:'narrowroad', author:'Matsuo Bashō', year:1689, place:'Matsushima', country:'Japan', lng:141.0674, lat:38.3694, tier:1, relation:'about', genre:'Memoir', rating:4.12, pages:96,
+    languages:['English','French','Chinese'],
+    titles:{English:'The Narrow Road to the Deep North', French:'La Sente étroite du Bout-du-Monde', Chinese:'奥之细道'},
+    blurbs:{
+      English:'Matsuo Bashō\'s 1689 pilgrimage through northern Japan — haiku crystallising entire landscapes into seventeen syllables, and a wandering poet\'s meditation on impermanence and time.',
+      French:'Le pèlerinage de Matsuo Bashō en 1689 à travers le Japon septentrional — des haïkus cristallisant des paysages entiers en dix-sept syllabes, et la méditation d\'un poète errant sur l\'impermanence.',
+      Chinese:'松尾芭蕉1689年的北日本朝圣之旅——以俳句将整片风景凝于十七个音节，一位行脚诗人对无常与时间的冥想。'
+    } },
+  { id:'maximumcity', author:'Suketu Mehta', year:2004, place:'Mumbai', country:'India', lng:72.8777, lat:19.0760, tier:2, relation:'about', genre:'Memoir', rating:4.10, pages:542,
+    languages:['English','French','Chinese'],
+    titles:{English:'Maximum City: Bombay Lost and Found', French:'Maximum City: Bombay la cité des excès', Chinese:'孟买：失落与重寻之城'},
+    blurbs:{
+      English:'Suketu Mehta returns to Bombay after 21 years in New York and immerses himself in its gangsters, bar dancers, Bollywood directors, and slum dwellers — the city in its full, chaotic magnificence.',
+      French:'Suketu Mehta retourne à Bombay après 21 ans à New York et s\'immerge dans ses gangsters, danseuses de bar, réalisateurs de Bollywood et habitants des bidonvilles — la ville dans toute sa magnificence chaotique.',
+      Chinese:'苏克图·梅塔离开孟买二十一年后重返故地，深入其中的黑帮、舞厅女郎、宝莱坞导演与贫民窟居民——这座城市全部的混乱与壮阔。'
+    } },
+  { id:'yearinprovence', author:'Peter Mayle', year:1989, place:'Provence', country:'France', lng:5.3650, lat:43.8567, tier:2, relation:'about', genre:'Memoir', rating:3.82, pages:211,
+    languages:['English','French','Chinese'],
+    titles:{English:'A Year in Provence', French:'Une année en Provence', Chinese:'普罗旺斯的一年'},
+    blurbs:{
+      English:'A British couple move to the Luberon and discover the rhythms of Provençal life — truffle hunters, wine harvests, boisterous lunches, and the stoic cheerfulness of their neighbours.',
+      French:'Un couple britannique s\'installe dans le Luberon et découvre les rythmes de la vie provençale — chasseurs de truffes, vendanges, déjeuners animés et la sérénité stoïque de leurs voisins.',
+      Chinese:'一对英国夫妇迁居吕贝隆，发现了普罗旺斯生活的节奏——松露猎人、葡萄收获、喧嚣的午宴，以及邻居们那坦然的乐天。'
+    } },
+  { id:'danube', author:'Claudio Magris', year:1986, place:'Vienna', country:'Austria', lng:16.3738, lat:48.2082, tier:2, relation:'about', genre:'Memoir', rating:3.96, pages:462,
+    languages:['English','French','Chinese'],
+    titles:{English:'Danube', French:'Danube', Chinese:'多瑙河'},
+    blurbs:{
+      English:'Claudio Magris follows the Danube from its Black Forest source to the Black Sea, reading the river as a biography of Central European civilisation — Habsburg, Jewish, and irretrievably lost.',
+      French:'Claudio Magris suit le Danube depuis sa source dans la Forêt-Noire jusqu\'à la mer Noire, lisant le fleuve comme la biographie de la civilisation centre-européenne — habsbourgeoise, juive et irrémédiablement perdue.',
+      Chinese:'马格里斯沿多瑙河从黑森林源头追溯至黑海，以这条河流为传记，书写中欧文明——哈布斯堡的、犹太的，以及那些已无可挽回地消逝的。'
+    } },
+
   // ============================================================
   // Chinese (20)
   // ============================================================
@@ -662,6 +728,20 @@ export const BOOKS: Book[] = [
     languages:['Chinese'], titles:{Chinese:'朝花夕拾'}, blurbs:{Chinese:'回忆童年与青年往事的散文集，于温情中藏着锋利的笔。'} },
   { id:'oldtales', author:'鲁迅 Lu Xun', year:1936, place:'上海 Shanghai', country:'China', lng:121.4700, lat:31.2200, tier:1, relation:'set', genre:'Satire', rating:4.00, pages:180,
     languages:['Chinese'], titles:{Chinese:'故事新编'}, blurbs:{Chinese:'取材神话传说的短篇集，以戏谑笔法重述古老故事。'} },
+  { id:'hulanriver', author:'萧红 Xiao Hong', year:1942, place:'呼兰 Hulan', country:'China', lng:126.9600, lat:45.8900, tier:1, relation:'about', genre:'Memoir', rating:4.45, pages:192,
+    languages:['Chinese','English'],
+    titles:{Chinese:'呼兰河传', English:'Tales of Hulan River'},
+    blurbs:{
+      Chinese:'童年记忆中的北国小城，以轻盈笔触写就的挽歌——菜园、火烧云、跳大神，以及那些被生活悄悄淹没的人们。',
+      English:'Xiao Hong\'s elegy for a Manchurian town of her childhood — a kitchen garden, blazing northern skies, shamanist rituals, and the quiet, unwitnessed lives lived within its walls.'
+    } },
+  { id:'xiangjournals', author:'沈从文 Shen Congwen', year:1936, place:'湘西 Xiangxi', country:'China', lng:109.7370, lat:28.3113, tier:1, relation:'about', genre:'Memoir', rating:4.38, pages:172,
+    languages:['Chinese','English'],
+    titles:{Chinese:'湘行散记', English:'A Record of Journey to Hunan'},
+    blurbs:{
+      Chinese:'沈从文返乡途中写给妻子的信与随笔，以湘西的山水和船工侧写出一个行将消逝的边地世界。',
+      English:'Letters and sketches written to his wife as Shen Congwen travelled up the Xiang River — a portrait of a border world of boatmen, mountains, and unhurried time.'
+    } },
   // Tier 2
   { id:'threebody', author:'刘慈欣 Liu Cixin', year:2006, place:'北京 Beijing (Tsinghua)', country:'China', lng:116.3265, lat:39.9994, tier:2, relation:'set', genre:'Science Fiction', rating:4.08, pages:400,
     languages:['Chinese'], titles:{Chinese:'三体'}, blurbs:{Chinese:'文化大革命中一个绝望的决定，引来三体文明的入侵。'} },

@@ -35,6 +35,7 @@ const COUNTRY_ZH: Record<string, string> = {
   'Iran':                     '伊朗',
   'Sahara desert':            '撒哈拉沙漠',
   'Serbia':                   '塞尔维亚',
+  'Austria':                  '奥地利',
   'South Africa':             '南非',
   'Switzerland':              '瑞士',
   'the high seas':            '公海',
@@ -160,6 +161,12 @@ const PLACE_ZH: Record<string, string> = {
   'Geneva':                         '日内瓦',
   'Cape Town':                      '开普敦',
   'Paris (Belleville)':             '巴黎（贝尔维尔）',
+  'Berlin':                         '柏林',
+  'Matsushima':                     '松岛',
+  'Vienna':                         '维也纳',
+  'Provence':                       '普罗旺斯',
+  '呼兰 Hulan':                     '呼兰',
+  '湘西 Xiangxi':                   '湘西',
 };
 
 const COUNTRY_FR: Record<string, string> = {
@@ -192,6 +199,7 @@ const COUNTRY_FR: Record<string, string> = {
   'Sahara desert':            'désert du Sahara',
   'Serbia':                   'Serbie',
   'Spain':                    'Espagne',
+  'Austria':                  'Autriche',
   'South Africa':             'Afrique du Sud',
   'the high seas':            'haute mer',
   'Türkiye':                  'Turquie',
@@ -226,6 +234,7 @@ const PLACE_FR: Record<string, string> = {
   'Osaka (feudal)':                 'Osaka (féodal)',
   'Cape Town':                      'Le Cap',
   'New York':                       'New York',
+  'Vienna':                         'Vienne',
 };
 
 export function translatePlace(place: string, lang: string): string {
