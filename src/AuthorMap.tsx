@@ -29,7 +29,7 @@ export default function AuthorMap() {
   const [loaderGone, setLoaderGone] = useState(false);
   const [author,     setAuthor]     = useState<Author | null>(null);
   // When true (and no author selected), the panel shows the browse-by-author list
-  const [showList,   setShowList]   = useState(false);
+  const [showList,   setShowList]   = useState(true);
   const [openBook,   setOpenBook]   = useState<Book | null>(null);
   const [zoomK,      setZoomK]      = useState(1);
   const [hoveredEvent, setHoveredEvent] = useState<{ event: AuthorEvent; x: number; y: number } | null>(null);
@@ -52,8 +52,9 @@ export default function AuthorMap() {
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', 'atlas');
     document.documentElement.setAttribute('data-mode', 'author');
+    document.documentElement.setAttribute('data-primary-lang', primaryLanguage);
     return () => document.documentElement.removeAttribute('data-mode');
-  }, []);
+  }, [primaryLanguage]);
 
   // Flag whether an author is currently selected — the author's own books are
   // shown at full prominence, while ambient browsing keeps them dimmed.
