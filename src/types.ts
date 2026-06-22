@@ -37,6 +37,9 @@ export interface MapTweaks {
   animate: boolean;
 }
 
+/** Text with per-language variants. English is required; others fall back to it. */
+export type Localized = { English: string; French?: string; Chinese?: string };
+
 export interface AuthorEvent {
   year: number;
   yearEnd?: number;
@@ -45,7 +48,7 @@ export interface AuthorEvent {
   lng: number;
   lat: number;
   type: 'birth' | 'lived' | 'traveled' | 'wrote' | 'died';
-  note?: string;
+  note?: Localized;
 }
 
 export interface Author {
@@ -54,8 +57,8 @@ export interface Author {
   name: string;      // display name
   born: number;
   died?: number;
-  nationality: string;
-  blurb: string;
+  nationality: Localized;
+  blurb: Localized;
   bookIds: string[];
   events: AuthorEvent[];
 }

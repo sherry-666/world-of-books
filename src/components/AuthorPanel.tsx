@@ -1,5 +1,5 @@
 import { BOOKS } from '../books';
-import { AUTHORS } from '../authors';
+import { AUTHORS, localize } from '../authors';
 import { translatePlace } from '../placeNames';
 import type { Author } from '../types';
 import type { UIStrings } from '../i18n';
@@ -51,12 +51,12 @@ export function AuthorPanel({ author, onClose, t, primaryLanguage }: Props) {
             <div>
               <h2 className="author-name">{author.name}</h2>
               <div className="author-meta">
-                {author.born}–{author.died ?? t.present} · {author.nationality}
+                {author.born}–{author.died ?? t.present} · {localize(author.nationality, primaryLanguage)}
               </div>
             </div>
           </div>
 
-          <p className="author-blurb">{author.blurb}</p>
+          <p className="author-blurb">{localize(author.blurb, primaryLanguage)}</p>
 
           <div className="author-section-label">{t.lifeJourney}</div>
           <ol className="author-timeline">
@@ -71,7 +71,7 @@ export function AuthorPanel({ author, onClose, t, primaryLanguage }: Props) {
                     {e.yearEnd ? `${e.year}–${e.yearEnd}` : e.year}
                   </span>
                   <div className="tl-place">{translatePlace(e.place, primaryLanguage)}</div>
-                  {e.note && <div className="tl-note">{e.note}</div>}
+                  {e.note && <div className="tl-note">{localize(e.note, primaryLanguage)}</div>}
                 </div>
               </li>
             ))}
