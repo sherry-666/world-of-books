@@ -1801,7 +1801,7 @@ html[data-mode='author'][data-author-active] .markers-layer .marker.on { opacity
 }
 
 /* Empty panel — browse all authors */
-.author-panel-empty { padding-top: 44px; }
+.author-panel-empty { padding-top: 0; }
 .author-panel-empty .author-section-label { margin-bottom: 12px; }
 
 .author-panel-empty p {
