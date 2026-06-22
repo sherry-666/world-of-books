@@ -29,6 +29,7 @@ export const UI = {
     authorEmptyPrompt:'Open a book on the map, then tap Explore the author to trace their life journey.',
     authorsList:      'Explore an author',
     zoomToPlace:      'Zoom to this place',
+    wikiLink:         'Wikipedia',
     present:          'present',
     timelineLabels:   { birth: 'Born', lived: 'Lived', traveled: 'Visited', wrote: 'Wrote', died: 'Died' },
     eventLabels:      { birth: 'Born', lived: 'Lived here', traveled: 'Traveled', wrote: 'Wrote here', died: 'Died' },
@@ -64,6 +65,7 @@ export const UI = {
     authorEmptyPrompt:'Ouvrez un livre sur la carte, puis touchez Explorer l\'auteur pour suivre son parcours de vie.',
     authorsList:      'Explorer un auteur',
     zoomToPlace:      'Zoomer sur ce lieu',
+    wikiLink:         'Wikipedia',
     present:          'présent',
     timelineLabels:   { birth: 'Né', lived: 'A vécu', traveled: 'A visité', wrote: 'A écrit', died: 'Décédé' },
     eventLabels:      { birth: 'Naissance', lived: 'A vécu ici', traveled: 'A voyagé', wrote: 'A écrit ici', died: 'Décès' },
@@ -122,6 +124,7 @@ export const UI = {
     authorEmptyPrompt:'在地图上打开一本书，然后点击“探索作者”，追溯其人生旅程。',
     authorsList:      '探索作家',
     zoomToPlace:      '缩放至此地',
+    wikiLink:         '维基百科',
     present:          '至今',
     timelineLabels:   { birth: '出生', lived: '居住', traveled: '到访', wrote: '写作', died: '逝世' },
     eventLabels:      { birth: '出生', lived: '曾居于此', traveled: '游历', wrote: '在此写作', died: '逝世' },
@@ -182,6 +185,7 @@ export type UIStrings = {
   authorEmptyPrompt: string;
   authorsList: string;
   zoomToPlace: string;
+  wikiLink: string;
   present: string;
   timelineLabels: Record<string, string>;
   eventLabels: Record<string, string>;

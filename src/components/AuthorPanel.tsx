@@ -131,6 +131,19 @@ export function AuthorPanel({ author, open, onClose, t, primaryLanguage, onEvent
               </div>
             </>
           )}
+
+          {author.wiki && (
+            <div className="author-wiki">
+              <a
+                className="author-wiki-link"
+                href={localize(author.wiki, primaryLanguage)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t.wikiLink} ↗
+              </a>
+            </div>
+          )}
         </>
       )}
     </div>

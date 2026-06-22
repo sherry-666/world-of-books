@@ -61,6 +61,7 @@ export interface Author {
   nameKey: string;   // exact match for Book.author field
   name: string;      // display name (English canonical)
   localizedName?: Localized;
+  wiki?: Localized;
   born: number;
   died?: number;
   nationality: Localized;
