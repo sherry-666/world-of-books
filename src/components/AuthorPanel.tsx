@@ -1,7 +1,7 @@
 import { BOOKS } from '../books';
 import { AUTHORS, localize } from '../authors';
 import { translatePlace } from '../placeNames';
-import type { Author } from '../types';
+import type { Author, AuthorEvent } from '../types';
 import type { UIStrings } from '../i18n';
 
 function coverInitials(name: string): string {
@@ -21,9 +21,11 @@ interface Props {
   onClose: () => void;
   t: UIStrings;
   primaryLanguage: string;
+  /** Zoom the map to a timeline event's location when its place is clicked. */
+  onEventSelect?: (event: AuthorEvent) => void;
 }
 
-export function AuthorPanel({ author, onClose, t, primaryLanguage }: Props) {
+export function AuthorPanel({ author, onClose, t, primaryLanguage, onEventSelect }: Props) {
   const authorBooks = author
     ? BOOKS.filter(b => author.bookIds.includes(b.id))
     : [];
@@ -70,7 +72,18 @@ export function AuthorPanel({ author, onClose, t, primaryLanguage }: Props) {
                   <span className="tl-year">
                     {e.yearEnd ? `${e.year}–${e.yearEnd}` : e.year}
                   </span>
-                  <div className="tl-place">{translatePlace(e.place, primaryLanguage)}</div>
+                  {onEventSelect ? (
+                    <button
+                      type="button"
+                      className="tl-place tl-place-btn"
+                      onClick={() => onEventSelect(e)}
+                      title={t.zoomToPlace}
+                    >
+                      {translatePlace(e.place, primaryLanguage)}
+                    </button>
+                  ) : (
+                    <div className="tl-place">{translatePlace(e.place, primaryLanguage)}</div>
+                  )}
                   {e.note && <div className="tl-note">{localize(e.note, primaryLanguage)}</div>}
                 </div>
               </li>

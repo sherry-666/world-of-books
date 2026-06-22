@@ -142,6 +142,7 @@ export default function AuthorMap() {
         onClose={handleClosePanel}
         t={t}
         primaryLanguage={primaryLanguage}
+        onEventSelect={(e) => mapHandle.current?.panToLocation(e.lng, e.lat, Math.max(zoomK, 6))}
       />
 
       <div className="chrome zoomctl">

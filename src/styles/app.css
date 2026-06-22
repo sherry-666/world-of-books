@@ -1669,6 +1669,38 @@ html[data-mode='author'][data-author-active] .markers-layer .marker.on { opacity
   margin-top: 1px;
 }
 
+/* Clickable timeline place — zooms the map to that location */
+.tl-place-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 2px;
+  transition: color .15s;
+}
+
+.tl-place-btn::after {
+  content: '⌖';
+  font-size: 11px;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity .15s;
+}
+
+.tl-place-btn:hover {
+  color: var(--accent);
+}
+
+.tl-place-btn:hover::after {
+  opacity: .8;
+}
+
 .tl-note {
   font-family: var(--font-body);
   font-size: 11.5px;

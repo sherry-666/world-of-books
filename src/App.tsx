@@ -97,6 +97,23 @@ export default function App() {
         handle.applyTweaks(tweaksRef.current);
         setLoaded(true);
         setTimeout(() => setLoaderGone(true), 700);
+
+        // Deep-link: open a specific book's card (e.g. from the author map)
+        const bookParam = new URLSearchParams(location.search).get('book');
+        if (bookParam) {
+          const book = BOOKS.find(b => b.id === bookParam);
+          if (book) {
+            // Ensure the book's language is visible so the card can resolve
+            setLanguages(prev => {
+              if (book.languages.some(l => prev.has(l))) return prev;
+              return new Set([...prev, book.languages[0]]);
+            });
+            handle.openBookById(book.id);
+          }
+          const url = new URL(location.href);
+          url.searchParams.delete('book');
+          history.replaceState(null, '', url);
+        }
       },
     });
 

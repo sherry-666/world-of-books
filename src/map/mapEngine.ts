@@ -677,6 +677,20 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
         .transition().duration(720).ease(d3.easeCubicInOut)
         .call(zoomBehavior.transform, d3.zoomIdentity.translate(tx, ty).scale(k));
     },
+    openBookById(id: string) {
+      const pb = pbooks.find(b => b.id === id);
+      if (!pb) return;
+      openId = pb.id;
+      callbacks.onBookOpen(pb);
+      const k = Math.max(current.k, 4.6);
+      const tx = W / 2 - k * pb._x;
+      const ty = H / 2 - k * pb._y;
+      (svg as d3.Selection<SVGSVGElement, unknown, null, undefined>)
+        .transition().duration(820).ease(d3.easeCubicInOut)
+        .call(zoomBehavior.transform, d3.zoomIdentity.translate(tx, ty).scale(k))
+        .on('end', positionCard);
+      positionCard();
+    },
     showAuthor(author: Author) {
       pEvents = author.events.map(e => ({ ...e, _x: 0, _y: 0 }));
       authorBookIds = new Set(author.bookIds);
