@@ -233,4 +233,74 @@ export const WORLD_COVERS: Record<string, string> = {
     </g>
     ${[[150, 300], [212, 300]].map(([x, y]) => `<rect x="${x - 1}" y="${y}" width="4" height="6" fill="#ffcf78" opacity=".6"/>`).join('')}
   `),
+
+  /* ── The Hunchback of Notre-Dame · Paris — gothic violet dusk, the cathedral, glowing rose window ── */
+  notredame: scene(`
+    <defs>
+      <linearGradient id="ndSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#241f3e"/><stop offset=".5" stop-color="#3d3358"/>
+        <stop offset=".8" stop-color="#5e4a5e"/><stop offset="1" stop-color="#8a6a58"/></linearGradient>
+      <radialGradient id="ndRose" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#ffe6a8"/><stop offset=".5" stop-color="#e0632e" stop-opacity=".8"/>
+        <stop offset="1" stop-color="#e0632e" stop-opacity="0"/></radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#ndSky)"/>
+    <circle cx="226" cy="108" r="26" fill="#e6e0f0" opacity=".4"/>
+    <circle cx="226" cy="108" r="13" fill="#f2eef8" opacity=".6"/>
+    ${stars(14, 7)}
+    <g fill="#15111f">
+      <rect x="0" y="334" width="300" height="116"/>
+      <line x1="150" y1="252" x2="150" y2="196" stroke="#15111f" stroke-width="3"/>
+      <path d="M150 192 L155 208 L145 208 Z"/>
+      <rect x="96" y="252" width="108" height="82"/>
+      <rect x="96" y="212" width="34" height="122"/>
+      <rect x="170" y="212" width="34" height="122"/>
+      <rect x="92" y="250" width="116" height="9"/>
+      ${[100, 112, 174, 186].map(x => `<rect x="${x}" y="206" width="6" height="8"/>`).join('')}
+      <path d="M108 334 V300 Q108 288 120 288 Q132 288 132 300 V334 Z"/>
+      <path d="M168 334 V300 Q168 288 180 288 Q192 288 192 300 V334 Z"/>
+    </g>
+    <circle cx="150" cy="280" r="22" fill="url(#ndRose)"/>
+    <circle cx="150" cy="280" r="12" fill="#ffcf78"/>
+    <g stroke="#3a2418" stroke-width="1" opacity=".7">
+      ${Array.from({ length: 8 }).map((_, i) => { const a = i * Math.PI / 4; return `<line x1="150" y1="280" x2="${(150 + Math.cos(a) * 12).toFixed(1)}" y2="${(280 + Math.sin(a) * 12).toFixed(1)}"/>`; }).join('')}
+    </g>
+    <rect x="110" y="226" width="8" height="18" rx="4" fill="#ffcf78" opacity=".45"/>
+    <rect x="182" y="226" width="8" height="18" rx="4" fill="#ffcf78" opacity=".45"/>
+    ${[[70, 150], [88, 142], [250, 130]].map(([x, y]) => `<path d="M${x} ${y} q6 -6 12 0 q6 -6 12 0" stroke="#1c1726" stroke-width="1.4" fill="none" opacity=".6"/>`).join('')}
+  `),
+
+  /* ── Les Misérables · Paris — crimson revolutionary dawn, the barricade, a red flag ── */
+  lesmis: scene(`
+    <defs>
+      <linearGradient id="lmSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#14122a"/><stop offset=".4" stop-color="#3a1c2e"/>
+        <stop offset=".72" stop-color="#7e2a26"/><stop offset="1" stop-color="#c2502e"/></linearGradient>
+      <radialGradient id="lmSun" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#ffdfa6"/><stop offset=".5" stop-color="#ff8a44" stop-opacity=".8"/>
+        <stop offset="1" stop-color="#ff8a44" stop-opacity="0"/></radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#lmSky)"/>
+    ${stars(16, 5)}
+    <circle cx="150" cy="320" r="140" fill="url(#lmSun)"/>
+    <g fill="#241420">
+      <rect x="0" y="300" width="300" height="36"/>
+      ${Array.from({ length: 10 }).map((_, i) => `<rect x="${i * 31 + 4}" y="${288 - (i % 3) * 8}" width="20" height="${24 + (i % 3) * 8}"/>`).join('')}
+      <path d="M210 300 Q210 270 230 270 Q250 270 250 300 Z"/>
+      <line x1="230" y1="270" x2="230" y2="256" stroke="#241420" stroke-width="2"/>
+    </g>
+    <path d="M0 366 L18 350 L40 360 L66 340 L96 358 L130 338 L168 356 L206 340 L244 358 L276 344 L300 354 L300 450 L0 450 Z" fill="#160e16"/>
+    <g stroke="#0e0810" stroke-width="3" fill="none">
+      <circle cx="74" cy="402" r="18"/>
+      ${Array.from({ length: 6 }).map((_, i) => { const a = i * Math.PI / 3; return `<line x1="74" y1="402" x2="${(74 + Math.cos(a) * 18).toFixed(1)}" y2="${(402 + Math.sin(a) * 18).toFixed(1)}"/>`; }).join('')}
+    </g>
+    <g fill="#0e0810">
+      <rect x="180" y="392" width="60" height="10" transform="rotate(-12 180 392)"/>
+      <rect x="116" y="404" width="74" height="9" transform="rotate(6 116 404)"/>
+    </g>
+    <line x1="150" y1="350" x2="150" y2="262" stroke="#1a1410" stroke-width="3"/>
+    <path d="M150 264 q24 5 44 -6 q-9 13 0 24 q-24 7 -44 0 Z" fill="#d12a26"/>
+    <circle cx="106" cy="356" r="8" fill="#ffcf78" opacity=".4"/>
+    <rect x="103" y="350" width="6" height="9" rx="1.5" fill="#ffcf78" opacity=".85"/>
+  `),
 };
