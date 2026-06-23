@@ -2153,6 +2153,15 @@ html[data-mode='author'][data-author-active] .markers-layer .marker.on { opacity
   /* Keep long result lists from running off-screen */
   .searchbar-dropdown { max-height: 50vh; overflow-y: auto; }
 
-  /* Author panel → near-full-width sheet */
-  .author-panel { width: min(330px, 90vw); padding: 22px 18px 40px; }
+  /* Author life page → full-width sheet. A 300px sidebar leaves a third
+     of a phone screen as dead map while cramping the timeline, so the
+     detail view takes the whole screen (closes back to the map via ×). */
+  .author-panel {
+    width: 100%;
+    max-width: 480px;
+    padding: 24px 20px max(40px, env(safe-area-inset-bottom));
+  }
+  /* Give the timeline its full room now that the panel is wide */
+  .author-tl-item { padding-bottom: 16px; }
+  .author-panel-close { top: 14px; right: 14px; width: 34px; height: 34px; font-size: 24px; }
 }
