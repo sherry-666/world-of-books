@@ -2,7 +2,7 @@ import type { Book, Author } from '../types';
 import type { UIStrings } from '../i18n';
 import { translatePlace, translateCountry } from '../placeNames';
 import { findAuthorByNameKey, localize } from '../authors';
-import { BOOK_COVER_SCENES } from '../bookCovers';
+import { BOOK_COVER_SCENES } from '../covers';
 
 function coverInitials(title: string): string {
   const latin = title.replace(/[^A-Za-z ]/g, '').trim();
