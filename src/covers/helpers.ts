@@ -5,9 +5,20 @@
 // gold stars — meant to sit full-bleed behind the cover's fixed gold frame.
 // See design/Book Covers Design - Map of Stories.html for the schema and prompt.
 
-/** Wrap an SVG body in the standard 2:3 full-bleed cover artwork element. */
+/**
+ * Wrap an SVG body in the full-bleed cover artwork element.
+ *
+ * The rendered cover is a narrow vertical strip (~116px wide × the card's full
+ * height, roughly a 0.36 aspect ratio), so a 2:3 canvas would get its sides
+ * sliced off. We author on a 300-wide grid for convenience but the viewBox is
+ * cropped to the central band that is actually visible: x ∈ [70, 230].
+ *
+ * SAFE ZONE: keep focal subjects within x ∈ [90, 210] (centred ±60); the
+ * [70, 90] and [210, 230] margins may be trimmed on the tallest cards. Content
+ * outside [70, 230] is never shown — use it only for full-bleed backgrounds.
+ */
 export function scene(inner: string): string {
-  return `<svg class="cover-art" viewBox="0 0 300 450" preserveAspectRatio="xMidYMid slice" aria-hidden="true">${inner}</svg>`;
+  return `<svg class="cover-art" viewBox="70 0 160 450" preserveAspectRatio="xMidYMid slice" aria-hidden="true">${inner}</svg>`;
 }
 
 /** Deterministic faint gold stars, echoing the atlas (mirrors the design file). */

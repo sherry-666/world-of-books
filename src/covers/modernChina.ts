@@ -24,7 +24,7 @@ export const MODERN_CHINA_COVERS: Record<string, string> = {
       <rect x="36" y="288" width="40" height="20"/><path d="M30 288 L56 274 L82 288 Z"/>
       <rect x="200" y="292" width="34" height="16"/><path d="M195 292 L217 280 L239 292 Z"/>
     </g>
-    ${[[40, 340], [70, 348], [240, 342], [266, 350]].map(([x, y]) => `<g stroke="#1a3a1f" stroke-width="2.4" fill="none" stroke-linecap="round"><path d="M${x} ${y + 18} V${y}"/><circle cx="${x}" cy="${y - 3}" r="4" fill="#e8c84a"/></g>`).join('')}
+    ${[[92, 340], [120, 348], [182, 342], [208, 350]].map(([x, y]) => `<g stroke="#1a3a1f" stroke-width="2.4" fill="none" stroke-linecap="round"><path d="M${x} ${y + 18} V${y}"/><circle cx="${x}" cy="${y - 3}" r="4" fill="#e8c84a"/></g>`).join('')}
   `),
 
   /* ── 湘行散记 A Record of Journey to Hunan · Xiangxi — misty jade river, karst peaks, a sampan ── */
@@ -154,7 +154,7 @@ export const MODERN_CHINA_COVERS: Record<string, string> = {
         <stop offset="1" stop-color="#4a4a64"/></linearGradient>
     </defs>
     <rect width="300" height="450" fill="url(#faSky)"/>
-    <circle cx="214" cy="120" r="30" fill="#dfe4f2" opacity=".5"/>
+    <circle cx="196" cy="120" r="30" fill="#dfe4f2" opacity=".5"/>
     ${stars(14, 5)}
     <ellipse cx="150" cy="280" rx="220" ry="26" fill="#cdd6ec" opacity=".08"/>
     ${mansion('#0e1426')}
@@ -212,8 +212,8 @@ export const MODERN_CHINA_COVERS: Record<string, string> = {
         <stop offset="1" stop-color="#2c3653"/></linearGradient>
     </defs>
     <rect width="300" height="450" fill="url(#cnSky)"/>
-    <circle cx="208" cy="110" r="46" fill="#aab6d2" opacity=".14"/>
-    <circle cx="208" cy="110" r="20" fill="#c6d0e6" opacity=".3"/>
+    <circle cx="196" cy="110" r="46" fill="#aab6d2" opacity=".14"/>
+    <circle cx="196" cy="110" r="20" fill="#c6d0e6" opacity=".3"/>
     ${stars(14, 3)}
     <path d="M0 300 L300 230 L300 300 Z" fill="#141b30"/>
     <g fill="#0c1124">

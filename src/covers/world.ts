@@ -107,7 +107,7 @@ export const WORLD_COVERS: Record<string, string> = {
       ${[110, 134, 158, 182].map(x => `<circle cx="${x}" cy="300" r="4.6" fill="url(#naLight)"/><circle cx="${x}" cy="300" r="2.2" fill="#ffd98a"/>`).join('')}
       <line x1="54" y1="300" x2="22" y2="300" stroke="#0a2230" stroke-width="3"/>
     </g>
-    <g opacity=".9">
+    <g opacity=".9" transform="translate(-44 0)">
       <path d="M214 360 Q214 342 234 342 Q254 342 254 360 Q244 356 234 360 Q224 356 214 360Z" fill="#9fe9e4" opacity=".5"/>
       <g stroke="#9fe9e4" stroke-width="1" fill="none" opacity=".4" stroke-linecap="round">
         <path d="M220 360 q-3 16 2 30"/><path d="M230 360 q0 18 -2 32"/><path d="M240 360 q3 16 -1 30"/><path d="M248 360 q4 14 1 26"/>
@@ -190,8 +190,8 @@ export const WORLD_COVERS: Record<string, string> = {
         <stop offset="0" stop-color="#fff4d6" stop-opacity=".9"/><stop offset="1" stop-color="#fff4d6" stop-opacity="0"/></radialGradient>
     </defs>
     <rect width="300" height="450" fill="url(#krSky)"/>
-    <circle cx="214" cy="120" r="90" fill="url(#krSun)"/>
-    <circle cx="214" cy="120" r="22" fill="#fff2cc" opacity=".7"/>
+    <circle cx="196" cy="120" r="90" fill="url(#krSun)"/>
+    <circle cx="196" cy="120" r="22" fill="#fff2cc" opacity=".7"/>
     ${stars(7, 5)}
     <path d="M0 300 L48 250 L88 286 L140 232 L190 286 L246 244 L300 292 V330 H0 Z" fill="#8a7560" opacity=".85"/>
     <path d="M140 232 L156 256 L124 256 Z" fill="#eef2f0"/>
@@ -201,11 +201,11 @@ export const WORLD_COVERS: Record<string, string> = {
       <rect x="0" y="318" width="300" height="132"/>
       ${Array.from({ length: 9 }).map((_, i) => `<rect x="${i * 34}" y="${300 + (i % 3) * 6}" width="30" height="${24 + (i % 3) * 6}"/>`).join('')}
     </g>
-    ${[[70, 96, '#e23b2e', 18], [120, 60, '#3b7ae2', 14], [210, 200, '#2ea36a', 12]].map((k) => { const [x, y, c, s] = k as [number, number, string, number]; return `<g transform="translate(${x} ${y})"><path d="M0 ${-s} L${s * 0.66} 0 L0 ${s} L${-s * 0.66} 0 Z" fill="${c}"/><line x1="0" y1="${-s}" x2="0" y2="${s}" stroke="#1a1a1a" stroke-width=".6" opacity=".5"/><path d="M0 ${s} q4 8 -2 16 q-6 8 2 16" stroke="#f0e0c0" stroke-width=".7" fill="none" opacity=".6"/></g>`; }).join('')}
+    ${[[98, 92, '#e23b2e', 18], [140, 60, '#3b7ae2', 14], [196, 196, '#2ea36a', 12]].map((k) => { const [x, y, c, s] = k as [number, number, string, number]; return `<g transform="translate(${x} ${y})"><path d="M0 ${-s} L${s * 0.66} 0 L0 ${s} L${-s * 0.66} 0 Z" fill="${c}"/><line x1="0" y1="${-s}" x2="0" y2="${s}" stroke="#1a1a1a" stroke-width=".6" opacity=".5"/><path d="M0 ${s} q4 8 -2 16 q-6 8 2 16" stroke="#f0e0c0" stroke-width=".7" fill="none" opacity=".6"/></g>`; }).join('')}
     <g fill="#241a14">
-      <circle cx="60" cy="306" r="5"/>
-      <path d="M60 311 L54 332 L66 332 Z"/>
-      <line x1="60" y1="314" x2="86" y2="74" stroke="#241a14" stroke-width=".7" opacity=".5"/>
+      <circle cx="108" cy="306" r="5"/>
+      <path d="M108 311 L102 332 L114 332 Z"/>
+      <line x1="108" y1="314" x2="138" y2="72" stroke="#241a14" stroke-width=".7" opacity=".5"/>
     </g>
   `),
 
@@ -222,16 +222,16 @@ export const WORLD_COVERS: Record<string, string> = {
     <rect width="300" height="450" fill="url(#tsSky)"/>
     <circle cx="150" cy="250" r="130" fill="url(#tsSun)"/>
     <circle cx="150" cy="256" r="32" fill="#fff0c0" opacity=".9"/>
-    <path d="M76 70 A22 22 0 1 0 92 104 A17 17 0 1 1 76 70 Z" fill="#ffe9b0" opacity=".85"/>
+    <path d="M76 70 A22 22 0 1 0 92 104 A17 17 0 1 1 76 70 Z" fill="#ffe9b0" opacity=".85" transform="translate(28 0)"/>
     ${Array.from({ length: 26 }).map((_, i) => { const x = (i * 53 + 17) % 300, y = (i * 37 + 24) % 220, r = (i % 3) * 0.5 + 0.7; return `<circle cx="${x}" cy="${y}" r="${r}" fill="#ffe6a8" opacity="${(0.3 + (i % 5) / 12).toFixed(2)}"/>`; }).join('')}
     <path d="M0 300 L60 264 L110 296 L170 258 L230 296 L300 268 V330 H0 Z" fill="#5a3320" opacity=".7"/>
     <g fill="#2e1a12">
       <rect x="0" y="318" width="300" height="132"/>
       ${Array.from({ length: 10 }).map((_, i) => `<rect x="${i * 31}" y="${302 + (i % 3) * 6}" width="27" height="${22 + (i % 3) * 6}"/>`).join('')}
-      <rect x="138" y="262" width="10" height="56"/><path d="M134 262 Q143 248 152 262 Z"/><circle cx="143" cy="246" r="2.4" fill="#e0a83e"/>
-      <path d="M196 318 Q196 290 214 290 Q232 290 232 318 Z"/>
+      <rect x="146" y="262" width="10" height="56"/><path d="M142 262 Q151 248 160 262 Z"/><circle cx="151" cy="246" r="2.4" fill="#e0a83e"/>
+      <path d="M178 318 Q178 290 196 290 Q214 290 214 318 Z"/>
     </g>
-    ${[[150, 300], [212, 300]].map(([x, y]) => `<rect x="${x - 1}" y="${y}" width="4" height="6" fill="#ffcf78" opacity=".6"/>`).join('')}
+    ${[[150, 300], [192, 300]].map(([x, y]) => `<rect x="${x - 1}" y="${y}" width="4" height="6" fill="#ffcf78" opacity=".6"/>`).join('')}
   `),
 
   /* ── The Hunchback of Notre-Dame · Paris — gothic violet dusk, the cathedral, glowing rose window ── */
@@ -245,8 +245,8 @@ export const WORLD_COVERS: Record<string, string> = {
         <stop offset="1" stop-color="#e0632e" stop-opacity="0"/></radialGradient>
     </defs>
     <rect width="300" height="450" fill="url(#ndSky)"/>
-    <circle cx="226" cy="108" r="26" fill="#e6e0f0" opacity=".4"/>
-    <circle cx="226" cy="108" r="13" fill="#f2eef8" opacity=".6"/>
+    <circle cx="200" cy="108" r="26" fill="#e6e0f0" opacity=".4"/>
+    <circle cx="200" cy="108" r="13" fill="#f2eef8" opacity=".6"/>
     ${stars(14, 7)}
     <g fill="#15111f">
       <rect x="0" y="334" width="300" height="116"/>
@@ -267,7 +267,7 @@ export const WORLD_COVERS: Record<string, string> = {
     </g>
     <rect x="110" y="226" width="8" height="18" rx="4" fill="#ffcf78" opacity=".45"/>
     <rect x="182" y="226" width="8" height="18" rx="4" fill="#ffcf78" opacity=".45"/>
-    ${[[70, 150], [88, 142], [250, 130]].map(([x, y]) => `<path d="M${x} ${y} q6 -6 12 0 q6 -6 12 0" stroke="#1c1726" stroke-width="1.4" fill="none" opacity=".6"/>`).join('')}
+    ${[[92, 152], [120, 138], [196, 128]].map(([x, y]) => `<path d="M${x} ${y} q6 -6 12 0 q6 -6 12 0" stroke="#1c1726" stroke-width="1.4" fill="none" opacity=".6"/>`).join('')}
   `),
 
   /* ── Les Misérables · Paris — crimson revolutionary dawn, the barricade, a red flag ── */
@@ -286,13 +286,13 @@ export const WORLD_COVERS: Record<string, string> = {
     <g fill="#241420">
       <rect x="0" y="300" width="300" height="36"/>
       ${Array.from({ length: 10 }).map((_, i) => `<rect x="${i * 31 + 4}" y="${288 - (i % 3) * 8}" width="20" height="${24 + (i % 3) * 8}"/>`).join('')}
-      <path d="M210 300 Q210 270 230 270 Q250 270 250 300 Z"/>
-      <line x1="230" y1="270" x2="230" y2="256" stroke="#241420" stroke-width="2"/>
+      <path d="M174 300 Q174 270 194 270 Q214 270 214 300 Z"/>
+      <line x1="194" y1="270" x2="194" y2="256" stroke="#241420" stroke-width="2"/>
     </g>
     <path d="M0 366 L18 350 L40 360 L66 340 L96 358 L130 338 L168 356 L206 340 L244 358 L276 344 L300 354 L300 450 L0 450 Z" fill="#160e16"/>
     <g stroke="#0e0810" stroke-width="3" fill="none">
-      <circle cx="74" cy="402" r="18"/>
-      ${Array.from({ length: 6 }).map((_, i) => { const a = i * Math.PI / 3; return `<line x1="74" y1="402" x2="${(74 + Math.cos(a) * 18).toFixed(1)}" y2="${(402 + Math.sin(a) * 18).toFixed(1)}"/>`; }).join('')}
+      <circle cx="104" cy="402" r="18"/>
+      ${Array.from({ length: 6 }).map((_, i) => { const a = i * Math.PI / 3; return `<line x1="104" y1="402" x2="${(104 + Math.cos(a) * 18).toFixed(1)}" y2="${(402 + Math.sin(a) * 18).toFixed(1)}"/>`; }).join('')}
     </g>
     <g fill="#0e0810">
       <rect x="180" y="392" width="60" height="10" transform="rotate(-12 180 392)"/>

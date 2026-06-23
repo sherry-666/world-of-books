@@ -31,8 +31,8 @@ export const LUXUN_COVERS: Record<string, string> = {
         <stop offset=".8" stop-color="#b89a63"/><stop offset="1" stop-color="#8a6f44"/></linearGradient>
     </defs>
     <rect width="300" height="450" fill="url(#ahqSky)"/>
-    <circle cx="210" cy="120" r="80" fill="#d9c388" opacity=".4"/>
-    <circle cx="210" cy="120" r="30" fill="#e7d5a0" opacity=".6"/>
+    <circle cx="188" cy="120" r="80" fill="#d9c388" opacity=".4"/>
+    <circle cx="188" cy="120" r="30" fill="#e7d5a0" opacity=".6"/>
     ${stars(6, 3)}
     <path d="M0 300 q80 -40 160 -10 t140 -6 V450 H0 Z" fill="#5c5238" opacity=".7"/>
     <g fill="#2c2418">
@@ -86,8 +86,8 @@ export const LUXUN_COVERS: Record<string, string> = {
     <path d="M0 330 q150 -20 300 0 V450 H0 Z" fill="#2a2433"/>
     <path d="M150 330 L138 450 L162 450 Z" fill="#4a4352" opacity=".7"/>
     <g stroke="#1c1824" stroke-width="3" fill="none" stroke-linecap="round">
-      <path d="M60 364 V300"/>
-      <path d="M60 322 L46 300"/><path d="M60 332 L76 308"/><path d="M60 308 L50 290"/>
+      <path d="M104 364 V300"/>
+      <path d="M104 322 L90 300"/><path d="M104 332 L120 308"/><path d="M104 308 L94 290"/>
     </g>
     <circle cx="150" cy="346" r="5" fill="#15111c"/>
     <path d="M150 350 L142 390 L158 390 Z" fill="#15111c"/>
