@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Covers — Map of Stories</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070d17; --bg2:#0a1322;
+  --cover-deep:#0b1730; --cover-ink:#f6ecd2;
+  --gold:#e0bd72; --gold-soft:rgba(224,189,114,.5);
+  --ink:#f1e7d0; --sub:#bda377;
+  --hair:rgba(220,184,110,.24);
+  --fd:'Cormorant Garamond',serif;
+  --fb:'EB Garamond',serif;
+  --fc:'Noto Serif SC',serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--bg);
+  background-image:
+    radial-gradient(ellipse 120% 80% at 50% -10%, #0e1a2c 0%, transparent 55%),
+    radial-gradient(ellipse 90% 60% at 50% 110%, #0a1322 0%, transparent 60%);
+  color:var(--ink);font-family:var(--fb);-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    radial-gradient(1px 1px at 12% 22%, rgba(224,189,114,.5),transparent),
+    radial-gradient(1px 1px at 78% 14%, rgba(224,189,114,.32),transparent),
+    radial-gradient(1px 1px at 33% 71%, rgba(224,189,114,.3),transparent),
+    radial-gradient(1px 1px at 64% 82%, rgba(224,189,114,.4),transparent),
+    radial-gradient(1px 1px at 89% 54%, rgba(224,189,114,.26),transparent),
+    radial-gradient(1px 1px at 22% 91%, rgba(224,189,114,.3),transparent);
+  opacity:.55;
+}
+.wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 44px}
+
+.hero{text-align:center;padding:96px 0 18px}
+.kick{font-family:var(--fb);font-size:10px;letter-spacing:.5em;text-transform:uppercase;color:var(--gold);opacity:.72;margin-bottom:26px}
+.hero h1{font-family:var(--fd);font-weight:600;font-size:50px;letter-spacing:.015em;line-height:1;color:var(--ink)}
+.hero .cn{font-family:var(--fc);font-weight:300;font-size:20px;letter-spacing:.26em;color:var(--sub);margin-top:14px;padding-left:.26em}
+.hero p.tag{font-family:var(--fb);font-style:italic;font-size:15px;color:rgba(241,231,208,.42);margin-top:22px}
+.rule-dot{display:flex;align-items:center;justify-content:center;gap:14px;margin:40px 0 0}
+.rule-dot .ln{width:70px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-soft))}
+.rule-dot .ln.r{background:linear-gradient(90deg,var(--gold-soft),transparent)}
+.rule-dot .dt{width:4px;height:4px;background:var(--gold);transform:rotate(45deg);opacity:.8}
+
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:60px 48px;padding:64px 0 40px;justify-items:center}
+.item{display:flex;flex-direction:column;align-items:center}
+
+/* ── THE COVER ── */
+.cover{
+  position:relative;width:300px;height:450px;border-radius:4px;overflow:hidden;
+  box-shadow:-14px 0 30px rgba(0,0,0,.36),0 26px 50px -18px rgba(0,0,0,.72),inset 0 0 0 1px rgba(224,189,114,.14);
+  display:flex;flex-direction:column;align-items:center;padding:28px 26px 24px;
+}
+.cover .art{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+/* legibility scrims */
+.cover .scrim-b{position:absolute;left:0;right:0;bottom:0;height:62%;z-index:1;
+  background:linear-gradient(180deg,transparent 0%,rgba(11,23,48,.0) 18%,rgba(11,23,48,.62) 52%,rgba(8,16,34,.93) 100%)}
+.cover .scrim-t{position:absolute;left:0;right:0;top:0;height:22%;z-index:1;
+  background:linear-gradient(180deg,rgba(8,16,34,.7) 0%,transparent 100%)}
+/* spine */
+.cover::before{content:'';position:absolute;left:0;top:0;bottom:0;width:9px;z-index:3;
+  background:linear-gradient(90deg,rgba(0,0,0,.5),rgba(255,255,255,.06))}
+.frame{position:absolute;inset:13px;border:1px solid rgba(224,189,114,.5);border-radius:2px;pointer-events:none;z-index:3}
+.frame::after{content:'';position:absolute;inset:4px;border:.5px solid rgba(224,189,114,.26);border-radius:1px}
+.tick{position:absolute;width:9px;height:9px;pointer-events:none;z-index:4}
+.tick::before,.tick::after{content:'';position:absolute;background:var(--gold);opacity:.9}
+.tick::before{width:9px;height:1px;top:0;left:0}
+.tick::after{width:1px;height:9px;top:0;left:0}
+.tick.tl{left:21px;top:21px}
+.tick.tr{right:21px;top:21px;transform:scaleX(-1)}
+.tick.bl{left:21px;bottom:21px;transform:scaleY(-1)}
+.tick.br{right:21px;bottom:21px;transform:scale(-1,-1)}
+
+.c-genre{font-family:var(--fb);font-size:8.5px;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);position:relative;z-index:5;margin-top:4px;text-shadow:0 1px 6px rgba(8,16,34,.8)}
+.c-spacer{flex:1}
+.c-title{font-family:var(--fd);font-weight:600;font-size:28px;line-height:1.02;text-align:center;color:var(--cover-ink);letter-spacing:.01em;text-wrap:balance;position:relative;z-index:5;text-shadow:0 2px 14px rgba(8,16,34,.85)}
+.c-rule{width:30px;height:1px;background:var(--gold);opacity:.7;margin:12px 0;position:relative;z-index:5}
+.c-author{font-family:var(--fb);font-style:italic;font-size:13px;color:var(--cover-ink);opacity:.95;text-align:center;position:relative;z-index:5;text-shadow:0 1px 8px rgba(8,16,34,.85)}
+.c-coords{font-family:var(--fb);font-size:8.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);opacity:.82;margin-top:16px;position:relative;z-index:5;display:flex;align-items:center;gap:8px;text-shadow:0 1px 6px rgba(8,16,34,.8)}
+.c-coords .star{width:3px;height:3px;background:var(--gold);transform:rotate(45deg)}
+
+.cap{margin-top:22px;text-align:center}
+.cap .place{font-family:var(--fb);font-size:9px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);opacity:.66}
+.cap .yr{font-family:var(--fd);font-style:italic;font-size:15px;color:rgba(241,231,208,.5);margin-top:5px}
+
+/* schema */
+.schema{margin:70px 0 110px;border-top:1px solid var(--hair);padding-top:60px}
+.shead{display:flex;align-items:baseline;gap:16px;margin-bottom:8px}
+.snum{font-family:var(--fd);font-style:italic;font-size:22px;color:var(--gold);opacity:.8}
+.sname{font-family:var(--fd);font-size:30px;font-weight:600;color:var(--ink)}
+.sname .cnsm{font-family:var(--fc);font-weight:300;font-size:18px;color:var(--sub);margin-left:12px;letter-spacing:.12em}
+.sdesc{font-family:var(--fb);font-style:italic;font-size:15px;line-height:1.7;color:rgba(241,231,208,.44);max-width:640px;margin:0 0 40px}
+.spec-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-bottom:42px}
+.spec{border:1px solid var(--hair);border-radius:12px;padding:22px 24px;background:linear-gradient(160deg,rgba(20,38,64,.5),rgba(12,23,38,.5))}
+.spec h3{font-family:var(--fb);font-size:9px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:14px}
+.spec ul{list-style:none}
+.spec li{font-family:var(--fb);font-size:14px;line-height:1.95;color:rgba(241,231,208,.72);display:flex;gap:11px}
+.spec li b{color:var(--sub);font-weight:500;min-width:104px;flex:none}
+.swatchline{display:flex;gap:9px;margin-top:8px;flex-wrap:wrap}
+.sw{display:flex;flex-direction:column;align-items:center;gap:6px}
+.sw .chip{width:42px;height:42px;border-radius:7px;border:1px solid rgba(224,189,114,.25)}
+.sw span{font-family:var(--fb);font-size:8.5px;letter-spacing:.08em;color:rgba(241,231,208,.5)}
+.prompt-wrap h3{font-family:var(--fb);font-size:9px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);opacity:.85;margin-bottom:14px}
+.prompt{border:1px solid var(--hair);border-radius:12px;background:#091221;padding:26px 28px;font-family:'EB Garamond',serif;font-size:14.5px;line-height:1.85;color:rgba(241,231,208,.8);white-space:pre-wrap}
+.prompt .hl{color:var(--gold)}
+.prompt .var{color:#9ec5e8;font-style:italic}
+
+.foot{text-align:center;padding:0 0 90px}
+.foot .cn{font-family:var(--fc);font-weight:300;font-size:15px;letter-spacing:.3em;color:var(--sub);opacity:.6}
+.foot .mt{font-family:var(--fb);font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:rgba(241,231,208,.26);margin-top:12px}
+
+@media(max-width:1040px){.gallery{grid-template-columns:repeat(2,1fr)}.spec-grid{grid-template-columns:1fr}}
+@media(max-width:680px){.gallery{grid-template-columns:1fr}.wrap{padding:0 24px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <section class="hero">
+    <p class="kick">A Cover System · Illustrated Plates</p>
+    <h1>Covers for the Atlas</h1>
+    <p class="cn">文海坐标 · 封面</p>
+    <p class="tag">Each book a painted place — framed in gold, fixed to its coordinates.</p>
+    <div class="rule-dot"><span class="ln"></span><span class="dt"></span><span class="ln r"></span></div>
+  </section>
+
+  <section class="gallery" id="gallery"></section>
+
+  <section class="schema">
+    <div class="shead">
+      <span class="snum">✦</span>
+      <span class="sname">The design schema<span class="cnsm">制式</span></span>
+    </div>
+    <p class="sdesc">A colour illustration of the book's setting — sky, land and weather rendered in a flat, celestial palette — wrapped in the atlas's signature gold double-keyline with corner ticks. A deep-navy scrim grades up from the foot so the title always reads, and the setting's real coordinates are engraved at the bottom. Vivid scene, constant frame: the covers look like one series even as each place glows its own colour.</p>
+
+    <div class="spec-grid">
+      <div class="spec">
+        <h3>The constant frame</h3>
+        <div class="swatchline">
+          <div class="sw"><div class="chip" style="background:#0b1730"></div><span>Scrim #0b1730</span></div>
+          <div class="sw"><div class="chip" style="background:#e0bd72"></div><span>Gold #e0bd72</span></div>
+          <div class="sw"><div class="chip" style="background:#f6ecd2"></div><span>Ink #f6ecd2</span></div>
+        </div>
+        <ul style="margin-top:16px"><li><b>Always</b> Gold double keyline + corner ticks, navy foot-scrim, gold coordinates. This never changes — it's what makes them a set.</li></ul>
+      </div>
+      <div class="spec">
+        <h3>The variable scene</h3>
+        <ul>
+          <li><b>One image</b> The setting at its signature hour &amp; weather</li>
+          <li><b>Flat &amp; layered</b> Gradient sky · silhouette land · particles</li>
+          <li><b>One palette</b> Each book owns a hue; stars tie back to the atlas</li>
+        </ul>
+      </div>
+      <div class="spec">
+        <h3>Type</h3>
+        <ul>
+          <li><b>Title</b> Cormorant Garamond, 600</li>
+          <li><b>Genre / coords</b> EB Garamond, caps, tracked</li>
+          <li><b>Author</b> EB Garamond italic</li>
+          <li><b>中文</b> Noto Serif SC, 300</li>
+        </ul>
+      </div>
+      <div class="spec">
+        <h3>Layout · 2:3</h3>
+        <ul>
+          <li><b>Top</b> Genre eyebrow over sky</li>
+          <li><b>Body</b> Full-bleed illustrated scene</li>
+          <li><b>Lower</b> Title · rule · author on scrim</li>
+          <li><b>Foot</b> ✦ LAT° · LNG°</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="prompt-wrap">
+      <h3>The reusable prompt</h3>
+      <div class="prompt">Design a book cover in the <span class="hl">"Map of Stories" illustrated-atlas style</span>: a 2:3 portrait. Fill the whole cover with a <span class="hl">flat, layered colour illustration of the book's setting</span> at its most evocative hour and weather — a gradient sky, silhouetted land or skyline, and fine atmospheric particles (rain, snow, stars, light). Commit to <span class="hl">one signature palette</span> drawn from the place — <span class="var">[e.g. crimson + gold for Istanbul; cold slate-blue + one amber window for St Petersburg]</span> — and scatter a few faint gold stars to echo the atlas.
+
+Then wrap it in the fixed atlas frame, identical on every cover:
+  • a <span class="hl">gold double keyline</span> inset from the edge with right-angle ticks at the corners
+  • a deep-navy (<span class="hl">#0b1730</span>) scrim grading up from the bottom ~55% so text stays legible
+  • a faint spine shadow down the left edge
+
+Typeset over the scrim, bottom-anchored:
+  • genre eyebrow in tracked gold capitals — <span class="var">"A NOVEL"</span>
+  • title in <span class="hl">Cormorant Garamond 600</span> (#f6ecd2), balanced on two lines — <span class="var">[TITLE]</span>
+  • a 30px gold rule, then the author in EB Garamond italic — <span class="var">[AUTHOR]</span>
+  • a foot line: ✦ + the setting's real coordinates in gold capitals — <span class="var">[LAT° · LNG°]</span>
+
+Vivid painted scene, constant gold frame. Gold on navy is the binding; the picture inside changes per book.</div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p class="cn">文海坐标</p>
+    <p class="mt">Six plates · one repeatable system</p>
+  </footer>
+</div>
+
+<script>
+function scene(inner){return `<svg class="art" viewBox="0 0 300 450" preserveAspectRatio="xMidYMid slice">${inner}</svg>`;}
+const rnd=(a,b)=>a+Math.random()*(b-a);
+function stars(n,seed){let s='';for(let i=0;i<n;i++){const x=(seed*37+i*53)%300,y=(seed*19+i*29)%220,r=((i*seed)%10)/10*0.9+0.4;s+=`<circle cx="${x}" cy="${y}" r="${r.toFixed(2)}" fill="#ffe6b0" opacity="${(0.3+((i*7)%6)/10).toFixed(2)}"/>`;}return s;}
+
+const SCENES = {
+
+/* ── ONE HUNDRED YEARS OF SOLITUDE · Macondo — golden tropics, butterflies, rain ── */
+solitude: scene(`
+  <defs>
+    <linearGradient id="solSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f7d985"/><stop offset=".42" stop-color="#eeaa50"/>
+      <stop offset=".72" stop-color="#d77b39"/><stop offset="1" stop-color="#9c4f2c"/></linearGradient>
+    <radialGradient id="solSun" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#fff7df"/><stop offset=".55" stop-color="#ffe9ae" stop-opacity=".85"/>
+      <stop offset="1" stop-color="#ffe9ae" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="300" height="450" fill="url(#solSky)"/>
+  <circle cx="150" cy="150" r="120" fill="url(#solSun)"/>
+  <circle cx="150" cy="150" r="38" fill="#fff7e0" opacity=".9"/>
+  ${Array.from({length:16}).map((_,i)=>{const x=10+i*19, off=(i%3)*8;return `<line x1="${x}" y1="${30+off}" x2="${x-12}" y2="${120+off}" stroke="#fff6df" stroke-width="1" opacity=".28"/>`}).join('')}
+  <path d="M0 290 q50 -34 100 -14 t100 -8 t100 12 V450 H0 Z" fill="#4a7a3f"/>
+  <path d="M0 330 q60 -26 130 -6 t170 6 V450 H0 Z" fill="#2f5a30"/>
+  <path d="M0 376 q70 -20 160 0 t140 6 V450 H0 Z" fill="#1b3a22"/>
+  ${[[60,250,1.1],[210,210,1.4],[120,300,1],[245,300,1.2],[95,200,.9],[180,330,1.1],[40,330,1]].map(([x,y,s])=>`<g transform="translate(${x} ${y}) scale(${s})"><path d="M0 0 Q-9 -11 -13 -2 Q-11 7 0 3 Q11 7 13 -2 Q9 -11 0 0Z" fill="#ffe14d" opacity=".92"/><line x1="0" y1="0" x2="0" y2="4" stroke="#a8761a" stroke-width=".6"/></g>`).join('')}
+  ${stars(10,3)}
+`),
+
+/* ── THE GREAT GATSBY · West Egg — deco night, the green light over the bay ── */
+gatsby: scene(`
+  <defs>
+    <linearGradient id="gatSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0f1a44"/><stop offset=".5" stop-color="#163a5c"/>
+      <stop offset=".66" stop-color="#1c6f68"/><stop offset="1" stop-color="#0c2536"/></linearGradient>
+    <radialGradient id="gatGreen" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#d6ffe6"/><stop offset=".4" stop-color="#5cf0a6" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#5cf0a6" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="300" height="450" fill="url(#gatSky)"/>
+  ${Array.from({length:21}).map((_,i)=>{const a=(-90+(i-10)*8.5)*Math.PI/180;const x2=150+Math.cos(a)*260,y2=20+Math.sin(a)*260;return `<line x1="150" y1="20" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="#e7c777" stroke-width="${i%2?'.5':'1'}" opacity="${i%2?'.12':'.22'}"/>`}).join('')}
+  ${stars(26,7)}
+  <rect x="0" y="296" width="300" height="154" fill="#0b2230" opacity=".9"/>
+  <circle cx="150" cy="262" r="70" fill="url(#gatGreen)"/>
+  <circle cx="150" cy="262" r="9" fill="#eafff2"/>
+  <circle cx="150" cy="262" r="4" fill="#7dffc0"/>
+  ${Array.from({length:11}).map((_,i)=>`<line x1="${150-44+i*9}" y1="300" x2="${150-44+i*9}" y2="${330+(i%3)*22}" stroke="#5cf0a6" stroke-width="1.4" opacity="${(0.32-(Math.abs(i-5))*0.04).toFixed(2)}"/>`).join('')}
+  <path d="M0 360 q40 -7 75 0 t75 0 t75 0 t75 0" stroke="#7fd9c2" stroke-width=".7" fill="none" opacity=".3"/>
+  <path d="M0 392 q40 -7 75 0 t75 0 t75 0 t75 0" stroke="#7fd9c2" stroke-width=".6" fill="none" opacity=".22"/>
+`),
+
+/* ── NORWEGIAN WOOD · Tokyo — cold teal forest, bare trees, snow ── */
+norwegian: scene(`
+  <defs>
+    <linearGradient id="norSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#15302f"/><stop offset=".5" stop-color="#22504a"/>
+      <stop offset="1" stop-color="#2e6258"/></linearGradient>
+  </defs>
+  <rect width="300" height="450" fill="url(#norSky)"/>
+  <circle cx="218" cy="96" r="34" fill="#dff0e6" opacity=".5"/>
+  <circle cx="218" cy="96" r="34" fill="#22504a" opacity=".0"/>
+  <ellipse cx="150" cy="150" rx="200" ry="26" fill="#cfe6dc" opacity=".10"/>
+  <ellipse cx="150" cy="220" rx="200" ry="30" fill="#cfe6dc" opacity=".08"/>
+  ${[[42,'#10201e',1],[250,'#10201e',1.05],[110,'#0c1a18',1.25],[195,'#0c1a18',1.15],[150,'#091513',1.4]].map(([x,col,s])=>`
+    <g transform="translate(${x} 450) scale(${s})">
+      <line x1="0" y1="0" x2="0" y2="-230" stroke="${col}" stroke-width="6"/>
+      <line x1="0" y1="-150" x2="-22" y2="-180" stroke="${col}" stroke-width="3"/>
+      <line x1="0" y1="-150" x2="20" y2="-172" stroke="${col}" stroke-width="3"/>
+      <line x1="0" y1="-186" x2="-16" y2="-208" stroke="${col}" stroke-width="2.4"/>
+      <line x1="0" y1="-186" x2="18" y2="-206" stroke="${col}" stroke-width="2.4"/>
+      <line x1="0" y1="-110" x2="-26" y2="-128" stroke="${col}" stroke-width="2.6"/>
+      <line x1="0" y1="-110" x2="24" y2="-122" stroke="${col}" stroke-width="2.6"/>
+    </g>`).join('')}
+  ${Array.from({length:60}).map((_,i)=>{const x=(i*53+i*i*7)%300,y=(i*71+i*i*3)%450,r=((i*13)%10)/10*1.1+0.5;return `<circle cx="${x}" cy="${y}" r="${r.toFixed(2)}" fill="#eaf6ef" opacity="${(0.4+((i*5)%5)/10).toFixed(2)}"/>`}).join('')}
+`),
+
+/* ── CRIME AND PUNISHMENT · St Petersburg — cold dusk, rooftops, one lit window ── */
+crime: scene(`
+  <defs>
+    <linearGradient id="criSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#243150"/><stop offset=".5" stop-color="#374763"/>
+      <stop offset=".8" stop-color="#566179"/><stop offset="1" stop-color="#6b6f80"/></linearGradient>
+    <radialGradient id="criWin" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ffd98a"/><stop offset="1" stop-color="#ffd98a" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="300" height="450" fill="url(#criSky)"/>
+  ${stars(18,11)}
+  <ellipse cx="150" cy="330" rx="220" ry="30" fill="#d9ddе6" opacity=".06"/>
+  <!-- far rooftops -->
+  <path d="M0 250 H40 V232 H70 V250 H120 V214 L140 214 L140 250 H300 V450 H0 Z" fill="#1a2236"/>
+  <!-- spire -->
+  <path d="M210 250 L218 196 L226 250 Z" fill="#161d2e"/><line x1="218" y1="196" x2="218" y2="178" stroke="#161d2e" stroke-width="2"/><circle cx="218" cy="176" r="2.4" fill="#cbb46a"/>
+  <!-- near block -->
+  <rect x="0" y="280" width="300" height="170" fill="#10162a"/>
+  <!-- windows -->
+  ${Array.from({length:18}).map((_,i)=>{const cx=18+(i%6)*48, cy=300+Math.floor(i/6)*42;const lit=(i===8);return lit?`<circle cx="${cx+10}" cy="${cy+8}" r="26" fill="url(#criWin)"/><rect x="${cx}" y="${cy}" width="20" height="26" rx="1.5" fill="#ffcf78"/>`:`<rect x="${cx}" y="${cy}" width="20" height="26" rx="1.5" fill="#1d2740" opacity=".9"/>`}).join('')}
+  <!-- canal reflection -->
+  <rect x="0" y="430" width="300" height="20" fill="#0c1020"/>
+  <rect x="26" y="430" width="20" height="16" fill="#ffcf78" opacity=".18"/>
+`),
+
+/* ── MY NAME IS RED · Istanbul — crimson sky, gold, domes & minarets ── */
+red: scene(`
+  <defs>
+    <linearGradient id="redSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6f1417"/><stop offset=".45" stop-color="#9c2620"/>
+      <stop offset=".74" stop-color="#c0552c"/><stop offset="1" stop-color="#dd8a3e"/></linearGradient>
+    <radialGradient id="redSun" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ffe9b0"/><stop offset=".5" stop-color="#f6c662" stop-opacity=".85"/>
+      <stop offset="1" stop-color="#f6c662" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="300" height="450" fill="url(#redSky)"/>
+  <circle cx="150" cy="180" r="110" fill="url(#redSun)"/>
+  <circle cx="150" cy="180" r="40" fill="#ffeec0" opacity=".92"/>
+  ${[[40,16],[262,40],[80,52],[230,20],[150,60],[200,90],[60,96]].map(([x,y])=>`<g transform="translate(${x} ${y})"><path d="M0 -4 L1 -1 L4 -1 L1.5 1 L2.5 4 L0 2 L-2.5 4 L-1.5 1 L-4 -1 L-1 -1 Z" fill="#ffe6a8" opacity=".8"/></g>`).join('')}
+  <!-- skyline silhouette -->
+  <g fill="#430d12">
+    <rect x="0" y="318" width="300" height="132"/>
+    <!-- big dome -->
+    <path d="M96 318 Q96 262 150 262 Q204 262 204 318 Z"/>
+    <rect x="120" y="300" width="60" height="20"/>
+    <line x1="150" y1="262" x2="150" y2="244" stroke="#430d12" stroke-width="3"/><circle cx="150" cy="242" r="3" fill="#e0a83e"/>
+    <!-- side domes -->
+    <path d="M60 318 Q60 290 84 290 Q108 290 108 318 Z"/>
+    <path d="M192 318 Q192 290 216 290 Q240 290 240 318 Z"/>
+    <!-- minarets -->
+    <rect x="74" y="232" width="7" height="86"/><path d="M70 232 L77.5 214 L85 232 Z"/><circle cx="77.5" cy="212" r="2" fill="#e0a83e"/>
+    <rect x="220" y="240" width="7" height="78"/><path d="M216 240 L223.5 222 L231 240 Z"/><circle cx="223.5" cy="220" r="2" fill="#e0a83e"/>
+    <rect x="44" y="262" width="5" height="56"/><path d="M41 262 L46.5 248 L52 262 Z"/>
+    <rect x="252" y="266" width="5" height="52"/><path d="M249 266 L254.5 252 L260 266 Z"/>
+  </g>
+`),
+
+/* ── THE SHADOW OF THE WIND · Barcelona — sepia dusk, gothic spires, mist ── */
+shadow: scene(`
+  <defs>
+    <linearGradient id="shaSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e6a85a"/><stop offset=".4" stop-color="#c2773c"/>
+      <stop offset=".72" stop-color="#7c4a2e"/><stop offset="1" stop-color="#3a2622"/></linearGradient>
+    <radialGradient id="shaSun" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#fff0cf"/><stop offset=".5" stop-color="#ffd98f" stop-opacity=".7"/>
+      <stop offset="1" stop-color="#ffd98f" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="300" height="450" fill="url(#shaSky)"/>
+  <circle cx="150" cy="138" r="130" fill="url(#shaSun)"/>
+  <circle cx="150" cy="138" r="30" fill="#fff3da" opacity=".75"/>
+  ${stars(14,5)}
+  <ellipse cx="150" cy="250" rx="220" ry="34" fill="#f3d8ac" opacity=".14"/>
+  <ellipse cx="150" cy="300" rx="220" ry="40" fill="#f3d8ac" opacity=".10"/>
+  <!-- gothic skyline -->
+  <g fill="#241a1c">
+    <rect x="0" y="330" width="300" height="120"/>
+    <!-- cathedral mass -->
+    <rect x="110" y="250" width="80" height="80"/>
+    <path d="M110 250 L150 196 L190 250 Z"/>
+    <!-- twin spires (Sagrada-like) -->
+    <path d="M70 330 L80 196 L90 330 Z"/><circle cx="80" cy="194" r="3" fill="#caa05a"/>
+    <path d="M210 330 L220 184 L230 330 Z"/><circle cx="220" cy="182" r="3" fill="#caa05a"/>
+    <path d="M150 196 L156 150 L162 196 Z" transform="translate(-6 0)"/><circle cx="150" cy="150" r="3" fill="#caa05a"/>
+    <!-- lesser roofs -->
+    <path d="M20 330 V300 L40 282 L60 300 V330 Z"/>
+    <path d="M240 330 V296 L262 278 L284 296 V330 Z"/>
+    <!-- windows glow -->
+    <rect x="140" y="286" width="20" height="30" rx="9" fill="#3a2a22"/>
+  </g>
+  <rect x="146" y="290" width="8" height="22" rx="4" fill="#ffcf86" opacity=".5"/>
+`),
+};
+
+const COVERS=[
+  {id:'solitude',genre:'A Novel',title:'One Hundred<br>Years of Solitude',author:'Gabriel García Márquez',coords:'10.59° N · 74.19° W',place:'Aracataca, Colombia',year:'1967'},
+  {id:'gatsby',genre:'A Novel',title:'The Great<br>Gatsby',author:'F. Scott Fitzgerald',coords:'40.75° N · 73.99° W',place:'New York, USA',year:'1925'},
+  {id:'norwegian',genre:'A Novel',title:'Norwegian<br>Wood',author:'Haruki Murakami',coords:'35.69° N · 139.69° E',place:'Tokyo, Japan',year:'1987'},
+  {id:'crime',genre:'A Novel',title:'Crime and<br>Punishment',author:'Fyodor Dostoevsky',coords:'59.93° N · 30.34° E',place:'St Petersburg, Russia',year:'1866'},
+  {id:'red',genre:'A Novel',title:'My Name<br>Is Red',author:'Orhan Pamuk',coords:'41.01° N · 28.98° E',place:'Istanbul, Türkiye',year:'1998'},
+  {id:'shadow',genre:'A Novel',title:'The Shadow<br>of the Wind',author:'Carlos Ruiz Zafón',coords:'41.39° N · 2.17° E',place:'Barcelona, Spain',year:'2001'},
+];
+
+document.getElementById('gallery').innerHTML = COVERS.map(c=>`
+  <div class="item">
+    <div class="cover" data-screen-label="${c.id}">
+      ${SCENES[c.id]}
+      <span class="scrim-t"></span><span class="scrim-b"></span>
+      <span class="frame"></span>
+      <span class="tick tl"></span><span class="tick tr"></span><span class="tick bl"></span><span class="tick br"></span>
+      <div class="c-genre">${c.genre}</div>
+      <div class="c-spacer"></div>
+      <div class="c-title">${c.title}</div>
+      <div class="c-rule"></div>
+      <div class="c-author">${c.author}</div>
+      <div class="c-coords"><span class="star"></span>${c.coords}</div>
+    </div>
+    <div class="cap"><div class="place">${c.place}</div><div class="yr">${c.year}</div></div>
+  </div>`).join('');
+</script>
+</body>
+</html>
