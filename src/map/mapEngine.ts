@@ -804,6 +804,21 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
     callbacks.onBookClose();
   }
 
+  // Screen Y to center a panned-to point on. On phones a bottom sheet
+  // (author panel / book card) covers the lower part of the screen, so
+  // targets are centered in the visible map area above it instead of the
+  // full-viewport middle. On desktop the sheet is a side rail (top:0,
+  // full height), which this ignores — so it returns H/2 unchanged.
+  function focusCenterY(): number {
+    const sheet = document.querySelector('.author-panel.open, #bookCard.show') as HTMLElement | null;
+    if (sheet) {
+      const r = sheet.getBoundingClientRect();
+      const coversBottom = r.top > H * 0.25 && r.bottom > H * 0.7;
+      if (coversBottom) return r.top / 2;
+    }
+    return H / 2;
+  }
+
   function positionCard() {
     if (!openId) return;
     const d = pbooks.find(b => b.id === openId);
@@ -953,7 +968,7 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
       if (!pb) return;
       const k = Math.max(current.k, 4.2);
       const tx = W / 2 - k * pb._x;
-      const ty = H / 2 - k * pb._y;
+      const ty = focusCenterY() - k * pb._y;
       (svg as d3.Selection<SVGSVGElement, unknown, null, undefined>)
         .transition().duration(720).ease(d3.easeCubicInOut)
         .call(zoomBehavior.transform, d3.zoomIdentity.translate(tx, ty).scale(k));
@@ -963,7 +978,7 @@ export function initMap(stage: HTMLElement, callbacks: MapCallbacks): MapHandle 
       if (!p) return;
       const k = zoom;
       const tx = W / 2 - k * p[0];
-      const ty = H / 2 - k * p[1];
+      const ty = focusCenterY() - k * p[1];
       (svg as d3.Selection<SVGSVGElement, unknown, null, undefined>)
         .transition().duration(720).ease(d3.easeCubicInOut)
         .call(zoomBehavior.transform, d3.zoomIdentity.translate(tx, ty).scale(k));
