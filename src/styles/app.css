@@ -2160,6 +2160,9 @@ html[data-mode='author'][data-author-active] .markers-layer .marker.on { opacity
      half; the life journey lives in a bottom sheet whose timeline is a
      horizontal, swipeable filmstrip of event cards. */
   .author-panel {
+    /* Block (not flex) so the journey/books sections keep their natural
+       height; a flex column would shrink them when content overflows. */
+    display: block;
     top: auto;
     bottom: 0;
     left: 0;
@@ -2208,6 +2211,7 @@ html[data-mode='author'][data-author-active] .markers-layer .marker.on { opacity
   .author-tl-item {
     flex: 0 0 210px;
     width: 210px;
+    min-height: 142px;
     flex-direction: column;
     gap: 8px;
     padding: 13px 14px;
