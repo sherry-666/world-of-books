@@ -2,6 +2,14 @@ import { useEffect, useRef, useState } from 'react';
 
 export const LANGUAGE_OPTIONS = ['English', 'French', 'Chinese'] as const;
 
+// Each language is shown in its own native name (endonym), fixed — it
+// does not follow the primary-language UI translation.
+export const LANGUAGE_LABELS: Record<(typeof LANGUAGE_OPTIONS)[number], string> = {
+  English: 'English',
+  French: 'Français',
+  Chinese: '中文',
+};
+
 interface Props {
   selected: Set<string>;
   onChange: (next: Set<string>) => void;
@@ -32,7 +40,7 @@ export function LanguageFilter({ selected, onChange, primaryLanguage, onPrimaryC
   const label =
     selected.size === 0                  ? 'No language' :
     selected.size === LANGUAGE_OPTIONS.length ? 'All languages' :
-    Array.from(selected).join(' · ');
+    Array.from(selected).map(l => LANGUAGE_LABELS[l as keyof typeof LANGUAGE_LABELS] ?? l).join(' · ');
 
   return (
     <div className="chrome langfilter" ref={rootRef}>
@@ -58,7 +66,7 @@ export function LanguageFilter({ selected, onChange, primaryLanguage, onPrimaryC
                     disabled={isPrimary}
                     onChange={() => toggle(lang)}
                   />
-                  <span>{lang}</span>
+                  <span>{LANGUAGE_LABELS[lang]}</span>
                 </label>
                 <button
                   className={`langfilter-star${isPrimary ? ' active' : ''}`}
