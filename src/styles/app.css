@@ -2045,3 +2045,114 @@ html[data-mode='author'][data-author-active] .markers-layer .marker.on { opacity
 }
 
 .card-author-link:hover { opacity: .75; }
+
+/* ============================================================
+   RESPONSIVE — tablet & mobile
+   The desktop layout is a set of fixed-positioned overlays sized
+   for wide screens. Below ~880px they collide, so the chrome is
+   restacked into clean, non-overlapping bands; below 600px the
+   book card becomes a bottom sheet and panels widen.
+   ============================================================ */
+
+/* ---- Tablet & narrow windows: restack the top/bottom chrome ---- */
+@media (max-width: 880px) {
+  /* Masthead → compact branding, top-left.
+     Made non-interactive so map pans/taps pass through the title. */
+  .masthead {
+    top: 10px;
+    left: calc(12px + env(safe-area-inset-left));
+    max-width: calc(100vw - 168px);
+    overflow: hidden;
+  }
+  .masthead, .masthead * { pointer-events: none; }
+  .masthead .eyebrow {
+    font-size: 9px;
+    letter-spacing: .26em;
+    margin: 0 0 4px 1px;
+  }
+  .masthead h1 {
+    font-size: 19px;
+    gap: 7px;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, .4);
+  }
+  .masthead-logo { width: 26px !important; height: 26px !important; }
+  .masthead .rule,
+  .masthead .sub { display: none; }
+
+  /* Language filter → top-right, capped width */
+  .langfilter { top: 12px; right: calc(12px + env(safe-area-inset-right)); }
+  .langfilter-btn {
+    height: 38px;
+    padding: 0 11px;
+    font-size: 10px;
+    letter-spacing: .07em;
+    max-width: 132px;
+  }
+  .langfilter-menu { top: 46px; }
+
+  /* Search → its own full-width band beneath the masthead */
+  .searchbar {
+    top: 56px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(520px, calc(100vw - 24px));
+  }
+
+  /* Zoom → horizontal toolbar, bottom-right. The vertical scale is
+     dropped; pinch-to-zoom and the +/- buttons cover it on touch. */
+  .zoomctl {
+    top: auto;
+    bottom: calc(16px + env(safe-area-inset-bottom));
+    right: calc(12px + env(safe-area-inset-right));
+    flex-direction: row;
+    gap: 8px;
+  }
+  .zoomscale { display: none; }
+  .zoomctl .home { margin-top: 0; }
+
+  /* Legend → keep the count pill, drop the verbose hint text */
+  .legend {
+    left: calc(12px + env(safe-area-inset-left));
+    bottom: calc(16px + env(safe-area-inset-bottom));
+  }
+  .legend .hint { display: none; }
+
+  /* Author page: the panel slides in over the map, so pull its
+     masthead variant back to the screen edge. */
+  .masthead-authors { left: calc(12px + env(safe-area-inset-left)); }
+}
+
+/* ---- Phones: book card → bottom sheet, panels widen ---- */
+@media (max-width: 600px) {
+  /* Override the imperative left/top the map engine sets per-marker
+     and pin the card as a bottom sheet instead. */
+  #bookCard {
+    left: calc(8px + env(safe-area-inset-left)) !important;
+    right: calc(8px + env(safe-area-inset-right));
+    top: auto !important;
+    bottom: calc(8px + env(safe-area-inset-bottom));
+    width: auto !important;
+    max-width: none;
+    max-height: 74vh;
+    transform-origin: center bottom !important;
+  }
+  #bookCard.flip { transform-origin: center bottom !important; }
+  #bookCard:not(.show) { transform: translateY(18px) scale(.98); }
+
+  .card-body {
+    min-height: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 16px 16px 18px;
+  }
+  .cover { flex-basis: 104px; width: 104px; }
+  .card-title { font-size: 23px; }
+  .card-blurb { font-size: 15px; margin-bottom: 14px; }
+  .card-close { width: 32px; height: 32px; font-size: 22px; }
+
+  /* Keep long result lists from running off-screen */
+  .searchbar-dropdown { max-height: 50vh; overflow-y: auto; }
+
+  /* Author panel → near-full-width sheet */
+  .author-panel { width: min(330px, 90vw); padding: 22px 18px 40px; }
+}
