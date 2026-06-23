@@ -2,6 +2,7 @@ import type { Book, Author } from '../types';
 import type { UIStrings } from '../i18n';
 import { translatePlace, translateCountry } from '../placeNames';
 import { findAuthorByNameKey, localize } from '../authors';
+import { BOOK_COVER_SCENES } from '../bookCovers';
 
 function coverInitials(title: string): string {
   const latin = title.replace(/[^A-Za-z ]/g, '').trim();
@@ -9,6 +10,13 @@ function coverInitials(title: string): string {
     return latin.split(/\s+/).filter(Boolean).slice(0, 3).map(w => w[0]).join('');
   }
   return Array.from(title)[0] ?? '';
+}
+
+/** The setting's real coordinates, engraved on illustrated covers (e.g. "30.00° N · 120.58° E"). */
+function formatCoords(lat: number, lng: number): string {
+  const ns = lat >= 0 ? 'N' : 'S';
+  const ew = lng >= 0 ? 'E' : 'W';
+  return `${Math.abs(lat).toFixed(2)}° ${ns} · ${Math.abs(lng).toFixed(2)}° ${ew}`;
 }
 
 interface BookCardProps {
@@ -32,6 +40,7 @@ export function BookCard({ book, displayLanguage, onClose, t, onAuthorSelect, pr
   const title = book.titles[displayLanguage] ?? book.titles[book.languages[0]];
   const blurb = book.blurbs[displayLanguage] ?? book.blurbs[book.languages[0]];
   const initials = coverInitials(title);
+  const coverScene = BOOK_COVER_SCENES[book.id];
   const rel = book.relation === 'set' ? t.setIn : t.portraitOf;
   const eyebrow = book.relation === 'set' ? t.aNOVEL : t.aPORTRAIT;
   const authorEntry = findAuthorByNameKey(book.author);
@@ -49,16 +58,35 @@ export function BookCard({ book, displayLanguage, onClose, t, onAuthorSelect, pr
         ×
       </button>
 
-      <div className="cover">
-        <div className="cover-frame">
-          <div className="cover-top">{eyebrow}</div>
-          <div className="cover-title">{title}</div>
-          <div className="cover-rule" />
-          <div className="cover-author">{authorDisplayName}</div>
-          <div className="cover-mark">{initials}</div>
+      {coverScene ? (
+        <div className="cover cover--illustrated">
+          <div className="cover-art-wrap" dangerouslySetInnerHTML={{ __html: coverScene }} />
+          <span className="cover-scrim-t" />
+          <span className="cover-scrim-b" />
+          <div className="cover-frame">
+            <div className="cover-top">{eyebrow}</div>
+            <div className="cover-spacer" />
+            <div className="cover-title">{title}</div>
+            <div className="cover-rule" />
+            <div className="cover-author">{authorDisplayName}</div>
+            <div className="cover-coords"><span className="cover-coords-star" />{formatCoords(book.lat, book.lng)}</div>
+          </div>
+          <span className="cover-tick tl" /><span className="cover-tick tr" />
+          <span className="cover-tick bl" /><span className="cover-tick br" />
+          <div className="cover-spine" />
         </div>
-        <div className="cover-spine" />
-      </div>
+      ) : (
+        <div className="cover">
+          <div className="cover-frame">
+            <div className="cover-top">{eyebrow}</div>
+            <div className="cover-title">{title}</div>
+            <div className="cover-rule" />
+            <div className="cover-author">{authorDisplayName}</div>
+            <div className="cover-mark">{initials}</div>
+          </div>
+          <div className="cover-spine" />
+        </div>
+      )}
 
       <div className="card-body">
         {clusterTotal !== undefined && clusterTotal > 1 && (

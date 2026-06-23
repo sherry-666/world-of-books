@@ -1050,6 +1050,104 @@ html.no-anim .mk-inner { animation-play-state: paused; }
   flex-shrink: 0;
 }
 
+/* ── Illustrated cover ("Map of Stories" atlas plate) ──
+   A full-bleed painted scene of the setting behind the fixed gold frame.
+   Gold + navy is the constant binding; the picture inside changes per book. */
+.cover--illustrated {
+  overflow: hidden;
+  background: #0b1730;
+}
+.cover-art-wrap,
+.cover--illustrated .cover-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+/* Scrims keep the type legible over any scene. */
+.cover-scrim-t {
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 24%;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(8, 16, 34, .65), transparent);
+}
+.cover-scrim-b {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 64%;
+  z-index: 1;
+  background: linear-gradient(180deg, transparent 0%, rgba(11, 23, 48, .6) 50%, rgba(8, 16, 34, .94) 100%);
+}
+/* The frame and its type sit above the scene. */
+.cover--illustrated .cover-frame {
+  inset: 11px 10px;
+  z-index: 2;
+  justify-content: flex-start;
+  border-color: rgba(224, 189, 114, .5);
+  color: #f6ecd2;
+  padding: 11px 8px 9px;
+}
+.cover--illustrated .cover-top {
+  color: #e0bd72;
+  opacity: .9;
+  text-shadow: 0 1px 5px rgba(8, 16, 34, .8);
+}
+.cover-spacer { flex: 1 1 auto; }
+.cover--illustrated .cover-title {
+  margin-top: 0;
+  text-shadow: 0 2px 12px rgba(8, 16, 34, .85);
+}
+.cover--illustrated .cover-rule {
+  background: #e0bd72;
+  opacity: .7;
+}
+.cover--illustrated .cover-author {
+  margin-bottom: 0;
+  text-shadow: 0 1px 7px rgba(8, 16, 34, .85);
+}
+.cover-coords {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 9px;
+  font-family: var(--font-label);
+  font-size: 7.5px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: #e0bd72;
+  opacity: .85;
+  text-shadow: 0 1px 5px rgba(8, 16, 34, .8);
+}
+.cover-coords-star {
+  width: 3px;
+  height: 3px;
+  background: #e0bd72;
+  transform: rotate(45deg);
+}
+/* Right-angle corner ticks, identical on every plate. */
+.cover-tick {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  z-index: 3;
+}
+.cover-tick::before,
+.cover-tick::after {
+  content: '';
+  position: absolute;
+  background: #e0bd72;
+  opacity: .9;
+}
+.cover-tick::before { width: 7px; height: 1px; top: 0; left: 0; }
+.cover-tick::after { width: 1px; height: 7px; top: 0; left: 0; }
+.cover-tick.tl { left: 17px; top: 17px; }
+.cover-tick.tr { right: 17px; top: 17px; transform: scaleX(-1); }
+.cover-tick.bl { left: 17px; bottom: 17px; transform: scaleY(-1); }
+.cover-tick.br { right: 17px; bottom: 17px; transform: scale(-1, -1); }
+.cover--illustrated .cover-spine { z-index: 3; }
+
 /* Card body */
 .card-body {
   flex: 1;
