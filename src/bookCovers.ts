@@ -339,4 +339,26 @@ export const BOOK_COVER_SCENES: Record<string, string> = {
     <path d="M0 360 q40 -5 75 0 t75 0 t75 0 t75 0" stroke="#cdd5d4" stroke-width=".7" fill="none" opacity=".3"/>
     <path d="M0 396 q40 -5 75 0 t75 0 t75 0 t75 0" stroke="#cdd5d4" stroke-width=".6" fill="none" opacity=".22"/>
   `),
+
+  /* ── The Great Gatsby · West Egg — deco night, the green light over the bay ── */
+  gatsby: scene(`
+    <defs>
+      <linearGradient id="gatSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0f1a44"/><stop offset=".5" stop-color="#163a5c"/>
+        <stop offset=".66" stop-color="#1c6f68"/><stop offset="1" stop-color="#0c2536"/></linearGradient>
+      <radialGradient id="gatGreen" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#d6ffe6"/><stop offset=".4" stop-color="#5cf0a6" stop-opacity=".9"/>
+        <stop offset="1" stop-color="#5cf0a6" stop-opacity="0"/></radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#gatSky)"/>
+    ${Array.from({ length: 21 }).map((_, i) => { const a = (-90 + (i - 10) * 8.5) * Math.PI / 180; const x2 = 150 + Math.cos(a) * 260, y2 = 20 + Math.sin(a) * 260; return `<line x1="150" y1="20" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="#e7c777" stroke-width="${i % 2 ? '.5' : '1'}" opacity="${i % 2 ? '.12' : '.22'}"/>`; }).join('')}
+    ${stars(26, 7)}
+    <rect x="0" y="296" width="300" height="154" fill="#0b2230" opacity=".9"/>
+    <circle cx="150" cy="262" r="70" fill="url(#gatGreen)"/>
+    <circle cx="150" cy="262" r="9" fill="#eafff2"/>
+    <circle cx="150" cy="262" r="4" fill="#7dffc0"/>
+    ${Array.from({ length: 11 }).map((_, i) => `<line x1="${150 - 44 + i * 9}" y1="300" x2="${150 - 44 + i * 9}" y2="${330 + (i % 3) * 22}" stroke="#5cf0a6" stroke-width="1.4" opacity="${(0.32 - (Math.abs(i - 5)) * 0.04).toFixed(2)}"/>`).join('')}
+    <path d="M0 360 q40 -7 75 0 t75 0 t75 0 t75 0" stroke="#7fd9c2" stroke-width=".7" fill="none" opacity=".3"/>
+    <path d="M0 392 q40 -7 75 0 t75 0 t75 0 t75 0" stroke="#7fd9c2" stroke-width=".6" fill="none" opacity=".22"/>
+  `),
 };
