@@ -560,4 +560,271 @@ export const AMERICAS_EXTRA_COVERS: Record<string, string> = {
     </g>
     <path d="M0 308 Q150 300 300 306" stroke="#8aaab0" stroke-width=".6" fill="none" opacity=".3"/>
   `),
+
+  /* ── The Women of Brewster Place · Chicago — seven women, a dead-end wall, endurance ── */
+  womenbrewster: scene(`
+    <defs>
+      <linearGradient id="wbSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a1828"/><stop offset=".4" stop-color="#3a3448"/>
+        <stop offset=".72" stop-color="#7a6050"/><stop offset="1" stop-color="#a08050"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#wbSky)"/>
+    ${stars(8, 227)}
+    <path d="M0 318 Q150 306 300 316 L300 450 L0 450 Z" fill="#2a1e18"/>
+    <path d="M0 372 Q150 362 300 370 L300 450 L0 450 Z" fill="#1e1610"/>
+    <rect x="0" y="182" width="300" height="140" fill="#2a2430"/>
+    <g fill="#1e1828">
+      <rect x="0" y="182" width="60" height="140"/>
+      <rect x="68" y="182" width="48" height="140"/>
+      <rect x="124" y="182" width="56" height="140"/>
+      <rect x="188" y="182" width="52" height="140"/>
+      <rect x="248" y="182" width="52" height="140"/>
+    </g>
+    ${Array.from({length:20}).map((_,i)=>{const x=4+(i%5)*62+(i%2)*16, y=194+Math.floor(i/5)*28; return `<rect x="${x}" y="${y}" width="14" height="18" fill="#e0a048" opacity="${0.28+((i*7)%5)/10}"/>`;}).join('')}
+    <rect x="0" y="318" width="300" height="8" fill="#4a4038"/>
+    ${Array.from({length:12}).map((_,i)=>`<rect x="${10+i*24}" y="${322}" width="18" height="4" rx="1" fill="#5a5048"/>`).join('')}
+    <g fill="#141018">
+      ${[-30,-12,6,24].map(dx=>`<circle cx="${150+dx}" cy="${300}" r="4.5"/><rect x="${147+dx}" y="${304}" width="4" height="12" rx="1"/>`).join('')}
+    </g>
+  `),
+
+  /* ── The House on Mango Street · Chicago — Esperanza Cordero's world, a cramped house, dreams ── */
+  housemangostreet: scene(`
+    <defs>
+      <linearGradient id="hmsSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2a3040"/><stop offset=".38" stop-color="#4a5060"/>
+        <stop offset=".68" stop-color="#8a7858"/><stop offset="1" stop-color="#c0a050"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#hmsSky)"/>
+    ${stars(8, 229)}
+    <path d="M0 318 Q150 306 300 316 L300 450 L0 450 Z" fill="#4a6020"/>
+    <path d="M0 368 Q150 358 300 366 L300 450 L0 450 Z" fill="#3a5018"/>
+    <g fill="#1e1808">
+      <rect x="88" y="202" width="124" height="122"/>
+      <path d="M80 206 L150 172 L220 206 Z"/>
+      <rect x="102" y="172" width="96" height="34"/>
+      <path d="M96 176 L150 146 L204 176 Z"/>
+      <rect x="124" y="146" width="52" height="30"/>
+    </g>
+    ${[[94,218],[110,218],[94,248],[110,248],[164,218],[180,218],[164,248],[180,248]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="14" fill="#e8b040" opacity="${y===218?'.4':'.32'}"/>`).join('')}
+    <rect x="134" y="272" width="32" height="44" rx="1" fill="#2e2010"/>
+    <rect x="142" y="278" width="16" height="38" fill="#e8b040" opacity=".22"/>
+    <rect x="86" y="320" width="128" height="6" rx="1" fill="#c0a050" opacity=".3"/>
+    <path d="M86 320 L86 322 Q88 324 150 322 Q212 320 214 322 L214 320" stroke="#c0a050" stroke-width=".5" fill="none" opacity=".4"/>
+    <g fill="#100e08">
+      <circle cx="150" cy="298" r="5.5"/>
+      <rect x="147" y="303" width="5" height="14" rx="1"/>
+    </g>
+    ${[-18,-6,6,18].map(dx=>`<circle cx="${150+dx}" cy="${146}" r="${3+Math.abs(dx)/12}" fill="#c04820" opacity=".6"/>`).join('')}
+  `),
+
+  /* ── Love Medicine · North Dakota — Chippewa families, a reservation, tangled love and loss ── */
+  lovemedicine: scene(`
+    <defs>
+      <linearGradient id="lmMSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2a3040"/><stop offset=".38" stop-color="#4a5868"/>
+        <stop offset=".68" stop-color="#8aa0a0"/><stop offset="1" stop-color="#b0c0b0"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#lmMSky)"/>
+    ${stars(9, 233)}
+    <path d="M0 296 Q60 274 110 284 Q140 292 150 280 Q160 268 190 276 Q240 288 300 268 L300 450 L0 450 Z" fill="#9a8050"/>
+    <path d="M0 342 Q150 328 300 338 L300 450 L0 450 Z" fill="#7a6238"/>
+    <path d="M0 392 Q150 380 300 388 L300 450 L0 450 Z" fill="#5e4a24"/>
+    <path d="M0 436 Q150 428 300 434 L300 450 L0 450 Z" fill="#462e10"/>
+    ${Array.from({length:8}).map((_,i)=>`<path d="M${64+i*26} ${300+i%2*12} Q${76+i*26} ${288+i%2*10} ${88+i*26} ${300+i%2*12}" stroke="#c0a060" stroke-width="1.2" fill="none" opacity=".38"/>`).join('')}
+    <g fill="#1e2818">
+      <rect x="148" y="166" width="4" height="114"/>
+      <path d="M150 166 Q128 184 120 212 Q136 196 150 188 Q164 196 180 212 Q172 184 150 166 Z"/>
+      <path d="M150 196 Q130 212 124 238 Q140 224 150 218 Q160 224 176 238 Q170 212 150 196 Z"/>
+      <path d="M150 224 Q132 238 128 262 Q142 250 150 246 Q158 250 172 262 Q168 238 150 224 Z"/>
+    </g>
+    <g fill="#180e06">
+      <circle cx="120" cy="278" r="5.5"/>
+      <rect x="117" y="283" width="5" height="14" rx="1"/>
+      <circle cx="180" cy="274" r="5"/>
+      <rect x="177" y="279" width="5" height="12" rx="1"/>
+    </g>
+  `),
+
+  /* ── Bad Behavior · New York — nine tart stories, desire, cruelty, the 1980s downtown scene ── */
+  badbehavior: scene(`
+    <defs>
+      <linearGradient id="bbSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0e0c18"/><stop offset=".5" stop-color="#1c1828"/>
+        <stop offset="1" stop-color="#2e2838"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#bbSky)"/>
+    ${stars(10, 237)}
+    <g fill="#141020">
+      <rect x="0" y="206" width="54" height="244"/>
+      <rect x="246" y="192" width="54" height="258"/>
+      <rect x="62" y="228" width="42" height="222"/>
+      <rect x="198" y="218" width="42" height="232"/>
+    </g>
+    ${[[4,224],[18,224],[4,254],[18,254],[252,210],[266,210],[252,240],[252,270]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="14" fill="#e04080" opacity=".42"/>`).join('')}
+    <rect x="108" y="164" width="84" height="56" fill="#1a1428"/>
+    <rect x="114" y="170" width="72" height="44" fill="#241e30"/>
+    ${[-16,-4,8,20].map(dx=>`<circle cx="${150+dx}" cy="${190}" r="5" fill="#e04080" opacity=".32"/>`).join('')}
+    <path d="M0 374 Q150 364 300 372 L300 450 L0 450 Z" fill="#0c0a14"/>
+    <path d="M0 374 Q150 368 300 372" stroke="#e04080" stroke-width=".4" fill="none" opacity=".25"/>
+    <g fill="#0e0c18">
+      <circle cx="138" cy="292" r="5.5"/>
+      <rect x="135" y="297" width="5" height="18" rx="1"/>
+      <circle cx="162" cy="288" r="5"/>
+      <rect x="159" y="293" width="5" height="16" rx="1"/>
+    </g>
+    ${Array.from({length:6}).map((_,i)=>`<path d="M${104+i*18} ${374} L${104+i*18} ${388}" stroke="#e04080" stroke-width="1" opacity="${0.15+i%2*0.1}"/>`).join('')}
+  `),
+
+  /* ── Bastard Out of Carolina · South Carolina — Bone Boatwright, the Appalachian poor, survivance ── */
+  bastardcarolina: scene(`
+    <defs>
+      <linearGradient id="bcSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2a2828"/><stop offset=".4" stop-color="#4a4038"/>
+        <stop offset=".72" stop-color="#8a7050"/><stop offset="1" stop-color="#b09050"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#bcSky)"/>
+    ${stars(7, 239)}
+    <path d="M0 298 Q80 274 150 284 T300 290 L300 450 L0 450 Z" fill="#4a6828"/>
+    <path d="M0 348 Q80 328 150 338 T300 338 L300 450 L0 450 Z" fill="#3a5820"/>
+    <path d="M0 402 Q80 386 150 394 T300 390 L300 450 L0 450 Z" fill="#2a4818"/>
+    <g fill="#1e1808">
+      <path d="M0 296 Q0 248 24 236 Q34 230 44 242 Q58 260 58 296 Z"/>
+      <path d="M220 298 Q220 248 244 236 Q254 230 266 242 Q282 260 300 298 Z"/>
+      <rect x="116" y="238" width="68" height="64"/>
+      <path d="M108 242 L150 216 L192 242 Z"/>
+      <rect x="126" y="216" width="48" height="26"/>
+    </g>
+    ${[[120,252],[136,252],[120,278],[136,278],[156,252],[172,252]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="14" fill="#e8a040" opacity=".4"/>`).join('')}
+    <g fill="#160e04">
+      <circle cx="150" cy="298" r="5.5"/>
+      <rect x="147" y="303" width="5" height="12" rx="1"/>
+    </g>
+  `),
+
+  /* ── A Lesson Before Dying · Louisiana — a teacher in a death-row cell, dignity, the Quarters ── */
+  lessonbefore: scene(`
+    <defs>
+      <linearGradient id="lbdSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a1808"/><stop offset=".4" stop-color="#2e2610"/>
+        <stop offset=".72" stop-color="#5a4820"/><stop offset="1" stop-color="#8a7030"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#lbdSky)"/>
+    ${stars(7, 241)}
+    <path d="M0 316 Q150 304 300 314 L300 450 L0 450 Z" fill="#5a6828"/>
+    <path d="M0 366 Q150 356 300 364 L300 450 L0 450 Z" fill="#486020"/>
+    <rect x="96" y="158" width="108" height="162" fill="#1e1a0e"/>
+    <rect x="102" y="164" width="96" height="150" fill="#2e2810"/>
+    ${[[108,178],[124,178],[108,208],[124,208],[154,178],[170,178],[154,208],[170,208],[108,238],[124,238]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="18" fill="#e8a848" opacity="${y===238?'.25':'.35'}"/>`).join('')}
+    <g fill="#141008">
+      <rect x="138" y="252" width="24" height="62" rx="1"/>
+      <rect x="138" y="248" width="24" height="6" rx="1"/>
+      <rect x="126" y="258" width="14" height="48" rx="1"/>
+      <rect x="160" y="258" width="14" height="48" rx="1"/>
+    </g>
+    <path d="M0 316 Q150 310 300 314" stroke="#8a7030" stroke-width=".5" fill="none" opacity=".28"/>
+    <g fill="#100e08">
+      <rect x="144" y="226" width="12" height="26" rx="1"/>
+      <circle cx="150" cy="222" r="8"/>
+    </g>
+  `),
+
+  /* ── Stone Butch Blues · New York — Jess, the factories, queer working-class 1960s-80s ── */
+  stonebutch: scene(`
+    <defs>
+      <linearGradient id="sblueSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0e1018"/><stop offset=".4" stop-color="#1c1c28"/>
+        <stop offset=".72" stop-color="#3a3038"/><stop offset="1" stop-color="#5a4848"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#sblueSky)"/>
+    ${stars(9, 243)}
+    <g fill="#141018">
+      <rect x="0" y="198" width="40" height="252"/>
+      <rect x="44" y="220" width="30" height="230"/>
+      <rect x="78" y="190" width="46" height="260"/>
+      <rect x="128" y="208" width="30" height="242"/>
+      <rect x="162" y="188" width="46" height="262"/>
+      <rect x="212" y="210" width="32" height="240"/>
+      <rect x="248" y="196" width="52" height="254"/>
+    </g>
+    ${Array.from({length:8}).map((_,i)=>`<rect x="${50+i*24}" y="${152}" width="6" height="${28+i%2*18}" fill="#141018"/>`).join('')}
+    ${Array.from({length:8}).map((_,i)=>`<circle cx="${53+i*24}" cy="${148}" r="4" fill="#6a3010" opacity=".45"/>`).join('')}
+    ${Array.from({length:8}).map((_,i)=>`<path d="M${51+i*24} ${148} Q${53+i*24} ${130+i%3*12} ${55+i*24} ${148}" stroke="#4a2208" stroke-width="4" fill="none" opacity=".4"/>`).join('')}
+    ${Array.from({length:12}).map((_,i)=>{const x=(i*43+11)%300, y=208+(i*37)%200; return `<rect x="${x}" y="${y}" width="4" height="6" fill="#c08040" opacity="${0.12+((i*7)%5)/10}"/>`;}).join('')}
+    <path d="M0 372 Q150 362 300 370 L300 450 L0 450 Z" fill="#0c0a14"/>
+    <path d="M0 372 Q150 366 300 370" stroke="#6a3010" stroke-width=".5" fill="none" opacity=".28"/>
+    <g fill="#0e0c14">
+      <circle cx="150" cy="340" r="7"/>
+      <rect x="146" y="347" width="7" height="22" rx="1"/>
+    </g>
+  `),
+
+  /* ── The Shipping News · Newfoundland — a rocky cove, an old house, storm-grey Atlantic ── */
+  shippingnews: scene(`
+    <defs>
+      <linearGradient id="snSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#283040"/><stop offset=".38" stop-color="#4a5868"/>
+        <stop offset=".65" stop-color="#7a9098"/><stop offset="1" stop-color="#9ab0b8"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#snSky)"/>
+    ${stars(8, 247)}
+    <path d="M0 316 Q150 302 300 314 L300 450 L0 450 Z" fill="#3a5868"/>
+    <path d="M0 356 Q75 348 150 354 T300 352 L300 450 L0 450 Z" fill="#2a4858"/>
+    <path d="M0 400 Q75 394 150 398 T300 396 L300 450 L0 450 Z" fill="#1e3848"/>
+    ${Array.from({length:5}).map((_,i)=>`<path d="M${40+i*46} ${330+i%2*10} Q${58+i*46} ${322+i%2*8} ${76+i*46} ${330+i%2*10}" stroke="#7ab0b8" stroke-width="1" fill="none" opacity=".4"/>`).join('')}
+    <path d="M0 292 Q40 268 70 274 Q90 280 110 272 Q120 268 130 274 L130 316 L0 316 Z" fill="#3a3028"/>
+    <path d="M170 274 Q180 268 200 274 Q230 280 260 272 Q278 266 300 274 L300 316 L170 316 Z" fill="#2e2820"/>
+    <g fill="#1e1810">
+      <rect x="112" y="216" width="76" height="102"/>
+      <path d="M104 220 L150 188 L196 220 Z"/>
+      <rect x="122" y="188" width="56" height="32"/>
+      <path d="M116 192 L150 166 L184 192 Z"/>
+      <rect x="138" y="166" width="24" height="26"/>
+      <rect x="144" y="154" width="12" height="14"/>
+    </g>
+    ${[[118,228],[134,228],[118,256],[134,256],[154,228],[168,228]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="16" fill="#ffd060" opacity="${y===228?'.38':'.30'}"/>`).join('')}
+    <path d="M0 316 Q150 308 300 314" stroke="#9ab0b8" stroke-width=".6" fill="none" opacity=".3"/>
+  `),
+
+  /* ── The Plot Against America · Newark — an alternate history, Lindbergh fascism, a Jewish family ── */
+  plotagainst: scene(`
+    <defs>
+      <linearGradient id="paSky2" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a1820"/><stop offset=".38" stop-color="#3a3448"/>
+        <stop offset=".68" stop-color="#6a5a50"/><stop offset="1" stop-color="#9a8050"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#paSky2)"/>
+    ${stars(10, 251)}
+    <g fill="#141020">
+      <rect x="0" y="202" width="54" height="248"/>
+      <rect x="246" y="186" width="54" height="264"/>
+      <rect x="62" y="222" width="44" height="228"/>
+      <rect x="198" y="212" width="44" height="238"/>
+      <rect x="112" y="196" width="78" height="254"/>
+    </g>
+    ${Array.from({length:14}).map((_,i)=>{const x=(i*41+9)%300, y=210+(i*37)%200; return `<rect x="${x}" y="${y}" width="4" height="6" fill="#e8b048" opacity="${0.15+((i*7)%5)/10}"/>`;}).join('')}
+    <path d="M0 374 Q150 364 300 372 L300 450 L0 450 Z" fill="#0e0c18"/>
+    <g fill="#8a3010" opacity=".5">
+      <path d="M142 148 L150 134 L158 148 Z"/>
+      <path d="M150 134 L134 140 L150 148 Z"/>
+      <path d="M150 134 L166 140 L150 148 Z"/>
+      <path d="M142 148 L134 140 L134 158 Z"/>
+      <path d="M158 148 L166 140 L166 158 Z"/>
+      <path d="M142 148 L150 162 L158 148 Z"/>
+    </g>
+    <rect x="0" y="374" width="300" height="4" fill="#8a3010" opacity=".25"/>
+    <g fill="#0e0c14">
+      <circle cx="150" cy="344" r="5.5"/>
+      <rect x="147" y="349" width="5" height="22" rx="1"/>
+    </g>
+  `),
 };
