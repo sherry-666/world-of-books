@@ -92,11 +92,15 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
   setCanvasSize();
 
   // SVG overlay for stars, markers, labels
+  // SVG must be position:absolute so it stacks above the canvas (both are
+  // positioned elements; DOM order then determines which is on top).
   const svg = d3.select(stage)
     .append('svg')
     .attr('class', 'map-svg globe-svg')
     .attr('width', W)
     .attr('height', H)
+    .style('position', 'absolute')
+    .style('inset', '0')
     .attr('role', 'application')
     .attr('aria-label', 'World of Books — interactive globe');
 
