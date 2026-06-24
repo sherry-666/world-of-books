@@ -351,4 +351,126 @@ export const EUROPE_COVERS: Record<string, string> = {
     </g>
     <rect x="150" y="312" width="14" height="10" fill="#5a6a4a" opacity=".6"/>
   `),
+
+  /* ── The Tin Drum · Gdańsk — a small boy with a drum, cobblestones, Baltic storm-light ── */
+  tindrum: scene(`
+    <defs>
+      <linearGradient id="tdSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#4a5868"/><stop offset=".46" stop-color="#7a8898"/>
+        <stop offset=".78" stop-color="#a09880"/><stop offset="1" stop-color="#c4a870"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#tdSky)"/>
+    ${stars(7, 13)}
+    <g fill="#2a2820">
+      <rect x="0" y="220" width="74" height="230"/>
+      <rect x="226" y="208" width="74" height="242"/>
+      <rect x="78" y="256" width="52" height="194"/>
+      <rect x="174" y="244" width="52" height="206"/>
+    </g>
+    ${[[8,240],[22,240],[8,272],[22,272],[234,226],[250,226],[234,258]].map(([x,y])=>`<rect x="${x}" y="${y}" width="11" height="14" fill="#ffc848" opacity=".38"/>`).join('')}
+    <rect x="0" y="372" width="300" height="78" fill="#1a1810"/>
+    <path d="M62 372 Q150 362 238 370" stroke="#c4a870" stroke-width=".6" fill="none" opacity=".3"/>
+    <g fill="#181410">
+      <ellipse cx="150" cy="330" rx="22" ry="10"/>
+      <rect x="138" y="290" width="24" height="40" rx="1"/>
+      <circle cx="150" cy="284" r="12"/>
+      <rect x="128" y="314" width="8" height="4" rx="1"/>
+      <rect x="164" y="314" width="8" height="4" rx="1"/>
+      ${[-10,0,10].map(dx=>`<rect x="${150+dx}" y="${310}" width="3" height="18" rx="1" fill="#c84820" opacity=".7"/>`).join('')}
+      <rect x="136" y="308" width="28" height="6" rx="3"/>
+    </g>
+  `),
+
+  /* ── Fatelessness · Budapest/Auschwitz — a boy in striped uniform, barbed wire, leaden sky ── */
+  fatelessness: scene(`
+    <defs>
+      <linearGradient id="ftSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#5a5858"/><stop offset=".5" stop-color="#747272"/>
+        <stop offset="1" stop-color="#8a8480"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#ftSky)"/>
+    <rect x="0" y="0" width="300" height="450" fill="#181410" opacity=".35"/>
+    <path d="M0 310 Q150 300 300 308 L300 450 L0 450 Z" fill="#2a2420"/>
+    <path d="M0 360 Q150 352 300 358 L300 450 L0 450 Z" fill="#1e1c18"/>
+    ${Array.from({length:10}).map((_,i)=>`<line x1="${90+i*14}" y1="305" x2="${92+i*14}" y2="266" stroke="#4a4840" stroke-width="1.4"/>`).join('')}
+    ${Array.from({length:9}).map((_,i)=>`<line x1="${90+i*14}" y1="280" x2="${104+i*14}" y2="275" stroke="#4a4840" stroke-width=".9"/><line x1="${96+i*14}" y1="273" x2="${84+i*14}" y2="270" stroke="#4a4840" stroke-width=".9"/>`).join('')}
+    <line x1="88" y1="305" x2="212" y2="305" stroke="#3a3830" stroke-width="2"/>
+    <g fill="#181410" opacity=".88">
+      <rect x="144" y="226" width="12" height="36" rx="1"/>
+      <circle cx="150" cy="220" r="8"/>
+      <path d="M140 242 L144 232 L156 232 L160 242 L156 260 L144 260 Z"/>
+      <path d="M140 242 Q133 252 137 262 Q141 253 147 251"/>
+      <path d="M160 242 Q167 252 163 262 Q159 253 153 251"/>
+      <rect x="143" y="260" width="5" height="12" rx="1"/>
+      <rect x="152" y="260" width="5" height="12" rx="1"/>
+    </g>
+    ${[138,148,158].map(x=>`<rect x="${x}" y="226" width="4" height="40" fill="#c0c8d0" opacity=".18"/>`).join('')}
+  `),
+
+  /* ── The Bridge on the Drina · Višegrad — stone bridge arching over green river, minarets ── */
+  bridgedrina: scene(`
+    <defs>
+      <linearGradient id="bdrSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#3a5878"/><stop offset=".44" stop-color="#6a9ab0"/>
+        <stop offset=".72" stop-color="#9ac8b0"/><stop offset="1" stop-color="#a8d4a8"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#bdrSky)"/>
+    ${stars(6, 5)}
+    <path d="M0 370 Q150 356 300 368 L300 450 L0 450 Z" fill="#3a7858"/>
+    <path d="M0 390 Q150 378 300 388 L300 450 L0 450 Z" fill="#2e6448"/>
+    <path d="M0 420 Q150 410 300 418 L300 450 L0 450 Z" fill="#224e38"/>
+    <g fill="#4a3a28">
+      <path d="M70 370 L80 310 Q90 295 100 310 L110 370 Z"/>
+      <path d="M110 370 L120 340 Q130 325 140 340 L150 370 Z"/>
+      <path d="M150 370 L160 340 Q170 325 180 340 L190 370 Z"/>
+      <path d="M190 370 L200 310 Q210 295 220 310 L230 370 Z"/>
+      <rect x="70" y="366" width="160" height="10" rx="1"/>
+      <rect x="68" y="376" width="164" height="6" rx="1"/>
+    </g>
+    <g fill="#5a4a38">
+      <rect x="82" y="268" width="8" height="42"/>
+      <path d="M82 268 Q86 258 90 268 Z"/>
+      <rect x="210" y="258" width="8" height="52"/>
+      <path d="M210 258 Q214 246 218 258 Z"/>
+    </g>
+    <path d="M0 348 Q150 338 300 346 L300 370 Q150 360 0 370 Z" fill="#7ab8a8" opacity=".5"/>
+    <path d="M0 368 Q150 360 300 366" stroke="#9ad0b8" stroke-width=".8" fill="none" opacity=".4"/>
+  `),
+
+  /* ── Danube · Central Europe — the great river, Baroque spires, a melancholy journey ── */
+  danube: scene(`
+    <defs>
+      <linearGradient id="dnSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2a3858"/><stop offset=".38" stop-color="#4a6880"/>
+        <stop offset=".65" stop-color="#7a9aaa"/><stop offset="1" stop-color="#a8c4cc"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#dnSky)"/>
+    ${stars(8, 19)}
+    <g fill="#1a2030" opacity=".85">
+      <rect x="0" y="248" width="56" height="202"/>
+      <rect x="244" y="232" width="56" height="218"/>
+      <rect x="72" y="280" width="48" height="170"/>
+      <rect x="180" y="264" width="48" height="186"/>
+    </g>
+    <g fill="#2a3040">
+      <rect x="18" y="216" width="18" height="32"/><path d="M18 216 Q27 202 36 216 Z"/>
+      <rect x="250" y="200" width="18" height="32"/><path d="M250 200 Q259 186 268 200 Z"/>
+    </g>
+    ${[[14,268],[34,268],[14,294],[254,250],[272,250],[254,276]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="13" fill="#ffd060" opacity=".35"/>`).join('')}
+    <path d="M0 360 Q150 348 300 358 L300 450 L0 450 Z" fill="#3a6888"/>
+    <path d="M0 390 Q75 382 150 388 T300 386" stroke="#6a9aaa" stroke-width="1" fill="none" opacity=".4"/>
+    <path d="M0 418 Q75 412 150 416 T300 414" stroke="#6a9aaa" stroke-width=".7" fill="none" opacity=".28"/>
+    <g fill="#2a3040" opacity=".8">
+      <rect x="128" y="296" width="44" height="30" rx="1"/>
+      <rect x="132" y="286" width="36" height="12" rx="1"/>
+      <rect x="136" y="280" width="28" height="8"/>
+      <rect x="140" y="274" width="20" height="8"/>
+      <rect x="148" y="268" width="4" height="8"/>
+      <rect x="108" y="322" width="84" height="8" rx="1"/>
+    </g>
+  `),
 };

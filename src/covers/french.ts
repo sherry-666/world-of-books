@@ -434,6 +434,185 @@ export const FRENCH_COVERS: Record<string, string> = {
     </g>
   `),
 
+  /* ── La Vie devant soi · Belleville Paris — tenement blocks, Madame Rosa, a child's vigil ── */
+  viedevant: scene(`
+    <defs>
+      <linearGradient id="vvSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2a3248"/><stop offset=".5" stop-color="#4a5068"/>
+        <stop offset="1" stop-color="#6a6878"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#vvSky)"/>
+    ${stars(8, 11)}
+    <g fill="#181e2e">
+      <rect x="0" y="130" width="64" height="320"/>
+      <rect x="72" y="158" width="56" height="292"/>
+      <rect x="136" y="110" width="60" height="340"/>
+      <rect x="204" y="142" width="56" height="308"/>
+      <rect x="264" y="124" width="36" height="326"/>
+    </g>
+    ${Array.from({length:24}).map((_,i)=>{const x=8+(i%4)*16, y=148+Math.floor(i/4)*34, c=i===9||i===17||i===5?'#ffd060':'#1a2038', o=i===9||i===17||i===5?'.78':'.7'; return `<rect x="${x}" y="${y}" width="10" height="14" fill="${c}" opacity="${o}"/>`;}).join('')}
+    ${Array.from({length:18}).map((_,i)=>{const x=138+(i%3)*18, y=128+Math.floor(i/3)*38, c=i===4||i===13?'#ffd060':'#202840', o=i===4||i===13?'.8':'.72'; return `<rect x="${x}" y="${y}" width="12" height="16" fill="${c}" opacity="${o}"/>`;}).join('')}
+    <rect x="0" y="418" width="300" height="32" fill="#12101e"/>
+    <path d="M0 418 Q150 410 300 418" stroke="#ffd060" stroke-width=".5" fill="none" opacity=".2"/>
+    <g fill="#0c0a18">
+      <circle cx="150" cy="408" r="5"/>
+      <rect x="147" y="413" width="5" height="5" rx="1"/>
+    </g>
+  `),
+
+  /* ── L'Œuvre au noir · Bruges — alchemy, midnight stone, a scholar at his furnace ── */
+  oeuvrenoir: scene(`
+    <defs>
+      <linearGradient id="onSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#060508"/><stop offset=".6" stop-color="#12100e"/>
+        <stop offset="1" stop-color="#1c1808"/>
+      </linearGradient>
+      <radialGradient id="onFire" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#e08020" stop-opacity=".7"/>
+        <stop offset="1" stop-color="#e08020" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#onSky)"/>
+    ${stars(12, 7)}
+    <g fill="#0e0c08">
+      <rect x="0" y="240" width="300" height="210"/>
+      <rect x="96" y="160" width="108" height="80"/>
+      <path d="M88 162 Q150 128 212 162 Z"/>
+      <rect x="114" y="138" width="72" height="24"/>
+      <path d="M108 138 Q150 114 192 138 Z"/>
+      <rect x="126" y="118" width="48" height="20"/>
+      <rect x="138" y="106" width="24" height="14"/>
+      <rect x="144" y="96" width="12" height="12"/>
+    </g>
+    <rect x="116" y="348" width="68" height="92" fill="#100c06"/>
+    <rect x="130" y="360" width="40" height="26" fill="#0c0a04"/>
+    <circle cx="150" cy="370" r="44" fill="url(#onFire)"/>
+    <circle cx="150" cy="374" r="16" fill="#e08020" opacity=".58"/>
+    <circle cx="150" cy="374" r="7" fill="#f0c050" opacity=".72"/>
+    <rect x="146" y="314" width="5" height="34" rx="1" fill="#0e0c08"/>
+    <circle cx="148" cy="312" r="4.5" fill="#0e0c08"/>
+    ${[[128,238],[154,222],[178,242]].map(([x,y])=>`<rect x="${x}" y="${y}" width="8" height="10" fill="#ffd050" opacity=".38"/>`).join('')}
+  `),
+
+  /* ── Chagrin d'école · Paris — a struggling pupil at his school desk, chalk dust light ── */
+  chagrinec: scene(`
+    <defs>
+      <linearGradient id="ceSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#c8c4b0"/><stop offset=".5" stop-color="#e0d8c8"/>
+        <stop offset="1" stop-color="#ece6d4"/>
+      </linearGradient>
+      <radialGradient id="ceLight" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#fff8e8" stop-opacity=".8"/>
+        <stop offset="1" stop-color="#fff8e8" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#ceSky)"/>
+    <rect x="0" y="0" width="300" height="450" fill="#1a180e" opacity=".55"/>
+    <rect x="108" y="60" width="84" height="200" fill="#2a2818" opacity=".8"/>
+    <circle cx="150" cy="108" r="88" fill="url(#ceLight)"/>
+    <rect x="118" y="78" width="64" height="90" fill="#1a1810" opacity=".9"/>
+    <rect x="124" y="84" width="52" height="78" fill="#2e2c1a"/>
+    <rect x="96" y="276" width="108" height="16" rx="2" fill="#5a5040"/>
+    <rect x="104" y="292" width="92" height="70" rx="1" fill="#4a4030"/>
+    <rect x="112" y="300" width="76" height="8" rx="1" fill="#2a2818"/>
+    <rect x="112" y="316" width="60" height="6" rx="1" fill="#2a2818" opacity=".7"/>
+    <rect x="112" y="330" width="50" height="5" rx="1" fill="#2a2818" opacity=".5"/>
+    <g fill="#1a1808">
+      <rect x="144" y="248" width="14" height="28" rx="2"/>
+      <circle cx="151" cy="244" r="8"/>
+      <path d="M140 260 L144 250 L158 250 L162 260 L158 274 L142 274 Z"/>
+    </g>
+    <rect x="108" y="172" width="64" height="4" fill="#e8e0c8" opacity=".22"/>
+    ${Array.from({length:8}).map((_,i)=>`<rect x="${118}" y="${84+i*10}" width="${40+Math.abs(4-i)*4}" height="2" fill="#3a3828" opacity="${0.4+i*0.05}"/>`).join('')}
+  `),
+
+  /* ── L'Argent · Paris — the stock exchange, marble columns, ruin and greed ── */
+  largent: scene(`
+    <defs>
+      <linearGradient id="laSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#3a4058"/><stop offset=".45" stop-color="#6a7080"/>
+        <stop offset=".78" stop-color="#a09080"/><stop offset="1" stop-color="#c8a870"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#laSky)"/>
+    ${stars(6, 13)}
+    <g fill="#c8c4b0">
+      ${[98,116,136,156,176,196].map((x,i)=>`<rect x="${x}" y="${248-(i%2)*16}" width="11" height="${72+(i%2)*16}"/><rect x="${x-4}" y="${246-(i%2)*16}" width="19" height="7"/><rect x="${x-2}" y="${314}" width="15" height="9"/>`).join('')}
+    </g>
+    <rect x="88" y="320" width="124" height="12" fill="#b8b4a0"/>
+    <rect x="84" y="330" width="132" height="8" fill="#a8a494"/>
+    <path d="M80 240 Q96 224 104 208 L196 208 Q204 224 220 240 Z" fill="#c0bca8"/>
+    <rect x="104" y="194" width="92" height="14" fill="#b8b4a0"/>
+    <rect x="116" y="178" width="68" height="16" fill="#c0bca8"/>
+    <path d="M116 178 L150 156 L184 178 Z" fill="#b0ac98"/>
+    <rect x="0" y="358" width="300" height="92" fill="#2a2418"/>
+    ${Array.from({length:12}).map((_,i)=>{ const x=86+i*11, y=340+i%2*6; return `<rect x="${x}" y="${y}" width="7" height="18" rx="1" fill="#1e1c10"/>`;}).join('')}
+    <path d="M0 358 Q150 350 300 356" stroke="#c8a870" stroke-width=".7" fill="none" opacity=".3"/>
+  `),
+
+  /* ── Que ma joie demeure / Cette année — French countryside, a woman's return, bare winter ── */
+  thattimeyear: scene(`
+    <defs>
+      <linearGradient id="ttSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#b0c4cc"/><stop offset=".45" stop-color="#d8e4e0"/>
+        <stop offset="1" stop-color="#e8e8e0"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#ttSky)"/>
+    <rect x="0" y="0" width="300" height="450" fill="#181814" opacity=".32"/>
+    <path d="M0 290 Q150 278 300 288 L300 450 L0 450 Z" fill="#2e2c24"/>
+    <path d="M0 338 Q150 328 300 336 L300 450 L0 450 Z" fill="#242218"/>
+    <path d="M0 388 Q150 380 300 386 L300 450 L0 450 Z" fill="#1a1810"/>
+    <g fill="#181410">
+      <rect x="148" y="178" width="4" height="112"/>
+      <path d="M150 178 Q128 195 118 224 Q130 208 150 200 Q170 208 182 224 Q172 195 150 178 Z"/>
+      <path d="M150 210 Q134 228 126 256 Q138 240 150 234 Q162 240 174 256 Q166 228 150 210 Z"/>
+      <path d="M150 238 Q138 254 132 276 Q140 264 150 260 Q160 264 168 276 Q162 254 150 238 Z"/>
+    </g>
+    <g fill="#181410" opacity=".7">
+      <rect x="110" y="208" width="3" height="82"/>
+      <path d="M111 208 Q96 222 92 244 Q100 230 111 226 Q122 230 130 244 Q126 222 111 208 Z"/>
+      <rect x="186" y="218" width="3" height="72"/>
+      <path d="M187 218 Q172 230 168 250 Q176 238 187 234 Q198 238 206 250 Q202 230 187 218 Z"/>
+    </g>
+    <ellipse cx="150" cy="450" rx="200" ry="18" fill="#181814" opacity=".4"/>
+    <g fill="#e8e8e0" opacity=".6">
+      ${Array.from({length:10}).map((_,i)=>`<circle cx="${100+i*10}" cy="${294+i%3*8}" r="2" opacity=".5"/>`).join('')}
+    </g>
+  `),
+
+  /* ── À l'ami qui ne m'a pas sauvé la vie · Paris — hospital ward, spectral light, an era's grief ── */
+  tofriendwhodidnot: scene(`
+    <defs>
+      <linearGradient id="tfSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0e1018"/><stop offset=".5" stop-color="#181c28"/>
+        <stop offset="1" stop-color="#222434"/>
+      </linearGradient>
+      <radialGradient id="tfGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#e0e8f0" stop-opacity=".4"/>
+        <stop offset="1" stop-color="#e0e8f0" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#tfSky)"/>
+    ${stars(6, 23)}
+    <rect x="0" y="308" width="300" height="142" fill="#0e1018"/>
+    <rect x="94" y="148" width="112" height="162" fill="#141820"/>
+    <rect x="94" y="148" width="4" height="162" fill="#0e1018"/>
+    <rect x="202" y="148" width="4" height="162" fill="#0e1018"/>
+    <rect x="94" y="148" width="112" height="5" fill="#0e1018"/>
+    ${Array.from({length:4}).map((_,i)=>`<rect x="${104+i*24}" y="${160}" width="18" height="28" fill="#c8d8e0" opacity=".22"/>`).join('')}
+    ${Array.from({length:4}).map((_,i)=>`<rect x="${104+i*24}" y="${198}" width="18" height="28" fill="#c8d8e0" opacity="${0.14+i*0.04}"/>`).join('')}
+    <circle cx="150" cy="220" r="80" fill="url(#tfGlow)"/>
+    <rect x="108" y="294" width="84" height="14" rx="2" fill="#1a2030"/>
+    <g fill="#0e1018">
+      <rect x="138" y="256" width="24" height="52" rx="2"/>
+      <rect x="143" y="248" width="14" height="10" rx="1"/>
+    </g>
+    <rect x="114" y="336" width="72" height="6" rx="1" fill="#c8d8e0" opacity=".18"/>
+    <rect x="120" y="350" width="60" height="4" rx="1" fill="#c8d8e0" opacity=".12"/>
+  `),
+
   /* ── Un long dimanche de fiançailles · Somme — barbed wire silhouette, grey shell-pocked earth ── */
   longdimanche: scene(`
     <defs>
