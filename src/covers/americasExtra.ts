@@ -918,4 +918,394 @@ export const AMERICAS_EXTRA_COVERS: Record<string, string> = {
     ${[[104,318],[120,318],[136,318],[152,318],[168,318],[184,318]].map(([x,y])=>`<rect x="${x}" y="${y}" width="12" height="10" fill="${y===152?'#c09060':'#98a898'}" opacity=".5"/>`).join('')}
     <path d="M0 306 Q150 300 300 304" stroke="#a8b8b8" stroke-width=".6" fill="none" opacity=".35"/>
   `),
+
+  /* ── The Help · Jackson, Mississippi — a white clapboard house, summer magnolias, a maid ── */
+  thehelp: scene(`
+    <defs>
+      <linearGradient id="thelpSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#3a6080"/><stop offset=".4" stop-color="#6a9aaa"/>
+        <stop offset=".7" stop-color="#9ac0b8"/><stop offset="1" stop-color="#c8e0d8"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#thelpSky)"/>
+    ${stars(5, 269)}
+    <path d="M0 308 Q80 290 150 298 T300 304 L300 450 L0 450 Z" fill="#4a7028"/>
+    <path d="M0 360 Q80 344 150 352 T300 352 L300 450 L0 450 Z" fill="#3a6020"/>
+    <path d="M0 408 Q80 396 150 402 T300 400 L300 450 L0 450 Z" fill="#2a5018"/>
+    <g fill="#f0ead8">
+      <rect x="94" y="206" width="112" height="108"/>
+      <path d="M86 210 L150 174 L214 210 Z"/>
+      <rect x="108" y="174" width="84" height="36"/>
+      <path d="M102 178 L150 148 L198 178 Z"/>
+      <rect x="126" y="148" width="48" height="30"/>
+    </g>
+    ${[[98,222],[114,222],[98,252],[114,252],[170,222],[186,222],[170,252],[186,252]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="18" fill="#6a9898" opacity="${y===222?'.45':'.35'}"/>`).join('')}
+    <g fill="#2a5018">
+      <path d="M62 310 Q78 284 94 310 Q86 294 78 290 Q70 294 62 310 Z"/>
+      <path d="M192 308 Q208 282 224 308 Q216 292 208 288 Q200 292 192 308 Z"/>
+    </g>
+    <g fill="#1e1208">
+      <circle cx="134" cy="298" r="6"/>
+      <rect x="131" y="304" width="5" height="14" rx="1"/>
+      <circle cx="168" cy="296" r="5.5"/>
+      <rect x="165" y="301" width="5" height="12" rx="1"/>
+    </g>
+  `),
+
+  /* ── Where the Crawdads Sing · North Carolina marsh — a tidal creek, a lone shack, wild grasses ── */
+  crawdads: scene(`
+    <defs>
+      <linearGradient id="crwSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2a3848"/><stop offset=".38" stop-color="#4a6878"/>
+        <stop offset=".68" stop-color="#7a9898"/><stop offset="1" stop-color="#a0bab8"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#crwSky)"/>
+    ${stars(8, 271)}
+    <path d="M0 298 Q60 278 110 288 Q140 296 150 282 Q160 268 180 278 Q240 296 300 278 L300 450 L0 450 Z" fill="#5a7848"/>
+    <path d="M0 346 Q150 332 300 344 L300 450 L0 450 Z" fill="#4a6838"/>
+    <path d="M0 394 Q150 382 300 392 L300 450 L0 450 Z" fill="#3a5828"/>
+    ${Array.from({length:10}).map((_,i)=>`<path d="M${72+i*16} ${300+i%2*14} Q${76+i*16} ${288+i%2*10} ${80+i*16} ${300+i%2*14}" stroke="#8aaa58" stroke-width="2.5" fill="none" opacity=".55"/>`).join('')}
+    <path d="M0 332 Q60 324 80 328 Q100 332 100 342 L80 352 Q60 354 0 346 Z" fill="#5a8898" opacity=".6"/>
+    <path d="M200 316 Q260 308 300 312 L300 340 Q260 340 220 332 Z" fill="#5a8898" opacity=".55"/>
+    <g fill="#1e1808">
+      <rect x="126" y="240" width="48" height="58"/>
+      <path d="M118 244 L150 220 L182 244 Z"/>
+      <rect x="138" y="220" width="24" height="24"/>
+      <rect x="141" y="218" width="18" height="4"/>
+    </g>
+    ${[[130,254],[146,254],[130,278],[146,278]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="14" fill="#e8c060" opacity="${y===254?'.4':'.28'}"/>`).join('')}
+    <g fill="#160e04">
+      <circle cx="150" cy="296" r="5.5"/>
+      <rect x="147" y="301" width="5" height="14" rx="1"/>
+    </g>
+  `),
+
+  /* ── A Tree Grows in Brooklyn · Brooklyn 1900s — fire escapes, a tenement, a lone tree ── */
+  treegrows: scene(`
+    <defs>
+      <linearGradient id="tgbSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a1828"/><stop offset=".4" stop-color="#2e2c40"/>
+        <stop offset=".7" stop-color="#5a5060"/><stop offset="1" stop-color="#8a8090"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#tgbSky)"/>
+    ${stars(9, 273)}
+    <g fill="#181420">
+      <rect x="0" y="192" width="70" height="258"/>
+      <rect x="230" y="180" width="70" height="270"/>
+      <rect x="78" y="214" width="56" height="236"/>
+      <rect x="168" y="202" width="58" height="248"/>
+    </g>
+    ${Array.from({length:8}).map((_,i)=>`<rect x="${4+(i%4)*76}" y="${204+Math.floor(i/4)*40}" width="24" height="4" fill="#181420" opacity=".85"/>`).join('')}
+    ${Array.from({length:8}).map((_,i)=>`<rect x="${4+(i%4)*76}" y="${204+Math.floor(i/4)*40}" width="4" height="16" fill="#181420" opacity=".85"/>`).join('')}
+    ${Array.from({length:14}).map((_,i)=>{const x=(i*57+7)%300, y=200+(i*43)%220; return `<rect x="${x}" y="${y}" width="4" height="6" fill="#e8b848" opacity="${0.12+((i*7)%5)/10}"/>`;}).join('')}
+    <path d="M0 380 Q150 370 300 378 L300 450 L0 450 Z" fill="#141018"/>
+    <rect x="146" y="170" width="8" height="210" fill="#2a4018"/>
+    <path d="M150 170 Q116 196 104 238 Q130 214 150 210 Q170 214 196 238 Q184 196 150 170 Z" fill="#2a4018"/>
+    <path d="M150 208 Q120 228 110 264 Q134 244 150 240 Q166 244 190 264 Q180 228 150 208 Z" fill="#3a5020"/>
+    <path d="M150 240 Q124 256 118 288 Q140 268 150 266 Q160 268 182 288 Q176 256 150 240 Z" fill="#4a6028"/>
+    <g fill="#141018">
+      <circle cx="150" cy="358" r="6"/>
+      <rect x="147" y="364" width="5" height="16" rx="1"/>
+    </g>
+  `),
+
+  /* ── Are You There God? It's Me, Margaret · NJ — suburban America, a girl's window, faith ── */
+  margaret: scene(`
+    <defs>
+      <linearGradient id="margSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#3a4878"/><stop offset=".44" stop-color="#6878a8"/>
+        <stop offset=".72" stop-color="#9898c0"/><stop offset="1" stop-color="#c8c8e0"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#margSky)"/>
+    ${stars(10, 275)}
+    <path d="M0 328 Q80 312 150 320 T300 324 L300 450 L0 450 Z" fill="#4a7040"/>
+    <path d="M0 378 Q80 362 150 370 T300 368 L300 450 L0 450 Z" fill="#3a6030"/>
+    <g fill="#2a2820">
+      <rect x="88" y="202" width="124" height="132"/>
+      <path d="M80 206 L150 170 L220 206 Z"/>
+      <rect x="104" y="170" width="92" height="36"/>
+      <path d="M98 174 L150 142 L202 174 Z"/>
+      <rect x="122" y="142" width="56" height="32"/>
+    </g>
+    ${[[94,218],[110,218],[94,252],[110,252],[174,218],[190,218],[174,252],[190,252]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="18" fill="#e8e8f8" opacity="${y===218?'.42':'.32'}"/>`).join('')}
+    <rect x="130" y="224" width="40" height="48" fill="#4878a8" opacity=".35"/>
+    <rect x="132" y="226" width="36" height="44" fill="#e8f0f8" opacity=".28"/>
+    <g fill="#1a1a28">
+      <circle cx="150" cy="316" r="5.5"/>
+      <rect x="147" y="321" width="5" height="14" rx="1"/>
+      <path d="M142 330 L147 324 L153 324 L158 330 L156 340 L144 340 Z"/>
+    </g>
+    <path d="M144 224 L144 272" stroke="#8898c8" stroke-width=".4" fill="none" opacity=".3"/>
+    <path d="M158 224 L158 272" stroke="#8898c8" stroke-width=".4" fill="none" opacity=".3"/>
+    <path d="M130 248 L170 248" stroke="#8898c8" stroke-width=".4" fill="none" opacity=".3"/>
+  `),
+
+  /* ── The New York Trilogy · New York — a city of locked doors, absent persons, labyrinthine streets ── */
+  newyorktrilogy: scene(`
+    <defs>
+      <linearGradient id="nytSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0c0c12"/><stop offset=".5" stop-color="#181820"/>
+        <stop offset="1" stop-color="#282830"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#nytSky)"/>
+    ${stars(10, 277)}
+    <g fill="#12121c">
+      <rect x="0" y="172" width="58" height="278"/>
+      <rect x="242" y="158" width="58" height="292"/>
+      <rect x="66" y="196" width="46" height="254"/>
+      <rect x="190" y="184" width="46" height="266"/>
+      <rect x="118" y="168" width="62" height="282"/>
+    </g>
+    ${Array.from({length:16}).map((_,i)=>{const x=(i*53+5)%300, y=180+(i*41)%240; return `<rect x="${x}" y="${y}" width="4" height="6" fill="#9898b8" opacity="${0.1+((i*7)%5)/14}"/>`;}).join('')}
+    <path d="M0 376 Q150 366 300 374 L300 450 L0 450 Z" fill="#0c0c12"/>
+    <path d="M0 376 Q150 372 300 374" stroke="#4848a0" stroke-width=".4" fill="none" opacity=".3"/>
+    ${Array.from({length:3}).map((_,i)=>`<rect x="${128+i*16}" y="${208}" width="8" height="112" fill="#0c0c12" opacity=".7"/>`).join('')}
+    <g fill="#0e0e18">
+      <circle cx="150" cy="320" r="5.5"/>
+      <rect x="147" y="325" width="5" height="22" rx="1"/>
+    </g>
+    <path d="M100 150 L100 380 M200 150 L200 380 M150 100 L150 420" stroke="#4848a0" stroke-width=".3" fill="none" opacity=".18"/>
+  `),
+
+  /* ── Great World Spin · New York 2001 — a tightrope walker above the Twin Towers, stories crossing ── */
+  greatworldspin: scene(`
+    <defs>
+      <linearGradient id="gwsSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0e1420"/><stop offset=".38" stop-color="#1c2a3c"/>
+        <stop offset=".72" stop-color="#2e4058"/><stop offset="1" stop-color="#405070"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#gwsSky)"/>
+    ${stars(12, 279)}
+    <g fill="#101824">
+      <rect x="66" y="84" width="68" height="340"/>
+      <rect x="166" y="84" width="68" height="340"/>
+    </g>
+    ${Array.from({length:16}).map((_,i)=>{const col=i%2; return `<rect x="${col===0?70:170}" y="${94+Math.floor(i/2)*36}" width="12" height="20" fill="#e0c870" opacity="${0.15+((i*7)%5)/12}"/>`;}).join('')}
+    ${Array.from({length:8}).map((_,i)=>`<rect x="${78+i*10}" y="${94+i*18}" width="12" height="20" fill="#e0c870" opacity="${0.1+i%2*0.08}"/>`).join('')}
+    <path d="M0 84 L66 84" stroke="#d0c060" stroke-width=".6" fill="none" opacity=".35"/>
+    <path d="M234 84 L300 84" stroke="#d0c060" stroke-width=".6" fill="none" opacity=".35"/>
+    <circle cx="150" cy="84" r="4" fill="#f0e0a0" opacity=".75"/>
+    <path d="M66 84 L234 84" stroke="#d0c060" stroke-width=".8" fill="none" opacity=".55"/>
+    <g fill="#0e1420">
+      <circle cx="150" cy="79" r="3.5"/>
+      <rect x="148" y="82" width="3" height="8" rx="1"/>
+      <path d="M140 80 L148 84 L152 84 L160 80" stroke="#d0c060" stroke-width=".5" fill="none"/>
+    </g>
+    <path d="M0 394 Q150 384 300 392 L300 450 L0 450 Z" fill="#0a0e16"/>
+    <path d="M0 394 Q150 388 300 392" stroke="#405070" stroke-width=".5" fill="none" opacity=".3"/>
+  `),
+
+  /* ── Salvage the Bones · Mississippi — a ramshackle house, summer kudzu, hurricane coming ── */
+  salvagebones: scene(`
+    <defs>
+      <linearGradient id="svbSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2a2828"/><stop offset=".38" stop-color="#504848"/>
+        <stop offset=".68" stop-color="#786858"/><stop offset="1" stop-color="#9a8860"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#svbSky)"/>
+    ${stars(6, 281)}
+    <path d="M0 296 Q80 272 150 282 T300 288 L300 450 L0 450 Z" fill="#4a6030"/>
+    <path d="M0 348 Q80 328 150 338 T300 336 L300 450 L0 450 Z" fill="#3a5028"/>
+    <path d="M0 400 Q80 384 150 392 T300 388 L300 450 L0 450 Z" fill="#2a4020"/>
+    <path d="M40 296 Q30 268 18 244 Q26 260 28 280 Q32 288 40 296 Z" fill="#4a7038"/>
+    <path d="M262 292 Q274 264 284 242 Q276 258 274 278 Q270 288 262 292 Z" fill="#4a7038"/>
+    <g fill="#1e1808">
+      <rect x="104" y="218" width="92" height="82"/>
+      <path d="M96 222 L150 190 L204 222 Z"/>
+      <rect x="122" y="190" width="56" height="32"/>
+      <path d="M116 194 L150 168 L184 194 Z"/>
+      <rect x="134" y="168" width="32" height="26"/>
+    </g>
+    ${[[108,230],[124,230],[108,258],[124,258],[162,230],[178,230]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="14" fill="#c8a040" opacity="${y===230?'.38':'.25'}"/>`).join('')}
+    <g fill="#160e04">
+      <circle cx="150" cy="288" r="5.5"/>
+      <rect x="147" y="293" width="5" height="10" rx="1"/>
+    </g>
+    <path d="M60 276 Q80 248 100 264 Q84 252 76 248 Q68 252 60 276 Z" fill="#5a7840" opacity=".55"/>
+    <path d="M200 272 Q220 244 240 260 Q224 248 216 244 Q208 248 200 272 Z" fill="#5a7840" opacity=".5"/>
+  `),
+
+  /* ── The Sellout · Dickens, LA — a satirist's absurd suburb, a slave owner on a Metro car ── */
+  thesellout: scene(`
+    <defs>
+      <linearGradient id="tsoSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a1018"/><stop offset=".4" stop-color="#2c1c28"/>
+        <stop offset=".7" stop-color="#483040"/><stop offset="1" stop-color="#6a4858"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#tsoSky)"/>
+    ${stars(9, 283)}
+    <g fill="#141018">
+      <rect x="0" y="202" width="58" height="248"/>
+      <rect x="242" y="188" width="58" height="262"/>
+      <rect x="66" y="222" width="46" height="228"/>
+      <rect x="192" y="210" width="46" height="240"/>
+    </g>
+    ${Array.from({length:14}).map((_,i)=>{const x=(i*47+7)%300, y=214+(i*43)%210; return `<rect x="${x}" y="${y}" width="4" height="6" fill="#e0a858" opacity="${0.12+((i*7)%5)/12}"/>`;}).join('')}
+    <rect x="96" y="294" width="108" height="56" rx="2" fill="#181424"/>
+    <rect x="100" y="298" width="100" height="48" fill="#201a2c"/>
+    ${Array.from({length:4}).map((_,i)=>`<rect x="${104+i*24}" y="${304}" width="16" height="32" rx="1" fill="#0e0c14"/>`).join('')}
+    ${Array.from({length:4}).map((_,i)=>`<rect x="${104+i*24}" y="${308}" width="16" height="24" fill="#d0c080" opacity="${0.1+(i%2)*0.07}"/>`).join('')}
+    <rect x="88" y="348" width="124" height="6" rx="1" fill="#2a2838"/>
+    <path d="M0 380 Q150 370 300 378 L300 450 L0 450 Z" fill="#0e0c14"/>
+    <path d="M0 380 Q150 374 300 378" stroke="#6a4858" stroke-width=".5" fill="none" opacity=".25"/>
+    <g fill="#0e0c14">
+      <circle cx="150" cy="352" r="5.5"/>
+      <rect x="147" y="357" width="5" height="20" rx="1"/>
+    </g>
+  `),
+
+  /* ── Bluebird, Bluebird · East Texas — a highway diner, a small-town deputy, racial violence ── */
+  bluebirdbluebird: scene(`
+    <defs>
+      <linearGradient id="bbbSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#282830"/><stop offset=".4" stop-color="#484858"/>
+        <stop offset=".72" stop-color="#7a7870"/><stop offset="1" stop-color="#b0a880"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#bbbSky)"/>
+    ${stars(8, 285)}
+    <path d="M0 316 Q150 304 300 314 L300 450 L0 450 Z" fill="#5a5838"/>
+    <path d="M0 368 Q150 356 300 366 L300 450 L0 450 Z" fill="#484828"/>
+    <path d="M0 414 Q150 406 300 412 L300 450 L0 450 Z" fill="#3a3820"/>
+    <path d="M0 316 L300 316" stroke="#c8c8a0" stroke-width=".8" opacity=".3"/>
+    <path d="M0 328 L300 328" stroke="#c8c8a0" stroke-width=".4" opacity=".18"/>
+    <g fill="#1e1808">
+      <rect x="88" y="218" width="124" height="102"/>
+      <path d="M80 222 L150 186 L220 222 Z"/>
+      <rect x="100" y="186" width="100" height="36"/>
+    </g>
+    ${[[92,234],[108,234],[92,264],[108,264],[168,234],[184,234],[168,264],[184,264]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="16" fill="#ffd870" opacity="${y===234?'.42':'.32'}"/>`).join('')}
+    <rect x="126" y="280" width="48" height="24" rx="1" fill="#1e1808"/>
+    <rect x="132" y="284" width="36" height="16" fill="#ffd870" opacity=".28"/>
+    <path d="M0 310 L88 310 L88 320 L212 320 L212 310 L300 310" stroke="#c8c880" stroke-width=".5" fill="none" opacity=".22"/>
+    <g fill="#141008">
+      <circle cx="150" cy="306" r="5.5"/>
+      <rect x="147" y="311" width="5" height="14" rx="1"/>
+    </g>
+    <circle cx="102" cy="196" r="6" fill="#4878c0" opacity=".6"/>
+    <circle cx="198" cy="196" r="6" fill="#4878c0" opacity=".6"/>
+  `),
+
+  /* ── Lincoln in the Bardo · Washington D.C. 1862 — Oak Hill Cemetery, a ghost-world, a grieving president ── */
+  lincolnbardo: scene(`
+    <defs>
+      <linearGradient id="libSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0e0e16"/><stop offset=".44" stop-color="#1c1c2c"/>
+        <stop offset=".74" stop-color="#2e2c40"/><stop offset="1" stop-color="#423e58"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#libSky)"/>
+    ${stars(14, 287)}
+    <path d="M0 320 Q150 308 300 318 L300 450 L0 450 Z" fill="#1e2a18"/>
+    <path d="M0 372 Q150 360 300 370 L300 450 L0 450 Z" fill="#182412"/>
+    <g fill="#181c10">
+      ${Array.from({length:6}).map((_,i)=>`<rect x="${78+i*24}" y="${228+i%2*16}" width="10" height="${84+i%2*20}" rx="2"/>`).join('')}
+      ${Array.from({length:6}).map((_,i)=>`<path d="M${78+i*24} ${228+i%2*16} Q${83+i*24} ${216+i%2*14} ${88+i*24} ${228+i%2*16} Z"/>`).join('')}
+    </g>
+    ${Array.from({length:6}).map((_,i)=>`<circle cx="${83+i*24}" cy="${212+i%2*14}" r="4" fill="#e8f0e0" opacity="${0.15+((i*7)%5)/14}"/>`).join('')}
+    <g fill="#e8ece0" opacity=".12">
+      ${Array.from({length:4}).map((_,i)=>`<circle cx="${96+i*36}" cy="${288+i%2*16}" r="${14+i%2*6}"/>`).join('')}
+    </g>
+    <g fill="#1a1c14">
+      <rect x="136" y="168" width="28" height="154" rx="2"/>
+      <path d="M130 168 Q150 144 170 168 Z"/>
+    </g>
+    <g fill="#161614">
+      <circle cx="150" cy="312" r="6.5"/>
+      <rect x="146" y="318" width="6" height="8" rx="1"/>
+      <path d="M138 322 L146 320 L154 320 L162 322 L160 344 L140 344 Z"/>
+    </g>
+  `),
+
+  /* ── The Great Believers · Chicago 1980s — Wicker Park, the AIDS crisis, art and loss ── */
+  greatbelievers: scene(`
+    <defs>
+      <linearGradient id="gbcSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a1020"/><stop offset=".4" stop-color="#2e2038"/>
+        <stop offset=".7" stop-color="#4a3858"/><stop offset="1" stop-color="#6a5070"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#gbcSky)"/>
+    ${stars(10, 289)}
+    <g fill="#141018">
+      <rect x="0" y="196" width="60" height="254"/>
+      <rect x="238" y="182" width="62" height="268"/>
+      <rect x="68" y="218" width="48" height="232"/>
+      <rect x="186" y="206" width="48" height="244"/>
+      <rect x="122" y="186" width="60" height="264"/>
+    </g>
+    ${Array.from({length:14}).map((_,i)=>{const x=(i*51+6)%300, y=208+(i*43)%220; return `<rect x="${x}" y="${y}" width="4" height="6" fill="#e090b0" opacity="${0.1+((i*7)%5)/12}"/>`;}).join('')}
+    <path d="M0 368 Q150 358 300 366 L300 450 L0 450 Z" fill="#0e0c14"/>
+    <path d="M0 368 Q150 362 300 366" stroke="#6a5070" stroke-width=".5" fill="none" opacity=".25"/>
+    ${Array.from({length:5}).map((_,i)=>`<path d="M${90+i*24} ${368} Q${98+i*24} ${356} ${106+i*24} ${368}" stroke="#c060a0" stroke-width=".7" fill="none" opacity=".2"/>`).join('')}
+    <g fill="#0e0c14">
+      <circle cx="138" cy="330" r="5.5"/>
+      <rect x="135" y="335" width="5" height="30" rx="1"/>
+      <circle cx="162" cy="326" r="5"/>
+      <rect x="159" y="331" width="5" height="34" rx="1"/>
+    </g>
+  `),
+
+  /* ── The Night Watchman · North Dakota 1953 — Thomas Wazhashk, the Turtle Mountain Band, Congress ── */
+  nightwatchman: scene(`
+    <defs>
+      <linearGradient id="nwmSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0e1018"/><stop offset=".38" stop-color="#1e2030"/>
+        <stop offset=".68" stop-color="#3a3848"/><stop offset="1" stop-color="#586078"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#nwmSky)"/>
+    ${stars(14, 291)}
+    <path d="M0 294 Q80 272 150 282 T300 280 L300 450 L0 450 Z" fill="#3a4a38"/>
+    <path d="M0 344 Q80 324 150 334 T300 328 L300 450 L0 450 Z" fill="#2e3c28"/>
+    <path d="M0 394 Q80 378 150 386 T300 378 L300 450 L0 450 Z" fill="#202e1c"/>
+    <rect x="96" y="232" width="108" height="66" fill="#1a1c20"/>
+    <rect x="100" y="236" width="100" height="58" fill="#24262c"/>
+    ${Array.from({length:3}).map((_,i)=>`<rect x="${106+i*32}" y="${242}" width="18" height="28" fill="#ffd860" opacity="${0.18+i%2*0.1}"/>`).join('')}
+    <rect x="146" y="158" width="8" height="74" fill="#1a1c20"/>
+    <path d="M150 158 Q130 176 124 204 Q138 188 150 184 Q162 188 176 204 Q170 176 150 158 Z" fill="#1a1c20"/>
+    <path d="M150 182 Q132 198 128 224 Q142 210 150 208 Q158 210 172 224 Q168 198 150 182 Z" fill="#242820"/>
+    <path d="M150 208 Q134 222 130 246 Q144 232 150 230 Q156 232 170 246 Q166 222 150 208 Z" fill="#2e3428"/>
+    <g fill="#181c14">
+      <circle cx="150" cy="284" r="5.5"/>
+      <rect x="147" y="289" width="5" height="12" rx="1"/>
+    </g>
+    <path d="M0 294 Q150 288 300 292" stroke="#586078" stroke-width=".5" fill="none" opacity=".28"/>
+  `),
+
+  /* ── Deacon King Kong · Brooklyn 1969 — the Cause Houses, a drunken deacon, a shot, a miracle ── */
+  deaconkingkong: scene(`
+    <defs>
+      <linearGradient id="dkkSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a1420"/><stop offset=".38" stop-color="#2e2438"/>
+        <stop offset=".68" stop-color="#5a4848"/><stop offset="1" stop-color="#8a7058"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#dkkSky)"/>
+    ${stars(9, 293)}
+    <path d="M0 328 Q150 316 300 326 L300 450 L0 450 Z" fill="#2a4018"/>
+    <path d="M0 378 Q150 366 300 376 L300 450 L0 450 Z" fill="#1e3010"/>
+    <g fill="#181018">
+      <rect x="0" y="178" width="68" height="272"/>
+      <rect x="232" y="162" width="68" height="288"/>
+      <rect x="76" y="202" width="56" height="248"/>
+      <rect x="170" y="188" width="58" height="262"/>
+    </g>
+    ${Array.from({length:14}).map((_,i)=>{const x=(i*55+8)%300, y=194+(i*39)%200; return `<rect x="${x}" y="${y}" width="4" height="6" fill="#d0a050" opacity="${0.12+((i*7)%5)/10}"/>`;}).join('')}
+    <path d="M0 328 Q150 322 300 326" stroke="#8a7058" stroke-width=".5" fill="none" opacity=".28"/>
+    <g fill="#141018">
+      <circle cx="140" cy="310" r="7"/>
+      <rect x="136" y="317" width="6" height="14" rx="1"/>
+      <path d="M128 326 L136 320 L144 320 L152 326 L150 340 L130 340 Z"/>
+    </g>
+    <rect x="104" y="188" width="92" height="4" rx="1" fill="#4a3838"/>
+    <path d="M142 206 Q128 220 124 244" stroke="#8a3010" stroke-width="1.5" fill="none" opacity=".55"/>
+  `),
 };
