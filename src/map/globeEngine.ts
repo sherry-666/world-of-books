@@ -104,10 +104,11 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
     .attr('role', 'application')
     .attr('aria-label', 'World of Books — interactive globe');
 
-  const gStars         = svg.append('g').attr('class', 'stars-layer');
-  const gCountryLabels = svg.append('g').attr('class', 'country-labels-layer');
-  const gAuthors       = svg.append('g').attr('class', 'authors-layer');
-  const gMarkers       = svg.append('g').attr('class', 'markers-layer');
+  const gStars           = svg.append('g').attr('class', 'stars-layer');
+  const gCountryLabels   = svg.append('g').attr('class', 'country-labels-layer');
+  const gProvinceLabels  = svg.append('g').attr('class', 'province-labels-layer');
+  const gAuthors         = svg.append('g').attr('class', 'authors-layer');
+  const gMarkers         = svg.append('g').attr('class', 'markers-layer');
 
   let markerSel: d3.Selection<SVGGElement, PBook, SVGGElement, unknown> | null = null;
   let openId: string | null = null;
@@ -118,8 +119,11 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
   let authorBookIds: Set<string> | null = null;
   let resizeTimer: ReturnType<typeof setTimeout>;
 
-  // Province/state border data (lazy-loaded at zoomFactor ≥ 3)
+  // Province/state border + label data (lazy-loaded at zoomFactor ≥ 3)
+  interface ProvinceLabel { name: string; lng: number; lat: number; }
   let provinceFeatures: GeoJSON.Feature[] = [];
+  let provinceLabels: ProvinceLabel[] = [];
+  let provinceLabelSel: d3.Selection<SVGTextElement, ProvinceLabel, SVGGElement, unknown> | null = null;
   let provinceDataLoaded = false;
 
   // ---- author layer ----
@@ -242,6 +246,41 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
     ctx.globalAlpha = 1;
   }
 
+  function buildProvinceLabels() {
+    gProvinceLabels.selectAll('*').remove();
+    provinceLabelSel = null;
+    provinceLabels = provinceFeatures
+      .filter(f => f.properties?.latitude != null && f.properties?.longitude != null && f.properties?.name)
+      .map(f => ({
+        name: f.properties!.name as string,
+        lng:  f.properties!.longitude as number,
+        lat:  f.properties!.latitude  as number,
+      }));
+    provinceLabelSel = gProvinceLabels
+      .selectAll<SVGTextElement, ProvinceLabel>('text.province-label')
+      .data(provinceLabels)
+      .enter()
+      .append('text')
+      .attr('class', 'province-label')
+      .attr('text-anchor', 'middle')
+      .attr('dominant-baseline', 'middle')
+      .text(d => d.name);
+  }
+
+  function updateProvinceLabels() {
+    if (!provinceLabelSel) return;
+    const opacity = zoomFactor < 4 ? 0 : zoomFactor >= 5 ? 0.75 : (zoomFactor - 4) * 0.75;
+    (gProvinceLabels.node() as SVGGElement | null)?.style.setProperty('opacity', String(opacity));
+    if (opacity <= 0) return;
+    provinceLabelSel.each(function (d) {
+      const show = isVisible(d.lng, d.lat);
+      (this as SVGTextElement).style.display = show ? '' : 'none';
+      if (!show) return;
+      const p = projection([d.lng, d.lat]);
+      if (p) (this as SVGTextElement).setAttribute('transform', `translate(${p[0]},${p[1]})`);
+    });
+  }
+
   async function loadProvinceData() {
     if (provinceDataLoaded) return;
     provinceDataLoaded = true;
@@ -249,7 +288,10 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
       const res     = await fetch('/provinces-large.json');
       const geojson = await res.json() as GeoJSON.FeatureCollection;
       provinceFeatures = geojson.features.filter(f => BIG_COUNTRY_ISO2.has(f.properties?.iso_a2));
-      if (!isDestroyed) redraw();
+      if (!isDestroyed) {
+        buildProvinceLabels();
+        redraw();
+      }
     } catch (_e) {
       provinceFeatures = [];
     }
@@ -555,6 +597,7 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
     updateMarkers();
     updateAuthorDots();
     updateCountryLabels();
+    updateProvinceLabels();
   }
 
   // ---- interaction: drag to rotate, wheel to zoom ----
