@@ -2342,11 +2342,18 @@ html[data-mode='author'][data-author-active] .markers-layer .marker.on { opacity
 
 /* ================= GLOBE-SPECIFIC ================= */
 
-/* Link in the masthead to toggle between flat map and globe */
-.globe-maplink {
-  display: inline-block;
+/* Row of navigation links under the masthead tagline */
+.masthead-links {
+  display: flex;
+  gap: 16px;
+  align-items: center;
   margin-top: 10px;
   margin-left: 2px;
+}
+
+/* Individual link (flat map ↔ globe, authors) */
+.globe-maplink {
+  display: inline-block;
   font-family: var(--font-label);
   font-size: 11px;
   letter-spacing: .24em;

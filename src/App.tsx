@@ -209,7 +209,10 @@ export default function App() {
         </h1>
         <div className="rule"><i /></div>
         <p className="sub">{t.tagline}</p>
-        <a href="/globe" className="globe-maplink" title="Switch to globe view">Globe ↗</a>
+        <div className="masthead-links">
+          <a href="/globe" className="globe-maplink" title="Switch to globe view">Globe ↗</a>
+          <a href={`/authors?primary=${primaryLanguage}`} className="globe-maplink" title="Authors on the map">{t.authorsTitle} ↗</a>
+        </div>
       </header>
 
       {/* Search bar */}

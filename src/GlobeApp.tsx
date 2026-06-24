@@ -176,7 +176,10 @@ export default function GlobeApp() {
         </h1>
         <div className="rule"><i /></div>
         <p className="sub">{t.tagline}</p>
-        <a href="/" className="globe-maplink" title="Switch to flat map">Flat map ↗</a>
+        <div className="masthead-links">
+          <a href="/" className="globe-maplink" title="Switch to flat map">Flat map ↗</a>
+          <a href={`/globe/authors?primary=${primaryLanguage}`} className="globe-maplink" title="Authors on the globe">{t.authorsTitle} ↗</a>
+        </div>
       </header>
 
       <SearchBar onSelect={panTo} placeholder={t.searchPlaceholder} />
