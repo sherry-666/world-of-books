@@ -473,4 +473,255 @@ export const EUROPE_COVERS: Record<string, string> = {
       <rect x="108" y="322" width="84" height="8" rx="1"/>
     </g>
   `),
+
+  /* ── The Picture of Dorian Gray · London — a gilt-framed portrait in a velvet drawing room ── */
+  doriangray: scene(`
+    <defs>
+      <linearGradient id="dgSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a1208"/><stop offset="1" stop-color="#2e2010"/>
+      </linearGradient>
+      <radialGradient id="dgL" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#e8c060" stop-opacity=".55"/>
+        <stop offset="1" stop-color="#e8c060" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#dgSky)"/>
+    <rect x="96" y="72" width="108" height="168" fill="#1e1608"/>
+    <rect x="102" y="78" width="96" height="156" fill="#2e2010"/>
+    <circle cx="150" cy="152" r="80" fill="url(#dgL)"/>
+    <rect x="110" y="86" width="80" height="140" fill="#3a2c18"/>
+    <g fill="#c0a050" opacity=".7">
+      <rect x="96" y="72" width="108" height="6"/>
+      <rect x="96" y="234" width="108" height="6"/>
+      <rect x="96" y="72" width="6" height="168"/>
+      <rect x="198" y="72" width="6" height="168"/>
+    </g>
+    <g fill="#c0a050" opacity=".42">
+      <circle cx="99" cy="75" r="5"/><circle cx="201" cy="75" r="5"/>
+      <circle cx="99" cy="237" r="5"/><circle cx="201" cy="237" r="5"/>
+    </g>
+    <g fill="#241a08">
+      <ellipse cx="150" cy="162" rx="22" ry="28"/>
+      <circle cx="150" cy="126" r="15"/>
+    </g>
+    <rect x="0" y="298" width="300" height="152" fill="#100c06"/>
+    <rect x="86" y="274" width="128" height="28" fill="#180e04"/>
+    <rect x="0" y="294" width="300" height="6" fill="#c0a050" opacity=".2"/>
+    ${Array.from({length:6}).map((_,i)=>`<rect x="${90+i*24}" y="${314}" width="18" height="24" rx="1" fill="#1a1208"/>`).join('')}
+  `),
+
+  /* ── Wuthering Heights · Yorkshire Moors — wild heather, storm-raked manor, Heathcliff ── */
+  wutheringheights: scene(`
+    <defs>
+      <linearGradient id="whSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1c2030"/><stop offset=".36" stop-color="#3a3848"/>
+        <stop offset=".68" stop-color="#6a5850"/><stop offset="1" stop-color="#8a7060"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#whSky)"/>
+    ${stars(8, 29)}
+    <path d="M0 298 Q80 268 150 278 T300 288 L300 450 L0 450 Z" fill="#3a3028"/>
+    <path d="M0 338 Q80 318 160 328 T300 330 L300 450 L0 450 Z" fill="#2e2420"/>
+    <path d="M0 390 Q80 374 160 382 T300 382 L300 450 L0 450 Z" fill="#221c18"/>
+    <g fill="#181210">
+      <rect x="104" y="178" width="92" height="122"/>
+      <path d="M96 182 L150 152 L204 182 Z"/>
+      <rect x="118" y="152" width="64" height="30"/>
+      <path d="M112 156 L150 130 L188 156 Z"/>
+      <rect x="134" y="130" width="32" height="22"/>
+      <rect x="144" y="118" width="12" height="12"/>
+    </g>
+    ${[[112,196],[128,196],[152,196],[168,196],[112,230],[128,230]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="16" fill="#ffd060" opacity="${y===196?'.32':'.26'}"/>`).join('')}
+    <g fill="#100e0c">
+      <circle cx="150" cy="290" r="5"/>
+      <rect x="147" y="295" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M40 278 Q80 270 100 260 Q120 252 130 264" stroke="#484038" stroke-width="1.2" fill="none" opacity=".6"/>
+    <path d="M170 256 Q192 248 220 260 Q240 268 260 278" stroke="#484038" stroke-width="1.2" fill="none" opacity=".6"/>
+  `),
+
+  /* ── Middlemarch · Midlands England — church spire, rolling fields, reform-era morning ── */
+  middlemarch: scene(`
+    <defs>
+      <linearGradient id="mmSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#6a8098"/><stop offset=".44" stop-color="#a0b8c0"/>
+        <stop offset=".74" stop-color="#c8d4b8"/><stop offset="1" stop-color="#d8e0c0"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#mmSky)"/>
+    ${stars(5, 7)}
+    <path d="M0 318 Q80 298 150 308 T300 312 L300 450 L0 450 Z" fill="#5a7840"/>
+    <path d="M0 358 Q80 342 160 350 T300 348 L300 450 L0 450 Z" fill="#4a6830"/>
+    <path d="M0 404 Q80 392 160 398 T300 396 L300 450 L0 450 Z" fill="#3a5828"/>
+    <g fill="#2a2818">
+      <rect x="136" y="178" width="28" height="142"/>
+      <rect x="128" y="178" width="44" height="20"/>
+      <path d="M122 180 L150 152 L178 180 Z"/>
+      <rect x="140" y="152" width="20" height="26"/>
+      <path d="M136 154 L150 136 L164 154 Z"/>
+      <rect x="146" y="136" width="8" height="18"/>
+      <rect x="144" y="128" width="12" height="12"/>
+    </g>
+    ${[[140,196],[156,196],[140,224],[156,224],[140,252]].map(([x,y])=>`<rect x="${x}" y="${y}" width="9" height="14" fill="#ffd880" opacity=".42"/>`).join('')}
+    <path d="M100 310 Q120 302 140 308 Q160 314 180 308 Q200 302 220 310" stroke="#8ab050" stroke-width="1" fill="none" opacity=".5"/>
+  `),
+
+  /* ── The Painted Bird · Poland — lone child in wartime forest, dark pines, ash sky ── */
+  paintedbird: scene(`
+    <defs>
+      <linearGradient id="pbSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#5a5858"/><stop offset=".5" stop-color="#7a7070"/>
+        <stop offset="1" stop-color="#8a7870"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#pbSky)"/>
+    <path d="M0 308 Q150 296 300 306 L300 450 L0 450 Z" fill="#1a1a10"/>
+    <path d="M0 358 Q150 348 300 356 L300 450 L0 450 Z" fill="#141410"/>
+    <g fill="#0e0e08">
+      ${[-60,-30,0,30,60,90,-90].map(dx=>`<rect x="${150+dx}" y="${180}" width="5" height="130"/><path d="M${152+dx} 180 Q${164+dx} 196 ${152+dx} 212 Q${140+dx} 228 ${152+dx} 244 Q${164+dx} 260 ${152+dx} 278 Q${140+dx} 294 ${152+dx} 308" stroke="#0e0e08" stroke-width="12" fill="none"/>`).join('')}
+    </g>
+    <g fill="#100e08">
+      <circle cx="150" cy="288" r="5"/>
+      <rect x="147" y="293" width="5" height="15" rx="1"/>
+      <path d="M143 305 L147 298 L153 298 L157 305 L154 312 L146 312 Z"/>
+    </g>
+    ${[134,142,158,166].map(x=>`<path d="M${x} 270 L${x-4} 262 L${x+4} 265 Z" fill="#c83020" opacity=".55"/>`).join('')}
+  `),
+
+  /* ── The French Lieutenant's Woman · Lyme Regis — a lone woman on the Cobb in storm wind ── */
+  frenchlieutenant: scene(`
+    <defs>
+      <linearGradient id="flSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2a3848"/><stop offset=".4" stop-color="#4a6070"/>
+        <stop offset=".72" stop-color="#7a9898"/><stop offset="1" stop-color="#9ab8b8"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#flSky)"/>
+    ${stars(6, 31)}
+    <path d="M0 360 Q150 348 300 358 L300 450 L0 450 Z" fill="#2a4858"/>
+    <path d="M0 396 Q75 388 150 394 T300 392 L300 450 L0 450 Z" fill="#1e3a4a"/>
+    <path d="M0 428 Q75 422 150 427 T300 425 L300 450 L0 450 Z" fill="#162e3c"/>
+    <path d="M60 370 Q80 340 100 318 Q110 308 116 310 L118 320 Q104 330 94 360 L60 370 Z" fill="#4a5858"/>
+    <path d="M184 370 Q164 340 144 318 Q134 308 130 310 L128 320 Q142 330 152 360 L184 370 Z" fill="#3a4848"/>
+    <rect x="60" y="366" width="180" height="12" rx="2" fill="#3a4a58"/>
+    <g fill="#180c04">
+      <circle cx="150" cy="276" r="8"/>
+      <rect x="146" y="284" width="7" height="36" rx="1"/>
+      <path d="M138 300 L146 290 L153 290 L161 300 L157 318 L141 318 Z"/>
+      <path d="M138 300 Q128 310 132 326 Q136 314 144 312"/>
+      <path d="M161 300 Q171 310 167 326 Q163 314 155 312"/>
+    </g>
+    <path d="M146 284 Q138 278 128 272 Q120 267 118 260" stroke="#180c04" stroke-width="5" fill="none" stroke-linecap="round"/>
+  `),
+
+  /* ── The Sea, The Sea · British coast — reclusive writer's house above wild grey waters ── */
+  seathesea: scene(`
+    <defs>
+      <linearGradient id="ssSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2a3848"/><stop offset=".38" stop-color="#4a6070"/>
+        <stop offset=".65" stop-color="#7a9898"/><stop offset="1" stop-color="#9ab4b4"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#ssSky)"/>
+    ${stars(8, 37)}
+    <g fill="#2a2e30">
+      <rect x="128" y="188" width="44" height="132"/>
+      <path d="M120 192 L150 168 L180 192 Z"/>
+      <rect x="136" y="168" width="28" height="24"/>
+      <rect x="144" y="156" width="12" height="14"/>
+    </g>
+    <rect x="134" y="210" width="12" height="16" fill="#ffd060" opacity=".52"/>
+    <rect x="154" y="210" width="10" height="16" fill="#ffd060" opacity=".42"/>
+    <rect x="134" y="240" width="12" height="14" fill="#ffd060" opacity=".36"/>
+    <path d="M0 348 Q150 334 300 346 L300 450 L0 450 Z" fill="#3a6878"/>
+    ${Array.from({length:6}).map((_,i)=>`<path d="M${30+i*40} ${360+i%2*8} Q${50+i*40} ${352+i%2*6} ${70+i*40} ${360+i%2*8}" stroke="#7ab0c0" stroke-width="1.2" fill="none" opacity=".45"/>`).join('')}
+    <path d="M0 402 Q150 394 300 400 L300 450 L0 450 Z" fill="#2a5868"/>
+    <path d="M0 432 Q150 424 300 430 L300 450 L0 450 Z" fill="#1e4858"/>
+  `),
+
+  /* ── Love Among the Chickens · Rural Sussex — cottage, comic chaos, chickens at dawn ── */
+  lovechickens: scene(`
+    <defs>
+      <linearGradient id="lcSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#4a6a8a"/><stop offset=".44" stop-color="#8ab4c8"/>
+        <stop offset=".74" stop-color="#c8d8a0"/><stop offset="1" stop-color="#d8e0a0"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#lcSky)"/>
+    ${stars(6, 41)}
+    <path d="M0 322 Q150 310 300 320 L300 450 L0 450 Z" fill="#6a8040"/>
+    <path d="M0 370 Q150 360 300 368 L300 450 L0 450 Z" fill="#5a7030"/>
+    <g fill="#2a2010">
+      <rect x="106" y="228" width="88" height="96"/>
+      <path d="M98 232 L150 196 L202 232 Z"/>
+      <rect x="122" y="280" width="56" height="44"/>
+      <rect x="116" y="228" width="68" height="8" fill="#4a3820"/>
+    </g>
+    <rect x="134" y="242" width="32" height="22" fill="#3a2c18" rx="1"/>
+    <rect x="142" y="248" width="16" height="16" fill="#ffd880" opacity=".48"/>
+    ${Array.from({length:5}).map((_,i)=>`<g fill="#c8a030"><circle cx="${96+i*28}" cy="${342+i%2*10}" r="5"/><path d="M${94+i*28} ${344+i%2*10} L${88+i*28} ${355+i%2*10} L${102+i*28} ${355+i%2*10} Z"/><path d="M${100+i*28} ${342+i%2*10} L${108+i*28} ${339+i%2*10}" stroke="#c8a030" stroke-width="1.4"/></g>`).join('')}
+  `),
+
+  /* ── The Summer Book · Finnish archipelago — midsummer island, silver water, girl and grandmother ── */
+  summerbook: scene(`
+    <defs>
+      <linearGradient id="sbSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#a8c4d8"/><stop offset=".44" stop-color="#c8dce0"/>
+        <stop offset=".72" stop-color="#d8ecf0"/><stop offset="1" stop-color="#e8f4f8"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#sbSky)"/>
+    <circle cx="150" cy="100" r="56" fill="#fff8e8" opacity=".82"/>
+    <circle cx="150" cy="100" r="24" fill="#fffce0" opacity=".88"/>
+    <path d="M0 314 Q150 302 300 312 L300 450 L0 450 Z" fill="#8ab8c8"/>
+    <path d="M0 348 Q75 340 150 346 T300 344 L300 450 L0 450 Z" fill="#6aa4b8"/>
+    <path d="M0 390 Q75 382 150 388 T300 386 L300 450 L0 450 Z" fill="#5090a8"/>
+    ${Array.from({length:6}).map((_,i)=>`<path d="M${50+i*34} ${326+i%2*6} Q${66+i*34} ${318+i%2*4} ${82+i*34} ${326+i%2*6}" stroke="#c8e4ec" stroke-width=".9" fill="none" opacity=".45"/>`).join('')}
+    <g fill="#2a3c28">
+      <path d="M0 310 Q0 280 20 268 Q30 264 40 276 Q50 290 50 310 Z"/>
+      <path d="M240 312 Q240 280 260 264 Q270 256 284 266 Q296 278 300 310 Z"/>
+    </g>
+    <g fill="#3a4830" opacity=".8">
+      <rect x="116" y="266" width="5" height="48"/>
+      <ellipse cx="118" cy="260" rx="16" ry="20"/>
+      <rect x="172" y="278" width="4" height="36"/>
+      <ellipse cx="174" cy="274" rx="12" ry="16"/>
+    </g>
+    <g fill="#1a1810">
+      <circle cx="136" cy="302" r="4.5"/>
+      <rect x="134" y="306" width="4" height="8" rx="1"/>
+      <circle cx="164" cy="308" r="3.5"/>
+      <rect x="162" y="311" width="3" height="6" rx="1"/>
+    </g>
+  `),
+
+  /* ── The Book of Disquiet · Lisbon — a clerk's window, Tagus below, fado twilight ── */
+  bookdisquiet: scene(`
+    <defs>
+      <linearGradient id="bqSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2a2040"/><stop offset=".4" stop-color="#5a4868"/>
+        <stop offset=".7" stop-color="#9a7860"/><stop offset="1" stop-color="#c0a06a"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#bqSky)"/>
+    ${stars(12, 23)}
+    <path d="M0 338 Q150 326 300 336 L300 450 L0 450 Z" fill="#3a4a68"/>
+    <path d="M0 374 Q75 366 150 372 T300 370 L300 450 L0 450 Z" fill="#2a3a58"/>
+    <path d="M0 410 Q75 404 150 408 T300 406 L300 450 L0 450 Z" fill="#1e2e48"/>
+    <g fill="#1a1828" opacity=".88">
+      <rect x="0" y="220" width="68" height="218"/>
+      <rect x="76" y="248" width="52" height="190"/>
+      <rect x="172" y="240" width="56" height="198"/>
+      <rect x="232" y="212" width="68" height="226"/>
+    </g>
+    ${[[8,240],[22,240],[8,270],[22,270],[8,298],[240,232],[256,232],[240,262],[240,290]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="14" fill="#e0a050" opacity=".35"/>`).join('')}
+    <rect x="106" y="156" width="88" height="70" fill="#201828" opacity=".9"/>
+    <rect x="112" y="162" width="76" height="58" fill="#2e2438"/>
+    <rect x="116" y="168" width="30" height="46" fill="#e8c070" opacity=".2"/>
+    <rect x="154" y="168" width="30" height="46" fill="#e8c070" opacity=".15"/>
+    <g fill="#180e04">
+      <rect x="143" y="180" width="14" height="34" rx="1"/>
+      <circle cx="150" cy="177" r="8"/>
+    </g>
+  `),
 };
