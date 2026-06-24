@@ -1308,4 +1308,37 @@ export const AMERICAS_EXTRA_COVERS: Record<string, string> = {
     <rect x="104" y="188" width="92" height="4" rx="1" fill="#4a3838"/>
     <path d="M142 206 Q128 220 124 244" stroke="#8a3010" stroke-width="1.5" fill="none" opacity=".55"/>
   `),
+
+  /* ── The George Miles Cycle · Los Angeles — 5-book spiral of obsession, a boy, beautiful dissolution ── */
+  georgemiles: scene(`
+    <defs>
+      <linearGradient id="gmlSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#100810"/><stop offset=".44" stop-color="#201428"/>
+        <stop offset=".74" stop-color="#382038"/><stop offset="1" stop-color="#503048"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#gmlSky)"/>
+    ${stars(11, 295)}
+    <path d="M0 352 Q150 340 300 350 L300 450 L0 450 Z" fill="#1a1018"/>
+    <path d="M0 396 Q150 386 300 394 L300 450 L0 450 Z" fill="#120c10"/>
+    <g fill="#0e0c14">
+      <rect x="0" y="198" width="56" height="254"/>
+      <rect x="244" y="184" width="56" height="268"/>
+      <rect x="64" y="218" width="44" height="234"/>
+      <rect x="196" y="208" width="44" height="244"/>
+    </g>
+    ${Array.from({length:10}).map((_,i)=>{const x=(i*59+8)%300, y=210+(i*47)%200; return `<rect x="${x}" y="${y}" width="3" height="5" fill="#c060a8" opacity="${0.1+((i*7)%5)/14}"/>`;}).join('')}
+    <circle cx="150" cy="220" r="90" fill="#c060a8" opacity=".05"/>
+    <circle cx="150" cy="220" r="60" fill="#c060a8" opacity=".05"/>
+    <circle cx="150" cy="220" r="36" fill="#c060a8" opacity=".06"/>
+    <circle cx="150" cy="220" r="18" fill="#c060a8" opacity=".08"/>
+    <circle cx="150" cy="220" r="7" fill="#e080c0" opacity=".35"/>
+    <path d="M150 220 Q140 236 130 246 Q138 232 148 228" stroke="#c060a8" stroke-width=".7" fill="none" opacity=".22"/>
+    <path d="M150 220 Q162 232 174 240 Q162 228 152 226" stroke="#c060a8" stroke-width=".7" fill="none" opacity=".22"/>
+    <g fill="#0e0c14">
+      <circle cx="150" cy="332" r="5.5"/>
+      <rect x="147" y="337" width="5" height="18" rx="1"/>
+    </g>
+    <path d="M0 352 Q150 346 300 350" stroke="#503048" stroke-width=".5" fill="none" opacity=".28"/>
+  `),
 };
