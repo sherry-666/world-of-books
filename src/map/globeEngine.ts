@@ -3,7 +3,7 @@ import { feature, mesh } from 'topojson-client';
 import { BOOKS } from '../books';
 import { pickDisplayLanguage } from '../types';
 import type { Book, MapTweaks, MapHandle, Author, AuthorEvent } from '../types';
-import { COUNTRY_NAMES, BIG_COUNTRY_IDS } from '../countryNames';
+import { COUNTRY_NAMES, BIG_COUNTRY_IDS, BIG_COUNTRY_ISO2 } from '../countryNames';
 import type { MapCallbacks } from './mapEngine';
 
 const GEO_URL  = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json';
@@ -118,6 +118,10 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
   let authorBookIds: Set<string> | null = null;
   let resizeTimer: ReturnType<typeof setTimeout>;
 
+  // Province/state border data (lazy-loaded at zoomFactor ≥ 3)
+  let provinceFeatures: GeoJSON.Feature[] = [];
+  let provinceDataLoaded = false;
+
   // ---- author layer ----
   type PEvent = AuthorEvent & { _x: number; _y: number };
   let pEvents: PEvent[] = [];
@@ -213,6 +217,42 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
     ctx.strokeStyle = cssVar('--sphere-stroke') || 'rgba(220,184,110,0.38)';
     ctx.lineWidth = 1.2;
     ctx.stroke();
+  }
+
+  // ---- province / state borders (canvas, lazy-loaded) ----
+
+  function drawProvinces() {
+    if (!provinceFeatures.length) return;
+    const opacity = zoomFactor < 3 ? 0 : zoomFactor >= 4 ? 0.55 : (zoomFactor - 3) * 0.55;
+    if (opacity <= 0) return;
+    const color = cssVar('--land-stroke') || 'rgba(220,184,110,0.42)';
+    // Parse colour and apply opacity
+    ctx.globalAlpha = opacity;
+    ctx.strokeStyle = color;
+    ctx.lineWidth   = 0.5;
+    ctx.setLineDash([2, 3]);
+    for (const f of provinceFeatures) {
+      if (!f.geometry) continue;
+      ctx.beginPath();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      canvasPath(f as any);
+      ctx.stroke();
+    }
+    ctx.setLineDash([]);
+    ctx.globalAlpha = 1;
+  }
+
+  async function loadProvinceData() {
+    if (provinceDataLoaded) return;
+    provinceDataLoaded = true;
+    try {
+      const res     = await fetch('/provinces-large.json');
+      const geojson = await res.json() as GeoJSON.FeatureCollection;
+      provinceFeatures = geojson.features.filter(f => BIG_COUNTRY_ISO2.has(f.properties?.iso_a2));
+      if (!isDestroyed) redraw();
+    } catch (_e) {
+      provinceFeatures = [];
+    }
   }
 
   // ---- projection ----
@@ -507,7 +547,10 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
 
   function redraw() {
     drawBase();
-    if (pEvents.length) drawAuthorPath(); // on canvas, above land, below SVG markers
+    drawProvinces(); // dashed state/province lines, on canvas above land
+    if (pEvents.length) drawAuthorPath();
+    // Trigger lazy load once zoom is high enough
+    if (zoomFactor >= 3 && !provinceDataLoaded) loadProvinceData();
     projectBooks();
     updateMarkers();
     updateAuthorDots();
