@@ -166,4 +166,291 @@ export const FRENCH_COVERS: Record<string, string> = {
     ${Array.from({ length: 18 }).map((_, i) => { const x = 10 + (i % 6) * 48, y = 308 + Math.floor(i / 6) * 34; const lit = i === 7 || i === 14; return `<rect x="${x}" y="${y}" width="13" height="17" rx="1" fill="${lit ? '#ffcf78' : '#0f1422'}" opacity="${lit ? '.85' : '.8'}"/>`; }).join('')}
     ${Array.from({ length: 50 }).map((_, i) => { const x = (i * 53 + i * i * 7) % 300, y = (i * 71 + i * i * 3) % 300, r = ((i * 13) % 10) / 10 * 1 + 0.5; return `<circle cx="${x}" cy="${y}" r="${r.toFixed(2)}" fill="#eaf0fa" opacity="${(0.35 + ((i * 5) % 5) / 10).toFixed(2)}"/>`; }).join('')}
   `),
+
+  /* ── Voyage au bout de la nuit · Paris — deep night, gas-lamp halo on cobblestones, lone figure ── */
+  voyagenuit: scene(`
+    <defs>
+      <linearGradient id="vnSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#04030c"/><stop offset="1" stop-color="#12102a"/>
+      </linearGradient>
+      <radialGradient id="vnG" cx="50%" cy="44%" r="50%">
+        <stop offset="0" stop-color="#ffd060" stop-opacity=".55"/>
+        <stop offset="1" stop-color="#ffd060" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#vnSky)"/>
+    ${stars(9, 17)}
+    <rect x="0" y="168" width="90" height="282" fill="#0e0b1c"/>
+    <rect x="210" y="148" width="90" height="302" fill="#0a0818"/>
+    <rect x="14" y="192" width="11" height="15" fill="#ffd050" opacity=".34"/>
+    <rect x="30" y="192" width="11" height="15" fill="#ffd050" opacity=".26"/>
+    <rect x="14" y="226" width="11" height="14" fill="#ffd050" opacity=".20"/>
+    <rect x="46" y="208" width="10" height="14" fill="#ffd050" opacity=".16"/>
+    <rect x="218" y="174" width="11" height="15" fill="#ffd050" opacity=".30"/>
+    <rect x="234" y="174" width="11" height="15" fill="#ffd050" opacity=".22"/>
+    <rect x="218" y="208" width="11" height="14" fill="#ffd050" opacity=".18"/>
+    <rect x="149" y="200" width="3" height="122" fill="#1e1c2e"/>
+    <path d="M142 206 Q149 196 158 206 L157 220 L143 220 Z" fill="#1e1c2e"/>
+    <circle cx="150" cy="200" r="62" fill="url(#vnG)"/>
+    <circle cx="150" cy="200" r="7" fill="#ffe9a8" opacity=".88"/>
+    <path d="M62 380 L150 342 L238 380 L238 450 L62 450 Z" fill="#0c0a1a"/>
+    <line x1="150" y1="342" x2="102" y2="420" stroke="#1a1828" stroke-width=".8"/>
+    <line x1="150" y1="342" x2="198" y2="420" stroke="#1a1828" stroke-width=".8"/>
+    <line x1="82" y1="390" x2="218" y2="386" stroke="#1a1828" stroke-width=".6"/>
+    <rect x="148" y="373" width="4" height="20" rx="1" fill="#08060f"/>
+    <circle cx="150" cy="370" r="4.5" fill="#08060f"/>
+  `),
+
+  /* ── Germinal · Nord-Pas-de-Calais — mine headframe against fire-glow sky, striking shadows ── */
+  germinal: scene(`
+    <defs>
+      <linearGradient id="gmSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#160c04"/><stop offset=".4" stop-color="#3e1c06"/>
+        <stop offset=".72" stop-color="#8c3a0c"/><stop offset="1" stop-color="#c45218"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#gmSky)"/>
+    ${stars(5, 9)}
+    <ellipse cx="150" cy="430" rx="170" ry="28" fill="#d85c18" opacity=".22"/>
+    <g fill="#0c0a06">
+      <rect x="130" y="168" width="7" height="172"/>
+      <rect x="163" y="168" width="7" height="172"/>
+      <rect x="122" y="166" width="56" height="10"/>
+      <rect x="120" y="156" width="60" height="10"/>
+      <rect x="138" y="136" width="24" height="20"/>
+      <rect x="144" y="122" width="12" height="14"/>
+      <path d="M122 166 L150 134 L178 166 Z"/>
+      <rect x="112" y="316" width="76" height="8"/>
+      <rect x="110" y="330" width="80" height="6"/>
+    </g>
+    <rect x="0" y="356" width="300" height="94" fill="#0a0804"/>
+    ${Array.from({length:10}).map((_,i) => { const x=102+(i%5)*18, y=368+Math.floor(i/5)*20; return `<rect x="${x}" y="${y}" width="8" height="13" rx="1" fill="#0a0804"/><circle cx="${x+4}" cy="${y}" r="4" fill="#0a0804"/>`;}).join('')}
+    <path d="M0 356 Q150 346 300 354" stroke="#c45218" stroke-width=".6" fill="none" opacity=".18"/>
+  `),
+
+  /* ── Bel-Ami · Paris — gas-lit boulevard at violet dusk, café awnings, a man ascending ── */
+  belami: scene(`
+    <defs>
+      <linearGradient id="baSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#28203e"/><stop offset=".44" stop-color="#4e3a5e"/>
+        <stop offset=".74" stop-color="#8a5848"/><stop offset="1" stop-color="#c89060"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#baSky)"/>
+    ${stars(10, 3)}
+    <g fill="#1c1428">
+      <rect x="0" y="258" width="68" height="192"/>
+      <rect x="232" y="238" width="68" height="212"/>
+      <rect x="78" y="290" width="38" height="160"/>
+      <rect x="186" y="276" width="38" height="174"/>
+    </g>
+    <rect x="14" y="276" width="12" height="16" fill="#ffc860" opacity=".52"/>
+    <rect x="30" y="276" width="12" height="16" fill="#ffc860" opacity=".44"/>
+    <rect x="14" y="306" width="12" height="15" fill="#ffc860" opacity=".36"/>
+    <rect x="238" y="258" width="12" height="16" fill="#ffc860" opacity=".48"/>
+    <rect x="254" y="258" width="12" height="16" fill="#ffc860" opacity=".40"/>
+    <rect x="84" y="304" width="10" height="14" fill="#ffc860" opacity=".42"/>
+    <rect x="192" y="294" width="10" height="14" fill="#ffc860" opacity=".38"/>
+    <rect x="0" y="358" width="300" height="92" fill="#14101e"/>
+    <path d="M96 370 L96 350 L104 344 L112 350 L112 370 Z" fill="#1c1428"/>
+    <path d="M188 370 L188 348 L196 342 L204 348 L204 370 Z" fill="#1c1428"/>
+    <circle cx="100" cy="340" r="16" fill="#ffc860" opacity=".24"/>
+    <circle cx="196" cy="338" r="16" fill="#ffc860" opacity=".22"/>
+    <rect x="147" y="318" width="5" height="40" rx="1" fill="#160c1a"/>
+    <circle cx="149" cy="315" r="4.5" fill="#160c1a"/>
+    <path d="M141 334 L147 327 L155 327 L159 334 L155 344 L143 344 Z" fill="#160c1a"/>
+  `),
+
+  /* ── Belle du Seigneur · Geneva — gilded salon, chandelier, curtains, lake beyond ── */
+  belledusg: scene(`
+    <defs>
+      <linearGradient id="bdLake" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#3a587a"/><stop offset="1" stop-color="#6a9ab2"/>
+      </linearGradient>
+      <radialGradient id="bdC" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#ffe090" stop-opacity=".88"/>
+        <stop offset="1" stop-color="#ffe090" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="#241808"/>
+    <rect x="108" y="72" width="84" height="188" fill="url(#bdLake)"/>
+    <rect x="108" y="72" width="5" height="188" fill="#3a2618"/>
+    <rect x="187" y="72" width="5" height="188" fill="#3a2618"/>
+    <rect x="106" y="70" width="88" height="8" fill="#3a2618"/>
+    <circle cx="150" cy="112" r="52" fill="url(#bdC)"/>
+    <g fill="#c8a038" opacity=".82">
+      <circle cx="150" cy="100" r="5"/>
+      <ellipse cx="150" cy="100" rx="30" ry="7" fill="none" stroke="#c8a038" stroke-width="1.4"/>
+      ${[-24,-12,0,12,24].map(dx => `<circle cx="${150+dx}" cy="118" r="3"/><line x1="${150+dx}" y1="100" x2="${150+dx}" y2="118" stroke="#c8a038" stroke-width="1.1"/>`).join('')}
+    </g>
+    <rect x="88" y="70" width="20" height="290" fill="#3a2618"/>
+    <rect x="192" y="70" width="20" height="290" fill="#3a2618"/>
+    <rect x="0" y="340" width="300" height="110" fill="#1c1208"/>
+    <rect x="108" y="240" width="84" height="28" fill="#3a587a" opacity=".55"/>
+    <path d="M120 270 Q150 268 180 270" stroke="#6a9ab2" stroke-width=".8" fill="none" opacity=".5"/>
+    <rect x="0" y="356" width="300" height="5" fill="#c8a038" opacity=".45"/>
+    <rect x="0" y="408" width="300" height="5" fill="#c8a038" opacity=".35"/>
+  `),
+
+  /* ── Suite française · France 1940 — refugee column under grey summer sky, poplars, exodus ── */
+  suitefr: scene(`
+    <defs>
+      <linearGradient id="sfSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#8a8e9a"/><stop offset=".5" stop-color="#b0a89a"/>
+        <stop offset="1" stop-color="#c8b898"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#sfSky)"/>
+    <path d="M0 330 L88 272 L212 272 L300 330 L300 450 L0 450 Z" fill="#b4a87a"/>
+    <path d="M0 400 Q150 390 300 398 L300 450 L0 450 Z" fill="#9a9268"/>
+    ${[-54,-30,-6,18,42,68,94].map(dx => `<rect x="${150+dx}" y="${198}" width="3" height="${330-198}" fill="#2a3018" opacity=".68"/><ellipse cx="${151+dx}" cy="${216}" rx="${9}" ry="${22}" fill="#2a3018" opacity=".55"/>`).join('')}
+    ${Array.from({length:16}).map((_,i) => { const x=100+(i%8)*14, y=298+Math.floor(i/8)*24; return `<circle cx="${x+3}" cy="${y}" r="3.8" fill="#3a3228" opacity=".82"/><rect x="${x}" y="${y+2}" width="7" height="11" rx="1" fill="#4a4038" opacity=".75"/>`;}).join('')}
+    <path d="M88 272 L150 254 L212 272" fill="#c8b898" opacity=".55"/>
+    <rect x="130" y="282" width="38" height="18" rx="2" fill="#8a8070" opacity=".6"/>
+    <rect x="128" y="276" width="42" height="8" rx="1" fill="#9a9080" opacity=".5"/>
+  `),
+
+  /* ── Mémoires d'Hadrien · Tivoli — marble columns at golden dawn, cypress sentinels ── */
+  hadrien: scene(`
+    <defs>
+      <linearGradient id="hdSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#4a6a9a"/><stop offset=".38" stop-color="#8aacce"/>
+        <stop offset=".68" stop-color="#d4a870"/><stop offset="1" stop-color="#e8c07a"/>
+      </linearGradient>
+      <radialGradient id="hdSun" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#ffe8a0" stop-opacity=".72"/>
+        <stop offset="1" stop-color="#ffe8a0" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#hdSky)"/>
+    <circle cx="190" cy="178" r="72" fill="url(#hdSun)"/>
+    <circle cx="190" cy="178" r="20" fill="#ffe8b0" opacity=".78"/>
+    <rect x="0" y="328" width="300" height="122" fill="#c8a868"/>
+    <rect x="0" y="328" width="300" height="9" fill="#a88c56" opacity=".5"/>
+    <g fill="#d4c498">
+      ${[100,120,154,174,194].map((x,i) => `<rect x="${x}" y="${270-(i%2)*18}" width="11" height="${58+(i%2)*18}"/><rect x="${x-4}" y="${268-(i%2)*18}" width="19" height="5"/><rect x="${x-2}" y="${322}" width="15" height="7"/>`).join('')}
+    </g>
+    <path d="M96 272 L206 272" stroke="#c0aa84" stroke-width="2.5" opacity=".55"/>
+    <g fill="#1a2a10">
+      <rect x="88" y="198" width="8" height="130"/>
+      <ellipse cx="92" cy="198" rx="10" ry="28"/>
+      <rect x="190" y="178" width="8" height="150"/>
+      <ellipse cx="194" cy="178" rx="10" ry="30"/>
+      <rect x="212" y="218" width="6" height="110"/>
+      <ellipse cx="215" cy="218" rx="8" ry="22"/>
+    </g>
+  `),
+
+  /* ── La Promesse de l'aube · Nice — golden cliff above turquoise sea, mother silhouette at dusk ── */
+  promesseaube: scene(`
+    <defs>
+      <linearGradient id="paSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2a4a7a"/><stop offset=".36" stop-color="#6a8ab8"/>
+        <stop offset=".62" stop-color="#e0a060"/><stop offset="1" stop-color="#e8c880"/>
+      </linearGradient>
+      <radialGradient id="paSun" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#fff0a0" stop-opacity=".82"/>
+        <stop offset="1" stop-color="#fff0a0" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#paSky)"/>
+    <circle cx="150" cy="218" r="92" fill="url(#paSun)"/>
+    <circle cx="150" cy="218" r="22" fill="#fff8c0" opacity=".88"/>
+    <path d="M0 316 Q150 308 300 316 L300 450 L0 450 Z" fill="#3a6a9a"/>
+    <path d="M0 366 Q75 358 150 364 T300 362" stroke="#7ab0d0" stroke-width="1" fill="none" opacity=".45"/>
+    <path d="M0 406 Q75 399 150 404 T300 402" stroke="#7ab0d0" stroke-width=".7" fill="none" opacity=".3"/>
+    <path d="M78 316 Q96 298 116 258 Q126 240 148 316 Z" fill="#c8844a"/>
+    <path d="M78 316 Q88 294 100 278 Q112 264 116 258 Q122 248 118 270 Q112 290 102 308 Q90 322 78 316 Z" fill="#b87040"/>
+    <g fill="#1a1208">
+      <rect x="148" y="268" width="5" height="48" rx="1"/>
+      <circle cx="150" cy="265" r="6.5"/>
+      <path d="M140 284 L145 276 L155 276 L159 284 L156 296 L144 296 Z"/>
+      <path d="M140 284 Q131 294 135 304 Q139 295 147 295"/>
+      <path d="M159 284 Q168 294 164 304 Q160 295 152 295"/>
+    </g>
+  `),
+
+  /* ── Le Hussard sur le toit · Provence — layered terracotta rooftops, blue sky, lone rider atop ── */
+  hussardtoit: scene(`
+    <defs>
+      <linearGradient id="htSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#3a6aaa"/><stop offset=".55" stop-color="#7aaad8"/>
+        <stop offset="1" stop-color="#a8c4e2"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#htSky)"/>
+    <path d="M0 148 Q80 134 150 142 T300 148 L300 190 Q220 178 150 186 T0 190 Z" fill="#5a88c0" opacity=".28"/>
+    <path d="M0 260 Q150 248 300 258 L300 298 Q150 288 0 298 Z" fill="#c86848"/>
+    <path d="M0 296 Q150 286 300 294 L300 334 Q150 324 0 334 Z" fill="#b85c3e"/>
+    <path d="M0 332 Q150 322 300 330 L300 370 Q150 360 0 370 Z" fill="#a85036"/>
+    <path d="M0 368 Q150 358 300 366 L300 406 Q150 396 0 406 Z" fill="#c07048"/>
+    <path d="M0 404 Q150 394 300 402 L300 450 L0 450 Z" fill="#9a6040"/>
+    <rect x="0" y="440" width="300" height="10" fill="#8a5838"/>
+    <g fill="#1a1010">
+      <circle cx="150" cy="250" r="5.5"/>
+      <rect x="147" y="255" width="5" height="20" rx="1"/>
+      <path d="M136 261 L147 263 M152 263 L163 261"/>
+      <rect x="148" y="275" width="3" height="14" rx="1"/>
+      <path d="M145 275 L148 268 L152 275"/>
+      <rect x="140" y="268" width="20" height="4" rx="2"/>
+    </g>
+  `),
+
+  /* ── Le Lion · Masai Mara — orange savanna sunset, flat-top acacia, lion silhouette ── */
+  lelion: scene(`
+    <defs>
+      <linearGradient id="llSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a1830"/><stop offset=".28" stop-color="#6a3818"/>
+        <stop offset=".58" stop-color="#e07820"/><stop offset=".84" stop-color="#f0b040"/>
+        <stop offset="1" stop-color="#e8c060"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#llSky)"/>
+    <circle cx="150" cy="228" r="56" fill="#e07820" opacity=".52"/>
+    <circle cx="150" cy="228" r="22" fill="#f0c060" opacity=".78"/>
+    ${stars(7, 21)}
+    <rect x="0" y="328" width="300" height="122" fill="#4a3010"/>
+    <path d="M0 328 Q150 318 300 326" stroke="#5a3a14" stroke-width="2" fill="none"/>
+    <g fill="#1a0e06">
+      <rect x="148" y="256" width="4" height="72"/>
+      <path d="M92 264 Q120 254 148 258 Q178 254 208 264 L208 272 Q178 262 148 266 Q120 262 92 272 Z"/>
+      <path d="M92 264 Q88 256 90 248 L94 248 Q92 256 94 264 Z"/>
+      <path d="M206 264 Q210 256 210 248 L214 248 Q212 256 208 264 Z"/>
+      <path d="M106 264 Q102 250 104 242 L108 242 Q106 250 108 264 Z"/>
+      <path d="M194 264 Q198 250 196 242 L200 242 Q198 250 196 264 Z"/>
+    </g>
+    <g fill="#150e04">
+      <ellipse cx="120" cy="358" rx="28" ry="10"/>
+      <path d="M106 348 Q94 336 98 328 Q104 340 114 346 Z"/>
+      <path d="M134 348 Q146 336 142 328 Q136 340 126 346 Z"/>
+      <ellipse cx="100" cy="328" rx="9" ry="7"/>
+      <path d="M95 328 L87 340 L95 337"/>
+      <path d="M105 328 L112 338 L105 335"/>
+    </g>
+    <g fill="#1e1208">
+      <rect x="196" y="290" width="3" height="38" rx="1"/>
+      <circle cx="197" cy="290" r="2.5"/>
+      <path d="M193 294 L197 287 L201 294"/>
+    </g>
+  `),
+
+  /* ── Un long dimanche de fiançailles · Somme — barbed wire silhouette, grey shell-pocked earth ── */
+  longdimanche: scene(`
+    <defs>
+      <linearGradient id="ldSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#686870"/><stop offset=".44" stop-color="#8a8890"/>
+        <stop offset=".78" stop-color="#7a7470"/><stop offset="1" stop-color="#5a5048"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#ldSky)"/>
+    ${Array.from({length:5}).map((_,i) => `<circle cx="${110+i*18}" cy="${54+i*10}" r="${2+i%2*1.5}" fill="#a0a0a8" opacity=".28"/>`).join('')}
+    <path d="M0 278 Q58 268 120 273 T242 271 T300 276 L300 450 L0 450 Z" fill="#4a4038"/>
+    <path d="M0 308 Q150 298 300 306 L300 450 L0 450 Z" fill="#3a3028"/>
+    <path d="M0 358 Q150 350 300 356 L300 450 L0 450 Z" fill="#2e2820"/>
+    ${Array.from({length:9}).map((_,i) => { const x=90+i*13; return `<line x1="${x}" y1="276" x2="${x+6}" y2="266" stroke="#5a5050" stroke-width="1.2"/><line x1="${x+6}" y1="266" x2="${x-4}" y2="260" stroke="#5a5050" stroke-width="1"/><line x1="${x+6}" y1="266" x2="${x+14}" y2="273" stroke="#5a5050" stroke-width="1"/>`;}).join('')}
+    <line x1="86" y1="276" x2="214" y2="276" stroke="#4a4040" stroke-width="2.2"/>
+    <line x1="86" y1="280" x2="214" y2="280" stroke="#3a3030" stroke-width="1.4"/>
+    ${Array.from({length:6}).map((_,i) => { const x=102+i*18, y=325+i%2*12; return `<rect x="${x}" y="${y}" width="4" height="8" fill="#3a3020"/><circle cx="${x+2}" cy="${y-2}" r="3.2" fill="#3a3020"/>`;}).join('')}
+    <path d="M0 386 Q40 382 80 385 Q120 388 160 384 Q200 380 240 383 Q270 386 300 382" stroke="#2e2818" stroke-width="1.2" fill="none" opacity=".55"/>
+  `),
 };
