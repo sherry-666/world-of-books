@@ -289,4 +289,275 @@ export const AMERICAS_EXTRA_COVERS: Record<string, string> = {
       <path d="M162 334 Q172 344 168 358 Q164 345 156 343"/>
     </g>
   `),
+
+  /* ── Maud Martha · Chicago — a Black woman's interior life, beauty in ordinary days ── */
+  maudmartha: scene(`
+    <defs>
+      <linearGradient id="mmaSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#3a3850"/><stop offset=".44" stop-color="#6a6070"/>
+        <stop offset=".74" stop-color="#a08870"/><stop offset="1" stop-color="#c8a870"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#mmaSky)"/>
+    ${stars(8, 199)}
+    <path d="M0 322 Q150 310 300 320 L300 450 L0 450 Z" fill="#2a2018"/>
+    <path d="M0 374 Q150 364 300 372 L300 450 L0 450 Z" fill="#201808"/>
+    <g fill="#181210">
+      <rect x="0" y="232" width="58" height="92"/>
+      <rect x="66" y="248" width="46" height="76"/>
+      <rect x="120" y="218" width="60" height="106"/>
+      <rect x="188" y="234" width="52" height="90"/>
+      <rect x="248" y="222" width="52" height="102"/>
+    </g>
+    ${[[6,250],[22,250],[6,278],[22,278],[70,264],[84,264],[124,234],[140,234],[124,262],[140,262],[192,250],[206,250],[252,238],[266,238]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="14" fill="#e8a848" opacity=".4"/>`).join('')}
+    <rect x="106" y="170" width="88" height="60" fill="#141010"/>
+    <rect x="112" y="176" width="76" height="48" fill="#201818"/>
+    <rect x="116" y="180" width="30" height="40" fill="#e8a848" opacity=".2"/>
+    <rect x="154" y="180" width="30" height="40" fill="#e8a848" opacity=".15"/>
+    <g fill="#100c08">
+      <circle cx="150" cy="256" r="7.5"/>
+      <rect x="146" y="264" width="7" height="28" rx="1"/>
+      <path d="M138 280 L146 268 L154 268 L162 280 L158 296 L142 296 Z"/>
+    </g>
+    ${[-12,0,12].map(dx=>`<circle cx="${150+dx}" cy="${204}" r="5" fill="#e8a848" opacity=".35"/>`).join('')}
+  `),
+
+  /* ── The Haunting of Hill House · New England — a tilted gothic house, a woman at the gate ── */
+  hillhouse: scene(`
+    <defs>
+      <linearGradient id="hhSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0e0c10"/><stop offset=".4" stop-color="#1e1c22"/>
+        <stop offset=".7" stop-color="#3a3030"/><stop offset="1" stop-color="#4e3e38"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#hhSky)"/>
+    ${stars(10, 203)}
+    <path d="M0 324 Q150 312 300 322 L300 450 L0 450 Z" fill="#1a1808"/>
+    <path d="M0 376 Q150 368 300 374 L300 450 L0 450 Z" fill="#141208"/>
+    <g fill="#1e1a14">
+      <path d="M0 266 Q150 252 300 264 L300 290 Q150 278 0 290 Z"/>
+    </g>
+    <g fill="#14100c" transform="rotate(-3 150 200)">
+      <rect x="88" y="182" width="124" height="130"/>
+      <path d="M80 186 L150 154 L220 186 Z"/>
+      <rect x="100" y="154" width="100" height="32"/>
+      <path d="M94 158 L150 128 L206 158 Z"/>
+      <rect x="118" y="128" width="64" height="30"/>
+      <rect x="130" y="114" width="40" height="16"/>
+      <rect x="144" y="102" width="12" height="14"/>
+    </g>
+    ${[[94,200],[110,200],[94,232],[110,232],[168,200],[184,200],[168,232]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="16" rx="1" fill="#ffd060" opacity="${y===200?'.22':'.16'}"/>`).join('')}
+    <g fill="#0e0c08">
+      <circle cx="150" cy="310" r="5"/>
+      <rect x="147" y="315" width="5" height="12" rx="1"/>
+    </g>
+    <circle cx="150" cy="100" r="16" fill="#c8d0d8" opacity=".55"/>
+    <circle cx="150" cy="100" r="8" fill="#d8e0e8" opacity=".65"/>
+  `),
+
+  /* ── Play It As It Lays · Los Angeles — Maria Wyeth, the freeway, desert emptiness ── */
+  playitlays: scene(`
+    <defs>
+      <linearGradient id="piSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2a2838"/><stop offset=".36" stop-color="#5a5058"/>
+        <stop offset=".65" stop-color="#9a8868"/><stop offset="1" stop-color="#c0a860"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#piSky)"/>
+    ${stars(9, 207)}
+    <path d="M0 288 L300 288 L300 450 L0 450 Z" fill="#4a3a28"/>
+    <path d="M0 320 L300 320 L300 450 L0 450 Z" fill="#3a2c18"/>
+    <path d="M0 360 L300 360 L300 450 L0 450 Z" fill="#2a1e10"/>
+    <path d="M0 408 L300 408 L300 450 L0 450 Z" fill="#1e160c"/>
+    <path d="M150 288 L62 450 M150 288 L238 450" stroke="#c0a860" stroke-width="1.4" opacity=".4"/>
+    <path d="M150 288 L100 450 M150 288 L200 450" stroke="#c0a860" stroke-width=".8" opacity=".25"/>
+    <path d="M0 310 L300 310" stroke="#c0a860" stroke-width=".7" fill="none" opacity=".35"/>
+    <path d="M0 338 L300 338" stroke="#c0a860" stroke-width=".5" fill="none" opacity=".25"/>
+    <path d="M0 370 L300 370" stroke="#c0a860" stroke-width=".4" fill="none" opacity=".18"/>
+    <circle cx="150" cy="258" r="38" fill="#9a8868" opacity=".2"/>
+    <g fill="#201a10">
+      <circle cx="150" cy="266" r="6.5"/>
+      <rect x="146" y="272" width="6" height="18" rx="1"/>
+      <path d="M138 286 L146 274 L154 274 L162 286 L158 298 L142 298 Z"/>
+    </g>
+    ${[-40,-20,20,40].map(dx=>`<path d="M${150+dx} 190 Q${154+dx} 180 ${158+dx} 190" stroke="#9a8868" stroke-width="1" fill="none" opacity=".35"/>`).join('')}
+  `),
+
+  /* ── The Bluest Eye · Lorain, Ohio — Pecola Breedlove, autumn grief, a marigold that won't grow ── */
+  bluesteye: scene(`
+    <defs>
+      <linearGradient id="beSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2e2818"/><stop offset=".38" stop-color="#5a4828"/>
+        <stop offset=".68" stop-color="#9a7838"/><stop offset="1" stop-color="#c0a040"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#beSky)"/>
+    ${stars(7, 211)}
+    <path d="M0 318 Q150 306 300 316 L300 450 L0 450 Z" fill="#3a3018"/>
+    <path d="M0 368 Q150 358 300 366 L300 450 L0 450 Z" fill="#2a2210"/>
+    <g fill="#1e1808">
+      <rect x="0" y="228" width="58" height="92"/>
+      <rect x="66" y="244" width="44" height="76"/>
+      <rect x="118" y="218" width="58" height="102"/>
+      <rect x="184" y="230" width="52" height="90"/>
+      <rect x="244" y="220" width="56" height="100"/>
+    </g>
+    ${[[6,246],[20,246],[6,274],[20,274],[70,260],[84,260],[122,234],[136,234],[122,262],[136,262],[188,246],[202,246],[248,236],[262,236]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="14" fill="#e8a040" opacity=".4"/>`).join('')}
+    <path d="M0 318 Q150 312 300 316" stroke="#c0a040" stroke-width=".5" fill="none" opacity=".25"/>
+    <g fill="#8a4818" opacity=".7">
+      ${[-20,-8,4,16].map(dx=>`<circle cx="${150+dx}" cy="${260}" r="12"/><path d="M${150+dx} 248 L${150+dx} 240 M${140+dx} 254 L${134+dx} 248 M${160+dx} 254 L${166+dx} 248 M${140+dx} 264 L${134+dx} 270 M${160+dx} 264 L${166+dx} 270" stroke="#8a4818" stroke-width="1.2" fill="none" opacity=".55"/>`).join('')}
+    </g>
+    <g fill="#1a1008">
+      <circle cx="150" cy="298" r="5.5"/>
+      <rect x="147" y="303" width="5" height="15" rx="1"/>
+    </g>
+  `),
+
+  /* ── The Book of Daniel · New York — the Rosenbergs' children, Cold War, electric grief ── */
+  bookdaniel: scene(`
+    <defs>
+      <linearGradient id="bdanSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0e1018"/><stop offset=".4" stop-color="#1c1e2e"/>
+        <stop offset=".72" stop-color="#3a3448"/><stop offset="1" stop-color="#5a4a58"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#bdanSky)"/>
+    ${stars(10, 213)}
+    <g fill="#141020">
+      <rect x="0" y="208" width="54" height="242"/>
+      <rect x="246" y="194" width="54" height="256"/>
+      <rect x="62" y="230" width="42" height="220"/>
+      <rect x="198" y="220" width="42" height="230"/>
+      <rect x="112" y="200" width="78" height="250"/>
+    </g>
+    ${Array.from({length:14}).map((_,i)=>{const x=(i*43+11)%300, y=212+(i*37)%200; return `<rect x="${x}" y="${y}" width="4" height="6" fill="#e8b050" opacity="${0.15+((i*7)%5)/10}"/>`;}).join('')}
+    <rect x="130" y="152" width="40" height="8" fill="#141020"/>
+    <rect x="126" y="148" width="48" height="6" fill="#141020"/>
+    ${[-3,-1,1,3].map(dx=>`<rect x="${148+dx}" y="${118}" width="4" height="36" fill="#141020"/>`).join('')}
+    <path d="M130 152 Q150 162 170 152" stroke="#141020" stroke-width="2" fill="none"/>
+    <circle cx="150" cy="116" r="5" fill="#e84020" opacity=".55"/>
+    <path d="M0 378 Q150 368 300 376 L300 450 L0 450 Z" fill="#0e0c18"/>
+    <path d="M0 378 Q150 372 300 376" stroke="#e84020" stroke-width=".5" fill="none" opacity=".25"/>
+  `),
+
+  /* ── Mumbo Jumbo · Harlem, New York — 1920s Jes Grew plague, voodoo, jazz fever ── */
+  mumbojumbo: scene(`
+    <defs>
+      <linearGradient id="mjSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0e0c18"/><stop offset=".4" stop-color="#1e1828"/>
+        <stop offset=".7" stop-color="#3a2830"/><stop offset="1" stop-color="#5a3838"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#mjSky)"/>
+    ${stars(12, 217)}
+    <g fill="#141020">
+      <rect x="0" y="196" width="56" height="254"/>
+      <rect x="244" y="180" width="56" height="270"/>
+      <rect x="64" y="216" width="44" height="234"/>
+      <rect x="194" y="206" width="44" height="244"/>
+    </g>
+    ${[[4,214],[18,214],[4,244],[18,244],[250,198],[264,198],[250,228],[250,258]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="14" fill="#c04040" opacity=".45"/>`).join('')}
+    <rect x="108" y="160" width="84" height="50" fill="#1a1428"/>
+    <rect x="114" y="166" width="72" height="38" fill="#241e30"/>
+    ${[-20,-8,4,16].map(dx=>`<circle cx="${150+dx}" cy="${184}" r="5" fill="#c04040" opacity=".35"/>`).join('')}
+    <path d="M0 372 Q150 362 300 370 L300 450 L0 450 Z" fill="#0c0a14"/>
+    <path d="M0 372 Q150 366 300 370" stroke="#c04040" stroke-width=".5" fill="none" opacity=".28"/>
+    <g fill="#0e0c18">
+      <circle cx="150" cy="280" r="7.5"/>
+      <rect x="146" y="288" width="7" height="26" rx="1"/>
+      <path d="M136 306 L146 292 L154 292 L164 306 L158 324 L142 324 Z"/>
+    </g>
+    ${Array.from({length:5}).map((_,i)=>`<circle cx="${120+i*14}" cy="${348}" r="3.5" fill="#e84020" opacity="${0.3+i%2*0.2}"/>`).join('')}
+  `),
+
+  /* ── Sula · Medallion, Ohio — two Black women, girlhood to middle age, the Bottom community ── */
+  sula: scene(`
+    <defs>
+      <linearGradient id="sulaSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2a2030"/><stop offset=".38" stop-color="#4a3848"/>
+        <stop offset=".68" stop-color="#8a6858"/><stop offset="1" stop-color="#b08850"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#sulaSky)"/>
+    ${stars(8, 219)}
+    <path d="M0 314 Q150 302 300 312 L300 450 L0 450 Z" fill="#4a6028"/>
+    <path d="M0 362 Q150 352 300 360 L300 450 L0 450 Z" fill="#3a5020"/>
+    <path d="M0 412 Q150 404 300 410 L300 450 L0 450 Z" fill="#2a4018"/>
+    <g fill="#1e1808">
+      ${[-50,-25,0,25,50].map(dx=>`<rect x="${150+dx}" y="${196}" width="5" height="118"/><path d="M${152+dx} 196 Q${168+dx} 214 ${152+dx} 232 Q${136+dx} 250 ${152+dx} 268 Q${168+dx} 286 ${152+dx} 314" stroke="#1e1808" stroke-width="16" fill="none"/>`).join('')}
+    </g>
+    <g fill="#100c06">
+      <circle cx="136" cy="294" r="6.5"/>
+      <rect x="132" y="300" width="6" height="18" rx="1"/>
+      <circle cx="164" cy="290" r="6"/>
+      <rect x="160" y="296" width="6" height="16" rx="1"/>
+    </g>
+    <path d="M0 314 Q150 308 300 312" stroke="#b08850" stroke-width=".5" fill="none" opacity=".28"/>
+  `),
+
+  /* ── Ceremony · Laguna Pueblo, New Mexico — Tayo's healing, desert canyon, Pueblo sacred ceremony ── */
+  ceremony: scene(`
+    <defs>
+      <linearGradient id="cerSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a1020"/><stop offset=".32" stop-color="#3a2818"/>
+        <stop offset=".62" stop-color="#8a5828"/><stop offset=".85" stop-color="#c08840"/>
+        <stop offset="1" stop-color="#d0a850"/>
+      </linearGradient>
+      <radialGradient id="cerSun" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#ffe090" stop-opacity=".68"/>
+        <stop offset="1" stop-color="#ffe090" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#cerSky)"/>
+    <circle cx="150" cy="172" r="64" fill="url(#cerSun)"/>
+    <circle cx="150" cy="172" r="18" fill="#ffe090" opacity=".8"/>
+    ${stars(7, 221)}
+    <path d="M0 298 Q60 272 100 282 Q130 290 150 278 Q170 266 200 274 Q240 284 300 262 L300 450 L0 450 Z" fill="#9a6830"/>
+    <path d="M0 348 Q150 334 300 344 L300 450 L0 450 Z" fill="#7a5020"/>
+    <path d="M0 400 Q150 388 300 396 L300 450 L0 450 Z" fill="#5e3e14"/>
+    <g fill="#5a3810">
+      <path d="M90 298 L100 240 L110 242 L106 298 Z"/>
+      <path d="M188 296 L200 234 L210 236 L206 296 Z"/>
+      <rect x="88" y="234" width="24" height="8" rx="2"/>
+      <rect x="198" y="228" width="24" height="8" rx="2"/>
+      <path d="M88 234 Q100 218 112 234 Z"/>
+      <path d="M198 228 Q210 212 222 228 Z"/>
+    </g>
+    <g fill="#2a1808">
+      <circle cx="150" cy="282" r="5.5"/>
+      <rect x="147" y="287" width="5" height="12" rx="1"/>
+    </g>
+  `),
+
+  /* ── Housekeeping · Fingerbone, Idaho — two sisters, a transient aunt, a glacial lake ── */
+  housekeeping: scene(`
+    <defs>
+      <linearGradient id="hkSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2a3848"/><stop offset=".38" stop-color="#4a6070"/>
+        <stop offset=".65" stop-color="#6a8888"/><stop offset="1" stop-color="#8aaab0"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#hkSky)"/>
+    ${stars(9, 223)}
+    <path d="M0 308 Q150 294 300 306 L300 450 L0 450 Z" fill="#4a6880"/>
+    <path d="M0 350 Q75 342 150 348 T300 346 L300 450 L0 450 Z" fill="#3a5870"/>
+    <path d="M0 396 Q75 390 150 394 T300 392 L300 450 L0 450 Z" fill="#2a4860"/>
+    ${Array.from({length:5}).map((_,i)=>`<path d="M${38+i*46} ${320+i%2*10} Q${56+i*46} ${312+i%2*8} ${74+i*46} ${320+i%2*10}" stroke="#8ac0c8" stroke-width="1" fill="none" opacity=".4"/>`).join('')}
+    <g fill="#1e2c18">
+      <path d="M0 306 Q0 272 24 258 Q36 252 48 264 Q64 280 64 306 Z"/>
+      <path d="M228 308 Q228 272 252 258 Q264 252 278 264 Q294 280 300 308 Z"/>
+    </g>
+    <g fill="#2a3a20" opacity=".8">
+      <rect x="116" y="252" width="5" height="56"/>
+      <ellipse cx="118" cy="246" rx="16" ry="20"/>
+      <rect x="172" y="264" width="4" height="44"/>
+      <ellipse cx="174" cy="258" rx="12" ry="16"/>
+    </g>
+    <path d="M104" fill="none"/>
+    <g fill="#141c18">
+      <rect x="116" y="278" width="22" height="6" rx="1"/>
+      <rect x="148" y="278" width="22" height="6" rx="1"/>
+    </g>
+    <path d="M0 308 Q150 300 300 306" stroke="#8aaab0" stroke-width=".6" fill="none" opacity=".3"/>
+  `),
 };
