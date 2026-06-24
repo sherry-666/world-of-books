@@ -225,4 +225,324 @@ export const MODERN_CHINA_COVERS: Record<string, string> = {
     <rect x="0" y="416" width="300" height="34" fill="#0a0f1f"/>
     <ellipse cx="150" cy="416" rx="240" ry="14" fill="#aab6d2" opacity=".08"/>
   `),
+
+  /* ── 扶桑 · San Francisco Chinatown 1870s — fog, red lanterns, a woman of endurance ── */
+  fusang: scene(`
+    <defs>
+      <linearGradient id="fusSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a1010"/><stop offset=".5" stop-color="#2e1e10"/>
+        <stop offset="1" stop-color="#3e2810"/>
+      </linearGradient>
+      <radialGradient id="fusG" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#e84020" stop-opacity=".3"/>
+        <stop offset="1" stop-color="#e84020" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#fusSky)"/>
+    ${stars(8, 113)}
+    <rect x="0" y="0" width="300" height="450" fill="#e8e0d0" opacity=".06"/>
+    <g fill="#160e08">
+      <rect x="0" y="194" width="72" height="256"/>
+      <rect x="228" y="180" width="72" height="270"/>
+      <rect x="80" y="220" width="48" height="230"/>
+      <rect x="174" y="210" width="48" height="240"/>
+    </g>
+    ${[[6,212],[20,212],[6,244],[20,244],[234,196],[248,196],[234,228],[248,228]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="14" fill="#e84020" opacity=".42"/>`).join('')}
+    <rect x="0" y="370" width="300" height="80" fill="#120a04"/>
+    <g fill="#e84020" opacity=".72">
+      ${[114,136,158,180].map(x=>`<ellipse cx="${x}" cy="${218}" rx="8" ry="12"/><rect x="${x-2}" y="${206}" width="4" height="10"/><rect x="${x-10}" y="${230}" width="20" height="4" rx="1"/>`).join('')}
+    </g>
+    <circle cx="147" cy="194" r="80" fill="url(#fusG)"/>
+    <g fill="#1e1208">
+      <circle cx="150" cy="282" r="8"/>
+      <rect x="146" y="290" width="7" height="30" rx="1"/>
+      <path d="M138 306 L146 294 L154 294 L162 306 L158 322 L142 322 Z"/>
+      <path d="M138 306 Q128 318 132 330 Q136 318 144 316"/>
+      <path d="M162 306 Q172 318 168 330 Q164 318 156 316"/>
+    </g>
+    <path d="M0 370 Q150 362 300 368" stroke="#e84020" stroke-width=".5" fill="none" opacity=".2"/>
+  `),
+
+  /* ── 纽约客 · New York — Manhattan skyline, an exile's winter window, cold blue longing ── */
+  newyorkers: scene(`
+    <defs>
+      <linearGradient id="nySky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#060810"/><stop offset=".4" stop-color="#0e1422"/>
+        <stop offset=".7" stop-color="#182038"/><stop offset="1" stop-color="#243050"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#nySky)"/>
+    ${stars(14, 117)}
+    <g fill="#0e1422">
+      <rect x="0" y="180" width="18" height="270"/>
+      <rect x="22" y="206" width="14" height="244"/>
+      <rect x="40" y="170" width="20" height="280"/>
+      <rect x="64" y="228" width="12" height="222"/>
+      <rect x="80" y="188" width="16" height="262"/>
+      <rect x="100" y="160" width="24" height="290"/>
+      <rect x="128" y="192" width="14" height="258"/>
+      <rect x="146" y="140" width="28" height="310"/>
+      <rect x="178" y="196" width="16" height="254"/>
+      <rect x="198" y="168" width="22" height="282"/>
+      <rect x="224" y="206" width="14" height="244"/>
+      <rect x="242" y="178" width="20" height="272"/>
+      <rect x="266" y="218" width="14" height="232"/>
+      <rect x="284" y="186" width="16" height="264"/>
+    </g>
+    ${Array.from({length:28}).map((_,i)=>{const x=(i*37+11)%300, y=160+(i*29)%220; return `<rect x="${x}" y="${y}" width="4" height="6" fill="#ffc848" opacity="${0.15+((i*7)%5)/10}"/>`;}).join('')}
+    <rect x="146" y="132" width="4" height="10" fill="#0e1422"/>
+    <rect x="144" y="128" width="8" height="6" fill="#0e1422"/>
+    <path d="M0 368 Q150 358 300 366 L300 450 L0 450 Z" fill="#08101c"/>
+    <path d="M0 398 Q150 390 300 396 L300 450 L0 450 Z" fill="#040c16"/>
+    <path d="M0 368 Q150 362 300 366" stroke="#3a5880" stroke-width=".7" fill="none" opacity=".4"/>
+    ${Array.from({length:8}).map((_,i)=>`<path d="M${48+i*28} ${374+i%2*8} Q${62+i*28} ${368+i%2*6} ${76+i*28} ${374+i%2*8}" stroke="#3a5880" stroke-width=".8" fill="none" opacity=".3"/>`).join('')}
+  `),
+
+  /* ── 三体 · Inner Mongolia/Trisolaris — three alien suns, a desperate civilization, radio telescope ── */
+  threebody: scene(`
+    <defs>
+      <linearGradient id="tbSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#080408"/><stop offset=".3" stop-color="#1a0a08"/>
+        <stop offset=".6" stop-color="#3a1808"/><stop offset=".85" stop-color="#6a2808"/>
+        <stop offset="1" stop-color="#9a4818"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#tbSky)"/>
+    ${stars(20, 119)}
+    <circle cx="100" cy="112" r="22" fill="#f08020" opacity=".78"/>
+    <circle cx="100" cy="112" r="12" fill="#ffe090" opacity=".85"/>
+    <circle cx="200" cy="148" r="16" fill="#e06818" opacity=".72"/>
+    <circle cx="200" cy="148" r="8" fill="#ffd080" opacity=".82"/>
+    <circle cx="148" cy="80" r="10" fill="#d04808" opacity=".68"/>
+    <circle cx="148" cy="80" r="5" fill="#ffb060" opacity=".78"/>
+    <rect x="0" y="330" width="300" height="120" fill="#140a04"/>
+    <path d="M0 330 Q150 320 300 328" stroke="#6a2808" stroke-width=".8" fill="none" opacity=".4"/>
+    <g fill="#100804">
+      <path d="M130 330 L136 280 L142 278 L148 240 L154 278 L160 280 L166 330 Z"/>
+      <rect x="128" y="326" width="44" height="8" rx="1"/>
+      <rect x="136" y="320" width="28" height="6" rx="1"/>
+      ${[-30,-16,0,16,30].map(dx=>`<path d="M148 248 L${148+dx} ${300+Math.abs(dx)*0.8}" stroke="#100804" stroke-width="1.2"/>`).join('')}
+    </g>
+    <rect x="0" y="370" width="300" height="80" fill="#0a0604"/>
+    <path d="M0 330 Q150 322 300 328" stroke="#9a4818" stroke-width=".5" fill="none" opacity=".25"/>
+  `),
+
+  /* ── 长恨歌 · Shanghai — a longtang alley, a beauty queen's fate across decades ── */
+  sorrow: scene(`
+    <defs>
+      <linearGradient id="srwSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2a1e10"/><stop offset=".45" stop-color="#4a3218"/>
+        <stop offset=".75" stop-color="#8a6030"/><stop offset="1" stop-color="#b08040"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#srwSky)"/>
+    ${stars(8, 123)}
+    <g fill="#160e04">
+      <rect x="0" y="158" width="54" height="292"/>
+      <rect x="246" y="142" width="54" height="308"/>
+      <rect x="62" y="188" width="44" height="262"/>
+      <rect x="194" y="174" width="44" height="276"/>
+    </g>
+    ${[[6,176],[20,176],[6,210],[20,210],[6,244],[252,162],[266,162],[252,196],[252,228]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="14" fill="#c87828" opacity=".38"/>`).join('')}
+    <path d="M54 370 L54 240 L246 240 L246 370" stroke="#2a1e08" stroke-width="1" fill="none"/>
+    ${Array.from({length:7}).map((_,i)=>`<path d="M54 ${256+i*18} L246 ${256+i*18}" stroke="#2a1e08" stroke-width=".6" fill="none" opacity=".5"/>`).join('')}
+    <rect x="0" y="370" width="300" height="80" fill="#100c04"/>
+    <g fill="#1a1008">
+      <circle cx="150" cy="278" r="7.5"/>
+      <rect x="146" y="286" width="7" height="28" rx="1"/>
+      <path d="M138 302 L146 290 L154 290 L162 302 L158 318 L142 318 Z"/>
+    </g>
+    <path d="M60 450 Q60 380 60 370 L240 370 L240 450" stroke="#1e1408" stroke-width=".6" fill="none" opacity=".3"/>
+  `),
+
+  /* ── 边城 · Xiangxi, Hunan — a river, a ferry, green mountains, a girl named Cuicui ── */
+  bordertown: scene(`
+    <defs>
+      <linearGradient id="bdtSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2a3838"/><stop offset=".38" stop-color="#4a6858"/>
+        <stop offset=".68" stop-color="#78a880"/><stop offset="1" stop-color="#9ac898"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#bdtSky)"/>
+    ${stars(6, 127)}
+    <path d="M0 310 Q150 296 300 308 L300 450 L0 450 Z" fill="#3a6848"/>
+    <path d="M0 356 Q75 346 150 352 T300 350 L300 450 L0 450 Z" fill="#4a8868"/>
+    <path d="M0 402 Q75 394 150 400 T300 398 L300 450 L0 450 Z" fill="#2a5848"/>
+    <g fill="#182816">
+      <path d="M0 248 Q0 186 30 164 Q44 158 60 176 Q78 198 78 248 Z"/>
+      <path d="M220 258 Q220 188 250 168 Q264 160 278 178 Q296 202 300 258 Z"/>
+    </g>
+    <path d="M0 310 Q150 298 300 308" stroke="#c8e8c0" stroke-width=".6" fill="none" opacity=".35"/>
+    <path d="M0 344 Q75 336 150 342 T300 340" stroke="#a8d0a8" stroke-width=".5" fill="none" opacity=".28"/>
+    <g fill="#2a3a20">
+      <rect x="118" y="254" width="5" height="58"/>
+      <ellipse cx="120" cy="248" rx="18" ry="24"/>
+      <rect x="172" y="268" width="4" height="44"/>
+      <ellipse cx="174" cy="262" rx="14" ry="18"/>
+    </g>
+    <g fill="#3a2010">
+      <path d="M106 318 L108 298 L114 294 L150 310 L186 294 L192 298 L194 318 Z"/>
+      <rect x="104" y="314" width="92" height="6" rx="1"/>
+    </g>
+    <g fill="#1a1808">
+      <circle cx="150" cy="298" r="5.5"/>
+      <rect x="147" y="303" width="5" height="8" rx="1"/>
+    </g>
+  `),
+
+  /* ── 平凡的世界 · Shaanxi Loess Plateau — terraced yellow hills, a young man's dream ── */
+  ordinaryworld: scene(`
+    <defs>
+      <linearGradient id="owSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#5a78a0"/><stop offset=".44" stop-color="#8aaac8"/>
+        <stop offset=".72" stop-color="#c8b888"/><stop offset="1" stop-color="#d8c878"/>
+      </linearGradient>
+      <radialGradient id="owSun" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#ffe8a0" stop-opacity=".7"/>
+        <stop offset="1" stop-color="#ffe8a0" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#owSky)"/>
+    <circle cx="186" cy="158" r="64" fill="url(#owSun)"/>
+    <circle cx="186" cy="158" r="18" fill="#ffe8a0" opacity=".82"/>
+    ${stars(5, 131)}
+    <path d="M0 298 Q30 268 70 278 Q110 288 140 268 Q170 248 210 262 Q250 276 300 258 L300 450 L0 450 Z" fill="#c89840"/>
+    <path d="M0 342 Q30 322 70 330 Q110 338 140 320 Q170 302 210 314 Q250 326 300 310 L300 450 L0 450 Z" fill="#a87e30"/>
+    <path d="M0 390 Q30 374 70 380 Q110 386 140 370 Q170 354 210 364 Q250 374 300 360 L300 450 L0 450 Z" fill="#886520"/>
+    <path d="M0 430 Q150 420 300 428 L300 450 L0 450 Z" fill="#704e14"/>
+    ${Array.from({length:8}).map((_,i)=>`<path d="M${60+i*24} ${298+i%2*10} Q${72+i*24} ${286+i%2*8} ${84+i*24} ${298+i%2*10}" stroke="#e8b860" stroke-width="1.2" fill="none" opacity=".4"/>`).join('')}
+    <g fill="#1e1408">
+      <circle cx="106" cy="282" r="5.5"/>
+      <rect x="103" y="287" width="5" height="16" rx="1"/>
+      <path d="M96 300 L103 290 L108 290 L115 300 L112 312 L99 312 Z"/>
+    </g>
+  `),
+
+  /* ── 白鹿原 · Shaanxi Plain — an ancient clan village, a white deer, generations of conflict ── */
+  whitedeerplain: scene(`
+    <defs>
+      <linearGradient id="wdpSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#4a5868"/><stop offset=".38" stop-color="#7a8888"/>
+        <stop offset=".68" stop-color="#a89868"/><stop offset="1" stop-color="#c8b060"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#wdpSky)"/>
+    ${stars(7, 137)}
+    <path d="M0 312 Q150 300 300 310 L300 450 L0 450 Z" fill="#a88840"/>
+    <path d="M0 362 Q150 352 300 360 L300 450 L0 450 Z" fill="#8a6e30"/>
+    <path d="M0 410 Q150 400 300 408 L300 450 L0 450 Z" fill="#705820"/>
+    <g fill="#2e2010">
+      <rect x="0" y="246" width="58" height="68"/>
+      <path d="M0 248 Q29 230 58 248 Z"/>
+      <rect x="242" y="238" width="58" height="74"/>
+      <path d="M242 240 Q271 222 300 240 Z"/>
+    </g>
+    <g fill="#382818">
+      <rect x="102" y="210" width="96" height="106"/>
+      <path d="M90 214 Q150 178 210 214 Z"/>
+      <rect x="118" y="178" width="64" height="36"/>
+      <path d="M110 182 Q150 158 190 182 Z"/>
+      <rect x="134" y="158" width="32" height="24"/>
+    </g>
+    ${[[110,228],[126,228],[160,228],[176,228],[110,262],[126,262],[160,262]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="14" fill="#ffd060" opacity=".30"/>`).join('')}
+    <g fill="#f0f0e8" opacity=".82">
+      <path d="M138 300 Q150 274 162 300 Q154 288 150 286 Q146 288 138 300 Z"/>
+      <ellipse cx="150" cy="306" rx="12" ry="4"/>
+      <rect x="148" y="294" width="4" height="10" rx="1"/>
+    </g>
+  `),
+
+  /* ── 许三观卖血记 · Jiangnan town — a man sells his blood, grey China, red life-force ── */
+  bloodmerchant: scene(`
+    <defs>
+      <linearGradient id="bmSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#484848"/><stop offset=".5" stop-color="#686868"/>
+        <stop offset="1" stop-color="#888888"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#bmSky)"/>
+    <rect x="0" y="0" width="300" height="450" fill="#1a1010" opacity=".35"/>
+    <g fill="#282828">
+      <rect x="0" y="214" width="68" height="236"/>
+      <rect x="232" y="200" width="68" height="250"/>
+      <rect x="76" y="240" width="52" height="210"/>
+      <rect x="174" y="230" width="52" height="220"/>
+    </g>
+    ${[[6,232],[20,232],[6,264],[20,264],[238,218],[252,218],[238,250]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="14" fill="#888" opacity=".45"/>`).join('')}
+    <rect x="108" y="184" width="84" height="60" fill="#303030"/>
+    <rect x="114" y="190" width="72" height="48" fill="#404040"/>
+    <rect x="118" y="196" width="28" height="36" fill="#888" opacity=".18"/>
+    <rect x="154" y="196" width="28" height="36" fill="#888" opacity=".14"/>
+    <rect x="0" y="332" width="300" height="118" fill="#1a1a1a"/>
+    <path d="M0 332 Q150 326 300 330" stroke="#c82020" stroke-width=".8" fill="none" opacity=".45"/>
+    <g fill="#1c1010">
+      <rect x="144" y="248" width="12" height="32" rx="1"/>
+      <circle cx="150" cy="244" r="8"/>
+      <path d="M136 268 L144 256 L156 256 L164 268 L160 284 L140 284 Z"/>
+    </g>
+    <rect x="132" y="186" width="36" height="4" rx="1" fill="#c82020" opacity=".55"/>
+    <circle cx="150" cy="336" r="8" fill="#c82020" opacity=".4"/>
+    <circle cx="150" cy="336" r="4" fill="#c82020" opacity=".6"/>
+  `),
+
+  /* ── 兄弟 · Jiangnan town — Cultural Revolution grey then reform-era neon, two brothers ── */
+  brothers: scene(`
+    <defs>
+      <linearGradient id="broSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0a0a14"/><stop offset=".5" stop-color="#141222"/>
+        <stop offset="1" stop-color="#1e1c30"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#broSky)"/>
+    ${stars(8, 139)}
+    <rect x="0" y="202" width="300" height="248" fill="#0e0c18"/>
+    <g fill="#141220">
+      <rect x="0" y="202" width="56" height="248"/>
+      <rect x="244" y="190" width="56" height="260"/>
+      <rect x="64" y="220" width="42" height="230"/>
+      <rect x="196" y="212" width="42" height="238"/>
+      <rect x="110" y="198" width="82" height="252"/>
+    </g>
+    ${[[4,220],[4,250],[4,280],[250,208],[250,238],[250,268],[70,234],[70,264],[116,214],[116,244],[116,274],[174,214],[174,244]].map(([x,y])=>`<rect x="${x}" y="${y}" width="9" height="13" fill="#ff4080" opacity="${0.35+((x+y)%3)*0.08}"/>`).join('')}
+    ${[[8,308],[8,338],[8,368],[256,296],[256,326],[256,356],[74,322],[74,352],[120,302],[120,332],[178,302],[178,332]].map(([x,y])=>`<rect x="${x}" y="${y}" width="9" height="13" fill="#40a0ff" opacity="${0.28+((x+y)%3)*0.06}"/>`).join('')}
+    <path d="M0 202 Q150 196 300 200" stroke="#ff4080" stroke-width=".6" fill="none" opacity=".3"/>
+    <g fill="#0a0818">
+      <circle cx="138" cy="302" r="6.5"/>
+      <rect x="134" y="308" width="6" height="22" rx="1"/>
+      <circle cx="162" cy="298" r="6"/>
+      <rect x="158" y="304" width="6" height="20" rx="1"/>
+    </g>
+  `),
+
+  /* ── 子夜 · Shanghai 1930s — art deco skyline, factory chimneys, Huangpu at night ── */
+  midnight: scene(`
+    <defs>
+      <linearGradient id="mdnSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#080812"/><stop offset=".4" stop-color="#141428"/>
+        <stop offset=".72" stop-color="#2a2238"/><stop offset="1" stop-color="#382a40"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#mdnSky)"/>
+    ${stars(12, 143)}
+    <g fill="#141228">
+      <rect x="0" y="168" width="28" height="282"/>
+      <rect x="32" y="196" width="20" height="254"/>
+      <rect x="56" y="148" width="34" height="302"/>
+      <rect x="94" y="180" width="22" height="270"/>
+      <rect x="120" y="158" width="28" height="292"/>
+      <rect x="152" y="136" width="36" height="314"/>
+      <rect x="192" y="174" width="24" height="276"/>
+      <rect x="220" y="152" width="32" height="298"/>
+      <rect x="256" y="192" width="20" height="258"/>
+      <rect x="280" y="162" width="20" height="288"/>
+    </g>
+    <rect x="152" y="118" width="4" height="20" fill="#141228"/>
+    <rect x="148" y="115" width="12" height="6" fill="#141228"/>
+    ${Array.from({length:16}).map((_,i)=>{const x=(i*41+7)%300, y=150+(i*31)%200; return `<rect x="${x}" y="${y}" width="5" height="7" fill="#e8b030" opacity="${0.18+((i*7)%5)/10}"/>`;}).join('')}
+    <path d="M0 362 Q150 352 300 360 L300 450 L0 450 Z" fill="#1a2038"/>
+    <path d="M0 396 Q75 388 150 394 T300 392 L300 450 L0 450 Z" fill="#121828"/>
+    <path d="M0 362 Q150 356 300 360" stroke="#e8b030" stroke-width=".5" fill="none" opacity=".22"/>
+    ${Array.from({length:5}).map((_,i)=>`<rect x="${90+i*22}" y="${138}" width="4" height="${32+i%2*16}" fill="#141228"/>`).join('')}
+    ${Array.from({length:5}).map((_,i)=>`<circle cx="${92+i*22}" cy="${136}" r="3" fill="#e84020" opacity=".35"/>`).join('')}
+  `),
 };
