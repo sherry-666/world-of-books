@@ -89,6 +89,20 @@ export default function GlobeApp() {
         handle.applyTweaks(tweaksRef.current);
         setLoaded(true);
         setTimeout(() => setLoaderGone(true), 700);
+
+        // Skip geolocation if a deep-link book is present (engine handles that view)
+        if (new URLSearchParams(location.search).get('book')) return;
+
+        // Rotate globe to user's approximate location via IP geolocation
+        fetch('https://ipapi.co/json/')
+          .then(r => r.json())
+          .then((data: { latitude?: number; longitude?: number }) => {
+            if (data.latitude != null && data.longitude != null) {
+              // zoom=6 → globeEngine maps to zoomFactor≈3 (regional view)
+              handle.panToLocation(data.longitude, data.latitude, 6);
+            }
+          })
+          .catch(() => { /* silently ignore if blocked or rate-limited */ });
       },
     });
 
