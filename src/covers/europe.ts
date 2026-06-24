@@ -987,4 +987,167 @@ export const EUROPE_COVERS: Record<string, string> = {
     ${[-14,0,14].map(dx=>`<circle cx="${150+dx}" cy="${180}" r="6" fill="#c82030" opacity=".7"/>`).join('')}
     ${[-7,7].map(dx=>`<path d="M${150+dx} 174 Q${150+dx+4} 166 ${150+dx}" stroke="#4a2810" stroke-width="1.2" fill="none"/>`).join('')}
   `),
+
+  /* ── Pride and Prejudice · Hertfordshire — Longbourn house, rolling English fields, a morning walk ── */
+  prideprej: scene(`
+    <defs>
+      <linearGradient id="ppjSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#7a9ab0"/><stop offset=".44" stop-color="#a8c4c0"/>
+        <stop offset=".72" stop-color="#c8dab8"/><stop offset="1" stop-color="#d8e8c0"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#ppjSky)"/>
+    ${stars(5, 259)}
+    <path d="M0 312 Q80 294 150 302 T300 308 L300 450 L0 450 Z" fill="#5a7840"/>
+    <path d="M0 358 Q80 342 150 350 T300 348 L300 450 L0 450 Z" fill="#4a6830"/>
+    <path d="M0 406 Q80 392 150 400 T300 396 L300 450 L0 450 Z" fill="#3a5820"/>
+    <g fill="#2a2618">
+      <rect x="88" y="200" width="124" height="118"/>
+      <path d="M80 204 L150 170 L220 204 Z"/>
+      <rect x="102" y="170" width="96" height="34"/>
+      <path d="M96 174 L150 144 L204 174 Z"/>
+      <rect x="120" y="144" width="60" height="30"/>
+      <rect x="140" y="132" width="20" height="14"/>
+    </g>
+    ${[[94,216],[110,216],[158,216],[174,216],[94,248],[110,248],[158,248],[174,248]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="16" fill="#ffd880" opacity="${y===216?'.38':'.30'}"/>`).join('')}
+    <g fill="#c8e8c0" opacity=".55">
+      <path d="M40 310 Q56 298 72 310 Q64 302 56 300 Q48 302 40 310 Z"/>
+      <path d="M220 308 Q236 296 252 308 Q244 300 236 298 Q228 300 220 308 Z"/>
+    </g>
+    <g fill="#1a1808">
+      <circle cx="150" cy="298" r="5.5"/>
+      <rect x="147" y="303" width="5" height="16" rx="1"/>
+      <path d="M141 316 L147 306 L153 306 L159 316 L156 326 L144 326 Z"/>
+    </g>
+    <path d="M0 312 Q150 306 300 310" stroke="#c8dab8" stroke-width=".5" fill="none" opacity=".3"/>
+  `),
+
+  /* ── The Book Thief · Molching, Germany — a girl on a snowy street, books, ash sky ── */
+  bookthief: scene(`
+    <defs>
+      <linearGradient id="bthSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#484848"/><stop offset=".44" stop-color="#686868"/>
+        <stop offset=".74" stop-color="#888080"/><stop offset="1" stop-color="#a09090"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#bthSky)"/>
+    <rect x="0" y="0" width="300" height="450" fill="#1a1010" opacity=".35"/>
+    ${stars(6, 261)}
+    <path d="M0 322 Q150 310 300 320 L300 450 L0 450 Z" fill="#e8e8f0" opacity=".85"/>
+    <path d="M0 370 Q150 362 300 368 L300 450 L0 450 Z" fill="#d8d8e4" opacity=".92"/>
+    <g fill="#282828">
+      <rect x="0" y="214" width="54" height="110"/>
+      <path d="M0 216 Q27 202 54 216 Z"/>
+      <rect x="62" y="228" width="44" height="96"/>
+      <path d="M62 230 Q84 218 106 230 Z"/>
+      <rect x="114" y="204" width="56" height="120"/>
+      <path d="M114 206 Q142 190 170 206 Z"/>
+      <rect x="178" y="218" width="52" height="106"/>
+      <path d="M178 220 Q204 208 230 220 Z"/>
+      <rect x="240" y="208" width="60" height="116"/>
+      <path d="M240 210 Q270 196 300 210 Z"/>
+    </g>
+    ${[[4,236],[20,236],[4,266],[68,244],[82,244],[118,220],[134,220],[118,248],[134,248],[182,234],[196,234],[244,224],[258,224]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="14" fill="#888888" opacity=".45"/>`).join('')}
+    ${Array.from({length:8}).map((_,i)=>`<path d="M${60+i*24} 322 Q${60+i*24} 314 ${72+i*24} 314 Q${84+i*24} 314 ${84+i*24} 322" fill="#e8e8f0" opacity=".5"/>`).join('')}
+    <path d="M0 322 Q150 316 300 320" stroke="#d8d8e4" stroke-width=".5" fill="none" opacity=".35"/>
+    <g fill="#181818">
+      <circle cx="150" cy="308" r="5.5"/>
+      <rect x="147" y="313" width="5" height="10" rx="1"/>
+    </g>
+    <rect x="130" y="290" width="40" height="26" rx="2" fill="#8a3010" opacity=".7"/>
+    <rect x="134" y="294" width="32" height="18" rx="1" fill="#c04818" opacity=".5"/>
+  `),
+
+  /* ── A Year in Provence · Luberon — lavender fields, a stone farmhouse, blue summer sky ── */
+  yearinprovence: scene(`
+    <defs>
+      <linearGradient id="yipSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#3a6aaa"/><stop offset=".55" stop-color="#7aaad8"/>
+        <stop offset="1" stop-color="#a8c4e2"/>
+      </linearGradient>
+      <radialGradient id="yipSun" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#ffe8a0" stop-opacity=".65"/>
+        <stop offset="1" stop-color="#ffe8a0" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#yipSky)"/>
+    <circle cx="196" cy="148" r="60" fill="url(#yipSun)"/>
+    <circle cx="196" cy="148" r="16" fill="#ffe8a0" opacity=".82"/>
+    ${stars(4, 263)}
+    <path d="M0 296 Q150 282 300 294 L300 450 L0 450 Z" fill="#7a6898"/>
+    <path d="M0 336 Q150 324 300 334 L300 450 L0 450 Z" fill="#6a5888"/>
+    <path d="M0 378 Q150 366 300 376 L300 450 L0 450 Z" fill="#9a8050"/>
+    <path d="M0 416 Q150 408 300 414 L300 450 L0 450 Z" fill="#7a6030"/>
+    ${Array.from({length:10}).map((_,i)=>`<path d="M${78+i*16} ${300+i%2*14} Q${84+i*16} ${286+i%2*10} ${90+i*16} ${300+i%2*14}" stroke="#8a7aa8" stroke-width="3.5" fill="none" opacity=".65"/>`).join('')}
+    <g fill="#c8a858">
+      <rect x="86" y="218" width="128" height="84"/>
+      <path d="M78 222 L150 190 L222 222 Z"/>
+      <rect x="100" y="190" width="100" height="32"/>
+      <path d="M94 194 L150 166 L206 194 Z"/>
+      <rect x="118" y="166" width="64" height="28"/>
+    </g>
+    ${[[92,230],[108,230],[92,258],[108,258],[168,230],[184,230]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="14" fill="#a86828" opacity=".5"/>`).join('')}
+    <path d="M0 296 Q150 290 300 294" stroke="#9a9898" stroke-width=".5" fill="none" opacity=".3"/>
+  `),
+
+  /* ── Tropic of Cancer · Paris 1930s — rain-slicked Montparnasse, bohemian poverty, the Seine ── */
+  tropiccancer: scene(`
+    <defs>
+      <linearGradient id="tcnSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#080810"/><stop offset=".4" stop-color="#141420"/>
+        <stop offset=".7" stop-color="#1e1c28"/><stop offset="1" stop-color="#2e2838"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#tcnSky)"/>
+    ${stars(10, 265)}
+    <g fill="#10101e">
+      <rect x="0" y="178" width="68" height="272"/>
+      <rect x="232" y="162" width="68" height="288"/>
+      <rect x="76" y="204" width="52" height="246"/>
+      <rect x="174" y="192" width="52" height="258"/>
+    </g>
+    ${[[4,196],[18,196],[4,228],[18,228],[238,178],[252,178],[238,210],[238,242]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="14" fill="#e0a038" opacity=".38"/>`).join('')}
+    <path d="M0 358 Q150 346 300 356 L300 450 L0 450 Z" fill="#1a1c28"/>
+    <path d="M0 394 Q75 386 150 392 T300 390 L300 450 L0 450 Z" fill="#12141e"/>
+    ${Array.from({length:5}).map((_,i)=>`<path d="M${44+i*42} ${368+i%2*8} Q${62+i*42} ${360+i%2*6} ${80+i*42} ${368+i%2*8}" stroke="#4a5868" stroke-width=".9" fill="none" opacity=".4"/>`).join('')}
+    <path d="M0 358 Q150 352 300 356" stroke="#e0a038" stroke-width=".4" fill="none" opacity=".2"/>
+    <g fill="#0c0c18">
+      <circle cx="150" cy="328" r="6.5"/>
+      <rect x="146" y="334" width="6" height="22" rx="1"/>
+      <path d="M138 350 L146 338 L154 338 L162 350 L158 364 L142 364 Z"/>
+    </g>
+    ${Array.from({length:6}).map((_,i)=>`<path d="M${96+i*18} ${290} Q${99+i*18} ${280} ${102+i*18} ${290}" stroke="#e0a038" stroke-width=".7" fill="none" opacity=".25"/>`).join('')}
+  `),
+
+  /* ── Giovanni's Room · Paris — a dim bar, amber bottles, an American alone with his shame ── */
+  giovannisroom: scene(`
+    <defs>
+      <linearGradient id="gvrSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a1208"/><stop offset=".5" stop-color="#2e2010"/>
+        <stop offset="1" stop-color="#3e2c18"/>
+      </linearGradient>
+      <radialGradient id="gvrG" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#e8a030" stop-opacity=".55"/>
+        <stop offset="1" stop-color="#e8a030" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#gvrSky)"/>
+    ${stars(6, 267)}
+    <rect x="96" y="120" width="108" height="214" fill="#1e1608"/>
+    <rect x="102" y="126" width="96" height="202" fill="#2e2010"/>
+    <circle cx="150" cy="220" r="88" fill="url(#gvrG)"/>
+    ${Array.from({length:6}).map((_,i)=>`<rect x="${108+i*16}" y="${136}" width="10" height="${38+i%2*16}" rx="2" fill="#e8a030" opacity="${0.22+i%2*0.08}"/>`).join('')}
+    <rect x="102" y="174" width="96" height="4" fill="#c88020" opacity=".3"/>
+    <rect x="102" y="218" width="96" height="3" fill="#c88020" opacity=".22"/>
+    <rect x="102" y="258" width="96" height="3" fill="#c88020" opacity=".16"/>
+    <rect x="0" y="330" width="300" height="120" fill="#140e06"/>
+    <rect x="88" y="308" width="124" height="26" fill="#1a1008"/>
+    <path d="M0 330 Q150 324 300 328" stroke="#c88020" stroke-width=".5" fill="none" opacity=".2"/>
+    <g fill="#1a1008">
+      <circle cx="150" cy="272" r="8"/>
+      <rect x="146" y="280" width="7" height="32" rx="1"/>
+      <path d="M136 300 L146 284 L154 284 L164 300 L158 320 L142 320 Z"/>
+    </g>
+    ${Array.from({length:5}).map((_,i)=>`<rect x="${108+i*16}" y="${316}" width="10" height="14" rx="2" fill="#3a2010"/>`).join('')}
+  `),
 };

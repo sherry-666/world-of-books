@@ -827,4 +827,95 @@ export const AMERICAS_EXTRA_COVERS: Record<string, string> = {
       <rect x="147" y="349" width="5" height="22" rx="1"/>
     </g>
   `),
+
+  /* ── A Little Life · New York — four friends, winter evening, a lit apartment high above the city ── */
+  littlelife: scene(`
+    <defs>
+      <linearGradient id="llfSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#080c14"/><stop offset=".38" stop-color="#141c28"/>
+        <stop offset=".68" stop-color="#1e2836"/><stop offset="1" stop-color="#2a3448"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#llfSky)"/>
+    ${stars(12, 253)}
+    <g fill="#101420">
+      <rect x="0" y="166" width="52" height="284"/>
+      <rect x="248" y="150" width="52" height="300"/>
+      <rect x="58" y="190" width="40" height="260"/>
+      <rect x="202" y="178" width="42" height="272"/>
+      <rect x="104" y="158" width="90" height="292"/>
+    </g>
+    ${Array.from({length:20}).map((_,i)=>{const x=4+(i%5)*60+(i%2)*14, y=178+Math.floor(i/5)*32; return `<rect x="${x}" y="${y}" width="8" height="12" fill="#e0c080" opacity="${0.14+((i*7)%5)/12}"/>`;}).join('')}
+    <rect x="118" y="182" width="64" height="72" fill="#2a3040"/>
+    ${[[124,188],[140,188],[156,188],[172,188],[124,212],[140,212],[156,212],[172,212]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="14" fill="#f0d080" opacity="${y===188?'.55':'.42'}"/>`).join('')}
+    <path d="M0 404 Q150 394 300 402 L300 450 L0 450 Z" fill="#080c14"/>
+    <path d="M0 404 Q150 398 300 402" stroke="#2a3448" stroke-width=".5" fill="none" opacity=".4"/>
+    <g fill="#0c1018">
+      <circle cx="150" cy="368" r="5.5"/>
+      <rect x="147" y="373" width="5" height="28" rx="1"/>
+    </g>
+  `),
+
+  /* ── Lonesome Dove · Texas to Montana — a vast sunset sky, a cattle drive, two captains ── */
+  lonesomedove: scene(`
+    <defs>
+      <linearGradient id="ldvSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a1828"/><stop offset=".25" stop-color="#3a2838"/>
+        <stop offset=".5" stop-color="#8a4820"/><stop offset=".72" stop-color="#c07028"/>
+        <stop offset="1" stop-color="#e0a040"/>
+      </linearGradient>
+      <radialGradient id="ldvSun" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#ffe080" stop-opacity=".7"/>
+        <stop offset="1" stop-color="#ffe080" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#ldvSky)"/>
+    ${stars(7, 255)}
+    <circle cx="150" cy="262" r="80" fill="url(#ldvSun)"/>
+    <circle cx="150" cy="262" r="22" fill="#ffe080" opacity=".75"/>
+    <path d="M0 302 Q150 290 300 300 L300 450 L0 450 Z" fill="#7a6028"/>
+    <path d="M0 356 Q150 344 300 354 L300 450 L0 450 Z" fill="#6a5020"/>
+    <path d="M0 408 Q150 398 300 406 L300 450 L0 450 Z" fill="#5a4018"/>
+    ${Array.from({length:8}).map((_,i)=>`<path d="M${50+i*26} ${308} Q${50+i*26} ${300} ${60+i*26} ${298} Q${70+i*26} ${300} ${70+i*26} ${308}" fill="#5a4018" opacity=".6"/>`).join('')}
+    <path d="M0 302 Q150 298 300 300" stroke="#a07838" stroke-width=".5" fill="none" opacity=".35"/>
+    <g fill="#180e04">
+      <circle cx="112" cy="292" r="7"/>
+      <rect x="108" y="299" width="6" height="6" rx="1"/>
+      <path d="M100 312 Q112 304 124 312 L126 322 L98 322 Z"/>
+      <circle cx="186" cy="288" r="6.5"/>
+      <rect x="183" y="294" width="6" height="6" rx="1"/>
+      <path d="M176 308 Q186 300 196 308 L198 318 L174 318 Z"/>
+    </g>
+    ${Array.from({length:14}).map((_,i)=>`<circle cx="${54+i*14}" cy="${304+i%2*6}" r="3" fill="#2a1808" opacity="${0.35+i%2*0.15}"/>`).join('')}
+  `),
+
+  /* ── Alias Grace · Ontario — a quilted pattern, a stone prison, cold Victorian light ── */
+  aliasgrace: scene(`
+    <defs>
+      <linearGradient id="agSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#8a9898"/><stop offset=".44" stop-color="#a8b8b8"/>
+        <stop offset=".74" stop-color="#c0c8c0"/><stop offset="1" stop-color="#d8e0d8"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#agSky)"/>
+    ${stars(5, 259)}
+    <g fill="#c0b090" opacity=".78">
+      ${Array.from({length:9}).map((_,i)=>`<polygon points="${104+i*8},${220} ${108+i*8},${212} ${116+i*8},${212} ${120+i*8},${220} ${116+i*8},${228} ${108+i*8},${228}"/>`).join('')}
+    </g>
+    <g fill="#98a898" opacity=".58">
+      ${Array.from({length:5}).map((_,i)=>`<polygon points="${108+i*16},${204} ${116+i*16},${196} ${124+i*16},${204} ${116+i*16},${212}"/>`).join('')}
+      ${Array.from({length:5}).map((_,i)=>`<polygon points="${108+i*16},${244} ${116+i*16},${252} ${124+i*16},${244} ${116+i*16},${236}"/>`).join('')}
+    </g>
+    <rect x="96" y="148" width="108" height="78" fill="#1e2018" opacity=".85"/>
+    ${[[100,152],[116,152],[100,174],[116,174],[158,152],[174,152],[158,174],[174,174]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="14" fill="#d0c090" opacity="${y===152?'.35':'.22'}"/>`).join('')}
+    <rect x="0" y="306" width="300" height="144" fill="#d8e0d8"/>
+    <rect x="0" y="302" width="300" height="8" fill="#a8b8b8"/>
+    <g fill="#1e1a12">
+      <circle cx="150" cy="276" r="6.5"/>
+      <rect x="147" y="282" width="6" height="22" rx="1"/>
+      <path d="M136 296 L147 286 L153 286 L164 296 L160 316 L140 316 Z"/>
+    </g>
+    ${[[104,318],[120,318],[136,318],[152,318],[168,318],[184,318]].map(([x,y])=>`<rect x="${x}" y="${y}" width="12" height="10" fill="${y===152?'#c09060':'#98a898'}" opacity=".5"/>`).join('')}
+    <path d="M0 306 Q150 300 300 304" stroke="#a8b8b8" stroke-width=".6" fill="none" opacity=".35"/>
+  `),
 };

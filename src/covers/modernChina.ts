@@ -514,6 +514,81 @@ export const MODERN_CHINA_COVERS: Record<string, string> = {
     </g>
   `),
 
+  /* ── 雷雨 · Shanghai 1920s — a patriarchal mansion on a summer storm night, inevitable ruin ── */
+  thunderstorm: scene(`
+    <defs>
+      <linearGradient id="tstrSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0e0e18"/><stop offset=".3" stop-color="#1a1828"/>
+        <stop offset=".58" stop-color="#2e2838"/><stop offset=".82" stop-color="#4a3830"/>
+        <stop offset="1" stop-color="#6a4e30"/>
+      </linearGradient>
+      <radialGradient id="tstrL" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#ffe0a0" stop-opacity=".55"/>
+        <stop offset="1" stop-color="#ffe0a0" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#tstrSky)"/>
+    ${stars(6, 253)}
+    <g fill="#181420">
+      <path d="M0 238 Q30 226 50 218 Q62 212 68 220 L64 238 Z"/>
+      <path d="M300 248 Q270 234 248 226 Q236 220 230 228 L236 248 Z"/>
+    </g>
+    <g fill="#161018">
+      <rect x="86" y="188" width="128" height="138"/>
+      <path d="M78 192 L150 156 L222 192 Z"/>
+      <rect x="98" y="156" width="104" height="36"/>
+      <path d="M90 162 L150 130 L210 162 Z"/>
+      <rect x="118" y="130" width="64" height="32"/>
+      <rect x="130" y="118" width="40" height="14"/>
+    </g>
+    ${[[92,204],[108,204],[92,236],[108,236],[162,204],[178,204],[162,236],[178,236],[92,268],[108,268]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="16" fill="#ffd060" opacity="${y===268?'.22':'.34'}"/>`).join('')}
+    <rect x="0" y="322" width="300" height="128" fill="#100e14"/>
+    <path d="M0 322 Q150 316 300 320" stroke="#6a4e30" stroke-width=".7" fill="none" opacity=".3"/>
+    <path d="M148 98 L154 132 L146 132 Z" fill="#ffe0a0" opacity=".6"/>
+    <circle cx="150" cy="132" r="50" fill="url(#tstrL)"/>
+    <path d="M146 132 L152 132 L154 116 L150 110 L146 116 Z" fill="#ffe8b0" opacity=".7"/>
+    <g fill="#1a1010">
+      <rect x="143" y="254" width="14" height="38" rx="1"/>
+      <circle cx="150" cy="250" r="9"/>
+    </g>
+  `),
+
+  /* ── 巴尔扎克与小裁缝 · Sichuan mountains — re-education, a suitcase of books, a seamstress ── */
+  balzac: scene(`
+    <defs>
+      <linearGradient id="blzSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#3a5878"/><stop offset=".4" stop-color="#6a8898"/>
+        <stop offset=".68" stop-color="#9ab0a0"/><stop offset="1" stop-color="#c8c8b8"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#blzSky)"/>
+    ${stars(5, 257)}
+    <rect x="0" y="0" width="300" height="450" fill="#e8f0e8" opacity=".12"/>
+    <path d="M0 276 Q40 238 80 256 Q110 268 130 250 Q150 232 170 246 Q200 262 240 248 Q270 236 300 252 L300 450 L0 450 Z" fill="#5a7058"/>
+    <path d="M0 320 Q80 306 150 314 T300 316 L300 450 L0 450 Z" fill="#4a6048"/>
+    <path d="M0 368 Q150 358 300 366 L300 450 L0 450 Z" fill="#3a5038"/>
+    <g fill="#2a2e20">
+      <rect x="92" y="264" width="18" height="56"/>
+      <path d="M88 266 Q101 252 114 266 Z"/>
+      <rect x="136" y="254" width="24" height="66"/>
+      <path d="M132 256 Q148 240 164 256 Z"/>
+      <rect x="178" y="268" width="16" height="52"/>
+      <path d="M174 270 Q186 258 198 270 Z"/>
+    </g>
+    <rect x="126" y="302" width="48" height="30" rx="3" fill="#6a4020"/>
+    <rect x="130" y="298" width="40" height="6" rx="2" fill="#7a5030"/>
+    <rect x="148" y="296" width="4" height="8" rx="1" fill="#8a6040"/>
+    <rect x="126" y="316" width="48" height="2" fill="#4a2810"/>
+    <g fill="#1e2010">
+      <circle cx="110" cy="306" r="4.5"/>
+      <rect x="108" y="310" width="4" height="12" rx="1"/>
+      <circle cx="186" cy="304" r="4"/>
+      <rect x="184" y="308" width="4" height="10" rx="1"/>
+    </g>
+    <rect x="0" y="248" width="300" height="10" fill="#e8f0e8" opacity=".2"/>
+    <rect x="0" y="235" width="300" height="8" fill="#e8f0e8" opacity=".13"/>
+  `),
+
   /* ── 子夜 · Shanghai 1930s — art deco skyline, factory chimneys, Huangpu at night ── */
   midnight: scene(`
     <defs>
