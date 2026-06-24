@@ -3,11 +3,14 @@ import { createRoot } from 'react-dom/client';
 import './styles/app.css';
 import App from './App';
 import AuthorMap from './AuthorMap';
+import GlobeApp from './GlobeApp';
 
-const isAuthorMap = location.pathname.startsWith('/authors');
+const path = location.pathname;
+const isAuthorMap = path.startsWith('/authors');
+const isGlobe     = path.startsWith('/globe');
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    {isAuthorMap ? <AuthorMap /> : <App />}
+    {isAuthorMap ? <AuthorMap /> : isGlobe ? <GlobeApp /> : <App />}
   </StrictMode>,
 );

@@ -2339,3 +2339,39 @@ html[data-mode='author'][data-author-active] .markers-layer .marker.on { opacity
     right: calc(12px + env(safe-area-inset-right));
   }
 }
+
+/* ================= GLOBE-SPECIFIC ================= */
+
+/* Link in the masthead to toggle between flat map and globe */
+.globe-maplink {
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 2px;
+  font-family: var(--font-label);
+  font-size: 11px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: .72;
+  text-decoration: none;
+  transition: opacity .18s ease;
+}
+.globe-maplink:hover { opacity: 1; }
+
+/* Zoom level readout between the + / − buttons on the globe */
+.globe-zoom-label {
+  font-family: var(--font-label);
+  font-size: 11px;
+  letter-spacing: .06em;
+  color: var(--card-sub);
+  text-align: center;
+  opacity: .8;
+  user-select: none;
+}
+
+/* Globe SVG cursor: grab when dragging */
+.globe-svg { cursor: grab; }
+.globe-svg:active { cursor: grabbing; }
+
+/* Globe stars always visible (no html.show-stars gate needed) */
+.globe-svg .stars-layer { opacity: 1 !important; }
