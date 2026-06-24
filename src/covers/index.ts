@@ -11,6 +11,7 @@ import { AMERICAS_COVERS } from './americas';
 import { EUROPE_COVERS } from './europe';
 import { ASIA_AFRICA_PACIFIC_COVERS } from './asiaAfricaPacific';
 import { WORLD_COVERS } from './world';
+import { LATIN_AMERICA_COVERS } from './latinAmerica';
 
 export const BOOK_COVER_SCENES: Record<string, string> = {
   ...LUXUN_COVERS,
@@ -18,6 +19,7 @@ export const BOOK_COVER_SCENES: Record<string, string> = {
   ...CHINESE_CLASSIC_COVERS,
   ...FRENCH_COVERS,
   ...AMERICAS_COVERS,
+  ...LATIN_AMERICA_COVERS,
   ...EUROPE_COVERS,
   ...ASIA_AFRICA_PACIFIC_COVERS,
   ...WORLD_COVERS,

@@ -231,4 +231,81 @@ export const CHINESE_CLASSIC_COVERS: Record<string, string> = {
     <path d="M156 240 q14 6 0 14 q14 6 0 14 q14 6 0 12" stroke="#c24a3a" stroke-width="2" fill="none" opacity=".8"/>
     ${Array.from({ length: 70 }).map((_, i) => { const x = (i * 53 + i * i * 7) % 300, y = (i * 71 + i * i * 3) % 450, r = ((i * 13) % 10) / 10 * 1.1 + 0.5; return `<circle cx="${x}" cy="${y}" r="${r.toFixed(2)}" fill="#fbfcfe" opacity="${(0.45 + ((i * 5) % 5) / 10).toFixed(2)}"/>`; }).join('')}
   `),
+
+  /* ── 海上花列传 · Shanghai 1890s — sing-song girls, opium lamp glow, courtyard pavilion ── */
+  singsonggirls: scene(`
+    <defs>
+      <linearGradient id="sgSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a1008"/><stop offset=".5" stop-color="#2e1c0c"/>
+        <stop offset="1" stop-color="#4a2e14"/>
+      </linearGradient>
+      <radialGradient id="sgG" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#e8a040" stop-opacity=".55"/>
+        <stop offset="1" stop-color="#e8a040" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#sgSky)"/>
+    ${stars(8, 147)}
+    <rect x="96" y="148" width="108" height="168" fill="#1e1208"/>
+    <rect x="102" y="154" width="96" height="156" fill="#2e1c08"/>
+    <circle cx="150" cy="228" r="78" fill="url(#sgG)"/>
+    <g fill="#c8a040" opacity=".65">
+      <rect x="96" y="148" width="108" height="8"/>
+      <rect x="96" y="310" width="108" height="8"/>
+      <rect x="96" y="148" width="8" height="168"/>
+      <rect x="196" y="148" width="8" height="168"/>
+      <path d="M88 154 Q150 136 212 154 Z"/>
+    </g>
+    <rect x="110" y="166" width="36" height="54" fill="#e8a040" opacity=".18"/>
+    <rect x="154" y="166" width="36" height="54" fill="#e8a040" opacity=".14"/>
+    <rect x="110" y="228" width="36" height="54" fill="#e8a040" opacity=".12"/>
+    <rect x="154" y="228" width="36" height="54" fill="#e8a040" opacity=".1"/>
+    <rect x="0" y="316" width="300" height="134" fill="#140e04"/>
+    <path d="M0 316 Q150 310 300 314" stroke="#c8a040" stroke-width=".6" fill="none" opacity=".28"/>
+    <g fill="#1a1008">
+      <circle cx="134" cy="258" r="5.5"/>
+      <rect x="131" y="263" width="5" height="14" rx="1"/>
+      <circle cx="166" cy="262" r="5"/>
+      <rect x="163" y="267" width="5" height="12" rx="1"/>
+    </g>
+    ${[114,136,158,178].map(x=>`<rect x="${x}" y="${322}" width="8" height="18" rx="1" fill="#1e1608"/>`).join('')}
+  `),
+
+  /* ── 洛阳伽蓝记 · Luoyang Northern Wei — temple complex in a ruined capital, Buddhist grandeur ── */
+  luoyangmonasteries: scene(`
+    <defs>
+      <linearGradient id="lmSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2a3050"/><stop offset=".4" stop-color="#4a5878"/>
+        <stop offset=".7" stop-color="#8a9898"/><stop offset="1" stop-color="#b0c0b8"/>
+      </linearGradient>
+      <radialGradient id="lmSun" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#e8d8b0" stop-opacity=".65"/>
+        <stop offset="1" stop-color="#e8d8b0" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#lmSky)"/>
+    ${stars(8, 149)}
+    <circle cx="150" cy="148" r="68" fill="url(#lmSun)"/>
+    <path d="M0 322 Q150 310 300 320 L300 450 L0 450 Z" fill="#7a8060"/>
+    <path d="M0 368 Q150 358 300 366 L300 450 L0 450 Z" fill="#5a6048"/>
+    <g fill="#2a2c38">
+      <rect x="106" y="256" width="88" height="72"/>
+      <path d="M94 262 Q150 228 206 262 Z"/>
+      <rect x="118" y="228" width="64" height="34"/>
+      <path d="M108 234 Q150 206 192 234 Z"/>
+      <rect x="132" y="206" width="36" height="28"/>
+      <path d="M124 212 Q150 190 176 212 Z"/>
+      <rect x="142" y="190" width="16" height="18"/>
+      <rect x="146" y="178" width="8" height="14"/>
+      <rect x="148" y="162" width="4" height="18"/>
+    </g>
+    ${[[112,268],[128,268],[158,268],[174,268],[112,296],[128,296]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="16" fill="#ffd880" opacity=".35"/>`).join('')}
+    <g fill="#1e2028">
+      <rect x="90" y="246" width="8" height="78"/>
+      <path d="M86 250 Q94 242 102 250 Z"/>
+      <rect x="202" y="240" width="8" height="84"/>
+      <path d="M198 244 Q206 236 214 244 Z"/>
+    </g>
+    <path d="M0 322 Q150 314 300 320" stroke="#b0c0b8" stroke-width=".6" fill="none" opacity=".3"/>
+  `),
 };
