@@ -2,7 +2,7 @@ import * as d3 from 'd3';
 import { feature, mesh } from 'topojson-client';
 import { BOOKS } from '../books';
 import { pickDisplayLanguage } from '../types';
-import type { Book, MapTweaks, MapHandle, Author } from '../types';
+import type { Book, MapTweaks, MapHandle, Author, AuthorEvent } from '../types';
 import { COUNTRY_NAMES, BIG_COUNTRY_IDS } from '../countryNames';
 import type { MapCallbacks } from './mapEngine';
 
@@ -106,6 +106,7 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
 
   const gStars         = svg.append('g').attr('class', 'stars-layer');
   const gCountryLabels = svg.append('g').attr('class', 'country-labels-layer');
+  const gAuthors       = svg.append('g').attr('class', 'authors-layer');
   const gMarkers       = svg.append('g').attr('class', 'markers-layer');
 
   let markerSel: d3.Selection<SVGGElement, PBook, SVGGElement, unknown> | null = null;
@@ -116,6 +117,11 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
   let countryLabelSel: d3.Selection<SVGTextElement, CountryLabel, SVGGElement, unknown> | null = null;
   let authorBookIds: Set<string> | null = null;
   let resizeTimer: ReturnType<typeof setTimeout>;
+
+  // ---- author layer ----
+  type PEvent = AuthorEvent & { _x: number; _y: number };
+  let pEvents: PEvent[] = [];
+  let authorDotSel: d3.Selection<SVGGElement, PEvent, SVGGElement, unknown> | null = null;
 
   const tweaks: MapTweaks = {
     theme:       'atlas',
@@ -402,6 +408,67 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
     });
   }
 
+  // ---- author journey (canvas + SVG dots) ----
+
+  // Draw the journey path and write-links onto the canvas (after land, before markers).
+  // geoPath with geoOrthographic automatically clips great-circle arcs at the horizon.
+  function drawAuthorPath() {
+    if (!pEvents.length) return;
+
+    // Blue dashed write-links: book setting → author's writing location
+    ctx.setLineDash([4, 4]);
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = cssVar('--sphere-stroke') || 'rgba(90,150,220,0.5)';
+    for (const e of pEvents) {
+      if (!e.bookId) continue;
+      const book = BOOKS.find(b => b.id === e.bookId);
+      if (!book) continue;
+      ctx.beginPath();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      canvasPath({ type: 'LineString', coordinates: [[book.lng, book.lat], [e.lng, e.lat]] } as any);
+      ctx.stroke();
+    }
+    ctx.setLineDash([]);
+
+    // Gold solid journey path connecting events in chronological order
+    if (pEvents.length >= 2) {
+      ctx.beginPath();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      canvasPath({ type: 'LineString', coordinates: pEvents.map(e => [e.lng, e.lat]) } as any);
+      ctx.strokeStyle = cssVar('--author-path') || 'rgba(212,167,64,0.75)';
+      ctx.lineWidth = 1.8;
+      ctx.stroke();
+    }
+  }
+
+  function buildAuthorDots(events: PEvent[]) {
+    gAuthors.selectAll('*').remove();
+    authorDotSel = null;
+    if (!events.length) return;
+
+    authorDotSel = gAuthors
+      .selectAll<SVGGElement, PEvent>('g.author-event')
+      .data(events)
+      .enter()
+      .append('g')
+      .attr('class', e => `author-event ${e.type}`);
+
+    authorDotSel.append('circle')
+      .attr('class', 'author-event-dot')
+      .attr('r', e => (e.type === 'birth' || e.type === 'died') ? 7 : 5);
+  }
+
+  function updateAuthorDots() {
+    if (!authorDotSel) return;
+    authorDotSel.each(function (e) {
+      const vis = isVisible(e.lng, e.lat);
+      const p   = projection([e.lng, e.lat]);
+      const node = this as SVGGElement;
+      node.style.display = vis && !!p ? '' : 'none';
+      if (vis && p) node.setAttribute('transform', `translate(${p[0]},${p[1]})`);
+    });
+  }
+
   // ---- card ----
 
   function openCard(d: PBook, node: SVGGElement) {
@@ -440,8 +507,10 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
 
   function redraw() {
     drawBase();
+    if (pEvents.length) drawAuthorPath(); // on canvas, above land, below SVG markers
     projectBooks();
     updateMarkers();
+    updateAuthorDots();
     updateCountryLabels();
   }
 
@@ -652,15 +721,23 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
     },
     showAuthor(author: Author) {
       authorBookIds = new Set(author.bookIds);
-      if (author.events.length) {
-        const e = author.events[0];
+      pEvents = author.events.map(e => ({ ...e, _x: 0, _y: 0 }));
+      buildAuthorDots(pEvents);
+      if (pEvents.length) {
+        const e = pEvents[0];
         animateTo([-e.lng, -e.lat], Math.max(zoomFactor, 2.0), 800);
+      } else {
+        redraw();
       }
       updateMarkers();
     },
     clearAuthor() {
       authorBookIds = null;
+      pEvents = [];
+      gAuthors.selectAll('*').remove();
+      authorDotSel = null;
       updateMarkers();
+      redraw();
     },
     setLanguageFilter(langs: string[]) {
       languageFilter = new Set(langs);

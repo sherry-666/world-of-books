@@ -115,7 +115,7 @@ export function BookCard({ book, displayLanguage, onClose, t, onAuthorSelect, pr
             ) : (
               <a
                 className="card-author-link"
-                href={`/authors?author=${authorEntry.id}${primaryLanguage ? `&primary=${primaryLanguage}` : ''}`}
+                href={`${location.pathname.startsWith('/globe') ? '/globe' : ''}/authors?author=${authorEntry.id}${primaryLanguage ? `&primary=${primaryLanguage}` : ''}`}
                 onClick={(e) => e.stopPropagation()}
               >
                 {t.authorLife}
