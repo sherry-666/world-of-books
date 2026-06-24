@@ -724,4 +724,267 @@ export const EUROPE_COVERS: Record<string, string> = {
       <circle cx="150" cy="177" r="8"/>
     </g>
   `),
+
+  /* ── The Remains of the Day · Darlington Hall — a butler at dusk, English country estate ── */
+  remainsday: scene(`
+    <defs>
+      <linearGradient id="rdSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#3a3850"/><stop offset=".4" stop-color="#6a6888"/>
+        <stop offset=".7" stop-color="#b09880"/><stop offset="1" stop-color="#d0b888"/>
+      </linearGradient>
+      <radialGradient id="rdSun" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#ffd890" stop-opacity=".6"/>
+        <stop offset="1" stop-color="#ffd890" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#rdSky)"/>
+    ${stars(7, 43)}
+    <circle cx="188" cy="188" r="72" fill="url(#rdSun)"/>
+    <path d="M0 310 Q150 298 300 308 L300 450 L0 450 Z" fill="#4a5838"/>
+    <path d="M0 362 Q150 352 300 360 L300 450 L0 450 Z" fill="#3a4828"/>
+    <g fill="#1a1808">
+      <rect x="88" y="186" width="124" height="128"/>
+      <path d="M80 190 L150 158 L220 190 Z"/>
+      <rect x="100" y="158" width="100" height="32"/>
+      <path d="M96 162 L150 134 L204 162 Z"/>
+      <rect x="120" y="134" width="60" height="28"/>
+      <rect x="144" y="122" width="12" height="14"/>
+    </g>
+    ${[[96,204],[112,204],[96,234],[112,234],[164,204],[180,204],[164,234],[180,234],[96,264],[112,264]].map(([x,y])=>`<rect x="${x}" y="${y}" width="11" height="18" fill="#ffd060" opacity=".35"/>`).join('')}
+    <g fill="#100c04">
+      <rect x="147" y="284" width="6" height="28" rx="1"/>
+      <circle cx="150" cy="281" r="7"/>
+      <path d="M140 298 L147 288 L153 288 L160 298 L156 314 L144 314 Z"/>
+    </g>
+    <path d="M0 310 Q150 302 300 308" stroke="#b09880" stroke-width=".7" fill="none" opacity=".3"/>
+  `),
+
+  /* ── A Gentleman in Moscow · Hotel Metropol — chandeliers, an elegant prisoner above Red Square ── */
+  gentleman: scene(`
+    <defs>
+      <linearGradient id="gmMSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a1828"/><stop offset=".5" stop-color="#2e2a3e"/>
+        <stop offset="1" stop-color="#3e3648"/>
+      </linearGradient>
+      <radialGradient id="gmMC" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#ffe090" stop-opacity=".75"/>
+        <stop offset="1" stop-color="#ffe090" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#gmMSky)"/>
+    ${stars(10, 47)}
+    <rect x="0" y="160" width="300" height="290" fill="#1e1820"/>
+    <g fill="#c8a040" opacity=".65">
+      <rect x="0" y="158" width="300" height="6"/>
+      <rect x="0" y="210" width="300" height="4"/>
+      <rect x="0" y="250" width="300" height="3"/>
+    </g>
+    <circle cx="150" cy="128" r="62" fill="url(#gmMC)"/>
+    <g fill="#c8a040" opacity=".78">
+      <circle cx="150" cy="108" r="6"/>
+      <ellipse cx="150" cy="108" rx="32" ry="8" fill="none" stroke="#c8a040" stroke-width="1.5"/>
+      ${[-30,-15,0,15,30].map(dx=>`<circle cx="${150+dx}" cy="128" r="3.5"/><line x1="${150+dx}" y1="108" x2="${150+dx}" y2="128" stroke="#c8a040" stroke-width="1.2"/>`).join('')}
+    </g>
+    ${Array.from({length:4}).map((_,i)=>`<rect x="${106+i*24}" y="170" width="18" height="26" fill="#c8a040" opacity=".22"/>`).join('')}
+    ${Array.from({length:5}).map((_,i)=>`<rect x="${100+i*24}" y="216" width="16" height="22" fill="#c8a040" opacity=".18"/>`).join('')}
+    <g fill="#1e1820">
+      <rect x="138" y="282" width="24" height="34" rx="1"/>
+      <circle cx="150" cy="278" r="9"/>
+      <path d="M133 298 L138 286 L162 286 L167 298 L162 316 L138 316 Z"/>
+    </g>
+    <rect x="0" y="380" width="300" height="70" fill="#1a1828"/>
+    <path d="M0 380 Q150 374 300 378" stroke="#c8a040" stroke-width=".6" fill="none" opacity=".22"/>
+  `),
+
+  /* ── All the Light We Cannot See · Saint-Malo — a radio tower, bombed city, a blind girl ── */
+  allthelight: scene(`
+    <defs>
+      <linearGradient id="alSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a2838"/><stop offset=".38" stop-color="#3a5068"/>
+        <stop offset=".7" stop-color="#6a8090"/><stop offset="1" stop-color="#8aa0a0"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#alSky)"/>
+    ${stars(8, 53)}
+    <g fill="#182028">
+      <rect x="0" y="266" width="300" height="184"/>
+      <rect x="86" y="214" width="24" height="52"/>
+      <rect x="130" y="196" width="40" height="70"/>
+      <rect x="182" y="226" width="26" height="40"/>
+      <rect x="52" y="244" width="30" height="22"/>
+      <rect x="220" y="238" width="30" height="28"/>
+    </g>
+    <rect x="146" y="128" width="8" height="86" fill="#182028"/>
+    <rect x="138" y="128" width="24" height="6" fill="#182028"/>
+    ${[-20,-8,4,16].map(y=>`<path d="M130 ${128+y} L150 ${128+y-10} L170 ${128+y}" stroke="#182028" stroke-width="2" fill="none"/>`).join('')}
+    <rect x="143" y="102" width="14" height="28" fill="#182028"/>
+    <rect x="141" y="98" width="18" height="6" fill="#182028"/>
+    ${[[90,230],[106,230],[90,248],[106,248],[134,210],[152,210],[134,226],[152,226]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="13" fill="#ffd060" opacity="${y<230?'.22':'.18'}"/>`).join('')}
+    <path d="M0 268 Q150 260 300 266" stroke="#8aa0a0" stroke-width=".7" fill="none" opacity=".3"/>
+    <path d="M0 302 Q150 294 300 300" stroke="#6a8090" stroke-width=".5" fill="none" opacity=".2"/>
+  `),
+
+  /* ── Outline Trilogy · London/Athens — a woman listening, the sea, a life held in brackets ── */
+  outlinetrilogy: scene(`
+    <defs>
+      <linearGradient id="otSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#283848"/><stop offset=".44" stop-color="#4a6878"/>
+        <stop offset=".72" stop-color="#88a8b8"/><stop offset="1" stop-color="#b0ccd8"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#otSky)"/>
+    ${stars(7, 59)}
+    <path d="M0 318 Q150 306 300 316 L300 450 L0 450 Z" fill="#3a6888"/>
+    <path d="M0 354 Q75 346 150 352 T300 350 L300 450 L0 450 Z" fill="#2a5878"/>
+    <path d="M0 392 Q75 386 150 390 T300 388 L300 450 L0 450 Z" fill="#1e4868"/>
+    ${Array.from({length:5}).map((_,i)=>`<path d="M${60+i*40} ${334+i%2*8} Q${78+i*40} ${326+i%2*6} ${96+i*40} ${334+i%2*8}" stroke="#7ab0c0" stroke-width="1" fill="none" opacity=".4"/>`).join('')}
+    <g fill="#e8f0f4" opacity=".18">
+      <circle cx="150" cy="148" r="60"/>
+    </g>
+    <g fill="#1a2030">
+      <circle cx="150" cy="258" r="7"/>
+      <rect x="146" y="265" width="7" height="30" rx="1"/>
+      <path d="M138 280 L146 268 L154 268 L162 280 L158 298 L142 298 Z"/>
+      <path d="M138 280 Q128 290 132 304 Q136 292 144 290"/>
+      <path d="M162 280 Q172 290 168 304 Q164 292 156 290"/>
+    </g>
+    <rect x="108" y="88" width="84" height="6" fill="#c8d8e0" opacity=".25"/>
+    <rect x="114" y="100" width="72" height="5" fill="#c8d8e0" opacity=".2"/>
+    <rect x="118" y="112" width="64" height="4" fill="#c8d8e0" opacity=".16"/>
+    <rect x="120" y="122" width="60" height="4" fill="#c8d8e0" opacity=".13"/>
+    <rect x="116" y="132" width="68" height="4" fill="#c8d8e0" opacity=".11"/>
+  `),
+
+  /* ── Fingersmith · London — a woman in an asylum window, Victorian fog, dark roses ── */
+  fingersmith: scene(`
+    <defs>
+      <linearGradient id="fsSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a1820"/><stop offset=".5" stop-color="#2e2838"/>
+        <stop offset="1" stop-color="#44384a"/>
+      </linearGradient>
+      <radialGradient id="fsG" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#d0a8b0" stop-opacity=".4"/>
+        <stop offset="1" stop-color="#d0a8b0" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#fsSky)"/>
+    ${stars(8, 61)}
+    <rect x="0" y="238" width="300" height="212" fill="#1a1820"/>
+    <circle cx="150" cy="180" r="80" fill="url(#fsG)"/>
+    <g fill="#100e18">
+      <rect x="0" y="238" width="76" height="212"/>
+      <rect x="224" y="238" width="76" height="212"/>
+      <rect x="84" y="256" width="54" height="194"/>
+      <rect x="164" y="256" width="54" height="194"/>
+    </g>
+    ${[[90,270],[104,270],[90,298],[104,298],[172,268],[186,268],[172,296]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="16" fill="#d8a8b8" opacity=".28"/>`).join('')}
+    <rect x="118" y="128" width="64" height="90" fill="#1a1628"/>
+    <rect x="124" y="134" width="52" height="78" fill="#241c30"/>
+    <rect x="126" y="138" width="22" height="68" fill="#d0a8b0" opacity=".12"/>
+    <rect x="152" y="138" width="22" height="68" fill="#d0a8b0" opacity=".09"/>
+    <g fill="#0e0c16">
+      <rect x="143" y="154" width="14" height="40" rx="1"/>
+      <circle cx="150" cy="151" r="8"/>
+    </g>
+    ${[-16,-6,4,14].map(dx=>`<circle cx="${150+dx}" cy="${238}" r="4" fill="#901828" opacity=".6"/>`).join('')}
+    ${[-20,-10,0,10,20].map(dx=>`<path d="M${150+dx} 228 Q${146+dx} 218 ${150+dx} 210 Q${154+dx} 218 ${150+dx} 228" fill="#901828" opacity=".5"/>`).join('')}
+  `),
+
+  /* ── White Teeth · North London — a multicultural street, mosque minaret, chip shop ── */
+  whiteteeth: scene(`
+    <defs>
+      <linearGradient id="wtSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#3a4868"/><stop offset=".5" stop-color="#6a7898"/>
+        <stop offset=".78" stop-color="#9a8870"/><stop offset="1" stop-color="#c0a870"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#wtSky)"/>
+    ${stars(9, 67)}
+    <g fill="#1a1c28">
+      <rect x="0" y="230" width="60" height="220"/>
+      <rect x="64" y="246" width="48" height="204"/>
+      <rect x="116" y="212" width="44" height="238"/>
+      <rect x="164" y="228" width="56" height="222"/>
+      <rect x="224" y="218" width="76" height="232"/>
+    </g>
+    ${Array.from({length:16}).map((_,i)=>{const x=8+(i%4)*16, y=248+Math.floor(i/4)*30; const lit=i===5||i===9||i===13; return `<rect x="${x}" y="${y}" width="11" height="15" fill="${lit?'#ffc848':'#242838'}" opacity="${lit?'.75':'.7'}"/>`;}).join('')}
+    <rect x="128" y="168" width="20" height="44" fill="#1a1c28"/>
+    <path d="M128 170 Q138 158 148 170 Z" fill="#1a1c28"/>
+    <rect x="124" y="166" width="28" height="4" fill="#1a1c28"/>
+    <circle cx="138" cy="162" r="4" fill="#c8a040" opacity=".6"/>
+    <rect x="136" y="136" width="4" height="28" fill="#1a1c28"/>
+    <rect x="118" y="214" width="6" height="14" fill="#ffc848" opacity=".45"/>
+    <rect x="134" y="214" width="6" height="14" fill="#ffc848" opacity=".38"/>
+    <rect x="0" y="394" width="300" height="56" fill="#141218"/>
+    <path d="M0 394 Q150 388 300 392" stroke="#c0a870" stroke-width=".5" fill="none" opacity=".2"/>
+  `),
+
+  /* ── The Master · Rye — Henry James at his desk, the English coast, gaslight on a manuscript ── */
+  themaster: scene(`
+    <defs>
+      <linearGradient id="tmSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1c1810"/><stop offset=".5" stop-color="#2e2818"/>
+        <stop offset="1" stop-color="#3e3420"/>
+      </linearGradient>
+      <radialGradient id="tmG" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#ffd060" stop-opacity=".55"/>
+        <stop offset="1" stop-color="#ffd060" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#tmSky)"/>
+    ${stars(8, 71)}
+    <rect x="0" y="234" width="300" height="216" fill="#181208"/>
+    <rect x="108" y="118" width="84" height="128" fill="#1e1810"/>
+    <rect x="113" y="123" width="74" height="118" fill="#2a2010"/>
+    <circle cx="150" cy="170" r="70" fill="url(#tmG)"/>
+    <rect x="117" y="127" width="32" height="50" fill="#e8c060" opacity=".18"/>
+    <rect x="153" y="127" width="32" height="50" fill="#e8c060" opacity=".12"/>
+    <rect x="0" y="234" width="300" height="4" fill="#c0a038" opacity=".18"/>
+    <g fill="#1e1810">
+      <rect x="116" y="270" width="68" height="48" rx="2"/>
+      <rect x="120" y="278" width="60" height="6" rx="1"/>
+      <rect x="120" y="290" width="52" height="4" rx="1"/>
+      <rect x="120" y="300" width="56" height="4" rx="1"/>
+      <rect x="120" y="310" width="44" height="4" rx="1"/>
+    </g>
+    <g fill="#100e08">
+      <rect x="144" y="212" width="12" height="26" rx="1"/>
+      <circle cx="150" cy="209" r="7.5"/>
+      <path d="M138 226 L144 216 L156 216 L162 226 L158 240 L142 240 Z"/>
+    </g>
+    <rect x="126" y="322" width="48" height="6" fill="#c0a038" opacity=".2"/>
+  `),
+
+  /* ── Sexing the Cherry · London 1630s — a giant woman, river Thames, a boy and exotic fruits ── */
+  sexingcherry: scene(`
+    <defs>
+      <linearGradient id="scSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2a3a5a"/><stop offset=".4" stop-color="#4a6a8a"/>
+        <stop offset=".7" stop-color="#7a9aaa"/><stop offset="1" stop-color="#9ab8c0"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#scSky)"/>
+    ${stars(8, 73)}
+    <path d="M0 342 Q150 330 300 340 L300 450 L0 450 Z" fill="#3a6888"/>
+    <path d="M0 376 Q75 368 150 374 T300 372 L300 450 L0 450 Z" fill="#2a5878"/>
+    <path d="M0 414 Q75 408 150 412 T300 410 L300 450 L0 450 Z" fill="#1e4868"/>
+    ${Array.from({length:5}).map((_,i)=>`<path d="M${50+i*42} ${354+i%2*8} Q${70+i*42} ${346+i%2*6} ${90+i*42} ${354+i%2*8}" stroke="#6ab0c0" stroke-width="1" fill="none" opacity=".4"/>`).join('')}
+    <g fill="#1a2838">
+      <rect x="0" y="270" width="66" height="72"/>
+      <rect x="234" y="260" width="66" height="82"/>
+    </g>
+    <g fill="#2a1808">
+      <ellipse cx="150" cy="220" rx="36" ry="54"/>
+      <rect x="130" y="274" width="40" height="68" rx="4"/>
+      <circle cx="150" cy="160" r="28"/>
+    </g>
+    <g fill="#100e06">
+      <circle cx="130" cy="272" r="8"/>
+      <rect x="127" y="280" width="6" height="20" rx="1"/>
+      <circle cx="170" cy="269" r="7"/>
+      <rect x="167" y="277" width="6" height="18" rx="1"/>
+    </g>
+    ${[-14,0,14].map(dx=>`<circle cx="${150+dx}" cy="${180}" r="6" fill="#c82030" opacity=".7"/>`).join('')}
+    ${[-7,7].map(dx=>`<path d="M${150+dx} 174 Q${150+dx+4} 166 ${150+dx}" stroke="#4a2810" stroke-width="1.2" fill="none"/>`).join('')}
+  `),
 };
