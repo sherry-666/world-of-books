@@ -614,17 +614,22 @@ html.no-anim .mk-inner { animation-play-state: paused; }
   align-items: center;
   gap: 8px;
   padding: 0 12px;
-  height: 38px;
-  background: var(--chrome-bg);
-  border: .5px solid var(--hair);
+  height: 40px;
+  background: rgba(255, 255, 255, .12);
+  border: 1px solid rgba(255, 255, 255, .22);
   border-radius: 10px;
-  -webkit-backdrop-filter: blur(18px);
-  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+}
+
+[data-theme="parchment"] .searchbar-inner {
+  background: rgba(0, 0, 0, .08);
+  border-color: rgba(0, 0, 0, .15);
 }
 
 .searchbar-icon {
   flex-shrink: 0;
-  opacity: .45;
+  opacity: .7;
   color: var(--ink);
 }
 
@@ -639,7 +644,7 @@ html.no-anim .mk-inner { animation-play-state: paused; }
   letter-spacing: .02em;
 }
 
-.searchbar-input::placeholder { opacity: .55; }
+.searchbar-input::placeholder { opacity: .65; }
 
 .searchbar-clear {
   appearance: none;
