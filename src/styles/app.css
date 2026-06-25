@@ -656,17 +656,20 @@ html.no-anim .mk-inner { animation-play-state: paused; }
 .searchbar-lucky {
   appearance: none;
   background: none;
-  border: none;
+  border: .5px solid var(--hair);
+  border-radius: 6px;
   color: var(--ink);
-  opacity: .4;
+  opacity: .5;
   cursor: pointer;
-  padding: 2px 4px;
-  line-height: 1;
-  display: flex;
-  align-items: center;
+  padding: 2px 7px;
+  font-family: var(--font-label);
+  font-size: 11px;
+  letter-spacing: .03em;
+  white-space: nowrap;
+  flex-shrink: 0;
   transition: opacity .15s;
 }
-.searchbar-lucky:hover { opacity: .8; }
+.searchbar-lucky:hover { opacity: .9; }
 
 .searchbar-dropdown {
   position: absolute;
