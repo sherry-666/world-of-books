@@ -20,6 +20,7 @@ export const UI = {
     placeLabels:      'Place labels',
     graticule:        'Graticule',
     searchPlaceholder:'Search country or region…',
+    luckyButton:      'Try my luck',
     authorBack:       '← Map of Literature',
     authorsTitle:     'Atlas of Lives',
     authorsTagline:   'Trace where the writers lived, wandered, and wrote.',
@@ -56,6 +57,7 @@ export const UI = {
     placeLabels:      'Noms de lieux',
     graticule:        'Graticule',
     searchPlaceholder:'Rechercher un pays ou une région…',
+    luckyButton:      'Tenter ma chance',
     authorBack:       '← Carte de la Littérature',
     authorsTitle:     'Atlas des Vies',
     authorsTagline:   'Suivez les lieux où les écrivains ont vécu, voyagé et écrit.',
@@ -115,6 +117,7 @@ export const UI = {
     placeLabels:      '地名标注',
     graticule:        '经纬线',
     searchPlaceholder:'搜索国家或地区……',
+    luckyButton:      '随机探索',
     authorBack:       '← 文海坐标',
     authorsTitle:     '文人足迹',
     authorsTagline:   '追寻作家们生活、漫游与写作的足迹。',
@@ -176,6 +179,7 @@ export type UIStrings = {
   placeLabels: string;
   graticule: string;
   searchPlaceholder: string;
+  luckyButton: string;
   authorBack: string;
   authorsTitle: string;
   authorsTagline: string;

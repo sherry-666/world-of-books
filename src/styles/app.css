@@ -653,6 +653,21 @@ html.no-anim .mk-inner { animation-play-state: paused; }
 
 .searchbar-clear:hover { opacity: .8; }
 
+.searchbar-lucky {
+  appearance: none;
+  background: none;
+  border: none;
+  color: var(--ink);
+  opacity: .4;
+  cursor: pointer;
+  padding: 2px 4px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  transition: opacity .15s;
+}
+.searchbar-lucky:hover { opacity: .8; }
+
 .searchbar-dropdown {
   position: absolute;
   top: calc(100% + 6px);

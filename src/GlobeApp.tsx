@@ -171,6 +171,13 @@ export default function GlobeApp() {
   const zoomHome = () => { closeCard(); mapHandle.current?.zoomHome(); };
   const panTo    = (loc: SearchLocation) => mapHandle.current?.panToLocation(loc.lng, loc.lat, loc.zoom);
 
+  const tryMyLuck = useCallback(() => {
+    const eligible = BOOKS.filter(b => pickDisplayLanguage(b, languages, primaryLanguage) !== null);
+    if (!eligible.length) return;
+    const pick = eligible[Math.floor(Math.random() * eligible.length)];
+    mapHandle.current?.openBookById(pick.id);
+  }, [languages, primaryLanguage]);
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') closeCard(); };
     window.addEventListener('keydown', onKey);
@@ -209,7 +216,7 @@ export default function GlobeApp() {
         </div>
       </header>
 
-      <SearchBar onSelect={panTo} placeholder={t.searchPlaceholder} />
+      <SearchBar onSelect={panTo} placeholder={t.searchPlaceholder} onLucky={tryMyLuck} luckyLabel={t.luckyButton} />
 
       <LanguageFilter
         selected={languages}
