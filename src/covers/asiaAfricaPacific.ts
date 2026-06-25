@@ -676,4 +676,67 @@ export const ASIA_AFRICA_PACIFIC_COVERS: Record<string, string> = {
     <circle cx="150" cy="282" r="20" fill="#e0f0e0" opacity=".2"/>
     <path d="M0 318 Q150 310 300 316" stroke="#4a6040" stroke-width=".6" fill="none" opacity=".35"/>
   `),
+
+  /* ── Midnight's Children · Bombay — Gateway of India at monsoon, a crowd of a thousand children ── */
+  midnightschild: scene(`
+    <defs>
+      <linearGradient id="mchdSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#101828"/><stop offset=".36" stop-color="#1c2c44"/>
+        <stop offset=".64" stop-color="#284060"/><stop offset=".88" stop-color="#385870"/>
+        <stop offset="1" stop-color="#507888"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#mchdSky)"/>
+    ${stars(8, 341)}
+    <path d="M0 314 Q150 302 300 312 L300 450 L0 450 Z" fill="#1a2830" opacity=".9"/>
+    <path d="M0 368 Q150 358 300 366 L300 450 L0 450 Z" fill="#2a3c4c"/>
+    <path d="M0 416 Q150 408 300 414 L300 450 L0 450 Z" fill="#1a2c3c"/>
+    ${Array.from({length:5}).map((_,i)=>`<path d="M${30+i*48} ${322+i%2*12} Q${44+i*48} ${310+i%2*10} ${58+i*48} ${322+i%2*12}" stroke="#2a4050" stroke-width=".8" fill="none" opacity=".55"/>`).join('')}
+    <g fill="#141c28">
+      <rect x="96" y="178" width="108" height="140"/>
+      <path d="M88 186 L150 156 L212 186 Z"/>
+      <rect x="118" y="156" width="64" height="32"/>
+      <path d="M112 162 L150 138 L188 162 Z"/>
+      <rect x="130" y="138" width="40" height="26"/>
+      <path d="M122 192 L178 192 L178 204 Q150 214 122 204 Z"/>
+      <path d="M108 204 L108 218 L192 218 L192 204 Z"/>
+      ${[100,118,136,154,172,190].map(x => `<path d="M${x} ${178} L${x} ${156} Q${x+9} ${148} ${x+9} ${156} L${x+9} ${178} Z" fill="#1c2838"/>`).join('')}
+    </g>
+    ${Array.from({length:10}).map((_,i)=>`<rect x="${98+i*11}" y="${240}" width="7" height="14" fill="#e8c050" opacity="${0.12+i%3*0.06}"/>`).join('')}
+    <g fill="#0e1820">
+      <circle cx="140" cy="308" r="5"/>
+      <circle cx="155" cy="310" r="4.5"/>
+      <circle cx="168" cy="308" r="5"/>
+    </g>
+  `),
+
+  /* ── Heart of Darkness · Congo River — a steamboat in dense jungle, a river winding into mist ── */
+  heartdarkness: scene(`
+    <defs>
+      <linearGradient id="hdkSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#141010"/><stop offset=".36" stop-color="#1e1808"/>
+        <stop offset=".68" stop-color="#302808"/><stop offset="1" stop-color="#504010"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#hdkSky)"/>
+    ${stars(5, 343)}
+    <path d="M0 274 Q150 262 300 272 L300 450 L0 450 Z" fill="#1c2808"/>
+    <path d="M0 324 Q150 314 300 322 L300 450 L0 450 Z" fill="#182008"/>
+    <path d="M0 374 Q150 366 300 372 L300 450 L0 450 Z" fill="#141808"/>
+    <g fill="#0e1808" opacity=".9">
+      ${Array.from({length:14}).map((_,i)=>{const x=(i*47+4)%300; const y=120+i%3*30; return `<path d="M${x} ${y} Q${x+10} ${y-24} ${x+20} ${y-10} Q${x+30} ${y-28} ${x+40} ${y} L${x+40} ${280} L${x} ${280} Z"/>`;}).join('')}
+    </g>
+    <path d="M0 274 Q150 268 300 272" stroke="#504010" stroke-width=".5" fill="none" opacity=".4"/>
+    ${Array.from({length:4}).map((_,i)=>`<path d="M${60+i*44} ${282+i%2*8} Q${74+i*44} ${270+i%2*6} ${88+i*44} ${282+i%2*8}" stroke="#302000" stroke-width=".7" fill="none" opacity=".55"/>`).join('')}
+    <g fill="#0c1008">
+      <path d="M110 246 L110 280 L190 280 L190 246 Z"/>
+      <rect x="98" y="256" width="16" height="24"/>
+      <rect x="186" y="258" width="16" height="22"/>
+      <rect x="120" y="228" width="60" height="18"/>
+      <rect x="144" y="200" width="12" height="28"/>
+      <circle cx="150" cy="196" r="8"/>
+    </g>
+    ${Array.from({length:3}).map((_,i)=>`<path d="M${148+i*6} ${200} Q${150+i*6} ${178} ${146+i*6} ${162}" stroke="#201808" stroke-width="${2.5-i*0.5}" fill="none" opacity=".5"/>`).join('')}
+    <rect x="0" y="262" width="300" height="18" fill="#384808" opacity=".22"/>
+  `),
 };

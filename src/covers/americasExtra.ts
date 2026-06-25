@@ -1341,4 +1341,106 @@ export const AMERICAS_EXTRA_COVERS: Record<string, string> = {
     </g>
     <path d="M0 352 Q150 346 300 350" stroke="#503048" stroke-width=".5" fill="none" opacity=".28"/>
   `),
+
+  /* ── The Scarlet Letter · Boston — a Puritan meetinghouse, the scaffold, a crimson letter in snow ── */
+  scarletletter: scene(`
+    <defs>
+      <linearGradient id="sltrSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#282c38"/><stop offset=".44" stop-color="#3c4048"/>
+        <stop offset=".72" stop-color="#585858"/><stop offset="1" stop-color="#787068"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#sltrSky)"/>
+    ${stars(8, 345)}
+    <path d="M0 324 Q150 312 300 322 L300 450 L0 450 Z" fill="#e8eae8" opacity=".88"/>
+    <path d="M0 374 Q150 364 300 372 L300 450 L0 450 Z" fill="#d8dcd8" opacity=".9"/>
+    <path d="M0 420 Q150 412 300 418 L300 450 L0 450 Z" fill="#c8ccc8"/>
+    ${Array.from({length:8}).map((_,i)=>`<path d="M${30+i*36} ${334+i%2*12} Q${38+i*36} ${322+i%2*10} ${46+i*36} ${334+i%2*12}" stroke="#d0d4d0" stroke-width=".6" fill="none" opacity=".55"/>`).join('')}
+    <g fill="#1c1c1c">
+      <rect x="84" y="186" width="132" height="142"/>
+      <path d="M76 190 L150 154 L224 190 Z"/>
+      <rect x="104" y="154" width="92" height="38"/>
+      <rect x="130" y="146" width="40" height="12"/>
+      <rect x="143" y="136" width="14" height="12"/>
+      ${Array.from({length:5}).map((_,i)=>`<rect x="${90+i*26}" y="${194}" width="12" height="${134}" fill="#242424" opacity=".3"/>`).join('')}
+    </g>
+    ${[[88,206],[104,206],[88,244],[104,244],[172,206],[188,206],[172,244],[188,244]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="22" fill="#f0e890" opacity="${y===206?'.35':'.25'}"/>`).join('')}
+    <rect x="120" y="318" width="60" height="12" fill="#d8dcd8" opacity=".7"/>
+    ${Array.from({length:4}).map((_,i)=>`<rect x="${122+i*16}" y="${318}" width="8" height="12" fill="#c8ccc8" opacity=".6"/>`).join('')}
+    <g fill="#b01010">
+      <path d="M148 296 L144 310 L150 306 L156 310 L152 296 Z"/>
+      <path d="M144 296 L138 302 L144 302 L148 296 Z"/>
+      <path d="M156 296 L162 302 L156 302 L152 296 Z"/>
+    </g>
+    <g fill="#1a1818">
+      <circle cx="150" cy="316" r="5.5"/>
+      <rect x="147" y="321" width="5" height="6" rx="1"/>
+    </g>
+  `),
+
+  /* ── The Color Purple · rural Georgia — red clay fields, a humble church, wisteria and light ── */
+  colorpurple: scene(`
+    <defs>
+      <linearGradient id="cpurSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#5060a0"/><stop offset=".38" stop-color="#8080b0"/>
+        <stop offset=".68" stop-color="#b0a0b8"/><stop offset="1" stop-color="#d8b8c8"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#cpurSky)"/>
+    ${stars(5, 347)}
+    <path d="M0 304 Q150 292 300 302 L300 450 L0 450 Z" fill="#803018"/>
+    <path d="M0 356 Q150 344 300 354 L300 450 L0 450 Z" fill="#6a2814"/>
+    <path d="M0 408 Q150 398 300 406 L300 450 L0 450 Z" fill="#501c0c"/>
+    ${Array.from({length:6}).map((_,i)=>`<path d="M${36+i*44} ${312+i%2*12} Q${48+i*44} ${300+i%2*10} ${60+i*44} ${312+i%2*12}" stroke="#a04820" stroke-width=".7" fill="none" opacity=".5"/>`).join('')}
+    <g fill="#281c10">
+      <rect x="108" y="208" width="84" height="100"/>
+      <path d="M100 212 L150 178 L200 212 Z"/>
+      <rect x="130" y="178" width="40" height="34"/>
+      <rect x="143" y="168" width="14" height="12"/>
+    </g>
+    ${[[112,228],[126,228],[154,228],[168,228],[112,260],[126,260],[154,260],[168,260]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="18" fill="#f0d090" opacity="${y===228?'.38':'.28'}"/>`).join('')}
+    ${Array.from({length:6}).map((_,i)=>`<path d="M${56+i*34} ${280} Q${62+i*34} ${258} ${68+i*34} ${244} Q${72+i*34} ${228} ${78+i*34} ${224}" stroke="#6a3868" stroke-width="2.5" fill="none" opacity=".6"/>`).join('')}
+    ${Array.from({length:8}).map((_,i)=>`<circle cx="${54+(i%4)*34+(Math.floor(i/4))*16}" cy="${238+(i%3)*14}" r="${4+i%2*2}" fill="#9060a8" opacity="${0.35+i%3*0.08}"/>`).join('')}
+    <g fill="#1a1010">
+      <circle cx="150" cy="296" r="5.5"/>
+      <rect x="147" y="301" width="5" height="10" rx="1"/>
+      <path d="M140 308 L147 304 L153 304 L160 308 L158 318 L142 318 Z"/>
+    </g>
+    <path d="M0 304 Q150 298 300 302" stroke="#d8b8c8" stroke-width=".5" fill="none" opacity=".28"/>
+  `),
+
+  /* ── Invisible Man · Harlem — a jazz club below street level, golden light from underground, a lone figure ── */
+  invisibleman: scene(`
+    <defs>
+      <linearGradient id="ivmSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#080808"/><stop offset=".38" stop-color="#101018"/>
+        <stop offset=".68" stop-color="#181820"/><stop offset="1" stop-color="#242428"/>
+      </linearGradient>
+      <radialGradient id="ivmGlow" cx="50%" cy="100%" r="60%">
+        <stop offset="0" stop-color="#c08020" stop-opacity=".6"/>
+        <stop offset="1" stop-color="#c08020" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#ivmSky)"/>
+    ${stars(6, 349)}
+    <rect x="0" y="0" width="300" height="450" fill="url(#ivmGlow)"/>
+    <path d="M0 296 Q150 284 300 294 L300 450 L0 450 Z" fill="#181008"/>
+    <path d="M0 348 Q150 338 300 346 L300 450 L0 450 Z" fill="#141008"/>
+    <path d="M0 400 Q150 392 300 398 L300 450 L0 450 Z" fill="#100c08"/>
+    <g fill="#0c0c10">
+      ${[0,62,122,178,238].map(x=>`<rect x="${x}" y="${0}" width="54" height="298"/>`).join('')}
+      ${Array.from({length:18}).map((_,i)=>{const x=(i*56+2)%300,y=30+(i*44)%260; return `<rect x="${x}" y="${y}" width="8" height="14" fill="#c08020" opacity="${0.06+((i*7)%6)/14}"/>`;}).join('')}
+    </g>
+    <rect x="0" y="290" width="300" height="12" fill="#1c1408"/>
+    <rect x="0" y="298" width="300" height="154" fill="#120e08"/>
+    ${Array.from({length:5}).map((_,i)=>`<rect x="${58+i*40}" y="${316}" width="20" height="28" rx="1" fill="#c08020" opacity="${0.2+i%3*0.06}"/>`).join('')}
+    ${Array.from({length:5}).map((_,i)=>`<path d="M${62+i*40} ${316} Q${68+i*40} ${302} ${74+i*40} ${316}" stroke="#c08020" stroke-width="1.5" fill="none" opacity=".25"/>`).join('')}
+    <rect x="0" y="386" width="300" height="8" fill="#c08020" opacity=".08"/>
+    <g fill="#060608">
+      <circle cx="150" cy="348" r="6"/>
+      <rect x="147" y="354" width="5" height="22" rx="1"/>
+      <path d="M136 366 L147 358 L153 358 L164 366 L160 390 L140 390 Z"/>
+    </g>
+    <path d="M0 348 Q150 342 300 346" stroke="#302818" stroke-width=".5" fill="none" opacity=".35"/>
+  `),
 };
