@@ -623,6 +623,8 @@ html.no-anim .mk-inner { animation-play-state: paused; }
   background: var(--chrome-bg);
   border: .5px solid var(--hair);
   border-radius: 10px;
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
 }
 
 .searchbar-icon {
@@ -642,7 +644,7 @@ html.no-anim .mk-inner { animation-play-state: paused; }
   letter-spacing: .02em;
 }
 
-.searchbar-input::placeholder { opacity: .4; }
+.searchbar-input::placeholder { opacity: .55; }
 
 .searchbar-clear {
   appearance: none;
@@ -664,7 +666,7 @@ html.no-anim .mk-inner { animation-play-state: paused; }
   border: .5px solid var(--hair);
   border-radius: 6px;
   color: var(--ink);
-  opacity: .5;
+  opacity: .7;
   cursor: pointer;
   padding: 2px 7px;
   font-family: var(--font-label);
@@ -674,7 +676,7 @@ html.no-anim .mk-inner { animation-play-state: paused; }
   flex-shrink: 0;
   transition: opacity .15s;
 }
-.searchbar-lucky:hover { opacity: .9; }
+.searchbar-lucky:hover { opacity: 1; }
 
 .searchbar-dropdown {
   position: absolute;
