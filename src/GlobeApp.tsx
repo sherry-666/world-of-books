@@ -90,8 +90,22 @@ export default function GlobeApp() {
         setLoaded(true);
         setTimeout(() => setLoaderGone(true), 700);
 
-        // Skip geolocation if a deep-link book is present (engine handles that view)
-        if (new URLSearchParams(location.search).get('book')) return;
+        // Deep-link: open a specific book's card (e.g. from the author map)
+        const bookParam = new URLSearchParams(location.search).get('book');
+        if (bookParam) {
+          const book = BOOKS.find(b => b.id === bookParam);
+          if (book) {
+            setLanguages(prev => {
+              if (book.languages.some(l => prev.has(l))) return prev;
+              return new Set([...prev, book.languages[0]]);
+            });
+            handle.openBookById(book.id);
+          }
+          const url = new URL(location.href);
+          url.searchParams.delete('book');
+          history.replaceState(null, '', url);
+          return;
+        }
 
         // Rotate globe to user's approximate location via IP geolocation
         fetch('https://ipapi.co/json/')
@@ -191,8 +205,7 @@ export default function GlobeApp() {
         <div className="rule"><i /></div>
         <p className="sub">{t.tagline}</p>
         <div className="masthead-links">
-          <a href="/" className="globe-maplink" title="Switch to flat map">Flat map ↗</a>
-          <a href={`/globe/authors?primary=${primaryLanguage}`} className="globe-maplink" title="Authors on the globe">{t.authorsTitle} ↗</a>
+          <a href={`/authors?primary=${primaryLanguage}`} className="globe-maplink" title="Authors on the globe">{t.authorsTitle} ↗</a>
         </div>
       </header>
 

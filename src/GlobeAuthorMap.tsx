@@ -130,7 +130,7 @@ export default function GlobeAuthorMap() {
       )}
 
       <header className="chrome masthead masthead-authors">
-        <a className="masthead-back" href={`/globe?primary=${primaryLanguage}`}>{t.authorBack}</a>
+        <a className="masthead-back" href={`/?primary=${primaryLanguage}`}>{t.authorBack}</a>
         <h1>
           <img className="masthead-logo logo-dark"  src="/icon-dark.svg"  alt="" width="36" height="36" aria-hidden="true" />
           <img className="masthead-logo logo-light" src="/icon-light.svg" alt="" width="36" height="36" aria-hidden="true" />
