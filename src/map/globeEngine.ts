@@ -101,6 +101,7 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
     .attr('height', H)
     .style('position', 'absolute')
     .style('inset', '0')
+    .style('touch-action', 'none')
     .attr('role', 'application')
     .attr('aria-label', 'World of Books — interactive globe');
 
@@ -604,6 +605,12 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
 
   let dragState: { rotate: [number, number]; x: number; y: number } | null = null;
   let svgPstart: [number, number] | null = null;
+  let dragRaf: number | null = null; // separate rAF handle for drag/pinch redraws
+
+  function scheduleRedraw() {
+    if (dragRaf !== null) return;
+    dragRaf = requestAnimationFrame(() => { dragRaf = null; redraw(); });
+  }
 
   const svgNode = svg.node()!;
 
@@ -622,7 +629,7 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
     rotate[0] = dragState.rotate[0] + dx * sensitivity;
     rotate[1] = Math.max(-85, Math.min(85, dragState.rotate[1] - dy * sensitivity));
     projection.rotate([rotate[0], rotate[1]]);
-    redraw();
+    scheduleRedraw();
   });
 
   svgNode.addEventListener('pointerup', (ev) => {
@@ -640,7 +647,7 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
     zoomFactor = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, zoomFactor * factor));
     projection.scale(currentScale());
     callbacks.onZoomChange?.(zoomFactor);
-    redraw();
+    scheduleRedraw();
   }, { passive: false });
 
   // Pinch-to-zoom (two-finger) via PointerEvents
@@ -659,7 +666,7 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
         zoomFactor = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, zoomFactor * factor));
         projection.scale(currentScale());
         callbacks.onZoomChange?.(zoomFactor);
-        redraw();
+        scheduleRedraw();
       }
       lastPinchDist = dist;
     } else {
@@ -855,6 +862,7 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
       isDestroyed = true;
       clearTimeout(resizeTimer);
       if (animFrame !== null) cancelAnimationFrame(animFrame);
+      if (dragRaf  !== null) cancelAnimationFrame(dragRaf);
       const ro = (canvas as any).__ro as ResizeObserver | undefined;
       if (ro) ro.disconnect();
       canvas.remove();
