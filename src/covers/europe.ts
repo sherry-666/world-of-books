@@ -1151,6 +1151,301 @@ export const EUROPE_COVERS: Record<string, string> = {
     ${Array.from({length:5}).map((_,i)=>`<rect x="${108+i*16}" y="${316}" width="10" height="14" rx="2" fill="#3a2010"/>`).join('')}
   `),
 
+  /* ── Othello · Venice — a canal at night, a palazzo, a green-eyed shadow behind a pillar ── */
+  othello: scene(`
+    <defs>
+      <linearGradient id="otlSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#080c18"/><stop offset=".44" stop-color="#141c30"/>
+        <stop offset=".74" stop-color="#1e2840"/><stop offset="1" stop-color="#2c3a50"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#otlSky)"/>
+    ${stars(10, 321)}
+    <path d="M0 338 Q150 326 300 336 L300 450 L0 450 Z" fill="#141c2c"/>
+    <path d="M0 382 Q150 372 300 380 L300 450 L0 450 Z" fill="#0e1620"/>
+    ${Array.from({length:5}).map((_,i)=>`<path d="M${40+i*44} ${346+i%2*10} Q${54+i*44} ${336+i%2*8} ${68+i*44} ${346+i%2*10}" stroke="#1e3048" stroke-width=".8" fill="none" opacity=".55"/>`).join('')}
+    <g fill="#101828">
+      <rect x="86" y="170" width="128" height="174"/>
+      <path d="M78 174 L150 142 L222 174 Z"/>
+      ${Array.from({length:5}).map((_,i)=>`<path d="M${94+i*26} ${170} L${94+i*26} ${192} Q${107+i*26} ${204} ${120+i*26} ${192} L${120+i*26} ${170} Z"/>`).join('')}
+    </g>
+    ${[[90,206],[106,206],[90,238],[106,238],[162,206],[178,206],[162,238],[178,238],[90,270],[106,270]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="20" fill="#d0a840" opacity="${y===206?'.38':'.25'}"/>`).join('')}
+    <path d="M148 188 L148 344 L152 344 L152 188" stroke="#1e3048" stroke-width="2" fill="none" opacity=".55"/>
+    <path d="M0 338 Q150 332 300 336" stroke="#2c3a50" stroke-width=".5" fill="none" opacity=".35"/>
+    <g fill="#0a0e14">
+      <circle cx="150" cy="320" r="6"/>
+      <rect x="147" y="326" width="5" height="20" rx="1"/>
+    </g>
+  `),
+
+  /* ── The Brothers Karamazov · Staraya Russa — an Orthodox church, a Russian tavern, snow ── */
+  brothersk: scene(`
+    <defs>
+      <linearGradient id="bkaSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a1c28"/><stop offset=".4" stop-color="#2e3040"/>
+        <stop offset=".7" stop-color="#484850"/><stop offset="1" stop-color="#686858"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#bkaSky)"/>
+    ${stars(11, 323)}
+    <path d="M0 326 Q150 314 300 324 L300 450 L0 450 Z" fill="#e8eae8" opacity=".85"/>
+    <path d="M0 374 Q150 364 300 372 L300 450 L0 450 Z" fill="#d4d8d4" opacity=".9"/>
+    <path d="M0 418 Q150 410 300 416 L300 450 L0 450 Z" fill="#c4c8c4"/>
+    <g fill="#1e2028">
+      <rect x="92" y="196" width="116" height="134"/>
+      <path d="M84 200 L150 162 L216 200 Z"/>
+      <rect x="116" y="162" width="68" height="38"/>
+      <path d="M108 168 L150 136 L192 168 Z"/>
+      <rect x="130" y="136" width="40" height="32"/>
+      <rect x="140" y="120" width="20" height="18"/>
+      <ellipse cx="150" cy="118" rx="12" ry="6"/>
+      <rect x="147" y="104" width="6" height="16"/>
+      <ellipse cx="150" cy="103" rx="6" ry="3"/>
+    </g>
+    ${[[96,212],[112,212],[96,244],[112,244],[168,212],[184,212],[168,244],[184,244]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="18" fill="#f0e090" opacity="${y===212?'.35':'.25'}"/>`).join('')}
+    <rect x="86" y="316" width="128" height="14" fill="#c8d0c8" opacity=".7"/>
+    ${Array.from({length:8}).map((_,i)=>`<path d="M${86+i*18} ${326} Q${90+i*18} ${316} ${92+i*18} ${310} Q${96+i*18} ${316} ${104+i*18} ${326}" fill="#d4d8d4" opacity=".6"/>`).join('')}
+    <g fill="#181c20">
+      <circle cx="150" cy="314" r="6"/>
+      <rect x="147" y="320" width="5" height="8" rx="1"/>
+    </g>
+  `),
+
+  /* ── For Whom the Bell Tolls · Sierra de Guadarrama — pine mountains, a bridge, dawn mist ── */
+  belltolls: scene(`
+    <defs>
+      <linearGradient id="fwbSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a2030"/><stop offset=".38" stop-color="#3a4050"/>
+        <stop offset=".68" stop-color="#6a6860"/><stop offset="1" stop-color="#9a9880"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#fwbSky)"/>
+    ${stars(8, 325)}
+    <path d="M0 282 Q60 252 110 264 Q140 272 150 258 Q160 244 190 256 Q250 272 300 248 L300 450 L0 450 Z" fill="#3a5030"/>
+    <path d="M0 340 Q150 326 300 338 L300 450 L0 450 Z" fill="#2e4028"/>
+    <path d="M0 396 Q150 384 300 394 L300 450 L0 450 Z" fill="#243418"/>
+    ${Array.from({length:6}).map((_,i)=>`<path d="M${60+i*30} ${282+i%2*10} Q${64+i*30} ${258+i%2*8} ${68+i*30} ${244+i%2*8} Q${72+i*30} ${228+i%2*6} ${76+i*30} ${224+i%2*6}" stroke="#2e4820" stroke-width="3.5" fill="none" opacity=".65"/>`).join('')}
+    <path d="M86 258 L86 298 L214 298 L214 258" fill="none" stroke="#484030" stroke-width="6"/>
+    <rect x="86" y="292" width="128" height="10" fill="#484030"/>
+    <g fill="#1c1808">
+      <circle cx="126" cy="298" r="5.5"/>
+      <rect x="123" y="303" width="5" height="12" rx="1"/>
+      <circle cx="174" cy="296" r="5"/>
+      <rect x="171" y="301" width="5" height="10" rx="1"/>
+    </g>
+    <path d="M0 282 Q150 276 300 280" stroke="#9a9880" stroke-width=".5" fill="none" opacity=".28"/>
+    <rect x="0" y="252" width="300" height="14" fill="#e8f0e8" opacity=".1"/>
+  `),
+
+  /* ── Tess of the d'Urbervilles · Dorset — rolling chalk downs, a dairy farm, Stonehenge at dusk ── */
+  tess: scene(`
+    <defs>
+      <linearGradient id="tsdSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2a2830"/><stop offset=".4" stop-color="#4a4848"/>
+        <stop offset=".72" stop-color="#7a7060"/><stop offset="1" stop-color="#b0a880"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#tsdSky)"/>
+    ${stars(8, 327)}
+    <path d="M0 308 Q80 288 150 298 T300 302 L300 450 L0 450 Z" fill="#5a6840"/>
+    <path d="M0 360 Q80 344 150 352 T300 348 L300 450 L0 450 Z" fill="#4a5830"/>
+    <path d="M0 410 Q80 398 150 404 T300 398 L300 450 L0 450 Z" fill="#3a4820"/>
+    ${[100,120,140,160,180,200].map((x,i) => `<rect x="${x-3}" y="${268+i%2*12}" width="6" height="${44-i%2*12}" rx="1" fill="#484038"/>`).join('')}
+    <rect x="96" y="296" width="108" height="8" fill="#484038"/>
+    <g fill="#1c1808">
+      <circle cx="150" cy="298" r="5.5"/>
+      <rect x="147" y="303" width="5" height="14" rx="1"/>
+      <path d="M140 312 L147 306 L153 306 L160 312 L158 326 L142 326 Z"/>
+    </g>
+    <path d="M0 308 Q150 302 300 306" stroke="#b0a880" stroke-width=".5" fill="none" opacity=".25"/>
+  `),
+
+  /* ── Jude the Obscure · Oxford — dreaming spires at dusk, a stonemason at the gate ── */
+  judeobscure: scene(`
+    <defs>
+      <linearGradient id="judSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a1828"/><stop offset=".38" stop-color="#2e2c40"/>
+        <stop offset=".68" stop-color="#5a5050"/><stop offset="1" stop-color="#8a8070"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#judSky)"/>
+    ${stars(9, 329)}
+    <path d="M0 328 Q150 316 300 326 L300 450 L0 450 Z" fill="#2a3020"/>
+    <path d="M0 376 Q150 366 300 374 L300 450 L0 450 Z" fill="#202818"/>
+    <g fill="#201e2c">
+      ${[86,118,150,182,214].map((x,i) => `
+        <rect x="${x-10}" y="${172+i%2*18}" width="20" height="${162-i%2*18}"/>
+        <path d="M${x-12} ${174+i%2*18} Q${x} ${148+i%2*16} ${x+12} ${174+i%2*18} Z"/>
+        <rect x="${x-6}" y="${148+i%2*16}" width="12" height="${30-i%2*6}"/>
+        <path d="M${x-8} ${150+i%2*16} Q${x} ${126+i%2*14} ${x+8} ${150+i%2*16} Z"/>
+        <rect x="${x-3}" y="${126+i%2*14}" width="6" height="20"/>
+        <rect x="${x-4}" y="${118+i%2*12}" width="8" height="10"/>
+        <rect x="${x-1}" y="${108+i%2*10}" width="2" height="12"/>
+      `).join('')}
+    </g>
+    <path d="M0 328 Q150 322 300 326" stroke="#8a8070" stroke-width=".5" fill="none" opacity=".28"/>
+    <g fill="#181820">
+      <circle cx="150" cy="316" r="5.5"/>
+      <rect x="147" y="321" width="5" height="10" rx="1"/>
+    </g>
+  `),
+
+  /* ── The Mayor of Casterbridge · Dorchester — a market square, Roman walls, a solitary man ── */
+  casterbridge: scene(`
+    <defs>
+      <linearGradient id="cbrSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#3a4048"/><stop offset=".44" stop-color="#585858"/>
+        <stop offset=".74" stop-color="#787868"/><stop offset="1" stop-color="#988870"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#cbrSky)"/>
+    ${stars(7, 331)}
+    <path d="M0 322 Q150 310 300 320 L300 450 L0 450 Z" fill="#484430"/>
+    <path d="M0 372 Q150 362 300 370 L300 450 L0 450 Z" fill="#383820"/>
+    <g fill="#282818">
+      <rect x="76" y="198" width="148" height="128"/>
+      <path d="M68 202 L150 166 L232 202 Z"/>
+      <rect x="116" y="166" width="68" height="36"/>
+      <rect x="138" y="154" width="24" height="14"/>
+      <rect x="143" y="142" width="14" height="14"/>
+    </g>
+    ${[[80,214],[96,214],[80,248],[96,248],[174,214],[190,214],[174,248],[190,248],[80,280],[96,280]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="18" fill="#e8c870" opacity="${y===214?'.38':'.28'}"/>`).join('')}
+    <rect x="130" y="312" width="40" height="14" fill="#383818"/>
+    <path d="M76 322 L76 202" stroke="#282818" stroke-width="4" opacity=".5"/>
+    <path d="M224 322 L224 202" stroke="#282818" stroke-width="4" opacity=".5"/>
+    <g fill="#181808">
+      <circle cx="150" cy="308" r="5.5"/>
+      <rect x="147" y="313" width="5" height="12" rx="1"/>
+    </g>
+    <path d="M0 322 Q150 316 300 320" stroke="#988870" stroke-width=".5" fill="none" opacity=".28"/>
+  `),
+
+  /* ── Far from the Madding Crowd · Dorset — rolling downs, a flock of sheep, harvest moonrise ── */
+  maddingcrowd: scene(`
+    <defs>
+      <linearGradient id="fmcSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#181828"/><stop offset=".38" stop-color="#303040"/>
+        <stop offset=".68" stop-color="#585850"/><stop offset="1" stop-color="#888870"/>
+      </linearGradient>
+      <radialGradient id="fmcMoon" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#f8f0d8" stop-opacity=".7"/>
+        <stop offset="1" stop-color="#f8f0d8" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#fmcSky)"/>
+    ${stars(10, 333)}
+    <circle cx="216" cy="162" r="65" fill="url(#fmcMoon)"/>
+    <circle cx="216" cy="162" r="18" fill="#f8f0d8" opacity=".78"/>
+    <path d="M0 304 Q80 280 150 292 T300 286 L300 450 L0 450 Z" fill="#4a5838"/>
+    <path d="M0 356 Q80 340 150 348 T300 340 L300 450 L0 450 Z" fill="#3c4a28"/>
+    <path d="M0 408 Q80 396 150 402 T300 394 L300 450 L0 450 Z" fill="#2c3818"/>
+    ${Array.from({length:12}).map((_,i)=>`<circle cx="${60+i*16}" cy="${304+i%3*8}" r="${4+i%2*2}" fill="#7a8860" opacity=".55"/>`).join('')}
+    <g fill="#181c10">
+      <rect x="130" y="238" width="40" height="68"/>
+      <path d="M122 242 L150 212 L178 242 Z"/>
+      <rect x="140" y="212" width="20" height="30"/>
+    </g>
+    ${[[134,250],[148,250],[134,276],[148,276]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="14" fill="#e8c050" opacity="${y===250?'.4':'.28'}"/>`).join('')}
+    <g fill="#141008">
+      <circle cx="150" cy="298" r="5.5"/>
+      <rect x="147" y="303" width="5" height="10" rx="1"/>
+    </g>
+  `),
+
+  /* ── Persuasion · Bath — the Royal Crescent, honey-coloured stone, autumn light ── */
+  persuasion: scene(`
+    <defs>
+      <linearGradient id="perSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#8090a0"/><stop offset=".44" stop-color="#a0a898"/>
+        <stop offset=".72" stop-color="#c0b890"/><stop offset="1" stop-color="#d8c890"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#perSky)"/>
+    ${stars(5, 335)}
+    <path d="M0 318 Q150 306 300 316 L300 450 L0 450 Z" fill="#5a6840"/>
+    <path d="M0 368 Q150 358 300 366 L300 450 L0 450 Z" fill="#4a5830"/>
+    <path d="M40 230 Q150 210 260 230 Q220 214 150 218 Q80 214 40 230 Z" fill="#c8a858" opacity=".8"/>
+    <g fill="#b89848">
+      <rect x="40" y="228" width="220" height="98"/>
+      ${Array.from({length:12}).map((_,i)=>`<rect x="${46+i*18}" y="${220}" width="8" height="${108}" rx="1" fill="#a88838" opacity=".4"/>`).join('')}
+      ${Array.from({length:12}).map((_,i)=>`<path d="M${46+i*18} ${220} Q${50+i*18} ${208} ${54+i*18} ${220} Z" fill="#c8a858"/>`).join('')}
+    </g>
+    ${Array.from({length:24}).map((_,i)=>`<rect x="${44+i*9}" y="${242}" width="5" height="48" fill="#e8d890" opacity=".18"/>`).join('')}
+    ${Array.from({length:24}).map((_,i)=>`<rect x="${44+i*9}" y="${260}" width="5" height="16" fill="#1c1808" opacity=".45"/>`).join('')}
+    <rect x="40" y="324" width="220" height="6" fill="#a88838"/>
+    <g fill="#1a1808">
+      <circle cx="138" cy="314" r="5.5"/>
+      <rect x="135" y="319" width="5" height="12" rx="1"/>
+      <path d="M128 326 L135 322 L141 322 L148 326 L146 336 L130 336 Z"/>
+      <circle cx="164" cy="312" r="5"/>
+      <rect x="161" y="317" width="5" height="10" rx="1"/>
+    </g>
+    <path d="M0 318 Q150 312 300 316" stroke="#d8c890" stroke-width=".5" fill="none" opacity=".28"/>
+  `),
+
+  /* ── Emma · Highbury — a village green, a country house, a morning walk in Surrey ── */
+  emma: scene(`
+    <defs>
+      <linearGradient id="emmSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#7090b0"/><stop offset=".44" stop-color="#98b0b0"/>
+        <stop offset=".72" stop-color="#b8c8a8"/><stop offset="1" stop-color="#d8d8b0"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#emmSky)"/>
+    ${stars(4, 337)}
+    <path d="M0 314 Q150 302 300 312 L300 450 L0 450 Z" fill="#5a7840"/>
+    <path d="M0 366 Q150 354 300 364 L300 450 L0 450 Z" fill="#4a6832"/>
+    <path d="M0 414 Q150 404 300 412 L300 450 L0 450 Z" fill="#3a5824"/>
+    <g fill="#2a2818">
+      <rect x="88" y="202" width="124" height="118"/>
+      <path d="M80 206 L150 172 L220 206 Z"/>
+      <rect x="104" y="172" width="92" height="34"/>
+      <path d="M98 176 L150 148 L202 176 Z"/>
+      <rect x="122" y="148" width="56" height="28"/>
+      <rect x="138" y="136" width="24" height="14"/>
+    </g>
+    ${[[92,218],[108,218],[92,250],[108,250],[172,218],[188,218],[172,250],[188,250]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="18" fill="#e8d070" opacity="${y===218?'.4':'.30'}"/>`).join('')}
+    <g fill="#3a5020" opacity=".7">
+      <path d="M42 314 Q56 292 70 314 Q62 298 56 294 Q50 298 42 314 Z"/>
+      <path d="M218 312 Q232 290 246 312 Q238 296 232 292 Q226 296 218 312 Z"/>
+    </g>
+    <g fill="#1a1808">
+      <circle cx="150" cy="306" r="5.5"/>
+      <rect x="147" y="311" width="5" height="12" rx="1"/>
+      <path d="M140 318 L147 314 L153 314 L160 318 L158 330 L142 330 Z"/>
+    </g>
+    <path d="M0 314 Q150 308 300 312" stroke="#d8d8b0" stroke-width=".5" fill="none" opacity=".28"/>
+  `),
+
+  /* ── The Secret Garden · Yorkshire — a locked door in a moor wall, a hidden garden, spring blooms ── */
+  secretgarden: scene(`
+    <defs>
+      <linearGradient id="sgrdSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#6080a0"/><stop offset=".44" stop-color="#80a8b0"/>
+        <stop offset=".72" stop-color="#a8c8b8"/><stop offset="1" stop-color="#c8e0c0"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#sgrdSky)"/>
+    ${stars(5, 339)}
+    <path d="M0 316 Q150 304 300 314 L300 450 L0 450 Z" fill="#5a7848"/>
+    <path d="M0 368 Q150 358 300 366 L300 450 L0 450 Z" fill="#4a6838"/>
+    <path d="M0 416 Q150 408 300 414 L300 450 L0 450 Z" fill="#3a5828"/>
+    <rect x="0" y="220" width="300" height="100" fill="#4a5830" opacity=".8"/>
+    ${[[4,224],[16,224],[4,252],[16,252],[284,224],[284,252]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="18" fill="#3a4820" opacity=".9"/>`).join('')}
+    <rect x="120" y="220" width="60" height="100" fill="#3a4820"/>
+    <rect x="128" y="230" width="44" height="78" rx="2" fill="#4a6830"/>
+    ${Array.from({length:5}).map((_,i)=>`<path d="M${130+i*10} ${308} Q${132+i*10} ${280} ${136+i*10} ${260} Q${138+i*10} ${240} ${134+i*10} ${232}" stroke="#6a8a40" stroke-width="2.5" fill="none" opacity=".65"/>`).join('')}
+    ${Array.from({length:8}).map((_,i)=>`<circle cx="${128+(i%4)*14}" cy="${248+(Math.floor(i/4))*28}" r="6" fill="#d080a0" opacity="${0.4+(i%3)*0.1}"/>`).join('')}
+    ${Array.from({length:6}).map((_,i)=>`<circle cx="${132+(i%3)*16}" cy="${256+(Math.floor(i/3))*24}" r="5" fill="#e0d060" opacity="${0.35+i%2*0.1}"/>`).join('')}
+    <rect x="146" y="272" width="8" height="48" rx="1" fill="#2a2010"/>
+    <rect x="136" y="270" width="28" height="6" rx="1" fill="#2a2010"/>
+    <g fill="#181c10">
+      <circle cx="150" cy="308" r="5.5"/>
+      <rect x="147" y="313" width="5" height="10" rx="1"/>
+    </g>
+    <path d="M0 316 Q150 310 300 314" stroke="#c8e0c0" stroke-width=".5" fill="none" opacity=".28"/>
+  `),
+
   /* ── Hamlet · Elsinore — sea-cliff castle, storm clouds, a ghost on the battlements ── */
   hamlet: scene(`
     <defs>
