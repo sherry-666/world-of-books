@@ -1150,4 +1150,246 @@ export const EUROPE_COVERS: Record<string, string> = {
     </g>
     ${Array.from({length:5}).map((_,i)=>`<rect x="${108+i*16}" y="${316}" width="10" height="14" rx="2" fill="#3a2010"/>`).join('')}
   `),
+
+  /* ── Hamlet · Elsinore — sea-cliff castle, storm clouds, a ghost on the battlements ── */
+  hamlet: scene(`
+    <defs>
+      <linearGradient id="hltSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0a0e16"/><stop offset=".38" stop-color="#1a2030"/>
+        <stop offset=".68" stop-color="#2e3848"/><stop offset="1" stop-color="#465060"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#hltSky)"/>
+    ${stars(12, 301)}
+    <path d="M0 348 Q150 336 300 346 L300 450 L0 450 Z" fill="#1a2838"/>
+    <path d="M0 392 Q150 382 300 390 L300 450 L0 450 Z" fill="#0e1c28"/>
+    <g fill="#141c24">
+      <rect x="86" y="158" width="128" height="194"/>
+      <rect x="86" y="148" width="18" height="20"/>
+      <rect x="112" y="136" width="18" height="32"/>
+      <rect x="144" y="124" width="18" height="44"/>
+      <rect x="176" y="136" width="18" height="32"/>
+      <rect x="196" y="148" width="18" height="20"/>
+    </g>
+    ${[[90,174],[106,174],[90,210],[106,210],[152,174],[168,174],[152,210],[168,210],[90,246],[106,246],[152,246],[168,246],[196,174],[196,210]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="20" fill="#c8a840" opacity="${y===174?'.35':'.22'}"/>`).join('')}
+    <path d="M0 348 Q150 344 300 348" stroke="#465060" stroke-width=".5" fill="none" opacity=".4"/>
+    ${Array.from({length:6}).map((_,i)=>`<path d="M${40+i*36} ${360+i%2*10} Q${54+i*36} ${350+i%2*8} ${68+i*36} ${360+i%2*10}" stroke="#2e4858" stroke-width=".8" fill="none" opacity=".5"/>`).join('')}
+    <g fill="#d8e8f0" opacity=".55">
+      <circle cx="150" cy="112" r="6"/>
+      <rect x="147" y="118" width="5" height="18" rx="1"/>
+      <path d="M138 126 L147 120 L153 120 L162 126 L158 148 L142 148 Z"/>
+    </g>
+  `),
+
+  /* ── Romeo and Juliet · Verona — a candlelit balcony, terracotta rooftops, warm Italian night ── */
+  romeojuliet: scene(`
+    <defs>
+      <linearGradient id="rjSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0e0c18"/><stop offset=".4" stop-color="#1e1c30"/>
+        <stop offset=".72" stop-color="#3a2e40"/><stop offset="1" stop-color="#5a4050"/>
+      </linearGradient>
+      <radialGradient id="rjG" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#e8a020" stop-opacity=".6"/>
+        <stop offset="1" stop-color="#e8a020" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#rjSky)"/>
+    ${stars(10, 303)}
+    <path d="M0 346 Q150 334 300 344 L300 450 L0 450 Z" fill="#3a3020"/>
+    <path d="M0 390 Q150 380 300 388 L300 450 L0 450 Z" fill="#2e2418"/>
+    <g fill="#1e1410">
+      <rect x="0" y="210" width="78" height="240"/>
+      <rect x="222" y="196" width="78" height="254"/>
+      <rect x="86" y="232" width="128" height="218"/>
+    </g>
+    ${[[4,226],[20,226],[4,258],[20,258],[228,212],[244,212],[228,244],[244,244]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="18" fill="#e8a828" opacity=".35"/>`).join('')}
+    <rect x="114" y="182" width="72" height="56" fill="#241c10"/>
+    <circle cx="150" cy="206" r="50" fill="url(#rjG)"/>
+    ${[[118,190],[134,190],[150,190],[166,190],[118,214],[134,214],[150,214],[166,214]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="16" fill="#f8d060" opacity="${y===190?'.5':'.38'}"/>`).join('')}
+    <rect x="130" y="238" width="40" height="8" rx="1" fill="#5a4030" opacity=".7"/>
+    <g fill="#140e08">
+      <circle cx="150" cy="276" r="6"/>
+      <rect x="147" y="282" width="5" height="18" rx="1"/>
+      <path d="M138 290 L147 286 L153 286 L162 290 L158 310 L142 310 Z"/>
+    </g>
+    <g fill="#180e08">
+      <circle cx="150" cy="328" r="5.5"/>
+      <rect x="147" y="333" width="5" height="14" rx="1"/>
+    </g>
+  `),
+
+  /* ── Don Quixote · La Mancha — windmills on a flat plain, a knight on a gaunt horse ── */
+  donquixote: scene(`
+    <defs>
+      <linearGradient id="dqSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#2a3448"/><stop offset=".42" stop-color="#5a6880"/>
+        <stop offset=".72" stop-color="#9090a0"/><stop offset="1" stop-color="#c0b890"/>
+      </linearGradient>
+      <radialGradient id="dqSun" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#ffe880" stop-opacity=".65"/>
+        <stop offset="1" stop-color="#ffe880" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#dqSky)"/>
+    ${stars(7, 305)}
+    <circle cx="220" cy="168" r="70" fill="url(#dqSun)"/>
+    <circle cx="220" cy="168" r="18" fill="#ffe880" opacity=".8"/>
+    <path d="M0 318 Q150 306 300 316 L300 450 L0 450 Z" fill="#a09060"/>
+    <path d="M0 366 Q150 356 300 364 L300 450 L0 450 Z" fill="#888048"/>
+    <path d="M0 414 Q150 404 300 412 L300 450 L0 450 Z" fill="#706030"/>
+    ${[80, 130, 180, 230].map((x,i) => `
+      <rect x="${x-8}" y="${220+i%2*14}" width="16" height="${100-i%2*14}" rx="2" fill="#484038"/>
+      <line x1="${x}" y1="${220+i%2*14}" x2="${x-22}" y2="${220+i%2*14-22}" stroke="#484038" stroke-width="4" stroke-linecap="round"/>
+      <line x1="${x}" y1="${220+i%2*14}" x2="${x+22}" y2="${220+i%2*14-22}" stroke="#484038" stroke-width="4" stroke-linecap="round"/>
+      <line x1="${x}" y1="${220+i%2*14}" x2="${x-22}" y2="${220+i%2*14+22}" stroke="#484038" stroke-width="4" stroke-linecap="round"/>
+      <line x1="${x}" y1="${220+i%2*14}" x2="${x+22}" y2="${220+i%2*14+22}" stroke="#484038" stroke-width="4" stroke-linecap="round"/>
+    `).join('')}
+    <g fill="#1e1808">
+      <rect x="146" y="252" width="8" height="66" rx="1"/>
+      <ellipse cx="150" cy="248" rx="10" ry="6"/>
+      <circle cx="150" cy="304" r="6"/>
+      <rect x="147" y="310" width="6" height="6" rx="1"/>
+      <path d="M136 322 Q150 314 164 322 L166 338 L134 338 Z"/>
+    </g>
+  `),
+
+  /* ── The Iliad · Troy — bronze shields on the plain, burning pyres, the walls of Ilium ── */
+  iliad: scene(`
+    <defs>
+      <linearGradient id="ildSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a1010"/><stop offset=".38" stop-color="#3a2818"/>
+        <stop offset=".65" stop-color="#8a4820"/><stop offset="1" stop-color="#c07828"/>
+      </linearGradient>
+      <radialGradient id="ildG" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#ff8020" stop-opacity=".7"/>
+        <stop offset="1" stop-color="#ff8020" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#ildSky)"/>
+    ${stars(8, 307)}
+    <circle cx="82" cy="178" r="80" fill="url(#ildG)"/>
+    <path d="M0 314 Q150 302 300 312 L300 450 L0 450 Z" fill="#5a4020"/>
+    <path d="M0 364 Q150 352 300 362 L300 450 L0 450 Z" fill="#48300e"/>
+    <g fill="#1a1008">
+      <rect x="96" y="154" width="108" height="164"/>
+      <rect x="86" y="148" width="18" height="18"/>
+      <rect x="196" y="148" width="18" height="18"/>
+      ${Array.from({length:5}).map((_,i)=>`<rect x="${96+i*24}" y="${142}" width="10" height="14"/>`).join('')}
+      <path d="M86 148 L150 118 L214 148 Z"/>
+    </g>
+    ${[[100,170],[116,170],[148,170],[164,170],[100,202],[148,202],[164,202]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="20" fill="#e88020" opacity=".22"/>`).join('')}
+    <g fill="#cc4010" opacity=".7">
+      ${Array.from({length:4}).map((_,i)=>`<path d="M${54+i*56} ${314} Q${58+i*56} ${296} ${62+i*56} ${280} Q${64+i*56} ${270} ${62+i*56} ${260} Q${58+i*56} ${250} ${54+i*56} ${240}" stroke="#ff6010" stroke-width="2" fill="none" opacity=".6"/>`).join('')}
+    </g>
+    <path d="M0 314 Q150 308 300 312" stroke="#c07828" stroke-width=".5" fill="none" opacity=".3"/>
+    <g fill="#0e0804">
+      <circle cx="130" cy="302" r="5.5"/>
+      <rect x="127" y="307" width="5" height="10" rx="1"/>
+      <circle cx="170" cy="298" r="5"/>
+      <rect x="167" y="303" width="5" height="10" rx="1"/>
+    </g>
+  `),
+
+  /* ── Jane Eyre · Yorkshire — a Gothic manor on the moors, firelight, a locked chamber ── */
+  janeeyre: scene(`
+    <defs>
+      <linearGradient id="jeSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0c0e14"/><stop offset=".4" stop-color="#1c202c"/>
+        <stop offset=".68" stop-color="#2e2e3c"/><stop offset="1" stop-color="#484448"/>
+      </linearGradient>
+      <radialGradient id="jeG" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#e88020" stop-opacity=".65"/>
+        <stop offset="1" stop-color="#e88020" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#jeSky)"/>
+    ${stars(11, 309)}
+    <path d="M0 322 Q150 308 300 320 L300 450 L0 450 Z" fill="#282428"/>
+    <path d="M0 376 Q150 364 300 374 L300 450 L0 450 Z" fill="#1c1818"/>
+    ${Array.from({length:5}).map((_,i)=>`<path d="M${40+i*46} ${330+i%2*12} Q${54+i*46} ${318+i%2*10} ${68+i*46} ${330+i%2*12}" stroke="#383430" stroke-width="1.5" fill="none" opacity=".55"/>`).join('')}
+    <g fill="#181824">
+      <rect x="76" y="162" width="148" height="162"/>
+      <rect x="76" y="152" width="22" height="16"/>
+      <rect x="120" y="140" width="22" height="28"/>
+      <rect x="158" y="140" width="22" height="28"/>
+      <rect x="202" y="152" width="22" height="16"/>
+      <path d="M68 166 L150 130 L232 166 Z"/>
+      <rect x="110" y="130" width="80" height="36"/>
+      <path d="M102 136 L150 104 L198 136 Z"/>
+      <rect x="128" y="104" width="44" height="32"/>
+      <rect x="140" y="92" width="20" height="14"/>
+    </g>
+    <rect x="128" y="230" width="44" height="58" fill="#181824"/>
+    <circle cx="150" cy="256" r="38" fill="url(#jeG)"/>
+    ${[[132,234],[146,234],[132,260],[146,260],[158,234],[172,234],[158,260],[172,260]].map(([x,y])=>`<rect x="${x}" y="${y}" width="8" height="16" fill="#f0a030" opacity="${y===234?'.55':'.42'}"/>`).join('')}
+    <path d="M0 322 Q150 316 300 320" stroke="#484448" stroke-width=".5" fill="none" opacity=".3"/>
+  `),
+
+  /* ── Great Expectations · London — Thames fog, Newgate Prison walls, marsh mist at dusk ── */
+  greatexpect: scene(`
+    <defs>
+      <linearGradient id="geSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#181c24"/><stop offset=".38" stop-color="#2c3040"/>
+        <stop offset=".65" stop-color="#4a4c50"/><stop offset="1" stop-color="#6a6860"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#geSky)"/>
+    ${stars(9, 311)}
+    <path d="M0 298 Q150 286 300 296 L300 450 L0 450 Z" fill="#2a3028" opacity=".9"/>
+    <path d="M0 348 Q150 336 300 346 L300 450 L0 450 Z" fill="#1e2820"/>
+    <path d="M0 400 Q150 390 300 398 L300 450 L0 450 Z" fill="#161e16"/>
+    <rect x="0" y="0" width="300" height="450" fill="#a0b0b8" opacity=".08"/>
+    <g fill="#1a1c20">
+      <rect x="0" y="198" width="68" height="250"/>
+      <rect x="232" y="182" width="68" height="268"/>
+      <rect x="76" y="218" width="56" height="230"/>
+      <rect x="170" y="206" width="58" height="242"/>
+    </g>
+    ${Array.from({length:12}).map((_,i)=>{const x=(i*53+7)%300, y=206+(i*43)%220; return `<rect x="${x}" y="${y}" width="4" height="6" fill="#e0c050" opacity="${0.12+((i*7)%5)/12}"/>`;}).join('')}
+    <path d="M0 228 Q150 222 300 228" stroke="#6a6860" stroke-width=".5" fill="none" opacity=".25"/>
+    <rect x="0" y="220" width="300" height="14" fill="#a0b0b8" opacity=".07"/>
+    <rect x="0" y="236" width="300" height="8" fill="#a0b0b8" opacity=".05"/>
+    <path d="M0 298 Q75 290 150 296 T300 296" stroke="#4a4c50" stroke-width=".6" fill="none" opacity=".3"/>
+    <g fill="#141414">
+      <circle cx="150" cy="278" r="6.5"/>
+      <rect x="146" y="284" width="6" height="16" rx="1"/>
+    </g>
+    <path d="M110 164 L120 248 L116 248 L108 164 Z" fill="#1a1c20"/>
+    <path d="M186 156 L196 248 L192 248 L184 156 Z" fill="#1a1c20"/>
+  `),
+
+  /* ── Slaughterhouse-Five · Dresden — the firestorm glow over the Baroque city, sheltering underground ── */
+  slaughterhouse: scene(`
+    <defs>
+      <linearGradient id="s5Sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0e0808"/><stop offset=".35" stop-color="#2a1208"/>
+        <stop offset=".65" stop-color="#6a2c08"/><stop offset="1" stop-color="#b05010"/>
+      </linearGradient>
+      <radialGradient id="s5G" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#ff6010" stop-opacity=".7"/>
+        <stop offset="1" stop-color="#ff6010" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#s5Sky)"/>
+    ${stars(5, 313)}
+    <circle cx="150" cy="200" r="120" fill="url(#s5G)"/>
+    <path d="M0 322 Q150 310 300 320 L300 450 L0 450 Z" fill="#1a1008"/>
+    <path d="M0 374 Q150 364 300 372 L300 450 L0 450 Z" fill="#120c06"/>
+    <g fill="#1a1008" opacity=".85">
+      <rect x="80" y="194" width="30" height="132"/>
+      <path d="M74 198 L95 166 L116 198 Z"/>
+      <rect x="104" y="172" width="22" height="26"/>
+      <rect x="120" y="184" width="60" height="142"/>
+      <path d="M114 188 L150 156 L186 188 Z"/>
+      <rect x="180" y="184" width="40" height="142"/>
+      <path d="M176 188 L200 164 L224 188 Z"/>
+    </g>
+    ${Array.from({length:6}).map((_,i)=>`<path d="M${86+i*30} ${322} Q${90+i*30} ${300} ${94+i*30} ${274} Q${96+i*30} ${254} ${92+i*30} ${236}" stroke="#ff6010" stroke-width="${1.5+i%2*0.5}" fill="none" opacity="${0.3+i%2*0.15}"/>`).join('')}
+    <rect x="96" y="348" width="108" height="48" rx="2" fill="#1e1808"/>
+    <rect x="100" y="352" width="100" height="40" rx="1" fill="#2a2010"/>
+    <g fill="#141008">
+      <circle cx="150" cy="368" r="5.5"/>
+      <rect x="147" y="373" width="5" height="22" rx="1"/>
+    </g>
+  `),
 };

@@ -244,4 +244,39 @@ export const LATIN_AMERICA_COVERS: Record<string, string> = {
     <circle cx="150" cy="148" r="5" fill="#e8c060" opacity=".72"/>
     <path d="M150 136 L150 126 M140 141 L133 134 M160 141 L167 134" stroke="#e8c060" stroke-width="1.2" opacity=".4"/>
   `),
+
+  /* ── The Old Man and the Sea · Cojímar — a skiff on the Gulf Stream, a great marlin, Cuban sunrise ── */
+  oldmansea: scene(`
+    <defs>
+      <linearGradient id="omsSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0a1020"/><stop offset=".3" stop-color="#1a2840"/>
+        <stop offset=".58" stop-color="#2060a0"/><stop offset=".82" stop-color="#40a0c0"/>
+        <stop offset="1" stop-color="#70c8d8"/>
+      </linearGradient>
+      <radialGradient id="omsSun" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#ffe880" stop-opacity=".8"/>
+        <stop offset="1" stop-color="#ffe880" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#omsSky)"/>
+    ${stars(6, 319)}
+    <circle cx="150" cy="218" r="90" fill="url(#omsSun)"/>
+    <circle cx="150" cy="218" r="20" fill="#ffe880" opacity=".85"/>
+    <path d="M0 310 Q150 298 300 308 L300 450 L0 450 Z" fill="#2878a8" opacity=".85"/>
+    <path d="M0 350 Q75 342 150 348 T300 346 L300 450 L0 450 Z" fill="#1c5c88"/>
+    <path d="M0 394 Q75 386 150 392 T300 390 L300 450 L0 450 Z" fill="#144868"/>
+    ${Array.from({length:6}).map((_,i)=>`<path d="M${30+i*40} ${318+i%2*10} Q${46+i*40} ${310+i%2*8} ${62+i*40} ${318+i%2*10}" stroke="#5098b8" stroke-width=".8" fill="none" opacity=".5"/>`).join('')}
+    <g fill="#1a1808">
+      <path d="M130 286 L152 262 L172 288 L162 310 L138 310 Z"/>
+      <rect x="148" y="232" width="4" height="54"/>
+      <path d="M150 232 L130 258 L148 252 Z"/>
+      <ellipse cx="150" cy="296" rx="26" ry="8"/>
+    </g>
+    <path d="M0 310 Q150 304 300 308" stroke="#5098b8" stroke-width=".5" fill="none" opacity=".3"/>
+    <g fill="#100e08">
+      <circle cx="150" cy="306" r="5"/>
+      <rect x="147" y="311" width="5" height="8" rx="1"/>
+    </g>
+    ${Array.from({length:3}).map((_,i)=>`<path d="M${148+i*18} ${300} Q${152+i*18} ${280} ${148+i*18} ${270}" stroke="#1a6080" stroke-width="1.5" fill="none" opacity=".35"/>`).join('')}
+  `),
 };

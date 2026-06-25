@@ -632,4 +632,35 @@ export const FRENCH_COVERS: Record<string, string> = {
     ${Array.from({length:6}).map((_,i) => { const x=102+i*18, y=325+i%2*12; return `<rect x="${x}" y="${y}" width="4" height="8" fill="#3a3020"/><circle cx="${x+2}" cy="${y-2}" r="3.2" fill="#3a3020"/>`;}).join('')}
     <path d="M0 386 Q40 382 80 385 Q120 388 160 384 Q200 380 240 383 Q270 386 300 382" stroke="#2e2818" stroke-width="1.2" fill="none" opacity=".55"/>
   `),
+
+  /* ── Madame Bovary · Normandy — Rouen cathedral silhouette, grey Norman skies, a woman at a window ── */
+  madamebovary: scene(`
+    <defs>
+      <linearGradient id="mbSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#484c54"/><stop offset=".44" stop-color="#686c72"/>
+        <stop offset=".74" stop-color="#888880"/><stop offset="1" stop-color="#a8a890"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#mbSky)"/>
+    ${stars(5, 317)}
+    <path d="M0 316 Q150 304 300 314 L300 450 L0 450 Z" fill="#404838"/>
+    <path d="M0 368 Q150 358 300 366 L300 450 L0 450 Z" fill="#343c2c"/>
+    <g fill="#282c30">
+      <rect x="104" y="118" width="92" height="200"/>
+      <path d="M96 124 L150 72 L204 124 Z"/>
+      <rect x="134" y="72" width="32" height="52"/>
+      <path d="M128 78 L150 42 L172 78 Z"/>
+      <rect x="138" y="42" width="24" height="36"/>
+      <rect x="144" y="28" width="12" height="18"/>
+      <rect x="146" y="18" width="8" height="12"/>
+      ${Array.from({length:3}).map((_,i)=>`<path d="M${134+i*14} ${124} L${134+i*14} ${112} Q${141+i*14} ${106} ${148+i*14} ${112} L${148+i*14} ${124} Z"/>`).join('')}
+    </g>
+    <rect x="120" y="222" width="60" height="96" fill="#1c2024"/>
+    ${[[124,228],[140,228],[156,228],[124,254],[140,254],[156,254],[124,280],[140,280]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="16" fill="#d4c080" opacity="${y===228?'.32':'.22'}"/>`).join('')}
+    <g fill="#1e1c18">
+      <circle cx="150" cy="304" r="5.5"/>
+      <rect x="147" y="309" width="5" height="12" rx="1"/>
+    </g>
+    <path d="M0 316 Q150 310 300 314" stroke="#a8a890" stroke-width=".5" fill="none" opacity=".25"/>
+  `),
 };
