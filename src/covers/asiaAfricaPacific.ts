@@ -2234,4 +2234,113 @@ export const ASIA_AFRICA_PACIFIC_COVERS: Record<string, string> = {
       <rect x="147" y="257" width="5" height="8" rx="1"/>
     </g>
   `),
+
+  /* ── A History of Madagascar · Antananarivo — baobabs, highland plateau, evening sky ── */
+  histmadagascar: scene(`
+    <defs>
+      <linearGradient id="hmgSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0a0c14"/><stop offset=".3" stop-color="#14101c"/>
+        <stop offset=".58" stop-color="#281828"/><stop offset=".8" stop-color="#602030"/>
+        <stop offset="1" stop-color="#a03828"/>
+      </linearGradient>
+      <radialGradient id="hmgGlow" cx="38%" cy="72%" r="32%">
+        <stop offset="0" stop-color="#f06828" stop-opacity=".5"/>
+        <stop offset="1" stop-color="#f06828" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#hmgSky)"/>
+    ${stars(10, 491)}
+    <rect width="300" height="450" fill="url(#hmgGlow)"/>
+    <path d="M0 316 Q150 302 300 314 L300 450 L0 450 Z" fill="#3c2010"/>
+    <path d="M0 366 Q150 354 300 364 L300 450 L0 450 Z" fill="#2c1808"/>
+    <path d="M0 416 Q150 404 300 414 L300 450 L0 450 Z" fill="#1c1006"/>
+    <g fill="#281408" opacity=".9">
+      ${[44,98,152,206,256].map((x,i)=>`
+        <rect x="${x}" y="${208+i%2*24}" width="${8+i%3*2}" height="${108-i%2*24}" rx="${4+i%3}"/>
+        <ellipse cx="${x+4+i%3}" cy="${200+i%2*22}" rx="${18+i%3*4}" ry="${22+i%3*4}"/>
+        <ellipse cx="${x+4+i%3}" cy="${188+i%2*18}" rx="${14+i%3*3}" ry="${16+i%3*3}" opacity=".8"/>
+        <ellipse cx="${x+4+i%3}" cy="${178+i%2*14}" rx="${10+i%3*2}" ry="${10+i%3*2}" opacity=".6"/>
+      `).join('')}
+    </g>
+    <path d="M0 316 Q60 308 100 312 Q150 316 200 310 Q240 306 300 312" stroke="#5c3018" stroke-width=".6" fill="none" opacity=".5"/>
+    <g fill="#0c0808">
+      <circle cx="150" cy="308" r="5.5"/>
+      <rect x="147" y="313" width="5" height="8" rx="1"/>
+    </g>
+  `),
+
+  /* ── The Sloth Lemur's Song · Andasibe — a lemur in the rainforest canopy, mist ── */
+  slothlemur: scene(`
+    <defs>
+      <linearGradient id="slsSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#020608"/><stop offset=".3" stop-color="#040c0a"/>
+        <stop offset=".6" stop-color="#061410"/><stop offset=".85" stop-color="#0a2018"/>
+        <stop offset="1" stop-color="#102818"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#slsSky)"/>
+    ${stars(8, 493)}
+    <path d="M0 292 Q150 278 300 290 L300 450 L0 450 Z" fill="#081808"/>
+    <path d="M0 342 Q150 330 300 340 L300 450 L0 450 Z" fill="#061408"/>
+    <path d="M0 402 Q150 390 300 400 L300 450 L0 450 Z" fill="#040e06"/>
+    <g fill="#0a2010" opacity=".9">
+      ${[10,46,82,118,160,196,232,266].map((x,i)=>`
+        <rect x="${x}" y="${200+i%3*18}" width="${5+i%2*3}" height="${92-i%3*18}" rx="2"/>
+        <path d="M${x-14+i%2*4} ${200+i%3*16} Q${x+2} ${160+i%3*14} ${x+18-i%2*4} ${196+i%3*14}" fill="#0c2810" opacity=".8"/>
+        <path d="M${x-10+i%2*3} ${218+i%3*10} Q${x+2} ${190+i%3*8} ${x+14-i%2*3} ${216+i%3*8}" fill="#0e3012" opacity=".7"/>
+      `).join('')}
+    </g>
+    <ellipse cx="152" cy="182" rx="20" ry="16" fill="#3c2818" opacity=".85"/>
+    <ellipse cx="152" cy="178" rx="14" ry="12" fill="#4c3420" opacity=".9"/>
+    <circle cx="146" cy="176" r="4" fill="#f0f0e8" opacity=".9"/>
+    <circle cx="158" cy="176" r="4" fill="#f0f0e8" opacity=".9"/>
+    <circle cx="146" cy="176" r="2" fill="#0c0808"/>
+    <circle cx="158" cy="176" r="2" fill="#0c0808"/>
+    <path d="M148 184 Q152 188 156 184" stroke="#3c2010" stroke-width="1" fill="none" opacity=".7"/>
+    <path d="M138 168 Q140 158 148 162" stroke="#3c2010" stroke-width="2" fill="none" opacity=".6"/>
+    <path d="M166 168 Q164 158 156 162" stroke="#3c2010" stroke-width="2" fill="none" opacity=".6"/>
+    <path d="M120 196 Q136 186 152 194 Q168 186 184 196" stroke="#1a4020" stroke-width="1.2" fill="none" opacity=".5"/>
+    <g fill="#060c08">
+      <circle cx="150" cy="284" r="5.5"/>
+      <rect x="147" y="289" width="5" height="8" rx="1"/>
+    </g>
+  `),
+
+  /* ── Antipode · Ranomafana — rainforest undergrowth, poison dart frogs, field science ── */
+  antipode: scene(`
+    <defs>
+      <linearGradient id="antpSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#020408"/><stop offset=".3" stop-color="#040808"/>
+        <stop offset=".6" stop-color="#060e08"/><stop offset=".85" stop-color="#081808"/>
+        <stop offset="1" stop-color="#0c2010"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#antpSky)"/>
+    ${stars(6, 495)}
+    <path d="M0 302 Q150 288 300 300 L300 450 L0 450 Z" fill="#061008"/>
+    <path d="M0 356 Q150 344 300 354 L300 450 L0 450 Z" fill="#040c06"/>
+    <path d="M0 412 Q150 400 300 410 L300 450 L0 450 Z" fill="#020804"/>
+    <g fill="#071208" opacity=".9">
+      ${[8,38,68,104,140,176,212,248,278].map((x,i)=>`
+        <rect x="${x}" y="${180+i%4*14}" width="${4+i%3*2}" height="${122-i%4*14}" rx="2"/>
+        <path d="M${x-16+i%2*6} ${192+i%3*10} Q${x} ${158+i%3*8} ${x+20-i%2*6} ${188+i%3*10}" fill="#091408" opacity=".75"/>
+        <path d="M${x-12+i%2*4} ${220+i%3*8} Q${x} ${196+i%3*6} ${x+16-i%2*4} ${218+i%3*8}" fill="#0a1809" opacity=".7"/>
+        <path d="M${x-8} ${248+i%3*6} Q${x} ${228+i%3*4} ${x+12} ${246+i%3*6}" fill="#0c1a0a" opacity=".65"/>
+      `).join('')}
+    </g>
+    <g opacity=".88">
+      <ellipse cx="106" cy="274" rx="14" ry="8" fill="#1a6820"/>
+      <ellipse cx="100" cy="270" rx="8" ry="5" fill="#e04018"/>
+      <circle cx="96" cy="268" r="2.5" fill="#101008"/>
+      <circle cx="104" cy="268" r="2.5" fill="#101008"/>
+      <ellipse cx="178" cy="284" rx="12" ry="7" fill="#1a6820"/>
+      <ellipse cx="172" cy="280" rx="7" ry="4.5" fill="#d83010"/>
+      <circle cx="169" cy="279" r="2" fill="#101008"/>
+      <circle cx="175" cy="279" r="2" fill="#101008"/>
+    </g>
+    <g fill="#050c06">
+      <circle cx="150" cy="294" r="5.5"/>
+      <rect x="147" y="299" width="5" height="8" rx="1"/>
+    </g>
+  `),
 };
