@@ -526,6 +526,75 @@ export const EUROPE_COVERS: Record<string, string> = {
     </g>
   `),
 
+  /* ── Sakhalin Island · Sakhalin — foggy Pacific coast, birch forest, a prison settlement ── */
+  sakhalinisland: scene(`
+    <defs>
+      <linearGradient id="skiSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0a1018"/><stop offset=".4" stop-color="#121820"/>
+        <stop offset=".72" stop-color="#202830"/><stop offset="1" stop-color="#303840"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#skiSky)"/>
+    ${stars(6, 443)}
+    <rect width="300" height="450" fill="#8090a0" opacity=".14"/>
+    <path d="M0 290 Q60 258 100 272 Q130 282 160 264 Q190 246 230 264 Q264 280 300 262 L300 450 L0 450 Z" fill="#304048" opacity=".7"/>
+    <path d="M0 342 Q150 326 300 340 L300 450 L0 450 Z" fill="#283038"/>
+    <path d="M0 392 Q150 378 300 390 L300 450 L0 450 Z" fill="#202830"/>
+    <rect width="300" height="450" fill="#7088a0" opacity=".1"/>
+    <g fill="#c8d0d8" opacity=".65">
+      ${[34,66,98,132,168,204,238,270].map((x,i)=>`
+        <rect x="${x-2}" y="${178+i%2*16}" width="4" height="${114-i%2*16}" rx="1"/>
+        <path d="M${x-10} ${194+i%2*10} Q${x} ${178+i%2*12} ${x+10} ${194+i%2*10}" stroke="#c8d0d8" stroke-width="5" fill="none" opacity=".55"/>
+        <path d="M${x-8} ${216+i%2*8} Q${x} ${200+i%2*10} ${x+8} ${216+i%2*8}" stroke="#c8d0d8" stroke-width="4" fill="none" opacity=".45"/>
+      `).join('')}
+    </g>
+    <g fill="#1a2228" opacity=".85">
+      <rect x="104" y="228" width="92" height="66"/>
+      <path d="M96 232 L150 200 L204 232 Z"/>
+      <rect x="120" y="200" width="60" height="34"/>
+    </g>
+    ${[[108,250],[124,250],[164,250],[180,250]].map(([x,y])=>`<rect x="${x}" y="${y}" width="12" height="20" fill="#d0c080" opacity=".3"/>`).join('')}
+    <path d="M0 290 Q150 284 300 288" stroke="#303840" stroke-width=".5" fill="none" opacity=".4"/>
+    <g fill="#0c1018">
+      <circle cx="150" cy="282" r="5.5"/>
+      <rect x="147" y="287" width="5" height="8" rx="1"/>
+    </g>
+  `),
+
+  /* ── Letters from Vladivostok · Vladivostok — Golden Horn Bay, a ship, an American woman's window ── */
+  vladivostokletters: scene(`
+    <defs>
+      <linearGradient id="vlvSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0c1420"/><stop offset=".38" stop-color="#182438"/>
+        <stop offset=".66" stop-color="#2c4460"/><stop offset=".86" stop-color="#4878a0"/>
+        <stop offset="1" stop-color="#6098b8"/>
+      </linearGradient>
+      <radialGradient id="vlvSun" cx="30%" cy="42%" r="28%">
+        <stop offset="0" stop-color="#f0c060" stop-opacity=".5"/>
+        <stop offset="1" stop-color="#f0c060" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#vlvSky)"/>
+    ${stars(9, 445)}
+    <rect width="300" height="450" fill="url(#vlvSun)"/>
+    <circle cx="90" cy="190" r="12" fill="#f8d060" opacity=".7"/>
+    <path d="M0 308 Q60 278 100 292 Q130 302 160 284 Q196 264 240 278 Q268 288 300 272 L300 450 L0 450 Z" fill="#1a2c3c" opacity=".8"/>
+    <path d="M0 358 Q150 340 300 356 L300 450 L0 450 Z" fill="#142030"/>
+    <path d="M0 200 Q150 188 300 198 L300 310 Q150 298 0 310 Z" fill="#1e3848" opacity=".6"/>
+    ${Array.from({length:4}).map((_,i)=>`<path d="M${60+i*54} 218 L${60+i*54} 308" stroke="#2a4860" stroke-width="${3+i%2}" opacity=".6"/><rect x="${44+i*54}" y="${202+i%2*6}" width="${30+i%2*8}" height="${i%2*4+18}" fill="#182c40" opacity=".8"/><rect x="${50+i*54}" y="${186+i%2*4}" width="${4}" height="${16+i%2*6}" fill="#1a3040" opacity=".7"/>`).join('')}
+    <path d="M0 308 Q150 296 300 306" stroke="#4878a0" stroke-width=".5" fill="none" opacity=".4"/>
+    <g fill="#181c10">
+      <rect x="188" y="220" width="72" height="90"/>
+      <path d="M180 224 L224 194 L268 224 Z"/>
+      <rect x="204" y="194" width="40" height="32"/>
+    </g>
+    ${[[192,242],[208,242],[232,242],[248,242],[192,276],[208,276]].map(([x,y])=>`<rect x="${x}" y="${y}" width="12" height="20" fill="#f0d880" opacity="${y<260?'.42':'.28'}"/>`).join('')}
+    <g fill="#0e1420">
+      <circle cx="150" cy="300" r="5.5"/>
+      <rect x="147" y="305" width="5" height="8" rx="1"/>
+    </g>
+  `),
+
   /* ── A Hero of Our Time · Pyatigorsk — Caucasus peaks at dusk, a lone rider, a pistol duel ── */
   heroourtime: scene(`
     <defs>
