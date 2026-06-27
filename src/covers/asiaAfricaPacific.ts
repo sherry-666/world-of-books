@@ -710,6 +710,96 @@ export const ASIA_AFRICA_PACIFIC_COVERS: Record<string, string> = {
     </g>
   `),
 
+  /* ── A Passage to India · Chandrapore — Marabar Caves, a colonial sun, the Ganges plain ── */
+  passagetoindia: scene(`
+    <defs>
+      <linearGradient id="ptiSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0a0e18"/><stop offset=".36" stop-color="#183060"/>
+        <stop offset=".68" stop-color="#3870b0"/><stop offset="1" stop-color="#60a0c0"/>
+      </linearGradient>
+      <radialGradient id="ptiSun" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#ffe060" stop-opacity=".9"/>
+        <stop offset="1" stop-color="#ffe060" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#ptiSky)"/>
+    ${stars(7, 361)}
+    <circle cx="150" cy="232" r="100" fill="url(#ptiSun)"/>
+    <circle cx="150" cy="232" r="26" fill="#ffe878" opacity=".9"/>
+    <path d="M0 318 Q150 306 300 316 L300 450 L0 450 Z" fill="#3a5028"/>
+    <path d="M0 368 Q150 358 300 366 L300 450 L0 450 Z" fill="#2e4020"/>
+    <path d="M0 416 Q150 408 300 414 L300 450 L0 450 Z" fill="#243218"/>
+    <g fill="#181808" opacity=".85">
+      ${[72,108,192,228].map((x,i)=>`<path d="M${x} ${318} L${x} ${210+i%2*20} Q${x+18} ${190+i%2*18} ${x+36} ${210+i%2*20} L${x+36} ${318} Z"/>`).join('')}
+      ${[72,108,192,228].map((x,i)=>`<path d="M${x+10} ${210+i%2*20} Q${x+18} ${186+i%2*16} ${x+26} ${210+i%2*20} Z"/>`).join('')}
+    </g>
+    <path d="M0 318 Q150 312 300 316" stroke="#60a0c0" stroke-width=".5" fill="none" opacity=".3"/>
+    <g fill="#100e08">
+      <circle cx="150" cy="308" r="5.5"/>
+      <rect x="147" y="313" width="5" height="10" rx="1"/>
+    </g>
+  `),
+
+  /* ── The White Tiger · Delhi — a Delhi night skyline, an autorickshaw, neon lights ── */
+  whitetiger: scene(`
+    <defs>
+      <linearGradient id="wtgSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#080810"/><stop offset=".4" stop-color="#10101c"/>
+        <stop offset=".72" stop-color="#181820"/><stop offset="1" stop-color="#242428"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#wtgSky)"/>
+    ${stars(9, 363)}
+    <path d="M0 292 Q150 280 300 290 L300 450 L0 450 Z" fill="#181010"/>
+    <path d="M0 344 Q150 334 300 342 L300 450 L0 450 Z" fill="#120c0c"/>
+    <path d="M0 396 Q150 388 300 394 L300 450 L0 450 Z" fill="#0e0808"/>
+    <g fill="#0e0c14">
+      ${[30,76,122,168,214,260].map((x,i)=>`<rect x="${x}" y="${160+i%3*22}" width="36" height="${136-i%3*22}"/>`).join('')}
+    </g>
+    ${Array.from({length:24}).map((_,i)=>{const x=(i*52+4)%298,y=168+(i*37)%120; return `<rect x="${x}" y="${y}" width="8" height="12" fill="${i%3===0?'#e03030':i%3===1?'#30a0e0':'#e0a030'}" opacity="${0.12+(i%4)*0.05}"/>`;}).join('')}
+    <path d="M0 292 Q150 286 300 290" stroke="#303040" stroke-width=".5" fill="none" opacity=".4"/>
+    <g fill="#0c0808">
+      <path d="M100 278 L100 268 Q120 252 180 252 Q200 252 200 268 L200 278 Z"/>
+      <ellipse cx="150" cy="278" rx="52" ry="10"/>
+      <rect x="108" y="262" width="84" height="18" rx="4"/>
+      <ellipse cx="120" cy="288" rx="10" ry="10" fill="none" stroke="#0c0808" stroke-width="6"/>
+      <ellipse cx="180" cy="288" rx="10" ry="10" fill="none" stroke="#0c0808" stroke-width="6"/>
+    </g>
+    <rect x="108" y="262" width="84" height="8" fill="#e03030" opacity=".25"/>
+    <g fill="#060606">
+      <circle cx="150" cy="288" r="5.5"/>
+      <rect x="147" y="293" width="5" height="8" rx="1"/>
+    </g>
+  `),
+
+  /* ── The Kite Runner · Kabul — Hindu Kush mountains, a kite against a winter sky ── */
+  kiterunner: scene(`
+    <defs>
+      <linearGradient id="ktrSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#6090c0"/><stop offset=".42" stop-color="#80b0d8"/>
+        <stop offset=".72" stop-color="#a8c8e0"/><stop offset="1" stop-color="#c8e0f0"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#ktrSky)"/>
+    ${stars(4, 365)}
+    <path d="M0 290 Q60 254 100 264 Q130 272 150 248 Q170 228 200 244 Q240 264 300 244 L300 450 L0 450 Z" fill="#606858"/>
+    <path d="M0 340 Q80 320 150 334 T300 318 L300 450 L0 450 Z" fill="#4c5444"/>
+    <path d="M0 390 Q80 374 150 384 T300 370 L300 450 L0 450 Z" fill="#383e30"/>
+    <path d="M0 290 Q150 282 300 286" stroke="#c8d8e8" stroke-width=".5" fill="none" opacity=".3"/>
+    <g fill="#505840" opacity=".7">
+      ${Array.from({length:6}).map((_,i)=>`<path d="M${40+i*40} ${290+i%2*14} Q${52+i*40} ${262+i%2*12} ${56+i*40} ${250+i%2*10} Q${60+i*40} ${238+i%2*8} ${64+i*40} ${240+i%2*6}" stroke="#505840" stroke-width="5" fill="none" opacity=".6"/>`).join('')}
+    </g>
+    <g transform="translate(186,148) rotate(-18)">
+      <path d="M0 -24 L16 0 L0 24 L-16 0 Z" fill="#e03020" opacity=".88"/>
+      <path d="M0 -24 L16 0 L0 0 Z" fill="#c02818" opacity=".7"/>
+    </g>
+    <path d="M186 172 Q200 210 210 248 Q218 278 212 290" stroke="#c8a070" stroke-width=".8" fill="none" opacity=".6"/>
+    <g fill="#181c10">
+      <circle cx="150" cy="280" r="5.5"/>
+      <rect x="147" y="285" width="5" height="10" rx="1"/>
+    </g>
+  `),
+
   /* ── Heart of Darkness · Congo River — a steamboat in dense jungle, a river winding into mist ── */
   heartdarkness: scene(`
     <defs>

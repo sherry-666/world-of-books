@@ -1687,4 +1687,101 @@ export const EUROPE_COVERS: Record<string, string> = {
       <rect x="147" y="373" width="5" height="22" rx="1"/>
     </g>
   `),
+
+  /* ── Crime and Punishment · St. Petersburg — yellow canal houses, a bridge at night, guilt ── */
+  crimeandpunish: scene(`
+    <defs>
+      <linearGradient id="capSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#060810"/><stop offset=".38" stop-color="#0e1020"/>
+        <stop offset=".68" stop-color="#18202c"/><stop offset="1" stop-color="#283040"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#capSky)"/>
+    ${stars(10, 351)}
+    <path d="M0 298 Q150 286 300 296 L300 450 L0 450 Z" fill="#181808"/>
+    <path d="M0 348 Q150 338 300 346 L300 450 L0 450 Z" fill="#101408"/>
+    <path d="M0 398 Q150 390 300 396 L300 450 L0 450 Z" fill="#0c1008"/>
+    ${Array.from({length:5}).map((_,i)=>`<path d="M${28+i*48} ${308+i%2*12} Q${42+i*48} ${296+i%2*10} ${56+i*48} ${308+i%2*12}" stroke="#202808" stroke-width=".7" fill="none" opacity=".6"/>`).join('')}
+    <g fill="#d4aa30">
+      <rect x="52" y="150" width="64" height="152"/>
+      <rect x="184" y="138" width="64" height="164"/>
+      ${Array.from({length:4}).map((_,i)=>`<rect x="${56+i*16}" y="${154}" width="10" height="20" fill="#101408" opacity=".7"/>`).join('')}
+      ${Array.from({length:4}).map((_,i)=>`<rect x="${188+i*16}" y="${142}" width="10" height="20" fill="#101408" opacity=".7"/>`).join('')}
+    </g>
+    <g fill="#b88c20">
+      <rect x="52" y="298" width="64" height="4"/>
+      <rect x="184" y="298" width="64" height="4"/>
+    </g>
+    ${[[56,184],[72,184],[56,216],[72,216],[188,172],[204,172],[188,204],[204,204]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="16" fill="#f0d070" opacity="${y<200?'.45':'.3'}"/>`).join('')}
+    <rect x="86" y="284" width="128" height="18" rx="2" fill="#383020"/>
+    <rect x="94" y="290" width="20" height="12" fill="#c8a828"/>
+    <rect x="186" y="290" width="20" height="12" fill="#c8a828"/>
+    <g fill="#0a0c08">
+      <circle cx="150" cy="292" r="5.5"/>
+      <rect x="147" y="297" width="5" height="8" rx="1"/>
+      <path d="M140 304 L147 300 L153 300 L160 304 L158 316 L142 316 Z"/>
+    </g>
+    <path d="M0 298 Q150 292 300 296" stroke="#283040" stroke-width=".5" fill="none" opacity=".4"/>
+  `),
+
+  /* ── The Trial · Prague — a labyrinth of doors, dark corridors, Kafka's bureaucratic dread ── */
+  thetrial: scene(`
+    <defs>
+      <linearGradient id="trlSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0c0c10"/><stop offset=".4" stop-color="#181820"/>
+        <stop offset=".72" stop-color="#242428"/><stop offset="1" stop-color="#343430"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#trlSky)"/>
+    ${stars(7, 355)}
+    <g fill="#0e0e14">
+      ${Array.from({length:5}).map((_,i)=>`<rect x="${i*60}" y="${80+i%2*20}" width="60" height="${374-i%2*20}"/>`).join('')}
+    </g>
+    ${Array.from({length:20}).map((_,i)=>{const x=(i*74+8)%300,y=100+(i*53)%300; return `<rect x="${x}" y="${y}" width="22" height="34" rx="2" fill="#181818"/>`;}).join('')}
+    ${Array.from({length:20}).map((_,i)=>{const x=(i*74+8)%300,y=100+(i*53)%300; return `<rect x="${x+2}" y="${y+2}" width="18" height="16" fill="#c8a020" opacity="${0.06+(i%4)*0.04}"/>`;}).join('')}
+    ${Array.from({length:20}).map((_,i)=>{const x=(i*74+8)%300,y=100+(i*53)%300; return `<rect x="${x+5}" y="${y+6}" width="12" height="7" rx="1" fill="#0a0a10" opacity=".8"/>`;}).join('')}
+    <rect x="126" y="140" width="48" height="72" rx="3" fill="#1a1a24"/>
+    <rect x="128" y="142" width="44" height="40" fill="#c8a020" opacity=".12"/>
+    <rect x="136" y="152" width="28" height="20" rx="1" fill="#080810"/>
+    <rect x="148" y="210" width="4" height="8" rx="1" fill="#c8a020" opacity=".4"/>
+    <g fill="#0a0a10">
+      <circle cx="150" cy="316" r="5.5"/>
+      <rect x="147" y="321" width="5" height="18" rx="1"/>
+      <path d="M138 330 L147 324 L153 324 L162 330 L160 348 L140 348 Z"/>
+    </g>
+    <path d="M0 348 Q150 342 300 346" stroke="#343430" stroke-width=".5" fill="none" opacity=".35"/>
+  `),
+
+  /* ── The Unbearable Lightness of Being · Prague — a window over rooftops, Soviet dusk, a hat ── */
+  unbearablelight: scene(`
+    <defs>
+      <linearGradient id="ulbSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a1820"/><stop offset=".38" stop-color="#303040"/>
+        <stop offset=".68" stop-color="#504858"/><stop offset="1" stop-color="#706870"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#ulbSky)"/>
+    ${stars(8, 357)}
+    <path d="M0 310 Q150 298 300 308 L300 450 L0 450 Z" fill="#2a2430"/>
+    <path d="M0 360 Q150 350 300 358 L300 450 L0 450 Z" fill="#1e1828"/>
+    <path d="M0 410 Q150 402 300 408 L300 450 L0 450 Z" fill="#181420"/>
+    <g fill="#201c28">
+      ${[56,108,160,212].map((x,i)=>`
+        <rect x="${x}" y="${140+i%2*18}" width="44" height="${174-i%2*18}"/>
+        <path d="M${x-6} ${144+i%2*18} L${x+22} ${120+i%2*16} L${x+50} ${144+i%2*18} Z"/>
+        <rect x="${x+8}" y="${120+i%2*16}" width="28" height="${24-i%2*8}"/>
+      `).join('')}
+    </g>
+    ${Array.from({length:16}).map((_,i)=>{const col=i%4,row=Math.floor(i/4); const x=60+col*52,y=156+row*34; return `<rect x="${x}" y="${y}" width="10" height="18" fill="#d0a840" opacity="${row===0?'.38':'.22'}"/>`;}).join('')}
+    <path d="M0 310 Q150 304 300 308" stroke="#504858" stroke-width=".5" fill="none" opacity=".3"/>
+    <g fill="#161420">
+      <circle cx="130" cy="300" r="6"/>
+      <rect x="127" y="306" width="5" height="12" rx="1"/>
+      <path d="M120 314 L127 308 L133 308 L140 314 L138 326 L122 326 Z"/>
+      <circle cx="168" cy="302" r="5.5"/>
+      <rect x="165" y="307" width="5" height="10" rx="1"/>
+      <path d="M159 313 L165 309 L171 309 L177 313 L175 323 L161 323 Z"/>
+    </g>
+  `),
+
 };
