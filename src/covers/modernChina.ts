@@ -754,4 +754,102 @@ export const MODERN_CHINA_COVERS: Record<string, string> = {
     <circle cx="146" cy="264" r="3" fill="#e8d0a0" opacity=".7"/>
     <circle cx="155" cy="262" r="2.5" fill="#e8d0a0" opacity=".7"/>
   `),
+
+  /* ── 後街 / The Backstreets · Ürümqi — fog-shrouded city, a lone figure, amber streetlights ── */
+  backstreets: scene(`
+    <defs>
+      <linearGradient id="bksSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#050810"/><stop offset=".4" stop-color="#0c1020"/>
+        <stop offset=".72" stop-color="#141828"/><stop offset="1" stop-color="#1c2030"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#bksSky)"/>
+    <rect width="300" height="450" fill="#b0c0d0" opacity=".12"/>
+    <g fill="#101420" opacity=".55">
+      ${[24,64,106,150,196,242].map((x,i)=>`<rect x="${x}" y="${118+i%3*22}" width="36" height="${194-i%3*22}"/>`).join('')}
+    </g>
+    ${Array.from({length:18}).map((_,i)=>{const x=(i*52+6)%296,y=132+(i*38)%160; return `<rect x="${x}" y="${y}" width="9" height="14" fill="#e8c060" opacity="${0.06+(i%5)*0.03}"/>`;}).join('')}
+    <rect width="300" height="450" fill="#8090a0" opacity=".28"/>
+    <rect width="300" height="450" fill="#9aa8b8" opacity=".14"/>
+    <path d="M0 318 Q150 306 300 316 L300 450 L0 450 Z" fill="#181c24"/>
+    <path d="M0 368 Q150 358 300 366 L300 450 L0 450 Z" fill="#14181e"/>
+    <g fill="#e8a030" opacity=".7">
+      ${[46,110,174,238].map(x=>`<circle cx="${x}" cy="310" r="3.5"/><path d="M${x} 310 L${x-18} 330 L${x+18} 330 Z" opacity=".25"/>`).join('')}
+    </g>
+    <g fill="#101418">
+      <rect x="132" y="278" width="36" height="44"/>
+      <circle cx="150" cy="268" r="12"/>
+      <rect x="144" y="256" width="12" height="14"/>
+    </g>
+    <rect x="132" y="316" width="36" height="6" fill="#e8a030" opacity=".18"/>
+    <g fill="#060810">
+      <circle cx="150" cy="310" r="5.5"/>
+      <rect x="147" y="315" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 318 Q150 312 300 316" stroke="#1c2030" stroke-width=".5" fill="none" opacity=".5"/>
+  `),
+
+  /* ── 虚土 / Xu Tu · Northern Xinjiang — loess ridge, empty steppe, a dreamlike sky ── */
+  xutu: scene(`
+    <defs>
+      <linearGradient id="xutSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#c0c8d8"/><stop offset=".42" stop-color="#d8dce8"/>
+        <stop offset=".7" stop-color="#e8e0c8"/><stop offset="1" stop-color="#d8c8a0"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#xutSky)"/>
+    <path d="M0 296 Q80 248 140 268 Q170 278 200 256 Q240 228 300 248 L300 450 L0 450 Z" fill="#c8b888" opacity=".7"/>
+    <path d="M0 340 Q150 318 300 336 L300 450 L0 450 Z" fill="#b8a878"/>
+    <path d="M0 390 Q150 374 300 388 L300 450 L0 450 Z" fill="#a89868"/>
+    <path d="M0 430 Q150 416 300 428 L300 450 L0 450 Z" fill="#988858"/>
+    ${Array.from({length:10}).map((_,i)=>{const x=20+(i*28)%270; return `<path d="M${x} ${296+i%2*12} Q${x+8} ${278+i%2*8} ${x+16} ${296+i%2*12}" stroke="#c8b888" stroke-width=".5" fill="#b8a878" opacity=".55"/>`;}).join('')}
+    <g fill="#706040" opacity=".5">
+      ${[66,98,132,166].map((x,i)=>`<rect x="${x}" y="${212+i%2*18}" width="${14+i%2*4}" height="${86-i%2*18}"/>`).join('')}
+      ${[66,98,132,166].map((x,i)=>`<path d="M${x-6} ${216+i%2*18} L${x+9+i%2*2} ${190+i%2*14} L${x+24+i%2*4} ${216+i%2*18} Z"/>`).join('')}
+    </g>
+    <rect width="300" height="450" fill="#e8e0d0" opacity=".12"/>
+    <g fill="#504020" opacity=".25">
+      <circle cx="150" cy="230" r="40"/>
+      <circle cx="150" cy="220" r="28"/>
+      <circle cx="150" cy="212" r="18"/>
+    </g>
+    <g fill="#403010">
+      <circle cx="150" cy="288" r="5.5"/>
+      <rect x="147" y="293" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 296 Q150 290 300 294" stroke="#d8c8a0" stroke-width=".5" fill="none" opacity=".4"/>
+  `),
+
+  /* ── 木垒河 · Mori County — Republican-era Xinjiang town, poplar trees, Tianshan foothills ── */
+  mulerhe: scene(`
+    <defs>
+      <linearGradient id="mlrSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a1808"/><stop offset=".38" stop-color="#2c2810"/>
+        <stop offset=".65" stop-color="#604828"/><stop offset=".86" stop-color="#a07838"/>
+        <stop offset="1" stop-color="#c09848"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#mlrSky)"/>
+    ${stars(7, 413)}
+    <path d="M0 276 Q50 238 90 252 Q120 262 150 246 Q180 230 220 248 Q258 264 300 244 L300 450 L0 450 Z" fill="#484028" opacity=".6"/>
+    <path d="M0 334 Q150 318 300 332 L300 450 L0 450 Z" fill="#382c18"/>
+    <path d="M0 384 Q150 370 300 382 L300 450 L0 450 Z" fill="#2c2010"/>
+    <g fill="#241808">
+      <rect x="78" y="196" width="60" height="82"/>
+      <path d="M70 200 L108 168 L146 200 Z"/>
+      <rect x="90" y="168" width="36" height="34"/>
+      <rect x="162" y="204" width="60" height="74"/>
+      <path d="M154 208 L192 176 L230 208 Z"/>
+      <rect x="174" y="176" width="36" height="34"/>
+    </g>
+    ${[[82,220],[98,220],[82,252],[98,252],[166,224],[182,224],[166,256],[182,256]].map(([x,y])=>`<rect x="${x}" y="${y}" width="12" height="20" fill="#f0c860" opacity="${y<240?'.38':'.24'}"/>`).join('')}
+    <g fill="#2c3818" opacity=".85">
+      ${[46,118,192,254].map((x,i)=>`<rect x="${x-2}" y="${196+i%2*14}" width="4" height="${84-i%2*14}" rx="1"/><path d="M${x-10} ${210+i%2*10} Q${x} ${190+i%2*8} ${x+10} ${210+i%2*10}" stroke="#3c5020" stroke-width="5" fill="none" opacity=".7"/><path d="M${x-8} ${230+i%2*8} Q${x} ${212+i%2*6} ${x+8} ${230+i%2*8}" stroke="#3c5020" stroke-width="4" fill="none" opacity=".6"/>`).join('')}
+    </g>
+    <path d="M0 276 Q150 270 300 274" stroke="#c09848" stroke-width=".5" fill="none" opacity=".35"/>
+    <g fill="#180e04">
+      <circle cx="150" cy="268" r="5.5"/>
+      <rect x="147" y="273" width="5" height="8" rx="1"/>
+    </g>
+  `),
 };
