@@ -853,6 +853,85 @@ export const MODERN_CHINA_COVERS: Record<string, string> = {
     </g>
   `),
 
+  /* ── 凤凰琴 · Dabie Mountains — a village schoolroom, misty peaks, a teacher at the blackboard ── */
+  fenghuangqin: scene(`
+    <defs>
+      <linearGradient id="fhqSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#b0b8c8"/><stop offset=".4" stop-color="#c8ccd8"/>
+        <stop offset=".72" stop-color="#d8d4c8"/><stop offset="1" stop-color="#c8c0a8"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#fhqSky)"/>
+    <rect width="300" height="450" fill="#d0d8e0" opacity=".18"/>
+    <path d="M0 264 Q40 224 80 238 Q110 248 140 230 Q166 214 196 228 Q236 246 270 224 Q286 214 300 218 L300 450 L0 450 Z" fill="#6a7868" opacity=".55"/>
+    <path d="M0 318 Q150 302 300 316 L300 450 L0 450 Z" fill="#586650"/>
+    <path d="M0 368 Q150 354 300 366 L300 450 L0 450 Z" fill="#485640"/>
+    <rect width="300" height="450" fill="#c8d0d8" opacity=".12"/>
+    <g fill="#3a3828">
+      <rect x="82" y="200" width="136" height="120"/>
+      <path d="M74 204 L150 166 L226 204 Z"/>
+      <rect x="106" y="166" width="88" height="40"/>
+    </g>
+    <rect x="82" y="200" width="136" height="8" fill="#604838" opacity=".6"/>
+    ${[[86,224],[102,224],[86,258],[102,258],[172,224],[188,224],[172,258],[188,258]].map(([x,y])=>`<rect x="${x}" y="${y}" width="12" height="22" fill="#f0e8c0" opacity="${y<242?'.5':'.35'}"/>`).join('')}
+    <rect x="112" y="208" width="76" height="94" fill="#302e1e"/>
+    <g fill="#d0d8c8" opacity=".7">
+      ${Array.from({length:4}).map((_,i)=>`<line x1="116" y1="${224+i*18}" x2="184" y2="${224+i*18}" stroke="#d0d8c8" stroke-width="1.2" opacity=".5"/>`).join('')}
+      <path d="M124 214 L160 214" stroke="#d0d8c8" stroke-width="2" opacity=".6"/>
+    </g>
+    <g fill="#e8e0b0" opacity=".6">
+      <circle cx="116" cy="250" r="3"/>
+      <rect x="114" y="253" width="4" height="22" rx="1"/>
+      <path d="M108 254 L114 256 L114 272 Q110 274 106 270 Z"/>
+      <path d="M124 254 L118 256 L118 272 Q122 274 126 270 Z"/>
+    </g>
+    <path d="M0 318 Q150 312 300 316" stroke="#c8c0a8" stroke-width=".5" fill="none" opacity=".4"/>
+    <g fill="#282618">
+      <circle cx="150" cy="310" r="5.5"/>
+      <rect x="147" y="315" width="5" height="8" rx="1"/>
+    </g>
+  `),
+
+  /* ── 天行者 · Dabie Mountains — dawn over misty peaks, a schoolbell, a lifetime of waiting ── */
+  tianxingzhe: scene(`
+    <defs>
+      <linearGradient id="txzSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0e1820"/><stop offset=".36" stop-color="#182838"/>
+        <stop offset=".64" stop-color="#3c5060"/><stop offset=".84" stop-color="#7898a8"/>
+        <stop offset="1" stop-color="#a8c0c8"/>
+      </linearGradient>
+      <radialGradient id="txzDawn" cx="68%" cy="52%" r="36%">
+        <stop offset="0" stop-color="#f0d080" stop-opacity=".55"/>
+        <stop offset="1" stop-color="#f0d080" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#txzSky)"/>
+    ${stars(7, 437)}
+    <rect width="300" height="450" fill="url(#txzDawn)"/>
+    <circle cx="204" cy="234" r="14" fill="#f8e080" opacity=".72"/>
+    <path d="M0 270 Q50 232 90 248 Q120 260 148 240 Q174 222 206 240 Q248 260 284 236 Q292 230 300 232 L300 450 L0 450 Z" fill="#485848" opacity=".6"/>
+    <path d="M0 324 Q150 308 300 322 L300 450 L0 450 Z" fill="#384838"/>
+    <path d="M0 374 Q150 360 300 372 L300 450 L0 450 Z" fill="#283828"/>
+    <rect width="300" height="450" fill="#a8c0c8" opacity=".08"/>
+    <g fill="#2c2c1e" opacity=".85">
+      <rect x="96" y="210" width="108" height="62"/>
+      <path d="M88 214 L150 180 L212 214 Z"/>
+      <rect x="116" y="180" width="68" height="36"/>
+    </g>
+    ${[[100,228],[116,228],[164,228],[180,228]].map(([x,y])=>`<rect x="${x}" y="${y}" width="12" height="22" fill="#f8e898" opacity=".4"/>`).join('')}
+    <rect x="96" y="268" width="108" height="6" fill="#f8e898" opacity=".2"/>
+    <g fill="#181c10">
+      <rect x="140" y="188" width="20" height="8" rx="2"/>
+      <rect x="148" y="174" width="4" height="16"/>
+      <circle cx="150" cy="172" r="6" fill="none" stroke="#181c10" stroke-width="3"/>
+    </g>
+    <g fill="#1c2018">
+      <circle cx="150" cy="262" r="5.5"/>
+      <rect x="147" y="267" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 270 Q150 264 300 268" stroke="#a8c0c8" stroke-width=".5" fill="none" opacity=".4"/>
+  `),
+
   /* ── La Condition humaine / Man's Fate · Shanghai — revolutionary night, 1927, smoke and gunfire ── */
   mansfate: scene(`
     <defs>

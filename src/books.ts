@@ -2246,6 +2246,17 @@ export const BOOKS: Book[] = [
     titles:{ English:'The Stone Angel' },
     blurbs:{ English:'Ninety-year-old Hagar Shipley, stubborn and proud as the stone angel on her family\'s grave, looks back on a life of fierce independence and quiet devastation on the Manitoba plains.' },
   },
+  // ── Hubei expansion ──
+  { id:'fenghuangqin', author:'刘醒龙 (Liu Xinglong)', year:1992, place:'Dabie Mountains, Hubei', country:'China', lng:114.9200, lat:31.2000, tier:1, relation:'set', genre:'Literary Fiction', rating:4.30, pages:150,
+    languages:['Chinese'],
+    titles:{ Chinese:'凤凰琴' },
+    blurbs:{ Chinese:'大别山深处一所村小，四名代课教师守着微薄薪水与破旧校舍，执念于一个转正名额——刘醒龙以悲悯之笔，道尽乡村教育的困境与人性的坚守。' },
+  },
+  { id:'tianxingzhe', author:'刘醒龙 (Liu Xinglong)', year:2011, place:'Dabie Mountains, Hubei', country:'China', lng:114.8500, lat:31.3500, tier:1, relation:'set', genre:'Literary Fiction', rating:4.10, pages:374,
+    languages:['Chinese'],
+    titles:{ Chinese:'天行者' },
+    blurbs:{ Chinese:'大别山界岭小学的民办教师们，用一生守望着那片贫瘠的土地与孩子们的未来——茅盾文学奖得奖作品，是《凤凰琴》精神的延续与升华。' },
+  },
   // ── Shanghai expansion ──
   { id:'mansfate', author:'André Malraux', year:1933, place:'Shanghai', country:'China', lng:121.4800, lat:31.2200, tier:1, relation:'set', genre:'Literary Fiction', rating:4.02, pages:359,
     languages:['English','French','Chinese'],
