@@ -156,17 +156,23 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
 
   // ---- ocean particle wave ----
 
-  // Dots stored as normalized offsets from globe centre (-1..1).
-  // Scaled by currentScale() each frame so density adapts to zoom.
-  interface WaveDot { nx: number; ny: number; }
+  // Particles are geo-anchored (lng/lat) so they follow globe rotation.
+  // Wave is purely vertical displacement in screen space — no colour change.
+  interface WaveDot { lng: number; lat: number; }
   let waveDots: WaveDot[] = [];
 
   function makeWaveDots() {
     waveDots = [];
-    const step = 0.028; // normalised spacing (~14 px at r≈500)
-    for (let ny = -1 + step * 0.5; ny < 1; ny += step) {
-      for (let nx = -1 + step * 0.5; nx < 1; nx += step) {
-        if (nx * nx + ny * ny < 0.96) waveDots.push({ nx, ny });
+    const rnd = mulberry32(77);
+    // Near-uniform spherical distribution: vary lng step by cos(lat)
+    for (let lat = -80; lat <= 80; lat += 3.5) {
+      const cosLat = Math.cos(lat * Math.PI / 180);
+      const dLng   = cosLat > 0.05 ? 3.5 / cosLat : 360;
+      for (let lng = -180; lng < 180; lng += dLng) {
+        // Small jitter so particles don't form a visible grid
+        const jLng = (rnd() - 0.5) * dLng * 0.55;
+        const jLat = (rnd() - 0.5) * 3.5   * 0.55;
+        waveDots.push({ lng: lng + jLng, lat: lat + jLat });
       }
     }
   }
@@ -174,51 +180,35 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
   let shimmerFrame: number | null = null;
 
   function drawWaveLayer() {
-    const t  = performance.now() * 0.001;
-    const cx = W / 2, cy = H / 2, r = currentScale();
+    const t   = performance.now() * 0.001;
+    const dotR = 1.4;
+
+    // Two wave trains: amplitude in screen px, frequency based on screen x.
+    // Screen-space waves mean bands stay horizontal as the globe rotates,
+    // while particles themselves travel with the globe — correct sticky behaviour.
+    const A1 = 5.5,  k1 = 0.018, w1 = 1.2;
+    const A2 = 3.0,  k2 = 0.011, w2 = 0.7;
 
     ctx.save();
     ctx.beginPath();
     canvasPath({ type: 'Sphere' } as d3.GeoSphere);
     ctx.clip();
-
-    // Two overlapping wave trains.
-    const k1 = 5.5, w1 = 1.4;
-    const k2 = 3.8, w2 = 0.85;
-
-    // Draw two passes: dim base dots, then bright crest dots.
-    // Using two fixed fillStyles avoids per-dot state changes.
-    const dotR = 1.5;
-
-    // Pass 1 — all dots at base opacity
-    ctx.fillStyle = 'rgba(140,210,255,0.28)';
+    ctx.fillStyle = 'rgba(150,215,255,0.35)';
     ctx.beginPath();
-    for (const d of waveDots) {
-      const bx = cx + d.nx * r;
-      const by = cy + d.ny * r;
-      const dy = r * (0.016 * Math.sin(d.nx * k1 + t * w1) +
-                      0.009 * Math.sin(d.nx * k2 - t * w2 + d.ny * 1.2));
-      ctx.moveTo(bx + dotR, by + dy);
-      ctx.arc(bx, by + dy, dotR, 0, Math.PI * 2);
-    }
-    ctx.fill();
 
-    // Pass 2 — only crest dots get a brighter highlight
-    ctx.fillStyle = 'rgba(200,235,255,0.45)';
-    ctx.beginPath();
     for (const d of waveDots) {
-      const phase  = d.nx * k1 + t * w1;
-      const bright = Math.sin(phase);
-      if (bright < 0.55) continue; // only near-crest dots
-      const bx = cx + d.nx * r;
-      const by = cy + d.ny * r;
-      const dy = r * (0.016 * Math.sin(phase) +
-                      0.009 * Math.sin(d.nx * k2 - t * w2 + d.ny * 1.2));
-      ctx.moveTo(bx + dotR, by + dy);
-      ctx.arc(bx, by + dy, dotR, 0, Math.PI * 2);
+      if (!isVisible(d.lng, d.lat)) continue;
+      const xy = projection([d.lng, d.lat]);
+      if (!xy) continue;
+      const [sx, sy] = xy;
+      // Wave displacement: purely vertical, driven by screen-x + time
+      const dy = A1 * Math.sin(sx * k1 + t * w1)
+               + A2 * Math.sin(sx * k2 - t * w2);
+      ctx.moveTo(sx + dotR, sy + dy);
+      ctx.arc(sx, sy + dy, dotR, 0, Math.PI * 2);
     }
-    ctx.fill();
 
+    ctx.fill();
     ctx.restore();
   }
 
