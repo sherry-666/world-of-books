@@ -1153,6 +1153,117 @@ export const ASIA_AFRICA_PACIFIC_COVERS: Record<string, string> = {
     <path d="M0 316 Q150 310 300 314" stroke="#1c1e20" stroke-width=".5" fill="none" opacity=".4"/>
   `),
 
+  /* ── Endurance · Weddell Sea — a ship crushed in pack ice, polar night, a crew's last hope ── */
+  endurance: scene(`
+    <defs>
+      <linearGradient id="endSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#020408"/><stop offset=".38" stop-color="#04080c"/>
+        <stop offset=".68" stop-color="#080c14"/><stop offset="1" stop-color="#0c1018"/>
+      </linearGradient>
+      <radialGradient id="endMoon" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#e0eaf8" stop-opacity=".8"/>
+        <stop offset="1" stop-color="#e0eaf8" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#endSky)"/>
+    ${stars(18, 471)}
+    <circle cx="224" cy="128" r="60" fill="url(#endMoon)"/>
+    <circle cx="224" cy="128" r="16" fill="#e8f0f8" opacity=".82"/>
+    <path d="M0 296 Q40 268 80 280 Q110 290 140 272 Q168 254 200 268 Q236 284 272 264 Q288 254 300 256 L300 450 L0 450 Z" fill="#c8d8e8" opacity=".75"/>
+    <path d="M0 350 Q150 334 300 348 L300 450 L0 450 Z" fill="#b8c8d8" opacity=".85"/>
+    <path d="M0 400 Q150 386 300 398 L300 450 L0 450 Z" fill="#a8b8c8"/>
+    ${Array.from({length:14}).map((_,i)=>`<path d="M${14+i*22} ${298+i%3*10} Q${22+i*22} ${278+i%3*8} ${30+i*22} ${294+i%3*8}" stroke="#c8d8e8" stroke-width=".6" fill="#b8c8d8" opacity=".55"/>`).join('')}
+    <g fill="#0e1418" opacity=".88">
+      <rect x="110" y="208" width="80" height="92"/>
+      <path d="M102 212 L150 174 L198 212 Z"/>
+      <rect x="128" y="174" width="44" height="40"/>
+      <rect x="146" y="142" width="8" height="36"/>
+      <path d="M140 146 L150 106 L160 146 Z"/>
+    </g>
+    <g fill="#1a2830" opacity=".7">
+      ${Array.from({length:5}).map((_,i)=>`<path d="M${98+i*4} ${296} Q${100+i*4} ${282} ${102+i*4} ${270}" stroke="#2a3c4c" stroke-width="2" fill="none" opacity=".5"/>`).join('')}
+      ${Array.from({length:5}).map((_,i)=>`<path d="M${196+i*4} ${296} Q${198+i*4} ${280} ${200+i*4} ${268}" stroke="#2a3c4c" stroke-width="2" fill="none" opacity=".5"/>`).join('')}
+    </g>
+    <g fill="#060810">
+      <circle cx="150" cy="288" r="5.5"/>
+      <rect x="147" y="293" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 296 Q150 290 300 294" stroke="#0c1018" stroke-width=".5" fill="none" opacity=".5"/>
+  `),
+
+  /* ── North Pole Walk · Arctic — endless white ice, a lone figure, the midnight sun ── */
+  northpolewalk: scene(`
+    <defs>
+      <linearGradient id="npwSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#c8d8f0"/><stop offset=".3" stop-color="#d8e8f8"/>
+        <stop offset=".6" stop-color="#e8f0f8"/><stop offset=".8" stop-color="#f0f4f8"/>
+        <stop offset="1" stop-color="#e8eef4"/>
+      </linearGradient>
+      <radialGradient id="npwSun" cx="50%" cy="30%" r="30%">
+        <stop offset="0" stop-color="#ffe0a0" stop-opacity=".7"/>
+        <stop offset="1" stop-color="#ffe0a0" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#npwSky)"/>
+    <rect width="300" height="450" fill="url(#npwSun)"/>
+    <circle cx="150" cy="148" r="18" fill="#fff0b0" opacity=".75"/>
+    <path d="M0 310 Q150 296 300 308 L300 450 L0 450 Z" fill="#d8e8f0" opacity=".9"/>
+    <path d="M0 360 Q150 346 300 358 L300 450 L0 450 Z" fill="#c8d8e8" opacity=".92"/>
+    <path d="M0 410 Q150 398 300 408 L300 450 L0 450 Z" fill="#b8c8d8"/>
+    ${Array.from({length:12}).map((_,i)=>`<path d="M${16+i*24} ${312+i%3*12} Q${26+i*24} ${294+i%3*10} ${36+i*24} ${310+i%3*10}" stroke="#d8e8f0" stroke-width=".6" fill="#c8d8e8" opacity=".6"/>`).join('')}
+    <g fill="#304860" opacity=".85">
+      <circle cx="150" cy="278" r="10"/>
+      <rect x="144" y="288" width="12" height="28" rx="2"/>
+      <path d="M130 282 L144 286 L144 312 Q132 316 126 306 Z"/>
+      <path d="M170 282 L156 286 L156 312 Q168 316 174 306 Z"/>
+      <path d="M142 288 L108 304 L110 298 L144 282 Z"/>
+      <rect x="126" y="312" width="48" height="6" rx="2" fill="#203448"/>
+    </g>
+    <g fill="#203448" opacity=".6">
+      <path d="M0 310 Q75 306 150 310 Q225 314 300 308" stroke="#203448" stroke-width="1.5" fill="none" opacity=".3"/>
+    </g>
+    <g fill="#182838">
+      <circle cx="150" cy="302" r="5.5"/>
+      <rect x="147" y="307" width="5" height="8" rx="1"/>
+    </g>
+  `),
+
+  /* ── 南极绝恋 · Antarctica — aurora australis, a research station, two souls at the end of the earth ── */
+  antarcticlove: scene(`
+    <defs>
+      <linearGradient id="aalSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#020608"/><stop offset=".36" stop-color="#040c0e"/>
+        <stop offset=".64" stop-color="#061412"/><stop offset=".86" stop-color="#0a1c18"/>
+        <stop offset="1" stop-color="#102420"/>
+      </linearGradient>
+      <radialGradient id="aalAurora" cx="50%" cy="40%" r="60%">
+        <stop offset="0" stop-color="#40e0a0" stop-opacity=".4"/>
+        <stop offset="1" stop-color="#40e0a0" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#aalSky)"/>
+    ${stars(16, 473)}
+    <rect width="300" height="450" fill="url(#aalAurora)"/>
+    <path d="M60 100 Q80 60 100 100 Q120 60 140 100 Q160 60 180 100 Q200 60 220 100" stroke="#40e0a0" stroke-width="1.5" fill="none" opacity=".5"/>
+    <path d="M40 130 Q70 80 100 130 Q130 80 160 130 Q190 80 220 130 Q250 80 270 130" stroke="#60c8e0" stroke-width="1" fill="none" opacity=".35"/>
+    <path d="M0 308 Q150 294 300 306 L300 450 L0 450 Z" fill="#c8d8e0" opacity=".8"/>
+    <path d="M0 358 Q150 344 300 356 L300 450 L0 450 Z" fill="#b8c8d0" opacity=".85"/>
+    <path d="M0 408 Q150 396 300 406 L300 450 L0 450 Z" fill="#a8b8c0"/>
+    ${Array.from({length:12}).map((_,i)=>`<path d="M${18+i*24} ${310+i%3*10} Q${28+i*24} ${292+i%3*8} ${38+i*24} ${308+i%3*8}" stroke="#c8d8e0" stroke-width=".6" fill="#b8c8d0" opacity=".55"/>`).join('')}
+    <g fill="#0c1416" opacity=".9">
+      <rect x="98" y="232" width="104" height="78"/>
+      <path d="M90 236 L150 200 L210 236 Z"/>
+      <rect x="118" y="200" width="64" height="38"/>
+      ${Array.from({length:4}).map((_,i)=>`<rect x="${102+i*26}" y="${232}" width="18" height="78" fill="#0e1618" opacity=".2"/>`).join('')}
+    </g>
+    ${[[102,254],[118,254],[162,254],[178,254],[102,288],[118,288]].map(([x,y])=>`<rect x="${x}" y="${y}" width="14" height="22" fill="#80f0d0" opacity="${y<270?'.3':'.2'}"/>`).join('')}
+    <g fill="#060c0e">
+      <circle cx="150" cy="300" r="5.5"/>
+      <rect x="147" y="305" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 308 Q150 302 300 306" stroke="#102420" stroke-width=".5" fill="none" opacity=".4"/>
+  `),
+
   /* ── Long Walk to Freedom · Johannesburg — sunrise over the Highveld, a prison door opening ── */
   longwalkfreedom: scene(`
     <defs>
