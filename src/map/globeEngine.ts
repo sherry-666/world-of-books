@@ -154,83 +154,7 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
     return dot > -0.08; // slightly past horizon so edge markers don't pop
   }
 
-  // ---- ocean particle wave ----
-
-  // Particles are geo-anchored (lng/lat) so they follow globe rotation.
-  // Wave is purely vertical displacement in screen space — no colour change.
-  interface WaveDot { lng: number; lat: number; }
-  let waveDots: WaveDot[] = [];
-
-  function makeWaveDots() {
-    waveDots = [];
-    const rnd = mulberry32(77);
-    // Near-uniform spherical distribution: vary lng step by cos(lat)
-    for (let lat = -80; lat <= 80; lat += 3.5) {
-      const cosLat = Math.cos(lat * Math.PI / 180);
-      const dLng   = cosLat > 0.05 ? 3.5 / cosLat : 360;
-      for (let lng = -180; lng < 180; lng += dLng) {
-        // Small jitter so particles don't form a visible grid
-        const jLng = (rnd() - 0.5) * dLng * 0.55;
-        const jLat = (rnd() - 0.5) * 3.5   * 0.55;
-        waveDots.push({ lng: lng + jLng, lat: lat + jLat });
-      }
-    }
-  }
-
   let shimmerFrame: number | null = null;
-
-  function drawWaveLayer() {
-    const t   = performance.now() * 0.001;
-    const dotR = 1.4;
-
-    // Two wave trains: amplitude in screen px, frequency based on screen x.
-    // Screen-space waves mean bands stay horizontal as the globe rotates,
-    // while particles themselves travel with the globe — correct sticky behaviour.
-    const A1 = 5.5,  k1 = 0.018, w1 = 1.2;
-    const A2 = 3.0,  k2 = 0.011, w2 = 0.7;
-
-    ctx.save();
-    ctx.beginPath();
-    canvasPath({ type: 'Sphere' } as d3.GeoSphere);
-    ctx.clip();
-    // Thin out particles when zoomed out — density ∝ zoom²
-    // zoom=1 → 1 in 4 dots; zoom=2 → all dots
-    const skip = Math.max(1, Math.round(4 / (zoomFactor * zoomFactor)));
-
-    ctx.fillStyle = 'rgba(150,215,255,0.35)';
-    ctx.beginPath();
-
-    for (let i = 0; i < waveDots.length; i += skip) {
-      const d = waveDots[i];
-      if (!isVisible(d.lng, d.lat)) continue;
-      const xy = projection([d.lng, d.lat]);
-      if (!xy) continue;
-      const [sx, sy] = xy;
-      // Wave displacement: purely vertical, driven by screen-x + time
-      const dy = A1 * Math.sin(sx * k1 + t * w1)
-               + A2 * Math.sin(sx * k2 - t * w2);
-      ctx.moveTo(sx + dotR, sy + dy);
-      ctx.arc(sx, sy + dy, dotR, 0, Math.PI * 2);
-    }
-
-    ctx.fill();
-    ctx.restore();
-  }
-
-  function startShimmerLoop() {
-    if (shimmerFrame !== null) return;
-    let last = 0;
-    function tick(now: number) {
-      shimmerFrame = requestAnimationFrame(tick);
-      if (now - last < 40) return; // ~25 fps
-      last = now;
-      if (animFrame !== null || dragRaf !== null) return; // defer to ongoing animation
-      drawBase();
-      drawProvinces();
-      if (pEvents.length) drawAuthorPath();
-    }
-    shimmerFrame = requestAnimationFrame(tick);
-  }
 
   // ---- stars (canvas) ----
 
@@ -273,10 +197,10 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
     ctx.fillStyle = glow;
     ctx.fill();
 
-    // Ocean
+    // Ocean — semi-transparent so the starfield shows through
     ctx.beginPath();
     canvasPath({ type: 'Sphere' } as d3.GeoSphere);
-    ctx.fillStyle = cssVar('--ocean') || '#0e1a2c';
+    ctx.fillStyle = 'rgba(10,22,44,0.45)';
     ctx.fill();
 
     // Graticule (only when enabled via tweaks)
@@ -287,9 +211,6 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
       ctx.lineWidth = 0.4;
       ctx.stroke();
     }
-
-    // Ocean waves — sine bands scrolling across the water, clipped to sphere, beneath land
-    drawWaveLayer();
 
     // Land
     ctx.beginPath();
@@ -817,7 +738,6 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
       .attr('width', W).attr('height', H);
     projection.translate([W / 2, H / 2]).scale(currentScale());
     makeStars();
-    makeWaveDots();
     redraw();
   }
 
@@ -835,9 +755,7 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
     bordersData = mesh(topo, topo.objects.countries, (a: any, b: any) => a !== b) as unknown as GeoJSON.MultiLineString;
 
     makeStars();
-    makeWaveDots();
     drawBase();
-    startShimmerLoop();
     projectBooks();
     buildCountryLabels(landData);
     buildMarkers();
