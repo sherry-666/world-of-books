@@ -829,4 +829,159 @@ export const ASIA_AFRICA_PACIFIC_COVERS: Record<string, string> = {
     ${Array.from({length:3}).map((_,i)=>`<path d="M${148+i*6} ${200} Q${150+i*6} ${178} ${146+i*6} ${162}" stroke="#201808" stroke-width="${2.5-i*0.5}" fill="none" opacity=".5"/>`).join('')}
     <rect x="0" y="262" width="300" height="18" fill="#384808" opacity=".22"/>
   `),
+
+  /* ── Palace Walk · Cairo — minarets at dusk, a Khan el-Khalili alley, warm golden light ── */
+  palacewalk: scene(`
+    <defs>
+      <linearGradient id="pwkSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#181008"/><stop offset=".38" stop-color="#301808"/>
+        <stop offset=".68" stop-color="#603020"/><stop offset=".88" stop-color="#b07030"/>
+        <stop offset="1" stop-color="#d09050"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#pwkSky)"/>
+    ${stars(8, 367)}
+    <path d="M0 318 Q150 306 300 316 L300 450 L0 450 Z" fill="#201408"/>
+    <path d="M0 368 Q150 358 300 366 L300 450 L0 450 Z" fill="#180e08"/>
+    <g fill="#0e0c08">
+      <rect x="82" y="152" width="136" height="170"/>
+      <path d="M74 156 L150 116 L226 156 Z"/>
+      ${[86,108,130,152,174,196].map(x=>`<rect x="${x}" y="${156}" width="16" height="24" rx="1" fill="#1a1208" opacity=".5"/>`).join('')}
+    </g>
+    <g fill="#2a1c08">
+      <rect x="56" y="188" width="30" height="134"/>
+      <path d="M50 192 L71 168 L92 192 Z"/>
+      <rect x="63" y="168" width="16" height="26"/>
+      <rect x="67" y="156" width="8" height="14"/>
+      <rect x="69" y="144" width="4" height="14"/>
+      <rect x="214" y="200" width="30" height="122"/>
+      <path d="M208 204 L229 180 L250 204 Z"/>
+      <rect x="221" y="180" width="16" height="26"/>
+      <rect x="225" y="168" width="8" height="14"/>
+      <rect x="227" y="156" width="4" height="14"/>
+    </g>
+    ${[[86,184],[102,184],[86,216],[102,216],[174,196],[190,196],[174,228],[190,228]].map(([x,y])=>`<rect x="${x}" y="${y}" width="12" height="20" fill="#e8a030" opacity="${y<200?'.42':'.28'}"/>`).join('')}
+    <path d="M0 318 Q150 312 300 316" stroke="#d09050" stroke-width=".5" fill="none" opacity=".35"/>
+    <g fill="#0c0a06">
+      <circle cx="150" cy="308" r="5.5"/>
+      <rect x="147" y="313" width="5" height="10" rx="1"/>
+    </g>
+  `),
+
+  /* ── So Long a Letter · Dakar — the Atlantic at dusk, a Senegalese courtyard, a pen and paper ── */
+  solongletter: scene(`
+    <defs>
+      <linearGradient id="sllSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a1018"/><stop offset=".38" stop-color="#3a2028"/>
+        <stop offset=".68" stop-color="#8a4030"/><stop offset=".88" stop-color="#c07040"/>
+        <stop offset="1" stop-color="#d09060"/>
+      </linearGradient>
+      <radialGradient id="sllSun" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#e06020" stop-opacity=".8"/>
+        <stop offset="1" stop-color="#e06020" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#sllSky)"/>
+    ${stars(6, 369)}
+    <circle cx="220" cy="248" r="80" fill="url(#sllSun)"/>
+    <circle cx="220" cy="248" r="22" fill="#e87030" opacity=".85"/>
+    <path d="M0 308 Q150 296 300 306 L300 450 L0 450 Z" fill="#1c3050"/>
+    <path d="M0 358 Q150 346 300 356 L300 450 L0 450 Z" fill="#142440"/>
+    <path d="M0 408 Q150 398 300 406 L300 450 L0 450 Z" fill="#0e1830"/>
+    ${Array.from({length:6}).map((_,i)=>`<path d="M${24+i*48} ${316+i%2*14} Q${38+i*48} ${304+i%2*12} ${52+i*48} ${316+i%2*12}" stroke="#1c3050" stroke-width=".8" fill="none" opacity=".55"/>`).join('')}
+    <g fill="#1a1010">
+      <rect x="80" y="188" width="140" height="124"/>
+      <path d="M72 192 L150 156 L228 192 Z"/>
+      ${Array.from({length:5}).map((_,i)=>`<path d="M${84+i*28} ${188} L${84+i*28} ${170} Q${98+i*28} ${160} ${112+i*28} ${170} L${112+i*28} ${188} Z" fill="#1e1414"/>`).join('')}
+    </g>
+    ${[[84,208],[100,208],[84,240],[100,240],[176,208],[192,208],[176,240],[192,240]].map(([x,y])=>`<rect x="${x}" y="${y}" width="12" height="20" fill="#f0c060" opacity="${y<220?'.38':'.26'}"/>`).join('')}
+    <rect x="110" y="284" width="80" height="30" rx="2" fill="#e8e0c8" opacity=".18"/>
+    <path d="M116 296 L184 296 M116 302 L170 302 M116 308 L178 308" stroke="#e8e0c8" stroke-width=".7" opacity=".3"/>
+    <g fill="#100e0a">
+      <circle cx="150" cy="298" r="5.5"/>
+      <rect x="147" y="303" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 308 Q150 302 300 306" stroke="#c07040" stroke-width=".5" fill="none" opacity=".3"/>
+  `),
+
+  /* ── Purple Hibiscus · Enugu — a Nigerian garden, purple hibiscus blooms, a walled compound ── */
+  purplehibiscus: scene(`
+    <defs>
+      <linearGradient id="phbSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#5060a0"/><stop offset=".4" stop-color="#7888c0"/>
+        <stop offset=".7" stop-color="#9898b8"/><stop offset="1" stop-color="#c0c0c8"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#phbSky)"/>
+    ${stars(4, 371)}
+    <path d="M0 308 Q150 296 300 306 L300 450 L0 450 Z" fill="#385828"/>
+    <path d="M0 360 Q150 348 300 358 L300 450 L0 450 Z" fill="#2c4820"/>
+    <path d="M0 412 Q150 402 300 410 L300 450 L0 450 Z" fill="#203818"/>
+    <rect x="66" y="214" width="168" height="96" fill="#3a2810"/>
+    <rect x="66" y="210" width="168" height="8" fill="#2e2008"/>
+    ${Array.from({length:7}).map((_,i)=>`<rect x="${70+i*24}" y="${218}" width="16" height="92" fill="#2e2008" opacity=".3"/>`).join('')}
+    ${[[70,230],[90,230],[70,264],[90,264],[184,230],[200,230],[184,264],[200,264]].map(([x,y])=>`<rect x="${x}" y="${y}" width="14" height="22" fill="#f0d080" opacity="${y<250?'.38':'.26'}"/>`).join('')}
+    ${Array.from({length:8}).map((_,i)=>`<path d="M${54+i*28} ${308} Q${60+i*28} ${278} ${66+i*28} ${260} Q${70+i*28} ${244} ${74+i*28} ${238}" stroke="#4a6830" stroke-width="3" fill="none" opacity=".7"/>`).join('')}
+    ${Array.from({length:10}).map((_,i)=>{const x=50+(i%5)*44+(Math.floor(i/5))*20,y=252+(i%3)*18; return `<circle cx="${x}" cy="${y}" r="${5+i%2*3}" fill="#9040a0" opacity="${0.5+i%3*0.1}"/>`;}).join('')}
+    ${Array.from({length:6}).map((_,i)=>{const x=60+(i%3)*52+(Math.floor(i/3))*24,y=272+(i%2)*16; return `<circle cx="${x}" cy="${y}" r="${4+i%2*2}" fill="#b060c0" opacity="${0.4+i%2*0.1}"/>`;}).join('')}
+    <g fill="#201808">
+      <circle cx="150" cy="302" r="5.5"/>
+      <rect x="147" y="307" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 308 Q150 302 300 306" stroke="#c0c0c8" stroke-width=".5" fill="none" opacity=".28"/>
+  `),
+
+  /* ── Half of a Yellow Sun · Biafra — a half-sun flag, red laterite earth, wartime skies ── */
+  halfyellowsun: scene(`
+    <defs>
+      <linearGradient id="hysSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#181010"/><stop offset=".38" stop-color="#2c1808"/>
+        <stop offset=".68" stop-color="#602808"/><stop offset=".88" stop-color="#904020"/>
+        <stop offset="1" stop-color="#b06030"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#hysSky)"/>
+    ${stars(7, 373)}
+    <path d="M0 316 Q150 304 300 314 L300 450 L0 450 Z" fill="#6a3010"/>
+    <path d="M0 366 Q150 356 300 364 L300 450 L0 450 Z" fill="#4a2008"/>
+    <path d="M0 416 Q150 408 300 414 L300 450 L0 450 Z" fill="#301408"/>
+    ${Array.from({length:5}).map((_,i)=>`<path d="M${30+i*52} ${326+i%2*14} Q${44+i*52} ${314+i%2*12} ${58+i*52} ${326+i%2*12}" stroke="#4a2010" stroke-width=".8" fill="none" opacity=".55"/>`).join('')}
+    <path d="M150 96 L150 288" stroke="#e8a020" stroke-width="80" opacity=".08"/>
+    <path d="M150 96 L236 242 A96 96 0 0 1 64 242 Z" fill="#e8b020" opacity=".82"/>
+    <path d="M150 96 L236 242 A96 96 0 0 1 64 242 Z" fill="none" stroke="#c88010" stroke-width="1.5" opacity=".6"/>
+    <path d="M150 96 L150 288 L64 242 Z" fill="#c88010" opacity=".5"/>
+    <path d="M150 96 L150 288" stroke="#a06808" stroke-width="1" opacity=".4"/>
+    <g fill="#1a1008">
+      <circle cx="138" cy="308" r="5"/>
+      <circle cx="162" cy="308" r="5"/>
+    </g>
+    <path d="M0 316 Q150 310 300 314" stroke="#904020" stroke-width=".5" fill="none" opacity=".35"/>
+  `),
+
+  /* ── Americanah · Lagos — Victoria Island skyline, Lagos lagoon, a woman with natural hair ── */
+  americanah: scene(`
+    <defs>
+      <linearGradient id="amnSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#101828"/><stop offset=".38" stop-color="#1c2c48"/>
+        <stop offset=".68" stop-color="#2c4878"/><stop offset="1" stop-color="#4070a0"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#amnSky)"/>
+    ${stars(8, 375)}
+    <path d="M0 306 Q150 294 300 304 L300 450 L0 450 Z" fill="#182038"/>
+    <path d="M0 354 Q150 342 300 352 L300 450 L0 450 Z" fill="#10182c"/>
+    <path d="M0 402 Q150 392 300 400 L300 450 L0 450 Z" fill="#0c1020"/>
+    <g fill="#0e1628">
+      ${[34,70,106,142,178,214,250].map((x,i)=>`<rect x="${x}" y="${168+i%3*24}" width="28" height="${140-i%3*24}"/>`).join('')}
+    </g>
+    ${Array.from({length:18}).map((_,i)=>{const x=(i*54+6)%296,y=176+(i*38)%130; return `<rect x="${x}" y="${y}" width="8" height="14" fill="${i%2===0?'#e0b030':'#30a0c0'}" opacity="${0.12+(i%4)*0.05}"/>`;}).join('')}
+    ${Array.from({length:4}).map((_,i)=>`<path d="M${28+i*64} ${314+i%2*12} Q${42+i*64} ${302+i%2*10} ${56+i*64} ${314+i%2*10}" stroke="#1c2c48" stroke-width=".7" fill="none" opacity=".55"/>`).join('')}
+    <path d="M0 306 Q150 300 300 304" stroke="#4070a0" stroke-width=".5" fill="none" opacity=".35"/>
+    <g fill="#0a0e18">
+      <circle cx="150" cy="296" r="8"/>
+      <path d="M136 280 Q150 260 164 280 Q162 268 150 264 Q138 268 136 280 Z" fill="#0a0e18"/>
+      <rect x="146" y="304" width="7" height="10" rx="1"/>
+      <path d="M136 310 L146 306 L154 306 L164 310 L160 328 L140 328 Z"/>
+    </g>
+  `),
 };

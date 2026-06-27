@@ -279,4 +279,42 @@ export const LATIN_AMERICA_COVERS: Record<string, string> = {
     </g>
     ${Array.from({length:3}).map((_,i)=>`<path d="M${148+i*18} ${300} Q${152+i*18} ${280} ${148+i*18} ${270}" stroke="#1a6080" stroke-width="1.5" fill="none" opacity=".35"/>`).join('')}
   `),
+
+  /* ── The House of the Spirits · Santiago — the Andes above a grand house, magical light ── */
+  houseofspirits: scene(`
+    <defs>
+      <linearGradient id="hosSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#181028"/><stop offset=".38" stop-color="#302050"/>
+        <stop offset=".68" stop-color="#584878"/><stop offset="1" stop-color="#806890"/>
+      </linearGradient>
+      <radialGradient id="hosMoon" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#f0e8f8" stop-opacity=".7"/>
+        <stop offset="1" stop-color="#f0e8f8" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#hosSky)"/>
+    ${stars(11, 377)}
+    <circle cx="210" cy="130" r="65" fill="url(#hosMoon)"/>
+    <circle cx="210" cy="130" r="18" fill="#f0e8f8" opacity=".82"/>
+    <path d="M0 270 Q60 234 100 246 Q130 256 150 238 Q170 220 200 236 Q240 256 300 234 L300 450 L0 450 Z" fill="#484048"/>
+    <path d="M0 322 Q150 310 300 320 L300 450 L0 450 Z" fill="#383038"/>
+    <path d="M0 374 Q150 364 300 372 L300 450 L0 450 Z" fill="#282028"/>
+    <g fill="#201828">
+      <rect x="78" y="192" width="144" height="134"/>
+      <path d="M70 196 L150 158 L230 196 Z"/>
+      <rect x="100" y="158" width="100" height="40"/>
+      <path d="M94 164 L150 132 L206 164 Z"/>
+      <rect x="122" y="132" width="56" height="34"/>
+      <rect x="138" y="120" width="24" height="14"/>
+    </g>
+    ${[[82,212],[98,212],[82,248],[98,248],[178,212],[194,212],[178,248],[194,248]].map(([x,y])=>`<rect x="${x}" y="${y}" width="12" height="22" fill="#c0a0e0" opacity="${y<230?'.42':'.28'}"/>`).join('')}
+    ${Array.from({length:5}).map((_,i)=>`<path d="M${84+i*30} ${322} Q${88+i*30} ${302} ${92+i*30} ${288} Q${96+i*30} ${274} ${100+i*30} ${270}" stroke="#604870" stroke-width="2.5" fill="none" opacity=".55"/>`).join('')}
+    ${Array.from({length:6}).map((_,i)=>`<circle cx="${82+(i%3)*46+(Math.floor(i/3))*20}" cy="${284+(i%2)*18}" r="${4+i%2*2}" fill="#b080d0" opacity="${0.38+i%3*0.08}"/>`).join('')}
+    <g fill="#181020">
+      <circle cx="150" cy="314" r="5.5"/>
+      <rect x="147" y="319" width="5" height="10" rx="1"/>
+      <path d="M140 326 L147 322 L153 322 L160 326 L158 338 L142 338 Z"/>
+    </g>
+    <path d="M0 322 Q150 316 300 320" stroke="#806890" stroke-width=".5" fill="none" opacity=".3"/>
+  `),
 };
