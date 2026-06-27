@@ -1153,6 +1153,270 @@ export const ASIA_AFRICA_PACIFIC_COVERS: Record<string, string> = {
     <path d="M0 316 Q150 310 300 314" stroke="#1c1e20" stroke-width=".5" fill="none" opacity=".4"/>
   `),
 
+  /* ── Long Walk to Freedom · Johannesburg — sunrise over the Highveld, a prison door opening ── */
+  longwalkfreedom: scene(`
+    <defs>
+      <linearGradient id="lwfSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#060810"/><stop offset=".34" stop-color="#101828"/>
+        <stop offset=".62" stop-color="#3c3020"/><stop offset=".82" stop-color="#906020"/>
+        <stop offset="1" stop-color="#c09030"/>
+      </linearGradient>
+      <radialGradient id="lwfSun" cx="50%" cy="58%" r="42%">
+        <stop offset="0" stop-color="#ffd040" stop-opacity=".7"/>
+        <stop offset="1" stop-color="#ffd040" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#lwfSky)"/>
+    ${stars(8, 457)}
+    <rect width="300" height="450" fill="url(#lwfSun)"/>
+    <circle cx="150" cy="262" r="20" fill="#ffd840" opacity=".82"/>
+    <path d="M0 308 Q150 294 300 306 L300 450 L0 450 Z" fill="#6a6040"/>
+    <path d="M0 358 Q150 344 300 356 L300 450 L0 450 Z" fill="#585030"/>
+    <path d="M0 408 Q150 396 300 406 L300 450 L0 450 Z" fill="#484020"/>
+    ${Array.from({length:10}).map((_,i)=>`<path d="M${18+i*28} ${310+i%2*12} Q${28+i*28} ${296+i%2*10} ${38+i*28} ${310+i%2*10}" stroke="#6a6040" stroke-width=".5" fill="#585030" opacity=".5"/>`).join('')}
+    <g fill="#181410" opacity=".88">
+      <rect x="106" y="204" width="88" height="106"/>
+      <path d="M98 208 L150 172 L202 208 Z"/>
+      <rect x="124" y="172" width="52" height="38"/>
+      <rect x="96" y="200" width="108" height="10" fill="#282018" opacity=".5"/>
+    </g>
+    <g fill="#302818" opacity=".9">
+      <rect x="118" y="258" width="64" height="52"/>
+      <rect x="140" y="268" width="20" height="42" fill="#201808"/>
+    </g>
+    <rect x="136" y="268" width="28" height="6" fill="#c09030" opacity=".5"/>
+    <g fill="#080808">
+      <circle cx="150" cy="300" r="5.5"/>
+      <rect x="147" y="305" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 308 Q150 302 300 306" stroke="#c09030" stroke-width=".5" fill="none" opacity=".4"/>
+  `),
+
+  /* ── The Boy Who Harnessed the Wind · Wimbe, Malawi — a windmill against the sky, red African earth ── */
+  windboy: scene(`
+    <defs>
+      <linearGradient id="wbySky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a2c08"/><stop offset=".38" stop-color="#2c4810"/>
+        <stop offset=".66" stop-color="#608030"/><stop offset=".88" stop-color="#c0a040"/>
+        <stop offset="1" stop-color="#d8c060"/>
+      </linearGradient>
+      <radialGradient id="wbySun" cx="74%" cy="38%" r="30%">
+        <stop offset="0" stop-color="#ffe060" stop-opacity=".6"/>
+        <stop offset="1" stop-color="#ffe060" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#wbySky)"/>
+    ${stars(6, 459)}
+    <rect width="300" height="450" fill="url(#wbySun)"/>
+    <circle cx="222" cy="196" r="14" fill="#ffe060" opacity=".78"/>
+    <path d="M0 304 Q150 290 300 302 L300 450 L0 450 Z" fill="#785838"/>
+    <path d="M0 354 Q150 340 300 352 L300 450 L0 450 Z" fill="#684828"/>
+    <path d="M0 404 Q150 392 300 402 L300 450 L0 450 Z" fill="#583820"/>
+    <rect x="147" y="168" width="6" height="138" fill="#301c08"/>
+    <g fill="#402808" opacity=".85">
+      <path d="M150 172 L138 212 L150 200 Z"/>
+      <path d="M150 172 L162 212 L150 200 Z"/>
+      <path d="M150 172 L110 184 L138 190 Z"/>
+      <path d="M150 172 L190 184 L162 190 Z"/>
+    </g>
+    <g fill="#c09030" opacity=".5">
+      <circle cx="150" cy="172" r="8"/>
+      <circle cx="150" cy="172" r="4" fill="#e0b040"/>
+    </g>
+    <g fill="#481c08" opacity=".7">
+      ${[34,68,210,246].map((x,i)=>`<rect x="${x-2}" y="${236+i%2*14}" width="4" height="${68-i%2*14}" rx="1"/><ellipse cx="${x}" cy="${236+i%2*14}" rx="${12+i%2*4}" ry="${8+i%2*3}" fill="#3c5018" opacity=".7"/>`).join('')}
+    </g>
+    <g fill="#200c04">
+      <circle cx="150" cy="296" r="5.5"/>
+      <rect x="147" y="301" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 304 Q150 298 300 302" stroke="#d8c060" stroke-width=".5" fill="none" opacity=".35"/>
+  `),
+
+  /* ── Out of Africa · Nairobi — a coffee farm at dusk, the Ngong Hills, a vast Kenyan sky ── */
+  outofafrica: scene(`
+    <defs>
+      <linearGradient id="oafSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0c1018"/><stop offset=".36" stop-color="#1c2030"/>
+        <stop offset=".64" stop-color="#503838"/><stop offset=".84" stop-color="#a06840"/>
+        <stop offset="1" stop-color="#c89050"/>
+      </linearGradient>
+      <radialGradient id="oafSun" cx="64%" cy="60%" r="36%">
+        <stop offset="0" stop-color="#e08030" stop-opacity=".65"/>
+        <stop offset="1" stop-color="#e08030" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#oafSky)"/>
+    ${stars(9, 461)}
+    <rect width="300" height="450" fill="url(#oafSun)"/>
+    <circle cx="192" cy="282" r="16" fill="#e08030" opacity=".72"/>
+    <path d="M0 274 Q40 238 80 254 Q110 266 140 246 Q170 226 206 244 Q244 264 278 242 Q290 234 300 236 L300 450 L0 450 Z" fill="#4a5030" opacity=".55"/>
+    <path d="M0 330 Q150 314 300 328 L300 450 L0 450 Z" fill="#3a4028"/>
+    <path d="M0 380 Q150 366 300 378 L300 450 L0 450 Z" fill="#2a3018"/>
+    <g fill="#1c1408" opacity=".85">
+      ${[34,66,100,136,172,208,242,272].map((x,i)=>`
+        <ellipse cx="${x}" cy="${264+i%2*12}" rx="${16+i%2*6}" ry="${22+i%2*8}"/>
+        <ellipse cx="${x}" cy="${286+i%2*10}" rx="${18+i%2*6}" ry="${14+i%2*4}" opacity=".8"/>
+        <rect x="${x-3}" y="${284+i%2*10}" width="6" height="${24+i%2*8}" rx="1"/>
+      `).join('')}
+    </g>
+    <g fill="#100c08" opacity=".8">
+      <rect x="110" y="216" width="80" height="60"/>
+      <path d="M102 220 L150 190 L198 220 Z"/>
+      <rect x="126" y="190" width="48" height="32"/>
+    </g>
+    ${[[114,234],[130,234],[158,234],[174,234]].map(([x,y])=>`<rect x="${x}" y="${y}" width="12" height="20" fill="#f0d060" opacity=".35"/>`).join('')}
+    <g fill="#080c04">
+      <circle cx="150" cy="266" r="5.5"/>
+      <rect x="147" y="271" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 274 Q150 268 300 272" stroke="#c89050" stroke-width=".5" fill="none" opacity=".35"/>
+  `),
+
+  /* ── The Flame Trees of Thika · Thika — scarlet flame trees, red Kenyan earth, a child's world ── */
+  flamethika: scene(`
+    <defs>
+      <linearGradient id="ftkSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a2808"/><stop offset=".38" stop-color="#2c4010"/>
+        <stop offset=".66" stop-color="#508028"/><stop offset=".88" stop-color="#90b040"/>
+        <stop offset="1" stop-color="#b0c858"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#ftkSky)"/>
+    ${stars(5, 463)}
+    <path d="M0 306 Q150 292 300 304 L300 450 L0 450 Z" fill="#785838"/>
+    <path d="M0 356 Q150 342 300 354 L300 450 L0 450 Z" fill="#684828"/>
+    <path d="M0 406 Q150 394 300 404 L300 450 L0 450 Z" fill="#583820"/>
+    <g fill="#481808" opacity=".85">
+      ${[36,90,150,210,264].map((x,i)=>`
+        <rect x="${x-3}" y="${224+i%2*14}" width="6" height="${82-i%2*14}" rx="2"/>
+        <ellipse cx="${x}" cy="${202+i%2*12}" rx="${28+i%2*10}" ry="${30+i%2*8}" fill="#901808" opacity=".75"/>
+        <ellipse cx="${x-12}" cy="${218+i%2*10}" rx="${22+i%2*8}" ry="${24+i%2*6}" fill="#a02010" opacity=".6"/>
+        <ellipse cx="${x+14}" cy="${214+i%2*12}" rx="${18+i%2*6}" ry="${20+i%2*4}" fill="#c03020" opacity=".55"/>
+      `).join('')}
+    </g>
+    ${Array.from({length:20}).map((_,i)=>`<circle cx="${20+(i*26)%280}" cy="${196+(i*18)%80}" r="${2+i%3}" fill="${['#e03020','#c82010','#e04828'][i%3]}" opacity="${0.4+i%3*0.1}"/>`).join('')}
+    <g fill="#100c04">
+      <circle cx="150" cy="298" r="5.5"/>
+      <rect x="147" y="303" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 306 Q150 300 300 304" stroke="#b0c858" stroke-width=".5" fill="none" opacity=".35"/>
+  `),
+
+  /* ── Skeletons on the Zahara · Western Sahara — endless dunes, a shipwrecked sailor, desert sun ── */
+  zahara: scene(`
+    <defs>
+      <linearGradient id="zhrSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0e1018"/><stop offset=".36" stop-color="#201808"/>
+        <stop offset=".64" stop-color="#604810"/><stop offset=".84" stop-color="#c09020"/>
+        <stop offset="1" stop-color="#d8b030"/>
+      </linearGradient>
+      <radialGradient id="zhrSun" cx="50%" cy="46%" r="34%">
+        <stop offset="0" stop-color="#ffe040" stop-opacity=".75"/>
+        <stop offset="1" stop-color="#ffe040" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#zhrSky)"/>
+    ${stars(7, 465)}
+    <rect width="300" height="450" fill="url(#zhrSun)"/>
+    <circle cx="150" cy="228" r="20" fill="#ffe878" opacity=".82"/>
+    <path d="M0 296 Q60 258 110 272 Q148 284 170 262 Q200 238 240 254 Q272 268 300 250 L300 450 L0 450 Z" fill="#c8a030" opacity=".7"/>
+    <path d="M0 348 Q100 326 200 340 Q252 348 300 330 L300 450 L0 450 Z" fill="#b89020"/>
+    <path d="M0 398 Q150 382 300 396 L300 450 L0 450 Z" fill="#a88010"/>
+    ${Array.from({length:12}).map((_,i)=>{const x=10+(i*26)%288; return `<path d="M${x} ${298+i%3*10} Q${x+8} ${274+i%3*8} ${x+16} ${290+i%3*8} Q${x+24} ${274+i%3*8} ${x+32} ${298+i%3*10}" stroke="#c8a030" stroke-width=".5" fill="#b89020" opacity=".55"/>`;}).join('')}
+    <g fill="#180e04" opacity=".85">
+      <circle cx="150" cy="282" r="8"/>
+      <rect x="144" y="290" width="12" height="16" rx="1"/>
+      <path d="M132 286 L144 290 L144 306 Q136 310 130 302 Z"/>
+      <path d="M168 286 L156 290 L156 306 Q164 310 170 302 Z"/>
+    </g>
+    <g fill="#080608">
+      <circle cx="150" cy="288" r="5.5"/>
+      <rect x="147" y="293" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 296 Q150 290 300 294" stroke="#d8b030" stroke-width=".5" fill="none" opacity=".4"/>
+  `),
+
+  /* ── A Long Way Gone · Freetown — Sierra Leone jungle, a boy, the weight of a gun ── */
+  longwaygone: scene(`
+    <defs>
+      <linearGradient id="lwgSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#080c08"/><stop offset=".38" stop-color="#101408"/>
+        <stop offset=".68" stop-color="#182010"/><stop offset=".88" stop-color="#283018"/>
+        <stop offset="1" stop-color="#384020"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#lwgSky)"/>
+    ${stars(6, 467)}
+    <path d="M0 310 Q150 298 300 308 L300 450 L0 450 Z" fill="#202810"/>
+    <path d="M0 360 Q150 348 300 358 L300 450 L0 450 Z" fill="#182010"/>
+    <g fill="#0c1008" opacity=".9">
+      ${[18,50,84,120,158,196,234,268].map((x,i)=>`
+        <rect x="${x-4}" y="${158+i%2*18}" width="8" height="${154-i%2*18}" rx="2"/>
+        <ellipse cx="${x}" cy="${148+i%2*14}" rx="${20+i%2*8}" ry="${24+i%2*8}" fill="#0e1408"/>
+        <ellipse cx="${x+12}" cy="${168+i%2*12}" rx="${16+i%2*6}" ry="${18+i%2*6}" fill="#0a1006" opacity=".8"/>
+      `).join('')}
+    </g>
+    <rect width="300" height="450" fill="#182810" opacity=".14"/>
+    <g fill="#181008" opacity=".88">
+      <circle cx="150" cy="274" r="10"/>
+      <rect x="144" y="284" width="12" height="28" rx="1"/>
+      <path d="M132 278 L144 282 L144 308 Q134 312 128 302 Z"/>
+      <path d="M168 278 L156 282 L156 308 Q166 312 172 302 Z"/>
+    </g>
+    <g fill="#504030" opacity=".6">
+      <rect x="156" y="284" width="30" height="4" rx="1"/>
+      <rect x="182" y="281" width="4" height="10" rx="1"/>
+    </g>
+    <g fill="#060808">
+      <circle cx="150" cy="302" r="5.5"/>
+      <rect x="147" y="307" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 310 Q150 304 300 308" stroke="#384020" stroke-width=".5" fill="none" opacity=".4"/>
+  `),
+
+  /* ── Cry of the Kalahari · Botswana — a lion at sunset, vast red dunes, the Kalahari sky ── */
+  cryofkalahari: scene(`
+    <defs>
+      <linearGradient id="cokSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0c0c18"/><stop offset=".34" stop-color="#1c1820"/>
+        <stop offset=".62" stop-color="#5c3818"/><stop offset=".82" stop-color="#b06820"/>
+        <stop offset="1" stop-color="#d08830"/>
+      </linearGradient>
+      <radialGradient id="cokSun" cx="66%" cy="56%" r="36%">
+        <stop offset="0" stop-color="#e07018" stop-opacity=".65"/>
+        <stop offset="1" stop-color="#e07018" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#cokSky)"/>
+    ${stars(10, 469)}
+    <rect width="300" height="450" fill="url(#cokSun)"/>
+    <circle cx="198" cy="266" r="18" fill="#e07018" opacity=".72"/>
+    <path d="M0 300 Q60 264 100 278 Q132 290 162 270 Q200 246 244 264 Q272 276 300 258 L300 450 L0 450 Z" fill="#9a6020" opacity=".6"/>
+    <path d="M0 352 Q150 336 300 350 L300 450 L0 450 Z" fill="#8a5018"/>
+    <path d="M0 402 Q150 388 300 400 L300 450 L0 450 Z" fill="#7a4010"/>
+    ${Array.from({length:10}).map((_,i)=>`<path d="M${20+i*28} ${302+i%2*12} Q${30+i*28} ${286+i%2*10} ${40+i*28} ${302+i%2*10}" stroke="#9a6020" stroke-width=".5" fill="#8a5018" opacity=".5"/>`).join('')}
+    <g fill="#201008" opacity=".88">
+      <ellipse cx="118" cy="284" rx="32" ry="22"/>
+      <ellipse cx="118" cy="268" rx="20" ry="16"/>
+      <ellipse cx="100" cy="264" rx="16" ry="14"/>
+      <path d="M96 268 Q86 256 90 248 Q98 256 100 264 Z"/>
+      <path d="M136 268 Q148 256 144 248 Q138 256 136 264 Z"/>
+      <ellipse cx="118" cy="260" rx="12" ry="10" fill="#302010"/>
+    </g>
+    <g fill="#e07018" opacity=".4">
+      <path d="M88 256 Q82 244 86 238 Q92 248 92 256 Z"/>
+      <path d="M148 256 Q154 244 150 238 Q144 248 144 256 Z"/>
+      <path d="M96 250 Q88 242 90 236 Q98 244 98 252 Z"/>
+      <path d="M140 250 Q148 242 146 236 Q138 244 138 252 Z"/>
+    </g>
+    <g fill="#100808">
+      <circle cx="150" cy="292" r="5.5"/>
+      <rect x="147" y="297" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 300 Q150 294 300 298" stroke="#d08830" stroke-width=".5" fill="none" opacity=".4"/>
+  `),
+
   /* ── Kebra Nagast · Aksum — ancient stelae, Ethiopian highlands, the Ark of the Covenant ── */
   kebranagast: scene(`
     <defs>
