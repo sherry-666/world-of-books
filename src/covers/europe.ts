@@ -283,6 +283,75 @@ export const EUROPE_COVERS: Record<string, string> = {
     <g transform="translate(196 250)" fill="#0c0e1c"><ellipse cx="0" cy="0" rx="8" ry="6"/><path d="M-6 -4 L-9 -10 L-3 -6 Z"/><path d="M6 -4 L9 -10 L3 -6 Z"/><path d="M8 2 q8 0 10 8" stroke="#0c0e1c" stroke-width="2" fill="none"/></g>
   `),
 
+  /* ── Anna Karenina · Moscow — a train, snow, a gilded ballroom ── */
+  annakarenina: scene(`
+    <defs>
+      <linearGradient id="akaSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0a0c14"/><stop offset=".4" stop-color="#141828"/>
+        <stop offset=".72" stop-color="#202434"/><stop offset="1" stop-color="#303040"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#akaSky)"/>
+    ${stars(11, 387)}
+    <path d="M0 312 Q150 300 300 310 L300 450 L0 450 Z" fill="#e8eae8" opacity=".88"/>
+    <path d="M0 362 Q150 352 300 360 L300 450 L0 450 Z" fill="#d8dcd8" opacity=".9"/>
+    <path d="M0 412 Q150 404 300 410 L300 450 L0 450 Z" fill="#c8ccc8"/>
+    ${Array.from({length:8}).map((_,i)=>`<path d="M${28+i*34} ${322+i%2*12} Q${36+i*34} ${310+i%2*10} ${44+i*34} ${322+i%2*10}" stroke="#d0d4d0" stroke-width=".6" fill="none" opacity=".55"/>`).join('')}
+    <g fill="#b89030">
+      <rect x="76" y="174" width="148" height="140"/>
+      <path d="M68 178 L150 140 L232 178 Z"/>
+      ${Array.from({length:6}).map((_,i)=>`<rect x="${80+i*24}" y="${178}" width="20" height="136" fill="#c8a040" opacity=".2"/>`).join('')}
+    </g>
+    ${[[80,198],[100,198],[80,234],[100,234],[172,198],[192,198],[172,234],[192,234]].map(([x,y])=>`<rect x="${x}" y="${y}" width="16" height="26" fill="#fff8e0" opacity="${y<220?'.5':'.35'}"/>`).join('')}
+    <rect x="76" y="170" width="148" height="8" fill="#d4aa40" opacity=".8"/>
+    <rect x="0" y="295" width="300" height="20" fill="#1c1c24"/>
+    <rect x="0" y="295" width="300" height="4" fill="#c0a030" opacity=".5"/>
+    <rect x="0" y="311" width="300" height="4" fill="#c0a030" opacity=".4"/>
+    <g fill="#101018">
+      <rect x="56" y="290" width="16" height="24" rx="2"/>
+      <rect x="80" y="290" width="160" height="18" rx="1"/>
+      <circle cx="56" cy="316" r="10" fill="none" stroke="#101018" stroke-width="7"/>
+      <circle cx="240" cy="316" r="10" fill="none" stroke="#101018" stroke-width="7"/>
+    </g>
+    <g fill="#0c0c10">
+      <circle cx="150" cy="302" r="5.5"/>
+      <rect x="147" y="307" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 312 Q150 306 300 310" stroke="#303040" stroke-width=".5" fill="none" opacity=".4"/>
+  `),
+
+  /* ── Doctor Zhivago · Moscow — a candlelit window in winter, frost, a red scarf ── */
+  doctorzhivago: scene(`
+    <defs>
+      <linearGradient id="dzSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#060810"/><stop offset=".4" stop-color="#0e1020"/>
+        <stop offset=".72" stop-color="#161820"/><stop offset="1" stop-color="#222428"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#dzSky)"/>
+    ${stars(12, 389)}
+    <path d="M0 314 Q150 302 300 312 L300 450 L0 450 Z" fill="#e8eae8" opacity=".85"/>
+    <path d="M0 364 Q150 354 300 362 L300 450 L0 450 Z" fill="#d4d8d4" opacity=".9"/>
+    <path d="M0 414 Q150 406 300 412 L300 450 L0 450 Z" fill="#c0c4c0"/>
+    ${Array.from({length:8}).map((_,i)=>`<path d="M${24+i*36} ${324+i%2*14} Q${34+i*36} ${312+i%2*12} ${44+i*36} ${324+i%2*12}" stroke="#d0d4d0" stroke-width=".6" fill="none" opacity=".5"/>`).join('')}
+    <g fill="#0e1018">
+      ${[42,88,136,184,230].map((x,i)=>`<rect x="${x}" y="${148+i%2*20}" width="44" height="${168-i%2*20}"/>`).join('')}
+    </g>
+    ${Array.from({length:12}).map((_,i)=>{const x=(i*68+6)%296,y=158+(i*44)%150; return `<rect x="${x}" y="${y}" width="10" height="16" fill="#e8c060" opacity="${0.08+(i%4)*0.04}"/>`;}).join('')}
+    <rect x="118" y="198" width="64" height="118" fill="#181c28"/>
+    <rect x="120" y="200" width="60" height="60" fill="#f0d080" opacity=".22"/>
+    <g fill="#e04020" opacity=".6">
+      <path d="M134 212 L134 258 Q150 268 166 258 L166 212 Q158 206 150 208 Q142 206 134 212 Z"/>
+      <path d="M140 208 Q150 202 160 208 L162 212 Q150 218 138 212 Z" opacity=".8"/>
+    </g>
+    <rect x="118" y="312" width="64" height="6" fill="#e8e0d0" opacity=".5"/>
+    <g fill="#0a0c10">
+      <circle cx="150" cy="306" r="5.5"/>
+      <rect x="147" y="311" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 314 Q150 308 300 312" stroke="#222428" stroke-width=".5" fill="none" opacity=".4"/>
+  `),
+
   /* ── Crime and Punishment · St Petersburg — cold dusk over rooftops, a single lit window ── */
   crimepunishment: scene(`
     <defs>

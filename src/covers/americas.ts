@@ -408,4 +408,67 @@ export const AMERICAS_COVERS: Record<string, string> = {
     </g>
     <circle cx="150" cy="230" r="6" fill="#fff3c8"/>
   `),
+
+  /* ── In the Skin of a Lion · Toronto — the Bloor Viaduct under construction, dawn over the city ── */
+  skinalion: scene(`
+    <defs>
+      <linearGradient id="slnSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a1020"/><stop offset=".38" stop-color="#2c2038"/>
+        <stop offset=".68" stop-color="#604858"/><stop offset=".9" stop-color="#b08060"/>
+        <stop offset="1" stop-color="#d0a870"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#slnSky)"/>
+    ${stars(9, 391)}
+    <path d="M0 306 Q150 294 300 304 L300 450 L0 450 Z" fill="#282030"/>
+    <path d="M0 356 Q150 346 300 354 L300 450 L0 450 Z" fill="#201828"/>
+    <path d="M0 406 Q150 398 300 404 L300 450 L0 450 Z" fill="#181020"/>
+    <g fill="#1c1828">
+      ${[30,72,114,156,198,240].map((x,i)=>`<rect x="${x}" y="${168+i%3*18}" width="34" height="${140-i%3*18}"/>`).join('')}
+    </g>
+    ${Array.from({length:14}).map((_,i)=>{const x=(i*58+8)%296,y=178+(i*40)%120; return `<rect x="${x}" y="${y}" width="8" height="14" fill="#e8b040" opacity="${0.1+(i%4)*0.04}"/>`;}).join('')}
+    <g fill="#141018" stroke="#b08060" stroke-width="3">
+      <line x1="50" y1="200" x2="250" y2="200"/>
+      <line x1="50" y1="200" x2="50" y2="310"/>
+      <line x1="250" y1="200" x2="250" y2="310"/>
+      ${Array.from({length:5}).map((_,i)=>`<line x1="${70+i*38}" y1="200" x2="${70+i*38}" y2="310"/>`).join('')}
+      ${Array.from({length:3}).map((_,i)=>`<line x1="50" y1="${224+i*30}" x2="250" y2="${224+i*30}"/>`).join('')}
+    </g>
+    <path d="M0 306 Q150 300 300 304" stroke="#b08060" stroke-width=".5" fill="none" opacity=".4"/>
+    <g fill="#0e0c14">
+      <circle cx="150" cy="298" r="5.5"/>
+      <rect x="147" y="303" width="5" height="8" rx="1"/>
+    </g>
+  `),
+
+  /* ── The Stone Angel · Manitoba — prairie under a vast sky, a stone angel in a churchyard ── */
+  stoneangel: scene(`
+    <defs>
+      <linearGradient id="saSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#8898b0"/><stop offset=".44" stop-color="#a8b8c8"/>
+        <stop offset=".72" stop-color="#c8c8b8"/><stop offset="1" stop-color="#d8d0a8"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#saSky)"/>
+    ${stars(5, 393)}
+    <path d="M0 314 Q150 302 300 312 L300 450 L0 450 Z" fill="#7a8850"/>
+    <path d="M0 364 Q150 354 300 362 L300 450 L0 450 Z" fill="#6a7840"/>
+    <path d="M0 414 Q150 406 300 412 L300 450 L0 450 Z" fill="#5a6830"/>
+    <path d="M0 314 Q150 308 300 312" stroke="#d8d0a8" stroke-width=".5" fill="none" opacity=".3"/>
+    ${Array.from({length:6}).map((_,i)=>`<path d="M${28+i*48} ${322+i%2*12} Q${42+i*48} ${310+i%2*10} ${56+i*48} ${322+i%2*10}" stroke="#7a8850" stroke-width=".6" fill="none" opacity=".5"/>`).join('')}
+    <g fill="#c8c8c0">
+      <rect x="130" y="186" width="40" height="130"/>
+      <path d="M122 190 L150 158 L178 190 Z"/>
+      <rect x="138" y="158" width="24" height="34"/>
+      <path d="M122 190 L110 194 L110 210 L122 206 Z"/>
+      <path d="M178 190 L190 194 L190 210 L178 206 Z"/>
+      <rect x="140" y="148" width="20" height="12"/>
+      <rect x="144" y="138" width="12" height="12"/>
+      <rect x="148" y="128" width="4" height="12"/>
+    </g>
+    <g fill="#101408">
+      <circle cx="150" cy="308" r="5.5"/>
+      <rect x="147" y="313" width="5" height="10" rx="1"/>
+    </g>
+  `),
 };

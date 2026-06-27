@@ -620,4 +620,138 @@ export const MODERN_CHINA_COVERS: Record<string, string> = {
     ${Array.from({length:5}).map((_,i)=>`<rect x="${90+i*22}" y="${138}" width="4" height="${32+i%2*16}" fill="#141228"/>`).join('')}
     ${Array.from({length:5}).map((_,i)=>`<circle cx="${92+i*22}" cy="${136}" r="3" fill="#e84020" opacity=".35"/>`).join('')}
   `),
+
+  /* ── Magic and Mystery in Tibet · Lhasa — a lone traveller on the plateau, a monastery, aurora-like mist ── */
+  magictibet: scene(`
+    <defs>
+      <linearGradient id="mmtSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#060410"/><stop offset=".36" stop-color="#0c0c28"/>
+        <stop offset=".64" stop-color="#181840"/><stop offset=".88" stop-color="#302860"/>
+        <stop offset="1" stop-color="#504078"/>
+      </linearGradient>
+      <radialGradient id="mmtGlow" cx="50%" cy="60%" r="50%">
+        <stop offset="0" stop-color="#60d0c0" stop-opacity=".35"/>
+        <stop offset="1" stop-color="#60d0c0" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#mmtSky)"/>
+    ${stars(16, 395)}
+    <rect width="300" height="450" fill="url(#mmtGlow)"/>
+    <path d="M0 298 Q60 258 110 272 Q140 282 150 264 Q160 246 190 262 Q240 280 300 258 L300 450 L0 450 Z" fill="#706080" opacity=".65"/>
+    <path d="M0 350 Q150 338 300 348 L300 450 L0 450 Z" fill="#504060"/>
+    <path d="M0 400 Q150 392 300 398 L300 450 L0 450 Z" fill="#382c48"/>
+    <g fill="#c09050" opacity=".7">
+      <rect x="118" y="216" width="64" height="84"/>
+      <path d="M110 220 L150 188 L190 220 Z"/>
+      <rect x="134" y="188" width="32" height="34"/>
+    </g>
+    <rect x="118" y="216" width="64" height="10" fill="#e04020" opacity=".45"/>
+    ${[[122,234],[138,234],[152,234],[168,234],[122,262],[138,262],[152,262],[168,262]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="16" fill="#f8e898" opacity="${y<250?'.5':'.35'}"/>`).join('')}
+    ${Array.from({length:5}).map((_,i)=>`<path d="M${90+i*24} ${280} Q${96+i*24} ${256} ${102+i*24} ${238}" stroke="${['#e03020','#e8c020','#2080e0','#28a030','#e8e8e8'][i%5]}" stroke-width="1.2" fill="none" opacity=".55"/>`).join('')}
+    <path d="M80 290 Q100 270 120 280 Q130 286 138 278 Q148 268 162 272 Q176 276 192 264 Q210 252 230 260" stroke="#60d0c0" stroke-width=".8" fill="none" opacity=".4"/>
+    <g fill="#080610">
+      <circle cx="150" cy="292" r="5.5"/>
+      <rect x="147" y="297" width="5" height="8" rx="1"/>
+      <path d="M140 302 L147 298 L153 298 L160 302 L158 314 L142 314 Z"/>
+    </g>
+    <path d="M0 298 Q150 292 300 296" stroke="#504078" stroke-width=".5" fill="none" opacity=".4"/>
+  `),
+
+  /* ── 藏地密码 / Tibet Code · Lhasa — Potala Palace at dawn, snow peaks, a hidden mandala ── */
+  tibetcode: scene(`
+    <defs>
+      <linearGradient id="tcSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#060810"/><stop offset=".36" stop-color="#0e1828"/>
+        <stop offset=".64" stop-color="#1a3060"/><stop offset=".88" stop-color="#3870b0"/>
+        <stop offset="1" stop-color="#60a0d0"/>
+      </linearGradient>
+      <radialGradient id="tcSun" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#ffe070" stop-opacity=".7"/>
+        <stop offset="1" stop-color="#ffe070" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#tcSky)"/>
+    ${stars(9, 379)}
+    <circle cx="150" cy="226" r="90" fill="url(#tcSun)"/>
+    <circle cx="150" cy="226" r="22" fill="#ffe880" opacity=".85"/>
+    <path d="M0 286 Q60 252 100 264 Q130 274 150 256 Q170 238 200 254 Q250 272 300 250 L300 450 L0 450 Z" fill="#7090b0" opacity=".6"/>
+    <path d="M0 338 Q150 326 300 336 L300 450 L0 450 Z" fill="#c8b878"/>
+    <path d="M0 386 Q150 376 300 384 L300 450 L0 450 Z" fill="#b0a060"/>
+    <g fill="#b80808">
+      <rect x="74" y="200" width="152" height="142"/>
+      <path d="M66 204 L150 164 L234 204 Z"/>
+    </g>
+    <rect x="74" y="200" width="152" height="18" fill="#e8e0c0" opacity=".3"/>
+    <g fill="#e8e0c0" opacity=".22">
+      ${Array.from({length:8}).map((_,i)=>`<rect x="${78+i*18}" y="${202}" width="12" height="140"/>`).join('')}
+    </g>
+    ${[[78,224],[96,224],[78,258],[96,258],[180,224],[196,224],[180,258],[196,258]].map(([x,y])=>`<rect x="${x}" y="${y}" width="12" height="22" fill="#f8e090" opacity="${y<240?'.45':'.3'}"/>`).join('')}
+    <rect x="98" y="310" width="104" height="34" fill="#d4aa30" opacity=".5"/>
+    <path d="M74 338 L226 338" stroke="#d4aa30" stroke-width="1.5" opacity=".5"/>
+    <g fill="#0a0808">
+      <circle cx="150" cy="330" r="5.5"/>
+      <rect x="147" y="335" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 338 Q150 332 300 336" stroke="#c8b878" stroke-width=".5" fill="none" opacity=".4"/>
+  `),
+
+  /* ── 尘埃落定 / Red Poppies · Kham — Tibetan highland, poppy fields, a chieftain's fortress ── */
+  dustsettles: scene(`
+    <defs>
+      <linearGradient id="dsSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a1828"/><stop offset=".38" stop-color="#302840"/>
+        <stop offset=".68" stop-color="#5a5060"/><stop offset="1" stop-color="#807870"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#dsSky)"/>
+    ${stars(8, 381)}
+    <path d="M0 282 Q60 246 100 260 Q130 270 150 252 Q170 232 210 252 Q258 274 300 252 L300 450 L0 450 Z" fill="#5a6848"/>
+    <path d="M0 336 Q150 324 300 334 L300 450 L0 450 Z" fill="#4a5838"/>
+    <path d="M0 388 Q150 378 300 386 L300 450 L0 450 Z" fill="#3a4828"/>
+    ${Array.from({length:16}).map((_,i)=>{const x=30+(i%8)*30,y=300+(Math.floor(i/8))*24; return `<circle cx="${x}" cy="${y}" r="${4+i%2*2}" fill="#c02820" opacity="${0.45+i%3*0.1}"/>`;}).join('')}
+    ${Array.from({length:16}).map((_,i)=>{const x=44+(i%8)*30,y=296+(Math.floor(i/8))*22; return `<circle cx="${x}" cy="${y}" r="${3+i%2*2}" fill="#d83830" opacity="${0.38+i%3*0.08}"/>`;}).join('')}
+    <g fill="#2a2018">
+      <rect x="100" y="172" width="100" height="114"/>
+      <path d="M92 178 L150 144 L208 178 Z"/>
+      <rect x="122" y="144" width="56" height="36"/>
+      <rect x="136" y="132" width="28" height="14"/>
+    </g>
+    ${[[104,192],[120,192],[104,224],[120,224],[164,192],[180,192],[164,224],[180,224]].map(([x,y])=>`<rect x="${x}" y="${y}" width="12" height="20" fill="#f0d070" opacity="${y<210?'.4':'.28'}"/>`).join('')}
+    <path d="M0 282 Q150 276 300 280" stroke="#807870" stroke-width=".5" fill="none" opacity=".3"/>
+    <g fill="#181410">
+      <circle cx="150" cy="278" r="5.5"/>
+      <rect x="147" y="283" width="5" height="10" rx="1"/>
+    </g>
+  `),
+
+  /* ── Wolf Totem · Inner Mongolia — a vast steppe under a full moon, a lone wolf ── */
+  wolftotem: scene(`
+    <defs>
+      <linearGradient id="wtmSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#060810"/><stop offset=".4" stop-color="#10162c"/>
+        <stop offset=".72" stop-color="#1c2840"/><stop offset="1" stop-color="#283850"/>
+      </linearGradient>
+      <radialGradient id="wtmMoon" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#e8f0f8" stop-opacity=".85"/>
+        <stop offset="1" stop-color="#e8f0f8" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#wtmSky)"/>
+    ${stars(14, 383)}
+    <circle cx="150" cy="148" r="80" fill="url(#wtmMoon)"/>
+    <circle cx="150" cy="148" r="22" fill="#e8f0f8" opacity=".88"/>
+    <path d="M0 326 Q150 314 300 324 L300 450 L0 450 Z" fill="#2c3820"/>
+    <path d="M0 376 Q150 366 300 374 L300 450 L0 450 Z" fill="#202c18"/>
+    <path d="M0 422 Q150 414 300 420 L300 450 L0 450 Z" fill="#182010"/>
+    <path d="M0 326 Q150 320 300 324" stroke="#283850" stroke-width=".5" fill="none" opacity=".4"/>
+    ${Array.from({length:8}).map((_,i)=>`<path d="M${28+i*36} ${330+i%2*10} Q${42+i*36} ${318+i%2*8} ${56+i*36} ${330+i%2*8}" stroke="#2c3820" stroke-width=".6" fill="none" opacity=".5"/>`).join('')}
+    <g fill="#0c0e08">
+      <path d="M124 318 Q130 296 138 282 Q144 270 148 262 Q150 256 150 256 Q150 256 152 262 Q156 270 162 282 Q170 296 176 318 Z"/>
+      <path d="M124 318 L108 306 L114 296 Q120 290 128 296 Z"/>
+      <path d="M138 282 L120 278 L124 268 Q130 264 136 270 Z"/>
+      <path d="M148 262 Q140 250 134 244 L138 240 Q146 244 150 256 Z"/>
+    </g>
+    <circle cx="146" cy="264" r="3" fill="#e8d0a0" opacity=".7"/>
+    <circle cx="155" cy="262" r="2.5" fill="#e8d0a0" opacity=".7"/>
+  `),
 };

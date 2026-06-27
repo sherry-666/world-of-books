@@ -710,6 +710,39 @@ export const ASIA_AFRICA_PACIFIC_COVERS: Record<string, string> = {
     </g>
   `),
 
+  /* ── The History of Bhutan · Thimphu — Tiger's Nest monastery, Himalayan peaks, prayer flags ── */
+  histbhutan: scene(`
+    <defs>
+      <linearGradient id="hbtSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#060c18"/><stop offset=".36" stop-color="#102040"/>
+        <stop offset=".64" stop-color="#2050a0"/><stop offset=".88" stop-color="#4880c0"/>
+        <stop offset="1" stop-color="#70a8d8"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#hbtSky)"/>
+    ${stars(10, 385)}
+    <path d="M0 282 Q50 240 90 256 Q120 268 150 246 Q180 224 210 246 Q250 268 300 240 L300 450 L0 450 Z" fill="#8090a0" opacity=".7"/>
+    <path d="M0 336 Q150 324 300 334 L300 450 L0 450 Z" fill="#606870"/>
+    <path d="M0 388 Q150 378 300 386 L300 450 L0 450 Z" fill="#485058"/>
+    <g fill="#d4c090">
+      <rect x="108" y="198" width="84" height="88"/>
+      <path d="M100 202 L150 170 L200 202 Z"/>
+      <rect x="126" y="170" width="48" height="34"/>
+      <path d="M120 176 L150 150 L180 176 Z"/>
+      <rect x="138" y="150" width="24" height="28"/>
+      <rect x="142" y="138" width="16" height="14"/>
+    </g>
+    <rect x="108" y="198" width="84" height="14" fill="#c04020" opacity=".6"/>
+    <rect x="100" y="202" width="100" height="6" fill="#c04020" opacity=".4"/>
+    ${[[112,220],[128,220],[154,220],[170,220],[112,252],[128,252],[154,252],[170,252]].map(([x,y])=>`<rect x="${x}" y="${y}" width="12" height="20" fill="#f8f0d0" opacity="${y<240?'.45':'.3'}"/>`).join('')}
+    ${Array.from({length:7}).map((_,i)=>`<path d="M${60+i*28} ${260} Q${66+i*28} ${230} ${72+i*28} ${210}" stroke="${['#e03020','#e8c020','#2080e0','#28a030','#e8e8e8'][i%5]}" stroke-width="1.5" fill="none" opacity=".6"/>`).join('')}
+    <path d="M0 282 Q150 276 300 280" stroke="#70a8d8" stroke-width=".5" fill="none" opacity=".35"/>
+    <g fill="#0c0e14">
+      <circle cx="150" cy="274" r="5.5"/>
+      <rect x="147" y="279" width="5" height="10" rx="1"/>
+    </g>
+  `),
+
   /* ── A Passage to India · Chandrapore — Marabar Caves, a colonial sun, the Ganges plain ── */
   passagetoindia: scene(`
     <defs>
