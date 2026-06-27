@@ -2247,6 +2247,11 @@ export const BOOKS: Book[] = [
     blurbs:{ English:'Ninety-year-old Hagar Shipley, stubborn and proud as the stone angel on her family\'s grave, looks back on a life of fierce independence and quiet devastation on the Manitoba plains.' },
   },
   // ── Shanghai expansion ──
+  { id:'mansfate', author:'André Malraux', year:1933, place:'Shanghai', country:'China', lng:121.4800, lat:31.2200, tier:1, relation:'set', genre:'Literary Fiction', rating:4.02, pages:359,
+    languages:['English','French','Chinese'],
+    titles:{ English:'Man\'s Fate', French:'La Condition humaine', Chinese:'人的境遇' },
+    blurbs:{ English:'On the night of April 12, 1927, a handful of revolutionaries attempt to hold Shanghai against Chiang Kai-shek\'s coup — Malraux\'s Prix Goncourt masterpiece of courage, terror, and the human condition.', French:'Dans la nuit du 12 avril 1927, une poignée de révolutionnaires tentent de tenir Shanghai face au coup de Tchang Kaï-chek — le chef-d\'œuvre Prix Goncourt de Malraux sur le courage, la terreur et la condition humaine.', Chinese:'1927年4月12日夜，一群革命者在蒋介石政变中坚守上海——马尔罗荣获龚古尔文学奖的杰作，直逼勇气、恐惧与人类命运的本质。' },
+  },
   { id:'blossoms', author:'金宇澄 (Jin Yucheng)', year:2012, place:'Shanghai', country:'China', lng:121.4737, lat:31.2304, tier:1, relation:'set', genre:'Literary Fiction', rating:4.15, pages:534,
     languages:['Chinese','English'],
     titles:{ Chinese:'繁花', English:'Blossoms Shanghai' },

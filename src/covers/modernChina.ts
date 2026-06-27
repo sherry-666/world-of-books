@@ -853,6 +853,46 @@ export const MODERN_CHINA_COVERS: Record<string, string> = {
     </g>
   `),
 
+  /* ── La Condition humaine / Man's Fate · Shanghai — revolutionary night, 1927, smoke and gunfire ── */
+  mansfate: scene(`
+    <defs>
+      <linearGradient id="mfaSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#050208"/><stop offset=".36" stop-color="#0c0410"/>
+        <stop offset=".62" stop-color="#280814"/><stop offset=".84" stop-color="#500c10"/>
+        <stop offset="1" stop-color="#6a1010"/>
+      </linearGradient>
+      <radialGradient id="mfaFire" cx="50%" cy="72%" r="40%">
+        <stop offset="0" stop-color="#e05010" stop-opacity=".55"/>
+        <stop offset="1" stop-color="#e05010" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#mfaSky)"/>
+    ${stars(9, 435)}
+    <rect width="300" height="450" fill="url(#mfaFire)"/>
+    <g fill="#0a0408" opacity=".92">
+      ${[18,56,96,140,186,230,268].map((x,i)=>`<rect x="${x}" y="${102+i%3*20}" width="${32+i%2*6}" height="${212-i%3*20}"/>`).join('')}
+    </g>
+    ${Array.from({length:14}).map((_,i)=>{const x=(i*50+6)%296,y=114+(i*34)%168; return `<rect x="${x}" y="${y}" width="8" height="14" fill="#d04020" opacity="${0.06+(i%4)*0.025}"/>`;}).join('')}
+    <path d="M0 314 Q150 302 300 312 L300 450 L0 450 Z" fill="#200408"/>
+    <path d="M0 364 Q150 352 300 362 L300 450 L0 450 Z" fill="#180306"/>
+    <g fill="#e05010" opacity=".55">
+      ${[44,90,180,240].map((x,i)=>`<path d="M${x} ${314} Q${x+6} ${292+i%2*10} ${x+12} ${278+i%2*14} Q${x+18} ${292+i%2*10} ${x+24} ${314}" opacity=".6"/>`).join('')}
+    </g>
+    ${Array.from({length:6}).map((_,i)=>`<circle cx="${60+i*36}" cy="${310}" r="${4+i%2*2}" fill="#e08020" opacity="${0.15+i%3*0.08}"/>`).join('')}
+    <g fill="#080408" opacity=".9">
+      <circle cx="150" cy="270" r="10"/>
+      <rect x="144" y="280" width="12" height="36" rx="1"/>
+      <path d="M132 274 L144 278 L144 312 Q136 316 130 308 Z"/>
+      <path d="M168 274 L156 278 L156 312 Q164 316 170 308 Z"/>
+      <path d="M140 280 L110 296 L108 290 L138 274 Z"/>
+    </g>
+    <g fill="#040208">
+      <circle cx="150" cy="308" r="5.5"/>
+      <rect x="147" y="313" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 314 Q150 308 300 312" stroke="#6a1010" stroke-width=".5" fill="none" opacity=".45"/>
+  `),
+
   /* ── 繁花 / Blossoms Shanghai · Shanghai — neon lane houses, the Bund at night, a city's bloom ── */
   blossoms: scene(`
     <defs>
