@@ -526,6 +526,85 @@ export const EUROPE_COVERS: Record<string, string> = {
     </g>
   `),
 
+  /* ── A Hero of Our Time · Pyatigorsk — Caucasus peaks at dusk, a lone rider, a pistol duel ── */
+  heroourtime: scene(`
+    <defs>
+      <linearGradient id="hotSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0a0c18"/><stop offset=".36" stop-color="#141828"/>
+        <stop offset=".62" stop-color="#3c3848"/><stop offset=".84" stop-color="#806870"/>
+        <stop offset="1" stop-color="#b09088"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#hotSky)"/>
+    ${stars(12, 439)}
+    <path d="M0 280 Q30 238 60 252 Q86 264 108 240 Q132 216 158 234 Q184 252 210 228 Q240 202 268 218 Q284 226 300 220 L300 450 L0 450 Z" fill="#484040" opacity=".7"/>
+    <path d="M0 282 Q30 240 60 254 Q86 266 108 242 Q132 218 158 236 Q184 254 210 230 Q240 204 268 220 Q284 228 300 222" stroke="#b09088" stroke-width=".6" fill="none" opacity=".35"/>
+    <path d="M0 340 Q150 322 300 338 L300 450 L0 450 Z" fill="#382e2a"/>
+    <path d="M0 390 Q150 374 300 388 L300 450 L0 450 Z" fill="#2c2420"/>
+    <g fill="#181410" opacity=".85">
+      <path d="M56 282 Q68 250 80 282 Z" fill="#282020"/>
+      <ellipse cx="68" cy="268" rx="14" ry="18" fill="#282020"/>
+      <circle cx="68" cy="258" r="10" fill="#c8a888"/>
+      <rect x="62" y="268" width="12" height="32" rx="2"/>
+      <path d="M50 272 L62 276 L62 296 Q54 300 48 292 Z"/>
+      <path d="M86 272 L74 276 L74 296 Q82 300 88 292 Z"/>
+    </g>
+    <g fill="#303020" opacity=".8">
+      <ellipse cx="68" cy="314" rx="22" ry="10" fill="#282018"/>
+      <rect x="46" y="282" width="4" height="32" rx="1"/>
+      <rect x="88" y="282" width="4" height="32" rx="1"/>
+    </g>
+    <g fill="#b09060" opacity=".55">
+      <rect x="120" y="268" width="60" height="10" rx="1"/>
+      <rect x="148" y="262" width="4" height="8"/>
+      <circle cx="150" cy="260" r="3"/>
+    </g>
+    <g fill="#100c10">
+      <circle cx="150" cy="274" r="5.5"/>
+      <rect x="147" y="279" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 280 Q150 274 300 278" stroke="#b09088" stroke-width=".5" fill="none" opacity=".35"/>
+  `),
+
+  /* ── The Overcoat · St. Petersburg — a grey winter street, a tiny clerk, his stolen coat ── */
+  overcoat: scene(`
+    <defs>
+      <linearGradient id="ovcSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#080a10"/><stop offset=".4" stop-color="#0e1018"/>
+        <stop offset=".72" stop-color="#141620"/><stop offset="1" stop-color="#1a1c24"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#ovcSky)"/>
+    ${stars(8, 441)}
+    <rect width="300" height="450" fill="#9098a8" opacity=".07"/>
+    <path d="M0 318 Q150 306 300 316 L300 450 L0 450 Z" fill="#181c22"/>
+    <path d="M0 368 Q150 356 300 366 L300 450 L0 450 Z" fill="#12161a"/>
+    <g fill="#0e1016" opacity=".88">
+      ${[24,66,110,156,202,248,280].map((x,i)=>`<rect x="${x}" y="${128+i%3*20}" width="${32+i%2*4}" height="${190-i%3*20}"/>`).join('')}
+    </g>
+    ${Array.from({length:14}).map((_,i)=>{const x=(i*52+10)%296,y=142+(i*34)%152; return `<rect x="${x}" y="${y}" width="8" height="14" fill="#d0c090" opacity="${0.06+(i%4)*0.025}"/>`;}).join('')}
+    ${Array.from({length:20}).map((_,i)=>`<line x1="${i*16}" y1="${132+i%4*10}" x2="${i*16+10}" y2="${154+i%4*8}" stroke="#8090a0" stroke-width=".5" opacity=".22"/>`).join('')}
+    <g fill="#e0dcd0" opacity=".12">
+      <circle cx="150" cy="270" r="60"/>
+    </g>
+    <g fill="#101418">
+      <circle cx="150" cy="282" r="9"/>
+      <rect x="144" y="291" width="12" height="28" rx="2"/>
+      <path d="M132 286 L144 290 L144 316 Q136 320 130 312 Z"/>
+      <path d="M168 286 L156 290 L156 316 Q164 320 170 312 Z"/>
+    </g>
+    <g fill="#c8c0a8" opacity=".55">
+      <path d="M128 292 Q132 282 144 286 Q132 298 130 312 Q124 308 128 292 Z"/>
+      <path d="M172 292 Q168 282 156 286 Q168 298 170 312 Q176 308 172 292 Z"/>
+      <path d="M136 278 Q150 270 164 278 L162 290 Q150 284 138 290 Z"/>
+    </g>
+    <g fill="#080a0e">
+      <circle cx="150" cy="310" r="5.5"/>
+      <rect x="147" y="315" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 318 Q150 312 300 316" stroke="#1a1c24" stroke-width=".5" fill="none" opacity=".4"/>
+  `),
+
   /* ── Anna Karenina · Moscow — a train, snow, a gilded ballroom ── */
   annakarenina: scene(`
     <defs>
