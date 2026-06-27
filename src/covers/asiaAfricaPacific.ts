@@ -1017,4 +1017,194 @@ export const ASIA_AFRICA_PACIFIC_COVERS: Record<string, string> = {
       <path d="M136 310 L146 306 L154 306 L164 310 L160 328 L140 328 Z"/>
     </g>
   `),
+
+  /* ── 田園之秋 · Pingtung — rice paddies, banana fronds, a golden Taiwan autumn evening ── */
+  tianyuanqiu: scene(`
+    <defs>
+      <linearGradient id="tyqSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a2808"/><stop offset=".38" stop-color="#304010"/>
+        <stop offset=".65" stop-color="#607828"/><stop offset=".86" stop-color="#b0a040"/>
+        <stop offset="1" stop-color="#d0c060"/>
+      </linearGradient>
+      <radialGradient id="tyqSun" cx="72%" cy="58%" r="28%">
+        <stop offset="0" stop-color="#ffe840" stop-opacity=".65"/>
+        <stop offset="1" stop-color="#ffe840" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#tyqSky)"/>
+    ${stars(5, 415)}
+    <rect width="300" height="450" fill="url(#tyqSun)"/>
+    <circle cx="216" cy="260" r="16" fill="#ffe060" opacity=".8"/>
+    <path d="M0 300 Q150 286 300 298 L300 450 L0 450 Z" fill="#587030"/>
+    <path d="M0 350 Q150 336 300 348 L300 450 L0 450 Z" fill="#48602a"/>
+    <path d="M0 400 Q150 388 300 398 L300 450 L0 450 Z" fill="#385020"/>
+    ${Array.from({length:10}).map((_,i)=>`<path d="M${24+i*28} ${302+i%2*10} Q${30+i*28} ${282+i%2*8} ${36+i*28} ${302+i%2*8}" stroke="#587030" stroke-width=".5" fill="#48602a" opacity=".55"/>`).join('')}
+    <g fill="#2c4818" opacity=".85">
+      ${[34,72,112].map((x,i)=>`
+        <path d="M${x} ${270} Q${x-14} ${238} ${x-8} ${208} Q${x} ${220} ${x+8} ${208} Q${x+14} ${238} ${x} ${270}"/>
+        <path d="M${x} ${270} Q${x+18} ${244} ${x+28} ${216} Q${x+24} ${228} ${x+36} ${220} Q${x+26} ${248} ${x} ${270}"/>
+        <path d="M${x} ${270} Q${x-18} ${244} ${x-28} ${220} Q${x-22} ${232} ${x-36} ${226} Q${x-24} ${250} ${x} ${270}"/>
+        <rect x="${x-3}" y="${270}" width="6" height="${30+i*4}" rx="1"/>
+      `).join('')}
+    </g>
+    ${Array.from({length:8}).map((_,i)=>`<path d="M${i*38+10} ${300} L${i*38+10} ${310} M${i*38+20} ${300} L${i*38+20} ${308}" stroke="#8aac40" stroke-width="1.5" opacity=".5"/>`).join('')}
+    <g fill="#182008">
+      <circle cx="150" cy="292" r="5.5"/>
+      <rect x="147" y="297" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 300 Q150 294 300 298" stroke="#d0c060" stroke-width=".5" fill="none" opacity=".35"/>
+  `),
+
+  /* ── Jamila · Kyrgyz steppe — mountains, harvest, a woman walking free at dusk ── */
+  jamila: scene(`
+    <defs>
+      <linearGradient id="jmlSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0e1018"/><stop offset=".36" stop-color="#202438"/>
+        <stop offset=".65" stop-color="#604858"/><stop offset=".86" stop-color="#c08060"/>
+        <stop offset="1" stop-color="#d8a878"/>
+      </linearGradient>
+      <radialGradient id="jmlSun" cx="60%" cy="66%" r="34%">
+        <stop offset="0" stop-color="#ffb040" stop-opacity=".65"/>
+        <stop offset="1" stop-color="#ffb040" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#jmlSky)"/>
+    ${stars(9, 417)}
+    <rect width="300" height="450" fill="url(#jmlSun)"/>
+    <circle cx="180" cy="296" r="14" fill="#ffb840" opacity=".78"/>
+    <path d="M0 278 Q40 244 80 256 Q110 266 130 248 Q156 228 184 242 Q220 260 260 238 Q278 228 300 232 L300 450 L0 450 Z" fill="#706848" opacity=".55"/>
+    <path d="M0 330 Q150 314 300 328 L300 450 L0 450 Z" fill="#585838"/>
+    <path d="M0 380 Q150 366 300 378 L300 450 L0 450 Z" fill="#484828"/>
+    <path d="M0 278 Q40 244 80 256 Q110 266 130 248 Q156 228 184 242 Q220 260 260 238 Q278 228 300 232" stroke="#907858" stroke-width=".5" fill="none" opacity=".4"/>
+    <g fill="#382808" opacity=".75">
+      <ellipse cx="136" cy="268" rx="18" ry="28"/>
+      <ellipse cx="136" cy="244" rx="12" ry="16"/>
+      <path d="M128 240 Q136 226 144 240"/>
+      <path d="M118 264 Q108 278 110 296 Q124 292 128 276 Z" opacity=".8"/>
+      <path d="M154 264 Q164 278 162 296 Q148 292 144 276 Z" opacity=".8"/>
+    </g>
+    <g fill="#d09060" opacity=".6">
+      <rect x="120" y="238" width="32" height="6" rx="2"/>
+      ${Array.from({length:4}).map((_,i)=>`<path d="M${122+i*8} 238 Q${124+i*8} 226 ${126+i*8} 218" stroke="#d09060" stroke-width="2" fill="none" opacity=".5"/>`).join('')}
+    </g>
+    <g fill="#201408">
+      <circle cx="150" cy="272" r="5.5"/>
+      <rect x="147" y="277" width="5" height="8" rx="1"/>
+    </g>
+  `),
+
+  /* ── The Day Lasts More Than a Hundred Years · Kazakh steppe — a vast sky, a yurt, railway tracks ── */
+  daylasts: scene(`
+    <defs>
+      <linearGradient id="dlcSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0c1428"/><stop offset=".4" stop-color="#182438"/>
+        <stop offset=".7" stop-color="#304860"/><stop offset=".9" stop-color="#6080a0"/>
+        <stop offset="1" stop-color="#8090b0"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#dlcSky)"/>
+    ${stars(14, 419)}
+    <path d="M0 304 Q150 292 300 302 L300 450 L0 450 Z" fill="#786848"/>
+    <path d="M0 354 Q150 342 300 352 L300 450 L0 450 Z" fill="#685838"/>
+    <path d="M0 404 Q150 394 300 402 L300 450 L0 450 Z" fill="#584828"/>
+    ${Array.from({length:10}).map((_,i)=>`<path d="M${18+i*30} ${306+i%2*12} Q${28+i*30} ${294+i%2*10} ${38+i*30} ${306+i%2*10}" stroke="#786848" stroke-width=".5" fill="#685838" opacity=".5"/>`).join('')}
+    <g fill="#4a3818" opacity=".8">
+      <path d="M106 278 Q150 240 194 278 L194 304 L106 304 Z"/>
+      <rect x="106" y="278" width="88" height="26" rx="2"/>
+      <circle cx="150" cy="278" r="8" fill="#5a4820"/>
+      <rect x="140" y="290" width="20" height="14"/>
+    </g>
+    <g fill="#e8d080" opacity=".3">
+      ${Array.from({length:5}).map((_,i)=>`<line x1="${108+i*4}" y1="${278}" x2="${108+i*4}" y2="${303}" stroke="#e8d080" stroke-width=".8" opacity=".3"/>`).join('')}
+      ${Array.from({length:3}).map((_,i)=>`<line x1="${106}" y1="${282+i*7}" x2="${194}" y2="${282+i*7}" stroke="#e8d080" stroke-width=".5" opacity=".25"/>`).join('')}
+    </g>
+    <g fill="#201808">
+      <rect x="0" y="298" width="300" height="6"/>
+      <rect x="0" y="302" width="300" height="3" fill="#302818"/>
+      ${Array.from({length:9}).map((_,i)=>`<rect x="${i*36+6}" y="294" width="24" height="4"/>`).join('')}
+    </g>
+    <g fill="#100c08">
+      <circle cx="150" cy="290" r="5.5"/>
+      <rect x="147" y="295" width="5" height="8" rx="1"/>
+    </g>
+  `),
+
+  /* ── The Railway · Uzbek steppe — a dusty halt, a minaret, shimmering heat haze ── */
+  therailway: scene(`
+    <defs>
+      <linearGradient id="trwSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a1408"/><stop offset=".38" stop-color="#2c2408"/>
+        <stop offset=".66" stop-color="#705c20"/><stop offset=".88" stop-color="#b09030"/>
+        <stop offset="1" stop-color="#d0b040"/>
+      </linearGradient>
+      <radialGradient id="trwHaze" cx="50%" cy="68%" r="50%">
+        <stop offset="0" stop-color="#e0d080" stop-opacity=".25"/>
+        <stop offset="1" stop-color="#e0d080" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#trwSky)"/>
+    ${stars(6, 421)}
+    <rect width="300" height="450" fill="url(#trwHaze)"/>
+    <path d="M0 310 Q150 298 300 308 L300 450 L0 450 Z" fill="#c8b060"/>
+    <path d="M0 360 Q150 348 300 358 L300 450 L0 450 Z" fill="#b8a050"/>
+    <path d="M0 410 Q150 400 300 408 L300 450 L0 450 Z" fill="#a89040"/>
+    <g fill="#1c1808">
+      <rect x="206" y="168" width="18" height="144"/>
+      <rect x="196" y="168" width="38" height="18" rx="2"/>
+      <rect x="200" y="154" width="30" height="16"/>
+      <rect x="206" y="138" width="18" height="18"/>
+      <rect x="209" y="124" width="12" height="16"/>
+      <rect x="212" y="108" width="6" height="18"/>
+    </g>
+    <g fill="#2a5080" opacity=".6">
+      <path d="M196 168 Q215 156 234 168 L232 186 Q215 174 198 186 Z"/>
+    </g>
+    <g fill="#1c1808">
+      <rect x="60" y="222" width="80" height="90"/>
+      <path d="M52 226 L100 194 L148 226 Z"/>
+      <rect x="74" y="194" width="52" height="34"/>
+    </g>
+    ${[[64,246],[80,246],[64,278],[80,278],[108,246],[124,246]].map(([x,y])=>`<rect x="${x}" y="${y}" width="12" height="20" fill="#e8c050" opacity="${y<260?'.35':'.22'}"/>`).join('')}
+    <g fill="#140e04">
+      <rect x="0" y="304" width="300" height="6"/>
+      <rect x="0" y="308" width="300" height="3" fill="#201808"/>
+      ${Array.from({length:9}).map((_,i)=>`<rect x="${i*36+6}" y="300" width="24" height="4"/>`).join('')}
+    </g>
+    <g fill="#100804">
+      <circle cx="150" cy="296" r="5.5"/>
+      <rect x="147" y="301" width="5" height="8" rx="1"/>
+    </g>
+  `),
+
+  /* ── Samarkand · Uzbekistan — blue-tiled domes of the Registan, Silk Road sky ── */
+  samarkand: scene(`
+    <defs>
+      <linearGradient id="smkSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#060c18"/><stop offset=".36" stop-color="#0c1828"/>
+        <stop offset=".66" stop-color="#183060"/><stop offset=".88" stop-color="#3060a0"/>
+        <stop offset="1" stop-color="#4878c0"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#smkSky)"/>
+    ${stars(13, 423)}
+    <circle cx="150" cy="176" r="50" fill="#2060a0" opacity=".5"/>
+    <circle cx="150" cy="176" r="36" fill="#2870b0" opacity=".6"/>
+    <circle cx="150" cy="176" r="24" fill="#3888c8" opacity=".7"/>
+    <path d="M138 176 Q150 148 162 176 Q162 200 150 208 Q138 200 138 176 Z" fill="#40a0d8" opacity=".8"/>
+    <g fill="#0e1c2c" opacity=".85">
+      <rect x="60" y="228" width="180" height="84"/>
+      <path d="M52 232 L150 178 L248 232 Z"/>
+      ${[64,106,150,194,232].map((x,i)=>`<rect x="${x}" y="${228}" width="28" height="${84}" fill="#101e2e" opacity=".3"/>`).join('')}
+      ${[64,106,194,232].map(x=>`<path d="M${x} 228 Q${x+14} 212 ${x+28} 228 Z" fill="#1a3050" opacity=".6"/>`).join('')}
+    </g>
+    ${[[68,252],[84,252],[68,288],[84,288],[106,252],[120,252],[178,252],[194,252],[178,288],[194,288],[208,252],[222,252]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="18" fill="#e8d060" opacity="${y<270?'.4':'.28'}"/>`).join('')}
+    <g fill="#2870b0" opacity=".45">
+      ${[[90,228],[150,190],[210,228]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="18"/>`).join('')}
+    </g>
+    <path d="M0 312 Q150 300 300 310 L300 450 L0 450 Z" fill="#0c1828"/>
+    <g fill="#060c14">
+      <circle cx="150" cy="304" r="5.5"/>
+      <rect x="147" y="309" width="5" height="8" rx="1"/>
+    </g>
+  `),
 };
