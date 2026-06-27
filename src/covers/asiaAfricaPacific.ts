@@ -1153,6 +1153,203 @@ export const ASIA_AFRICA_PACIFIC_COVERS: Record<string, string> = {
     <path d="M0 316 Q150 310 300 314" stroke="#1c1e20" stroke-width=".5" fill="none" opacity=".4"/>
   `),
 
+  /* ── Kebra Nagast · Aksum — ancient stelae, Ethiopian highlands, the Ark of the Covenant ── */
+  kebranagast: scene(`
+    <defs>
+      <linearGradient id="kngSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a1008"/><stop offset=".36" stop-color="#2c1c08"/>
+        <stop offset=".64" stop-color="#604018"/><stop offset=".86" stop-color="#c08030"/>
+        <stop offset="1" stop-color="#e0b050"/>
+      </linearGradient>
+      <radialGradient id="kngSun" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#ffe060" stop-opacity=".55"/>
+        <stop offset="1" stop-color="#ffe060" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#kngSky)"/>
+    ${stars(8, 447)}
+    <circle cx="220" cy="240" r="80" fill="url(#kngSun)"/>
+    <circle cx="220" cy="240" r="18" fill="#ffe878" opacity=".8"/>
+    <path d="M0 308 Q60 272 100 286 Q130 298 160 278 Q196 256 240 270 Q270 280 300 264 L300 450 L0 450 Z" fill="#6a5030" opacity=".6"/>
+    <path d="M0 358 Q150 342 300 356 L300 450 L0 450 Z" fill="#5a4028"/>
+    <path d="M0 408 Q150 394 300 406 L300 450 L0 450 Z" fill="#4a3020"/>
+    <g fill="#2a1c08" opacity=".9">
+      <rect x="108" y="176" width="24" height="134"/>
+      <rect x="100" y="174" width="40" height="12" rx="2"/>
+      <rect x="112" y="162" width="16" height="16"/>
+      <rect x="118" y="148" width="4" height="16"/>
+      ${Array.from({length:8}).map((_,i)=>`<rect x="100" y="${188+i*14}" width="40" height="4" rx="1" opacity=".5"/>`).join('')}
+    </g>
+    <g fill="#2a1c08" opacity=".9">
+      <rect x="166" y="196" width="20" height="116"/>
+      <rect x="158" y="194" width="36" height="10" rx="2"/>
+      <rect x="170" y="182" width="12" height="14"/>
+      <rect x="175" y="170" width="4" height="14"/>
+      ${Array.from({length:6}).map((_,i)=>`<rect x="158" y="${206+i*14}" width="36" height="4" rx="1" opacity=".5"/>`).join('')}
+    </g>
+    <g fill="#c09040" opacity=".55">
+      <rect x="126" y="248" width="48" height="64"/>
+      <path d="M118 252 L150 228 L182 252 Z"/>
+      <rect x="136" y="284" width="28" height="28"/>
+    </g>
+    <g fill="#180e04">
+      <circle cx="150" cy="300" r="5.5"/>
+      <rect x="147" y="305" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 308 Q150 302 300 306" stroke="#e0b050" stroke-width=".5" fill="none" opacity=".35"/>
+  `),
+
+  /* ── Chaka · KwaZulu-Natal — rolling green hills, a Zulu warrior at dusk, an assegai silhouette ── */
+  chaka: scene(`
+    <defs>
+      <linearGradient id="chkSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0c1018"/><stop offset=".36" stop-color="#1c2028"/>
+        <stop offset=".64" stop-color="#504038"/><stop offset=".84" stop-color="#a07848"/>
+        <stop offset="1" stop-color="#c89858"/>
+      </linearGradient>
+      <radialGradient id="chkSun" cx="72%" cy="62%" r="32%">
+        <stop offset="0" stop-color="#e89030" stop-opacity=".6"/>
+        <stop offset="1" stop-color="#e89030" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#chkSky)"/>
+    ${stars(8, 449)}
+    <rect width="300" height="450" fill="url(#chkSun)"/>
+    <circle cx="216" cy="278" r="16" fill="#e89030" opacity=".75"/>
+    <path d="M0 298 Q50 262 90 278 Q120 290 148 270 Q174 252 204 268 Q244 286 278 264 Q290 256 300 258 L300 450 L0 450 Z" fill="#487048" opacity=".65"/>
+    <path d="M0 350 Q150 332 300 348 L300 450 L0 450 Z" fill="#386038"/>
+    <path d="M0 400 Q150 384 300 398 L300 450 L0 450 Z" fill="#285028"/>
+    <g fill="#1c1008" opacity=".88">
+      <ellipse cx="134" cy="278" rx="16" ry="24"/>
+      <circle cx="134" cy="260" r="12" fill="#c09870"/>
+      <rect x="128" y="272" width="12" height="30" rx="2"/>
+      <path d="M116 268 L128 274 L128 298 Q118 302 112 292 Z"/>
+      <path d="M152 268 L140 274 L140 298 Q150 302 156 292 Z"/>
+    </g>
+    <g fill="#2a1808" opacity=".8">
+      <rect x="138" y="188" width="4" height="106"/>
+      <path d="M136 188 L140 172 L144 188 Z"/>
+    </g>
+    <g fill="#c09040" opacity=".5">
+      <path d="M110 282 Q112 270 120 264 Q124 276 118 288 Z"/>
+      <path d="M116 268 Q124 262 130 270"/>
+    </g>
+    <g fill="#100808">
+      <circle cx="150" cy="290" r="5.5"/>
+      <rect x="147" y="295" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 298 Q150 292 300 296" stroke="#c89858" stroke-width=".5" fill="none" opacity=".35"/>
+  `),
+
+  /* ── Season of Migration to the North · Khartoum — the Nile at dusk, a village, a returning stranger ── */
+  seasonmigration: scene(`
+    <defs>
+      <linearGradient id="smnSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0e1018"/><stop offset=".36" stop-color="#201828"/>
+        <stop offset=".64" stop-color="#603840"/><stop offset=".84" stop-color="#b07050"/>
+        <stop offset="1" stop-color="#d09060"/>
+      </linearGradient>
+      <radialGradient id="smnSun" cx="58%" cy="62%" r="32%">
+        <stop offset="0" stop-color="#e08040" stop-opacity=".6"/>
+        <stop offset="1" stop-color="#e08040" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#smnSky)"/>
+    ${stars(9, 451)}
+    <rect width="300" height="450" fill="url(#smnSun)"/>
+    <circle cx="174" cy="282" r="14" fill="#e09040" opacity=".72"/>
+    <path d="M0 188 Q150 176 300 186 L300 320 Q150 308 0 320 Z" fill="#1c3848" opacity=".65"/>
+    <path d="M0 310 Q150 298 300 308 L300 450 L0 450 Z" fill="#c09850"/>
+    <path d="M0 360 Q150 348 300 358 L300 450 L0 450 Z" fill="#b08840"/>
+    <path d="M0 410 Q150 400 300 408 L300 450 L0 450 Z" fill="#a07830"/>
+    ${Array.from({length:10}).map((_,i)=>`<path d="M${18+i*28} ${312+i%2*12} Q${28+i*28} ${298+i%2*10} ${38+i*28} ${312+i%2*10}" stroke="#c09850" stroke-width=".5" fill="#b08840" opacity=".5"/>`).join('')}
+    <g fill="#0e1c28" opacity=".8">
+      <rect x="54" y="214" width="72" height="98"/>
+      <path d="M46 218 L90 186 L134 218 Z"/>
+      <rect x="70" y="186" width="40" height="34"/>
+      <path d="M90 182 Q100 168 110 182 Q100 176 90 182 Z" fill="#1c2c38"/>
+    </g>
+    ${[[58,234],[74,234],[98,234],[114,234],[58,268],[74,268]].map(([x,y])=>`<rect x="${x}" y="${y}" width="12" height="20" fill="#f0d060" opacity="${y<250?'.35':'.22'}"/>`).join('')}
+    <path d="M0 188 Q150 182 300 186 M0 320 Q150 314 300 318" stroke="#2c4860" stroke-width=".5" fill="none" opacity=".4"/>
+    <g fill="#0c1008">
+      <circle cx="150" cy="302" r="5.5"/>
+      <rect x="147" y="307" width="5" height="8" rx="1"/>
+    </g>
+  `),
+
+  /* ── Nervous Conditions · Mutare — a mission school, Zimbabwe highlands, a girl's determined gaze ── */
+  nervouscond: scene(`
+    <defs>
+      <linearGradient id="nvcSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a2808"/><stop offset=".4" stop-color="#2c4010"/>
+        <stop offset=".7" stop-color="#506828"/><stop offset=".9" stop-color="#809840"/>
+        <stop offset="1" stop-color="#a0b858"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#nvcSky)"/>
+    ${stars(5, 453)}
+    <path d="M0 298 Q60 262 100 278 Q132 290 162 270 Q196 248 238 264 Q266 276 300 258 L300 450 L0 450 Z" fill="#506830" opacity=".6"/>
+    <path d="M0 352 Q150 334 300 350 L300 450 L0 450 Z" fill="#405828"/>
+    <path d="M0 402 Q150 386 300 400 L300 450 L0 450 Z" fill="#304820"/>
+    <g fill="#2c2818">
+      <rect x="82" y="196" width="136" height="104"/>
+      <path d="M74 200 L150 162 L226 200 Z"/>
+      <rect x="108" y="162" width="84" height="40"/>
+      <rect x="106" y="200" width="88" height="8" fill="#483c20" opacity=".6"/>
+    </g>
+    ${[[86,220],[102,220],[164,220],[180,220],[86,256],[102,256],[164,256],[180,256]].map(([x,y])=>`<rect x="${x}" y="${y}" width="14" height="24" fill="#f0e898" opacity="${y<238?'.4':'.26'}"/>`).join('')}
+    <g fill="#1c1808" opacity=".85">
+      <circle cx="150" cy="280" r="10"/>
+      <rect x="144" y="290" width="12" height="14"/>
+      <path d="M132 284 L144 288 L144 302 Q136 306 130 298 Z"/>
+      <path d="M168 284 L156 288 L156 302 Q164 306 170 298 Z"/>
+    </g>
+    <g fill="#c09870" opacity=".55">
+      <ellipse cx="150" cy="272" rx="8" ry="10"/>
+    </g>
+    <g fill="#101008">
+      <circle cx="150" cy="290" r="5.5"/>
+      <rect x="147" y="295" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 298 Q150 292 300 296" stroke="#a0b858" stroke-width=".5" fill="none" opacity=".35"/>
+  `),
+
+  /* ── My Sister, the Serial Killer · Lagos — neon Lagos at night, a hospital, two sisters ── */
+  sisterserialkiller: scene(`
+    <defs>
+      <linearGradient id="sskSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#040408"/><stop offset=".38" stop-color="#08060c"/>
+        <stop offset=".68" stop-color="#10081a"/><stop offset=".88" stop-color="#1c0c28"/>
+        <stop offset="1" stop-color="#280e30"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#sskSky)"/>
+    ${stars(10, 455)}
+    <g fill="#0c0810" opacity=".9">
+      ${[18,58,100,146,194,240,274].map((x,i)=>`<rect x="${x}" y="${108+i%3*18}" width="${30+i%2*6}" height="${198-i%3*18}"/>`).join('')}
+    </g>
+    ${Array.from({length:20}).map((_,i)=>{const x=(i*44+8)%296,y=118+(i*32)%168,c=['#e02060','#c020a0','#2060e0','#20c080','#e0a020'][i%5]; return `<rect x="${x}" y="${y}" width="8" height="12" fill="${c}" opacity="${0.07+(i%4)*0.03}"/>`;}).join('')}
+    <path d="M0 308 Q150 296 300 306 L300 450 L0 450 Z" fill="#100818"/>
+    <path d="M0 358 Q150 346 300 356 L300 450 L0 450 Z" fill="#0c0610"/>
+    <g fill="#c020a0" opacity=".18">
+      <circle cx="150" cy="256" r="50"/>
+    </g>
+    <g fill="#0e0c14" opacity=".9">
+      <circle cx="130" cy="258" r="10"/>
+      <rect x="124" y="268" width="12" height="32" rx="1"/>
+      <circle cx="170" cy="258" r="10"/>
+      <rect x="164" y="268" width="12" height="32" rx="1"/>
+    </g>
+    <g fill="#c020a0" opacity=".5">
+      <rect x="158" y="272" width="24" height="4" rx="1"/>
+    </g>
+    <g fill="#060408">
+      <circle cx="150" cy="300" r="5.5"/>
+      <rect x="147" y="305" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 308 Q150 302 300 306" stroke="#280e30" stroke-width=".5" fill="none" opacity=".4"/>
+  `),
+
   /* ── 田園之秋 · Pingtung — rice paddies, banana fronds, a golden Taiwan autumn evening ── */
   tianyuanqiu: scene(`
     <defs>
