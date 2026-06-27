@@ -154,7 +154,22 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
     return dot > -0.08; // slightly past horizon so edge markers don't pop
   }
 
-  // ---- ocean waves ----
+  // ---- ocean particle wave ----
+
+  // Dots stored as normalized offsets from globe centre (-1..1).
+  // Scaled by currentScale() each frame so density adapts to zoom.
+  interface WaveDot { nx: number; ny: number; }
+  let waveDots: WaveDot[] = [];
+
+  function makeWaveDots() {
+    waveDots = [];
+    const step = 0.028; // normalised spacing (~14 px at r≈500)
+    for (let ny = -1 + step * 0.5; ny < 1; ny += step) {
+      for (let nx = -1 + step * 0.5; nx < 1; nx += step) {
+        if (nx * nx + ny * ny < 0.96) waveDots.push({ nx, ny });
+      }
+    }
+  }
 
   let shimmerFrame: number | null = null;
 
@@ -167,34 +182,29 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
     canvasPath({ type: 'Sphere' } as d3.GeoSphere);
     ctx.clip();
 
-    // Draw horizontal sine-wave bands that scroll slowly across the globe.
-    // Land is painted on top so only ocean areas show the lines.
-    const numBands = 22;
-    const step     = (r * 2) / numBands;
+    // Two overlapping wave trains give a cross-sea feel.
+    const k1 = 5.5, w1 = 1.4;   // primary:   spatial freq, angular speed
+    const k2 = 3.8, w2 = 0.85;  // secondary: slower, longer wavelength
 
-    for (let i = 0; i < numBands; i++) {
-      const baseY  = cy - r + (i + 0.5) * step;
-      // Vary amplitude, frequency, speed, and opacity per band for a natural look
-      const amp    = 2.8 + (i % 5) * 1.1;
-      const freq   = 0.022 + (i % 7) * 0.004;
-      const speed  = 0.55 + (i % 4) * 0.18;  // faster: ~25px/s shift, clearly visible
-      const phase  = i * 1.57 + t * speed;
-      const alpha  = 0.055 + (i % 3) * 0.018;
+    ctx.fillStyle = 'rgba(130,200,255,0.22)';
 
+    for (const d of waveDots) {
+      const bx = cx + d.nx * r;
+      const by = cy + d.ny * r;
+      // Vertical displacement: sum of two harmonics, phase driven by x position + time
+      const dy = r * (
+        0.016 * Math.sin(d.nx * k1 + t * w1) +
+        0.009 * Math.sin(d.nx * k2 - t * w2 + d.ny * 1.2)
+      );
+      // Brightness follows the primary crest so crests are more visible
+      const bright = Math.sin(d.nx * k1 + t * w1) * 0.5 + 0.5; // 0..1
+      ctx.globalAlpha = 0.10 + bright * 0.22;
       ctx.beginPath();
-      ctx.strokeStyle = `rgba(130,195,255,${alpha.toFixed(3)})`;
-      ctx.lineWidth   = 0.65;
-
-      let first = true;
-      for (let x = cx - r; x <= cx + r; x += 2.5) {
-        const y = baseY + amp * Math.sin(x * freq + phase)
-                        + (amp * 0.35) * Math.sin(x * freq * 2.3 + phase * 1.4);
-        if (first) { ctx.moveTo(x, y); first = false; }
-        else        ctx.lineTo(x, y);
-      }
-      ctx.stroke();
+      ctx.arc(bx, by + dy, 1.0, 0, Math.PI * 2);
+      ctx.fill();
     }
 
+    ctx.globalAlpha = 1;
     ctx.restore();
   }
 
@@ -798,6 +808,7 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
       .attr('width', W).attr('height', H);
     projection.translate([W / 2, H / 2]).scale(currentScale());
     makeStars();
+    makeWaveDots();
     redraw();
   }
 
@@ -815,6 +826,7 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
     bordersData = mesh(topo, topo.objects.countries, (a: any, b: any) => a !== b) as unknown as GeoJSON.MultiLineString;
 
     makeStars();
+    makeWaveDots();
     drawBase();
     startShimmerLoop();
     projectBooks();
