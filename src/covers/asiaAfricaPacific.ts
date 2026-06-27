@@ -1018,6 +1018,141 @@ export const ASIA_AFRICA_PACIFIC_COVERS: Record<string, string> = {
     </g>
   `),
 
+  /* ── 台北人 / Taipei People · Taipei — neon ballroom, a coat-check girl, the old city's fading grace ── */
+  taipeipeople: scene(`
+    <defs>
+      <linearGradient id="tpnSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#080408"/><stop offset=".38" stop-color="#100810"/>
+        <stop offset=".68" stop-color="#200c18"/><stop offset=".88" stop-color="#401828"/>
+        <stop offset="1" stop-color="#581e2c"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#tpnSky)"/>
+    ${stars(7, 427)}
+    <g fill="#0c0808" opacity=".85">
+      ${[22,60,100,144,192,236,272].map((x,i)=>`<rect x="${x}" y="${108+i%3*18}" width="${30+i%2*4}" height="${206-i%3*18}"/>`).join('')}
+    </g>
+    ${Array.from({length:16}).map((_,i)=>{const x=(i*52+8)%296,y=118+(i*38)%168; return `<rect x="${x}" y="${y}" width="8" height="14" fill="#e8a040" opacity="${0.07+(i%4)*0.03}"/>`;}).join('')}
+    <g fill="#1a0c10">
+      <rect x="90" y="236" width="120" height="84"/>
+      <path d="M82 240 L150 206 L218 240 Z"/>
+    </g>
+    <rect x="90" y="236" width="120" height="10" fill="#c03050" opacity=".55"/>
+    ${Array.from({length:6}).map((_,i)=>`<circle cx="${102+i*18}" cy="${232}" r="4" fill="#e8b040" opacity=".5"/>`).join('')}
+    ${[[94,256],[110,256],[94,288],[110,288],[168,256],[184,256],[168,288],[184,288]].map(([x,y])=>`<rect x="${x}" y="${y}" width="12" height="22" fill="#ffe090" opacity="${y<272?'.4':'.25'}"/>`).join('')}
+    <g fill="#100810">
+      <ellipse cx="150" cy="244" rx="22" ry="28"/>
+      <ellipse cx="150" cy="232" rx="14" ry="16" fill="#e8b888"/>
+      <rect x="138" y="266" width="24" height="58"/>
+    </g>
+    <g fill="#c03050" opacity=".6">
+      <rect x="130" y="246" width="40" height="12" rx="4"/>
+    </g>
+    <g fill="#060408">
+      <circle cx="150" cy="316" r="5.5"/>
+      <rect x="147" y="321" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 322 Q150 316 300 320" stroke="#581e2c" stroke-width=".5" fill="none" opacity=".4"/>
+  `),
+
+  /* ── 孽子 / Crystal Boys · Taipei — New Park at night, a lone boy under a streetlight ── */
+  crystalboys: scene(`
+    <defs>
+      <linearGradient id="cbySky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#040608"/><stop offset=".4" stop-color="#080c12"/>
+        <stop offset=".72" stop-color="#101420"/><stop offset="1" stop-color="#181c28"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#cbySky)"/>
+    ${stars(11, 429)}
+    <path d="M0 316 Q150 304 300 314 L300 450 L0 450 Z" fill="#0c1810"/>
+    <path d="M0 366 Q150 354 300 364 L300 450 L0 450 Z" fill="#081008"/>
+    <g fill="#081008" opacity=".8">
+      ${[28,68,108,152,198,244,278].map((x,i)=>`
+        <rect x="${x-2}" y="${174+i%2*14}" width="4" height="${142-i%2*14}" rx="1"/>
+        <ellipse cx="${x}" cy="${174+i%2*14}" rx="${14+i%2*6}" ry="${10+i%2*4}" fill="#0a1a0a"/>
+        <ellipse cx="${x}" cy="${200+i%2*12}" rx="${18+i%2*6}" ry="${12+i%2*4}" fill="#0a1a0a" opacity=".7"/>
+      `).join('')}
+    </g>
+    <circle cx="150" cy="260" r="50" fill="#e8d060" opacity=".08"/>
+    <circle cx="150" cy="260" r="8" fill="#e8d060" opacity=".7"/>
+    <path d="M150 268 L144 310 Q150 316 156 310 Z" fill="#e8d060" opacity=".2"/>
+    <g fill="#101820" opacity=".85">
+      <circle cx="150" cy="282" r="10"/>
+      <rect x="144" y="292" width="12" height="30" rx="2"/>
+      <path d="M136 296 L144 294 L144 318 Q138 320 134 316 Z"/>
+      <path d="M164 296 L156 294 L156 318 Q162 320 166 316 Z"/>
+    </g>
+    <g fill="#060810">
+      <circle cx="150" cy="308" r="5.5"/>
+      <rect x="147" y="313" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 316 Q150 310 300 314" stroke="#181c28" stroke-width=".5" fill="none" opacity=".4"/>
+  `),
+
+  /* ── 天橋上的魔術師 / The Magician on the Skywalk · Taipei — arcade crowds, a conjurer above ── */
+  magicianskywalk: scene(`
+    <defs>
+      <linearGradient id="mskSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#100808"/><stop offset=".38" stop-color="#1c1008"/>
+        <stop offset=".66" stop-color="#402808"/><stop offset=".88" stop-color="#906030"/>
+        <stop offset="1" stop-color="#b08040"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#mskSky)"/>
+    ${stars(6, 431)}
+    <g fill="#180c08" opacity=".9">
+      ${[14,56,100,146,192,238,276].map((x,i)=>`<rect x="${x}" y="${132+i%3*16}" width="${28+i%2*4}" height="${182-i%3*16}"/>`).join('')}
+    </g>
+    ${Array.from({length:18}).map((_,i)=>{const x=(i*44+6)%296,y=144+(i*34)%150,c=['#e88030','#e04020','#40a0c0','#e0c020'][i%4]; return `<rect x="${x}" y="${y}" width="8" height="14" fill="${c}" opacity="${0.07+(i%3)*0.03}"/>`;}).join('')}
+    <rect x="46" y="238" width="208" height="12" fill="#281808" rx="2"/>
+    <rect x="46" y="238" width="208" height="4" fill="#604020" opacity=".5"/>
+    <path d="M46 238 L54 216 L246 216 L254 238 Z" fill="#201008"/>
+    <g fill="#f0f0f0" opacity=".85">
+      <circle cx="150" cy="204" r="12"/>
+      <rect x="144" y="216" width="12" height="24" rx="2"/>
+      <path d="M136 214 L144 218 L144 238 Q138 240 132 234 Z"/>
+      <path d="M164 214 L156 218 L156 238 Q162 240 168 234 Z"/>
+    </g>
+    <circle cx="150" cy="196" r="14" fill="#e0c080" opacity=".3"/>
+    <circle cx="150" cy="200" r="4" fill="#f8f8f8" opacity=".6"/>
+    ${Array.from({length:7}).map((_,i)=>`<circle cx="${112+i*12}" cy="${200}" r="2" fill="${['#e04020','#e8b020','#4090e0','#40b040','#e04080','#80c0e0','#e8e040'][i]}" opacity=".7"/>`).join('')}
+    <path d="M0 314 Q150 302 300 312 L300 450 L0 450 Z" fill="#1a1008"/>
+    <g fill="#0e0806">
+      <circle cx="150" cy="306" r="5.5"/>
+      <rect x="147" y="311" width="5" height="8" rx="1"/>
+    </g>
+  `),
+
+  /* ── 荒人手記 / Notes of a Desolate Man · Taipei — rainy Taipei alley, a solitary window ── */
+  desolateman: scene(`
+    <defs>
+      <linearGradient id="dsmSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#060808"/><stop offset=".4" stop-color="#0c1010"/>
+        <stop offset=".72" stop-color="#141618"/><stop offset="1" stop-color="#1c1e20"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#dsmSky)"/>
+    ${stars(6, 433)}
+    <rect width="300" height="450" fill="#608090" opacity=".09"/>
+    <g fill="#0c1010" opacity=".85">
+      ${[30,72,116,162,208,252].map((x,i)=>`<rect x="${x}" y="${142+i%3*18}" width="${34+i%2*4}" height="${172-i%3*18}"/>`).join('')}
+    </g>
+    ${Array.from({length:12}).map((_,i)=>{const x=(i*52+10)%294,y=154+(i*36)%140; return `<rect x="${x}" y="${y}" width="10" height="16" fill="#d0c090" opacity="${0.06+(i%3)*0.03}"/>`;}).join('')}
+    <rect x="126" y="198" width="48" height="78" fill="#0e1214"/>
+    <rect x="128" y="200" width="44" height="38" fill="#d0c080" opacity=".22"/>
+    <g fill="#50607a" opacity=".6">
+      <path d="M128 238 L152 226 L172 238 L172 278 L128 278 Z"/>
+    </g>
+    ${Array.from({length:20}).map((_,i)=>`<line x1="${i*16+2}" y1="${160+i%3*8}" x2="${i*16+8}" y2="${180+i%3*8}" stroke="#5080a0" stroke-width=".5" opacity=".3"/>`).join('')}
+    <path d="M0 316 Q150 304 300 314 L300 450 L0 450 Z" fill="#0e0e10"/>
+    <g fill="#060808">
+      <circle cx="150" cy="308" r="5.5"/>
+      <rect x="147" y="313" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 316 Q150 310 300 314" stroke="#1c1e20" stroke-width=".5" fill="none" opacity=".4"/>
+  `),
+
   /* ── 田園之秋 · Pingtung — rice paddies, banana fronds, a golden Taiwan autumn evening ── */
   tianyuanqiu: scene(`
     <defs>

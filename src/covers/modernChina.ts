@@ -852,4 +852,34 @@ export const MODERN_CHINA_COVERS: Record<string, string> = {
       <rect x="147" y="273" width="5" height="8" rx="1"/>
     </g>
   `),
+
+  /* ── 繁花 / Blossoms Shanghai · Shanghai — neon lane houses, the Bund at night, a city's bloom ── */
+  blossoms: scene(`
+    <defs>
+      <linearGradient id="blsSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#060408"/><stop offset=".36" stop-color="#0c0810"/>
+        <stop offset=".66" stop-color="#180c18"/><stop offset=".88" stop-color="#2c1028"/>
+        <stop offset="1" stop-color="#401830"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#blsSky)"/>
+    ${stars(8, 425)}
+    <g fill="#0e0a0c" opacity=".9">
+      ${[20,58,98,142,188,232,268].map((x,i)=>`<rect x="${x}" y="${96+i%3*22}" width="${32+i%2*6}" height="${218-i%3*22}"/>`).join('')}
+    </g>
+    ${Array.from({length:22}).map((_,i)=>{const x=(i*46+4)%298,y=108+(i*36)%180,c=['#e84060','#e8a020','#40c0e0','#e060a0','#60e0a0'][i%5]; return `<rect x="${x}" y="${y}" width="9" height="14" fill="${c}" opacity="${0.08+(i%4)*0.04}"/>`;}).join('')}
+    <path d="M0 316 Q150 304 300 314 L300 450 L0 450 Z" fill="#120a0e"/>
+    <path d="M0 366 Q150 354 300 364 L300 450 L0 450 Z" fill="#0e0808"/>
+    <g fill="#c03050" opacity=".75">
+      <rect x="108" y="248" width="84" height="72"/>
+      <path d="M100 252 L150 222 L200 252 Z"/>
+    </g>
+    ${[[112,268],[128,268],[152,268],[168,268],[112,302],[128,302],[152,302],[168,302]].map(([x,y])=>`<rect x="${x}" y="${y}" width="12" height="22" fill="#e8c060" opacity="${y<285?'.45':'.3'}"/>`).join('')}
+    ${Array.from({length:5}).map((_,i)=>`<circle cx="${118+i*14}" cy="${244}" r="5" fill="${['#e84060','#e8a020','#40c0e0','#e060a0','#60e0a0'][i]}" opacity=".5"/>`).join('')}
+    <g fill="#060408">
+      <circle cx="150" cy="308" r="5.5"/>
+      <rect x="147" y="313" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 316 Q150 310 300 314" stroke="#401830" stroke-width=".5" fill="none" opacity=".4"/>
+  `),
 };
