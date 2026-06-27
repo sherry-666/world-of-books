@@ -2343,4 +2343,87 @@ export const ASIA_AFRICA_PACIFIC_COVERS: Record<string, string> = {
       <rect x="147" y="299" width="5" height="8" rx="1"/>
     </g>
   `),
+
+  /* ── Noli Me Tangere · Manila — Spanish colonial church, torch-lit plaza, revolution's eve ── */
+  nolimetangere: scene(`
+    <defs>
+      <linearGradient id="nliSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#080410"/><stop offset=".28" stop-color="#14081c"/>
+        <stop offset=".55" stop-color="#381020"/><stop offset=".76" stop-color="#782030"/>
+        <stop offset="1" stop-color="#c03828"/>
+      </linearGradient>
+      <radialGradient id="nliGlow" cx="50%" cy="78%" r="35%">
+        <stop offset="0" stop-color="#f07020" stop-opacity=".6"/>
+        <stop offset="1" stop-color="#f07020" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#nliSky)"/>
+    ${stars(8, 497)}
+    <rect width="300" height="450" fill="url(#nliGlow)"/>
+    <g fill="#c8a060" opacity=".82">
+      <rect x="96" y="168" width="108" height="148"/>
+      <path d="M88 172 L150 126 L212 172 Z"/>
+      <rect x="120" y="126" width="60" height="48"/>
+      <rect x="136" y="96" width="28" height="34"/>
+      <rect x="146" y="72" width="8" height="28"/>
+      <path d="M144 74 Q150 64 156 74 L156 80 L144 80 Z"/>
+      ${Array.from({length:3}).map((_,i)=>`<rect x="96" y="${168+i*50}" width="108" height="4" fill="#a08040" opacity=".4"/>`).join('')}
+    </g>
+    ${[[100,192],[116,192],[100,240],[116,240],[178,192],[194,192],[178,240],[194,240],[136,192],[152,192],[136,240],[152,240]].map(([x,y])=>`<rect x="${x}" y="${y}" width="12" height="28" fill="#f8d870" opacity="${y<220?'.45':'.3'}"/>`).join('')}
+    <g fill="#a07830" opacity=".6">
+      <rect x="138" y="306" width="24" height="10" rx="2"/>
+      <rect x="144" y="294" width="12" height="14"/>
+    </g>
+    <path d="M0 316 Q150 304 300 314 L300 450 L0 450 Z" fill="#281008"/>
+    <path d="M0 370 Q150 358 300 368 L300 450 L0 450 Z" fill="#1c0a06"/>
+    <g fill="#180808" opacity=".75">
+      ${[30,68,210,252].map((x,i)=>`<ellipse cx="${x}" cy="${310+i%2*8}" rx="${18+i%2*4}" ry="${22+i%2*4}"/><rect x="${x-3}" y="${330+i%2*8}" width="6" height="${20-i%2*4}" rx="2"/>`).join('')}
+    </g>
+    <g fill="#0c0810">
+      <circle cx="150" cy="308" r="5.5"/>
+      <rect x="147" y="313" width="5" height="8" rx="1"/>
+    </g>
+  `),
+
+  /* ── The Woman Who Had Two Navels · Manila — layered colonial memory, a woman, the bay ── */
+  twonavels: scene(`
+    <defs>
+      <linearGradient id="twnSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#04060e"/><stop offset=".32" stop-color="#080c1c"/>
+        <stop offset=".6" stop-color="#102038"/><stop offset=".82" stop-color="#284870"/>
+        <stop offset="1" stop-color="#3868a0"/>
+      </linearGradient>
+      <radialGradient id="twnMoon" cx="68%" cy="28%" r="24%">
+        <stop offset="0" stop-color="#d0c8f0" stop-opacity=".65"/>
+        <stop offset="1" stop-color="#d0c8f0" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#twnSky)"/>
+    ${stars(10, 499)}
+    <rect width="300" height="450" fill="url(#twnMoon)"/>
+    <circle cx="204" cy="136" r="14" fill="#e0d8f4" opacity=".72"/>
+    <path d="M0 288 Q150 274 300 286 L300 450 L0 450 Z" fill="#183060" opacity=".7"/>
+    <path d="M0 334 Q150 322 300 332 L300 450 L0 450 Z" fill="#102040"/>
+    <path d="M0 390 Q150 378 300 388 L300 450 L0 450 Z" fill="#081428"/>
+    <g fill="#c8b880" opacity=".7">
+      <rect x="72" y="196" width="156" height="94"/>
+      <path d="M64 200 L150 164 L236 200 Z"/>
+      <rect x="102" y="164" width="96" height="38"/>
+      ${Array.from({length:3}).map((_,i)=>`<rect x="72" y="${196+i*32}" width="156" height="4" fill="#a89860" opacity=".4"/>`).join('')}
+    </g>
+    ${[[76,214],[92,214],[76,250],[92,250],[202,214],[218,214],[202,250],[218,250],[116,214],[132,214],[152,214],[168,214]].map(([x,y])=>`<rect x="${x}" y="${y}" width="12" height="26" fill="#f0e8b0" opacity="${y<235?'.42':'.28'}"/>`).join('')}
+    <g fill="#c8a870" opacity=".55">
+      <rect x="64" y="196" width="172" height="7"/>
+      <rect x="64" y="288" width="172" height="7"/>
+    </g>
+    <g fill="#d0b8a0" opacity=".6">
+      <ellipse cx="150" cy="178" rx="14" ry="18"/>
+      <ellipse cx="150" cy="166" rx="10" ry="10"/>
+      <path d="M138 178 Q150 190 162 178" stroke="#b89880" stroke-width="1" fill="none" opacity=".7"/>
+    </g>
+    <g fill="#080c18">
+      <circle cx="150" cy="280" r="5.5"/>
+      <rect x="147" y="285" width="5" height="8" rx="1"/>
+    </g>
+  `),
 };
