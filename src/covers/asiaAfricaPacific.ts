@@ -1153,6 +1153,118 @@ export const ASIA_AFRICA_PACIFIC_COVERS: Record<string, string> = {
     <path d="M0 316 Q150 310 300 314" stroke="#1c1e20" stroke-width=".5" fill="none" opacity=".4"/>
   `),
 
+  /* ── Pounamu Pounamu · Gisborne — pōhutukawa coast, green hills, the East Coast Pacific ── */
+  pounamu: scene(`
+    <defs>
+      <linearGradient id="pnmSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0c1828"/><stop offset=".36" stop-color="#183040"/>
+        <stop offset=".65" stop-color="#2c6060"/><stop offset=".85" stop-color="#4898a0"/>
+        <stop offset="1" stop-color="#60b0b8"/>
+      </linearGradient>
+      <radialGradient id="pnmSun" cx="70%" cy="38%" r="28%">
+        <stop offset="0" stop-color="#f0d860" stop-opacity=".55"/>
+        <stop offset="1" stop-color="#f0d860" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#pnmSky)"/>
+    ${stars(5, 475)}
+    <rect width="300" height="450" fill="url(#pnmSun)"/>
+    <circle cx="210" cy="182" r="14" fill="#f8e060" opacity=".72"/>
+    <path d="M0 192 Q150 180 300 190 L300 316 Q150 304 0 316 Z" fill="#3888a0" opacity=".6"/>
+    <path d="M0 300 Q60 268 100 282 Q132 294 164 274 Q200 252 244 268 Q274 280 300 264 L300 450 L0 450 Z" fill="#3c7040"/>
+    <path d="M0 354 Q150 338 300 352 L300 450 L0 450 Z" fill="#2c5e30"/>
+    <path d="M0 404 Q150 390 300 402 L300 450 L0 450 Z" fill="#1e4c20"/>
+    <g fill="#801818" opacity=".8">
+      ${[30,72,116,162,210,256].map((x,i)=>`
+        <ellipse cx="${x}" cy="${276+i%2*12}" rx="${22+i%2*8}" ry="${28+i%2*8}"/>
+        <ellipse cx="${x+10}" cy="${290+i%2*10}" rx="${18+i%2*6}" ry="${20+i%2*6}" opacity=".7"/>
+        <rect x="${x-3}" y="${300+i%2*10}" width="6" height="${18+i%2*6}" rx="2"/>
+      `).join('')}
+    </g>
+    ${Array.from({length:18}).map((_,i)=>`<circle cx="${22+(i*24)%276}" cy="${270+(i*16)%56}" r="${1.5+i%3*.5}" fill="#e04030" opacity="${0.4+i%3*0.1}"/>`).join('')}
+    <g fill="#c0a060" opacity=".5">
+      <rect x="134" y="254" width="32" height="22" rx="3"/>
+      <path d="M134 256 Q150 248 166 256"/>
+    </g>
+    <path d="M0 192 Q150 186 300 190 M0 316 Q150 310 300 314" stroke="#3888a0" stroke-width=".5" fill="none" opacity=".4"/>
+    <g fill="#0c1820">
+      <circle cx="150" cy="292" r="5.5"/>
+      <rect x="147" y="297" width="5" height="8" rx="1"/>
+    </g>
+  `),
+
+  /* ── Owls Do Cry · Oamaru — Victorian limestone buildings, grey South Island sky, a family ── */
+  owlsdocry: scene(`
+    <defs>
+      <linearGradient id="odcSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a1c24"/><stop offset=".4" stop-color="#282c38"/>
+        <stop offset=".72" stop-color="#383c48"/><stop offset="1" stop-color="#484c58"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#odcSky)"/>
+    ${stars(8, 477)}
+    <path d="M0 318 Q150 306 300 316 L300 450 L0 450 Z" fill="#2a2c30"/>
+    <path d="M0 368 Q150 356 300 366 L300 450 L0 450 Z" fill="#222428"/>
+    <g fill="#e8e4d8" opacity=".7">
+      <rect x="62" y="184" width="72" height="136"/>
+      <path d="M54 188 L98 152 L142 188 Z"/>
+      <rect x="78" y="152" width="40" height="38"/>
+      ${Array.from({length:4}).map((_,i)=>`<rect x="62" y="${184+i*34}" width="72" height="4" fill="#d8d4c8" opacity=".4"/>`).join('')}
+      <rect x="166" y="196" width="64" height="124"/>
+      <path d="M158 200 L198 164 L238 200 Z"/>
+      <rect x="180" y="164" width="36" height="38"/>
+    </g>
+    ${[[66,204],[82,204],[66,240],[82,240],[98,204],[114,204],[170,218],[186,218],[170,252],[186,252],[202,218],[218,218]].map(([x,y])=>`<rect x="${x}" y="${y}" width="12" height="22" fill="#d0c890" opacity="${y<230?'.38':'.24'}"/>`).join('')}
+    <rect x="62" y="180" width="72" height="8" fill="#d0c890" opacity=".5"/>
+    <rect x="166" y="192" width="64" height="8" fill="#d0c890" opacity=".5"/>
+    <g fill="#181c22">
+      <circle cx="150" cy="308" r="5.5"/>
+      <rect x="147" y="313" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 318 Q150 312 300 316" stroke="#484c58" stroke-width=".5" fill="none" opacity=".4"/>
+  `),
+
+  /* ── Collected Stories · Wellington — the Tinakori Road house, the harbour, a colonial garden party ── */
+  mansfieldstories: scene(`
+    <defs>
+      <linearGradient id="msfSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a2028"/><stop offset=".38" stop-color="#28303c"/>
+        <stop offset=".68" stop-color="#485060"/><stop offset=".88" stop-color="#8898a8"/>
+        <stop offset="1" stop-color="#a8b8c4"/>
+      </linearGradient>
+      <radialGradient id="msfSun" cx="62%" cy="42%" r="30%">
+        <stop offset="0" stop-color="#e8d080" stop-opacity=".45"/>
+        <stop offset="1" stop-color="#e8d080" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#msfSky)"/>
+    ${stars(6, 479)}
+    <rect width="300" height="450" fill="url(#msfSun)"/>
+    <path d="M0 198 Q150 186 300 196 L300 312 Q150 300 0 312 Z" fill="#3060a0" opacity=".55"/>
+    <path d="M0 306 Q150 294 300 304 L300 450 L0 450 Z" fill="#2a3828"/>
+    <path d="M0 356 Q150 344 300 354 L300 450 L0 450 Z" fill="#202e20"/>
+    <path d="M0 198 Q150 192 300 196 M0 312 Q150 306 300 310" stroke="#4080c0" stroke-width=".5" fill="none" opacity=".4"/>
+    <g fill="#d0c8a0" opacity=".75">
+      <rect x="82" y="188" width="136" height="118"/>
+      <path d="M74 192 L150 154 L226 192 Z"/>
+      <rect x="108" y="154" width="84" height="40"/>
+      <rect x="74" y="188" width="136" height="8" fill="#b8a888" opacity=".6"/>
+    </g>
+    ${[[86,212],[102,212],[86,248],[102,248],[166,212],[182,212],[166,248],[182,248],[118,212],[134,212]].map(([x,y])=>`<rect x="${x}" y="${y}" width="12" height="24" fill="#f8f0d0" opacity="${y<232?'.45':'.3'}"/>`).join('')}
+    <g fill="#2a3820" opacity=".8">
+      ${[50,78,192,222].map((x,i)=>`
+        <rect x="${x-2}" y="${276+i%2*10}" width="4" height="${32-i%2*10}" rx="1"/>
+        <ellipse cx="${x}" cy="${264+i%2*8}" rx="${14+i%2*4}" ry="${16+i%2*4}"/>
+        <ellipse cx="${x+8}" cy="${278+i%2*6}" rx="${10+i%2*3}" ry="${12+i%2*3}" opacity=".8"/>
+      `).join('')}
+    </g>
+    <g fill="#1a2020">
+      <circle cx="150" cy="298" r="5.5"/>
+      <rect x="147" y="303" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 306 Q150 300 300 304" stroke="#a8b8c4" stroke-width=".5" fill="none" opacity=".4"/>
+  `),
+
   /* ── Endurance · Weddell Sea — a ship crushed in pack ice, polar night, a crew's last hope ── */
   endurance: scene(`
     <defs>
