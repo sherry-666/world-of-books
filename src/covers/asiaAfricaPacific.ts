@@ -2426,4 +2426,205 @@ export const ASIA_AFRICA_PACIFIC_COVERS: Record<string, string> = {
       <rect x="147" y="285" width="5" height="8" rx="1"/>
     </g>
   `),
+
+  /* ── Frankenstein in Baghdad · Baghdad — rubble streets, a monstrous assembled figure, smoke ── */
+  frankbaghdad: scene(`
+    <defs>
+      <linearGradient id="fkbSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#040206"/><stop offset=".3" stop-color="#0a0408"/>
+        <stop offset=".58" stop-color="#200808"/><stop offset=".8" stop-color="#401010"/>
+        <stop offset="1" stop-color="#601818"/>
+      </linearGradient>
+      <radialGradient id="fkbFire" cx="50%" cy="75%" r="40%">
+        <stop offset="0" stop-color="#e06010" stop-opacity=".55"/>
+        <stop offset="1" stop-color="#e06010" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#fkbSky)"/>
+    ${stars(6, 501)}
+    <rect width="300" height="450" fill="url(#fkbFire)"/>
+    <g fill="#181010" opacity=".88">
+      ${[0,44,88,128,172,216,256].map((x,i)=>`
+        <rect x="${x}" y="${196+i%3*18}" width="${38+i%2*8}" height="${114-i%3*18}"/>
+        <path d="M${x} ${196+i%3*18} L${x+20+i%2*4} ${164+i%3*14} L${x+38+i%2*8} ${196+i%3*18} Z"/>
+        ${i%2===0?`<rect x="${x+8}" y="${196+i%3*18}" width="10" height="${114-i%3*18}" fill="#201410" opacity=".3"/>`:''}
+      `).join('')}
+    </g>
+    <g fill="#0c0808" opacity=".7">
+      ${Array.from({length:8}).map((_,i)=>`<rect x="${20+i*34}" y="${288+i%3*14}" width="${18+i%2*6}" height="${22+i%2*8}" rx="1" opacity=".8"/>`).join('')}
+    </g>
+    <g fill="#301808" opacity=".75">
+      <ellipse cx="150" cy="256" rx="22" ry="38"/>
+      <ellipse cx="150" cy="232" rx="16" ry="18"/>
+      <path d="M132 256 Q120 242 128 232 Q136 224 150 228 Q164 224 172 232 Q180 242 168 256 Z" fill="#281408" opacity=".8"/>
+      <path d="M138 232 Q134 222 138 218" stroke="#381808" stroke-width="2" fill="none"/>
+      <path d="M162 232 Q166 222 162 218" stroke="#381808" stroke-width="2" fill="none"/>
+      <circle cx="143" cy="230" r="3" fill="#0c0808"/>
+      <circle cx="157" cy="230" r="3" fill="#0c0808"/>
+    </g>
+    <g fill="#0c0808">
+      <circle cx="150" cy="294" r="5.5"/>
+      <rect x="147" y="299" width="5" height="8" rx="1"/>
+    </g>
+  `),
+
+  /* ── In the Country of Men · Tripoli — whitewashed walls, Mediterranean glare, a child at a gate ── */
+  countryofmen: scene(`
+    <defs>
+      <linearGradient id="comSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0a1020"/><stop offset=".32" stop-color="#183060"/>
+        <stop offset=".62" stop-color="#3478b0"/><stop offset=".82" stop-color="#68a8d0"/>
+        <stop offset="1" stop-color="#88c0d8"/>
+      </linearGradient>
+      <radialGradient id="comSun" cx="62%" cy="28%" r="28%">
+        <stop offset="0" stop-color="#f8e060" stop-opacity=".7"/>
+        <stop offset="1" stop-color="#f8e060" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#comSky)"/>
+    ${stars(4, 503)}
+    <rect width="300" height="450" fill="url(#comSun)"/>
+    <circle cx="186" cy="138" r="20" fill="#f8f0a0" opacity=".72"/>
+    <path d="M0 300 Q150 286 300 298 L300 450 L0 450 Z" fill="#c8c0a8" opacity=".8"/>
+    <path d="M0 354 Q150 342 300 352 L300 450 L0 450 Z" fill="#b8b098"/>
+    <path d="M0 406 Q150 396 300 404 L300 450 L0 450 Z" fill="#a8a088"/>
+    <g fill="#e8e0c8" opacity=".85">
+      <rect x="58" y="178" width="184" height="124"/>
+      <rect x="48" y="178" width="204" height="10" fill="#d8d0b8" opacity=".6"/>
+      <rect x="68" y="296" width="164" height="10" fill="#d8d0b8" opacity=".5"/>
+      ${Array.from({length:5}).map((_,i)=>`<rect x="58" y="${178+i*26}" width="184" height="3" fill="#d0c8b0" opacity=".35"/>`).join('')}
+    </g>
+    ${[[62,196],[78,196],[62,232],[78,232],[196,196],[212,196],[196,232],[212,232],[112,196],[128,196],[148,196],[164,196]].map(([x,y])=>`<rect x="${x}" y="${y}" width="12" height="26" fill="#a0c8e8" opacity="${y<220?'.52':'.36'}"/>`).join('')}
+    <g fill="#604820" opacity=".7">
+      <rect x="130" y="234" width="40" height="62"/>
+      <path d="M126 238 Q150 224 174 238 Z"/>
+      <rect x="144" y="258" width="12" height="38" fill="#503818" opacity=".9"/>
+    </g>
+    <g fill="#503010" opacity=".8">
+      <circle cx="144" cy="254" r="6"/>
+      <rect x="140" y="256" width="8" height="40" rx="1"/>
+      <path d="M134 262 Q140 256 144 262"/>
+    </g>
+    <g fill="#0c1018">
+      <circle cx="150" cy="292" r="5.5"/>
+      <rect x="147" y="297" width="5" height="8" rx="1"/>
+    </g>
+  `),
+
+  /* ── Enter Ghost · Haifa — hillside terraces, the Mediterranean, an outdoor stage ── */
+  enterghost: scene(`
+    <defs>
+      <linearGradient id="engSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#060810"/><stop offset=".3" stop-color="#0e1428"/>
+        <stop offset=".6" stop-color="#183868"/><stop offset=".82" stop-color="#3870a8"/>
+        <stop offset="1" stop-color="#5898c0"/>
+      </linearGradient>
+      <radialGradient id="engMoon" cx="28%" cy="25%" r="22%">
+        <stop offset="0" stop-color="#d8e8f8" stop-opacity=".65"/>
+        <stop offset="1" stop-color="#d8e8f8" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#engSky)"/>
+    ${stars(12, 505)}
+    <rect width="300" height="450" fill="url(#engMoon)"/>
+    <circle cx="84" cy="124" r="13" fill="#e8f0f8" opacity=".72"/>
+    <path d="M0 272 Q150 258 300 270 L300 450 L0 450 Z" fill="#2858a0" opacity=".6"/>
+    <path d="M0 318 Q150 306 300 316 L300 450 L0 450 Z" fill="#203868"/>
+    <path d="M0 378 Q150 366 300 376 L300 450 L0 450 Z" fill="#182840"/>
+    <g fill="#c8c0a0" opacity=".78">
+      ${[[52,196],[90,180],[130,194],[170,178],[210,192],[250,176]].map(([x,y],i)=>`
+        <rect x="${x}" y="${y}" width="${34+i%2*8}" height="${76-i%2*10}"/>
+        <path d="M${x-4} ${y+4} L${x+17+i%2*4} ${y-16} L${x+38+i%2*8} ${y+4} Z"/>
+      `).join('')}
+    </g>
+    <g fill="#304820" opacity=".75">
+      ${[40,76,200,240].map((x,i)=>`<ellipse cx="${x}" cy="${256+i%2*8}" rx="${16+i%2*4}" ry="${20+i%2*4}"/><rect x="${x-2}" y="${272+i%2*8}" width="4" height="${14-i%2*4}" rx="1"/>`).join('')}
+    </g>
+    <g fill="#c8a060" opacity=".6">
+      <rect x="108" y="254" width="84" height="18" rx="2"/>
+      <rect x="112" y="250" width="76" height="6" rx="1"/>
+    </g>
+    <g fill="#e8e0d0" opacity=".55">
+      <rect x="138" y="238" width="8" height="18"/>
+      <rect x="154" y="240" width="8" height="16"/>
+    </g>
+    <g fill="#080e18">
+      <circle cx="150" cy="264" r="5.5"/>
+      <rect x="147" y="269" width="5" height="8" rx="1"/>
+    </g>
+  `),
+
+  /* ── The Yacoubian Building · Cairo — art deco facade, lit windows, rooftop Cairo ── */
+  yacoubianbuilding: scene(`
+    <defs>
+      <linearGradient id="ycbSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#04060e"/><stop offset=".28" stop-color="#08102a"/>
+        <stop offset=".55" stop-color="#142048"/><stop offset=".78" stop-color="#283870"/>
+        <stop offset="1" stop-color="#384888"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#ycbSky)"/>
+    ${stars(14, 507)}
+    <g fill="#c8b880" opacity=".8">
+      <rect x="62" y="128" width="176" height="178"/>
+      <path d="M54 134 L150 96 L246 134 Z"/>
+      <rect x="96" y="96" width="108" height="40"/>
+      ${Array.from({length:6}).map((_,i)=>`<rect x="62" y="${128+i*30}" width="176" height="4" fill="#b0a060" opacity=".45"/>`).join('')}
+    </g>
+    <g fill="#c8b060" opacity=".5">
+      <rect x="62" y="128" width="6" height="178"/>
+      <rect x="232" y="128" width="6" height="178"/>
+      ${Array.from({length:4}).map((_,i)=>`<rect x="${88+i*36}" y="128" width="6" height="178" opacity=".6"/>`).join('')}
+    </g>
+    ${[
+      [66,146],[82,146],[98,146],[66,180],[82,180],[98,180],[66,214],[82,214],[98,214],[66,248],[82,248],[98,248],[66,282],[82,282],[98,282],
+      [172,146],[188,146],[204,146],[220,146],[172,180],[188,180],[204,180],[220,180],[172,214],[188,214],[204,214],[220,214],[172,248],[188,248],[204,248],[220,248],[172,282],[188,282],[204,282],[220,282],
+      [118,146],[136,146],[154,146],[118,180],[136,180],[154,180],[118,214],[136,214],[154,214],[118,248],[136,248],[154,248],[118,282],[136,282],[154,282],
+    ].map(([x,y])=>`<rect x="${x}" y="${y}" width="12" height="22" fill="#f8e870" opacity="${.15+Math.random()*.38}"/>`).join('')}
+    <path d="M0 304 Q150 292 300 302 L300 450 L0 450 Z" fill="#0c1018"/>
+    <g fill="#060a14">
+      <circle cx="150" cy="296" r="5.5"/>
+      <rect x="147" y="301" width="5" height="8" rx="1"/>
+    </g>
+  `),
+
+  /* ── Girls of Riyadh · Riyadh — glass towers, night skyline, a woman's silhouette ── */
+  girlsriyadh: scene(`
+    <defs>
+      <linearGradient id="grdSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#020408"/><stop offset=".3" stop-color="#040810"/>
+        <stop offset=".58" stop-color="#081420"/><stop offset=".8" stop-color="#102840"/>
+        <stop offset="1" stop-color="#183858"/>
+      </linearGradient>
+      <radialGradient id="grdMoon" cx="75%" cy="20%" r="20%">
+        <stop offset="0" stop-color="#d8e0f0" stop-opacity=".6"/>
+        <stop offset="1" stop-color="#d8e0f0" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#grdSky)"/>
+    ${stars(16, 509)}
+    <rect width="300" height="450" fill="url(#grdMoon)"/>
+    <circle cx="225" cy="100" r="11" fill="#e0e8f4" opacity=".7"/>
+    <g fill="#0c1828" opacity=".92">
+      ${[[30,168,52,262],[88,144,40,262],[134,120,36,262],[176,152,44,262],[220,136,38,262],[258,160,36,262]].map(([x,y,w,h])=>`
+        <rect x="${x}" y="${y}" width="${w}" height="${h}"/>
+        <path d="M${x-4} ${y+4} L${x+w/2} ${y-20} L${x+w+4} ${y+4} Z"/>
+      `).join('')}
+    </g>
+    ${[[34,184],[50,184],[34,218],[50,218],[34,252],[50,252],[92,158],[108,158],[92,196],[108,196],[92,234],[108,234],
+       [138,136],[154,136],[138,174],[154,174],[138,212],[154,212],[180,168],[196,168],[180,204],[196,204],[180,240],[196,240],
+       [224,150],[240,150],[224,186],[240,186],[224,224],[240,224],[262,174],[278,174],[262,210],[278,210]
+    ].map(([x,y])=>`<rect x="${x}" y="${y}" width="12" height="20" fill="#a8d0f0" opacity="${.2+.15}" />`).join('')}
+    <path d="M0 302 Q150 290 300 300 L300 450 L0 450 Z" fill="#0a0e18"/>
+    <g fill="#d8b080" opacity=".7">
+      <ellipse cx="150" cy="278" rx="12" ry="16"/>
+      <ellipse cx="150" cy="264" rx="9" ry="9"/>
+      <rect x="140" y="292" width="20" height="12" rx="2"/>
+    </g>
+    <g fill="#060a14">
+      <circle cx="150" cy="294" r="5.5"/>
+      <rect x="147" y="299" width="5" height="8" rx="1"/>
+    </g>
+  `),
+
 };
