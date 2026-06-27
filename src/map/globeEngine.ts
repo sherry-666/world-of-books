@@ -182,29 +182,43 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
     canvasPath({ type: 'Sphere' } as d3.GeoSphere);
     ctx.clip();
 
-    // Two overlapping wave trains give a cross-sea feel.
-    const k1 = 5.5, w1 = 1.4;   // primary:   spatial freq, angular speed
-    const k2 = 3.8, w2 = 0.85;  // secondary: slower, longer wavelength
+    // Two overlapping wave trains.
+    const k1 = 5.5, w1 = 1.4;
+    const k2 = 3.8, w2 = 0.85;
 
-    ctx.fillStyle = 'rgba(130,200,255,0.22)';
+    // Draw two passes: dim base dots, then bright crest dots.
+    // Using two fixed fillStyles avoids per-dot state changes.
+    const dotR = 1.5;
 
+    // Pass 1 — all dots at base opacity
+    ctx.fillStyle = 'rgba(140,210,255,0.28)';
+    ctx.beginPath();
     for (const d of waveDots) {
       const bx = cx + d.nx * r;
       const by = cy + d.ny * r;
-      // Vertical displacement: sum of two harmonics, phase driven by x position + time
-      const dy = r * (
-        0.016 * Math.sin(d.nx * k1 + t * w1) +
-        0.009 * Math.sin(d.nx * k2 - t * w2 + d.ny * 1.2)
-      );
-      // Brightness follows the primary crest so crests are more visible
-      const bright = Math.sin(d.nx * k1 + t * w1) * 0.5 + 0.5; // 0..1
-      ctx.globalAlpha = 0.10 + bright * 0.22;
-      ctx.beginPath();
-      ctx.arc(bx, by + dy, 1.0, 0, Math.PI * 2);
-      ctx.fill();
+      const dy = r * (0.016 * Math.sin(d.nx * k1 + t * w1) +
+                      0.009 * Math.sin(d.nx * k2 - t * w2 + d.ny * 1.2));
+      ctx.moveTo(bx + dotR, by + dy);
+      ctx.arc(bx, by + dy, dotR, 0, Math.PI * 2);
     }
+    ctx.fill();
 
-    ctx.globalAlpha = 1;
+    // Pass 2 — only crest dots get a brighter highlight
+    ctx.fillStyle = 'rgba(200,235,255,0.45)';
+    ctx.beginPath();
+    for (const d of waveDots) {
+      const phase  = d.nx * k1 + t * w1;
+      const bright = Math.sin(phase);
+      if (bright < 0.55) continue; // only near-crest dots
+      const bx = cx + d.nx * r;
+      const by = cy + d.ny * r;
+      const dy = r * (0.016 * Math.sin(phase) +
+                      0.009 * Math.sin(d.nx * k2 - t * w2 + d.ny * 1.2));
+      ctx.moveTo(bx + dotR, by + dy);
+      ctx.arc(bx, by + dy, dotR, 0, Math.PI * 2);
+    }
+    ctx.fill();
+
     ctx.restore();
   }
 
