@@ -154,6 +154,68 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
     return dot > -0.08; // slightly past horizon so edge markers don't pop
   }
 
+  // ---- ocean shimmer ----
+
+  // Fixed lat/lng points scattered across major ocean basins; projected each frame.
+  interface ShimmerDot { lng: number; lat: number; phase: number; freq: number; }
+  const SHIMMER: ShimmerDot[] = [
+    // Pacific
+    { lng:-160, lat: 22, phase:0.00, freq:0.55 }, { lng:-172, lat:-18, phase:1.20, freq:0.70 },
+    { lng:-142, lat: 38, phase:2.10, freq:0.45 }, { lng:-118, lat:-28, phase:0.75, freq:0.80 },
+    { lng: 178, lat: 50, phase:1.80, freq:0.50 }, { lng:-130, lat: -5, phase:3.00, freq:0.65 },
+    { lng:-155, lat:-42, phase:0.40, freq:0.60 }, { lng: 160, lat:-25, phase:2.50, freq:0.75 },
+    // Atlantic
+    { lng: -30, lat: 15, phase:0.40, freq:0.70 }, { lng: -22, lat:-12, phase:1.60, freq:0.55 },
+    { lng: -48, lat: 44, phase:2.40, freq:0.45 }, { lng: -16, lat:-38, phase:0.90, freq:0.80 },
+    { lng: -55, lat: -5, phase:1.30, freq:0.65 }, { lng:  -8, lat: 55, phase:2.80, freq:0.50 },
+    // Indian
+    { lng:  68, lat:-18, phase:1.10, freq:0.70 }, { lng:  82, lat:  6, phase:2.70, freq:0.55 },
+    { lng:  58, lat:-32, phase:0.30, freq:0.85 }, { lng:  95, lat:-12, phase:1.50, freq:0.60 },
+    // Southern / Arctic
+    { lng:   0, lat: 74, phase:1.40, freq:0.40 }, { lng:  88, lat:-62, phase:2.00, freq:0.50 },
+    { lng: -92, lat:-58, phase:0.60, freq:0.55 }, { lng: 148, lat:-52, phase:1.70, freq:0.65 },
+    { lng:-148, lat:-60, phase:0.20, freq:0.75 }, { lng:  40, lat: 68, phase:2.20, freq:0.45 },
+  ];
+
+  let shimmerFrame: number | null = null;
+
+  function drawShimmerLayer() {
+    const t = performance.now() * 0.001;
+    ctx.save();
+    ctx.beginPath();
+    canvasPath({ type: 'Sphere' } as d3.GeoSphere);
+    ctx.clip();
+    for (const sh of SHIMMER) {
+      if (!isVisible(sh.lng, sh.lat)) continue;
+      const xy = projection([sh.lng, sh.lat]);
+      if (!xy) continue;
+      const a = (Math.sin(t * sh.freq + sh.phase) * 0.5 + 0.5) * 0.38;
+      if (a < 0.04) continue;
+      const r = 1.0 + (Math.sin(t * sh.freq * 0.7 + sh.phase + 1) * 0.5 + 0.5) * 1.2;
+      ctx.beginPath();
+      ctx.arc(xy[0], xy[1], r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(160,220,255,${a.toFixed(2)})`;
+      ctx.fill();
+    }
+    ctx.restore();
+  }
+
+  function startShimmerLoop() {
+    if (shimmerFrame !== null) return;
+    let last = 0;
+    function tick(now: number) {
+      shimmerFrame = requestAnimationFrame(tick);
+      if (now - last < 48) return; // ~20 fps
+      last = now;
+      if (animFrame !== null || dragRaf !== null) return; // defer to ongoing animation
+      drawBase();
+      drawShimmerLayer();
+      drawProvinces();
+      if (pEvents.length) drawAuthorPath();
+    }
+    shimmerFrame = requestAnimationFrame(tick);
+  }
+
   // ---- stars (canvas) ----
 
   interface StarDot { x: number; y: number; r: number; a: number; }
@@ -209,6 +271,9 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
       ctx.lineWidth = 0.4;
       ctx.stroke();
     }
+
+    // Ocean shimmer — glints on the water surface, clipped to sphere, beneath land
+    drawShimmerLayer();
 
     // Land
     ctx.beginPath();
@@ -754,6 +819,7 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
 
     makeStars();
     drawBase();
+    startShimmerLoop();
     projectBooks();
     buildCountryLabels(landData);
     buildMarkers();
@@ -870,8 +936,9 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
     cleanup() {
       isDestroyed = true;
       clearTimeout(resizeTimer);
-      if (animFrame !== null) cancelAnimationFrame(animFrame);
-      if (dragRaf  !== null) cancelAnimationFrame(dragRaf);
+      if (animFrame   !== null) cancelAnimationFrame(animFrame);
+      if (dragRaf     !== null) cancelAnimationFrame(dragRaf);
+      if (shimmerFrame !== null) cancelAnimationFrame(shimmerFrame);
       const ro = (canvas as any).__ro as ResizeObserver | undefined;
       if (ro) ro.disconnect();
       canvas.remove();
