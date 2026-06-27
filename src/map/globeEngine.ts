@@ -177,7 +177,7 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
       // Vary amplitude, frequency, speed, and opacity per band for a natural look
       const amp    = 2.8 + (i % 5) * 1.1;
       const freq   = 0.022 + (i % 7) * 0.004;
-      const speed  = 0.18 + (i % 4) * 0.06;
+      const speed  = 0.55 + (i % 4) * 0.18;  // faster: ~25px/s shift, clearly visible
       const phase  = i * 1.57 + t * speed;
       const alpha  = 0.055 + (i % 3) * 0.018;
 

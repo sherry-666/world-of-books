@@ -2026,4 +2026,212 @@ export const ASIA_AFRICA_PACIFIC_COVERS: Record<string, string> = {
       <rect x="147" y="309" width="5" height="8" rx="1"/>
     </g>
   `),
+
+  /* ── Where We Once Belonged · Samoa — fale, frangipani, tropical Pacific coast ── */
+  weoncbelonged: scene(`
+    <defs>
+      <linearGradient id="wobSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0a1828"/><stop offset=".3" stop-color="#1a3050"/>
+        <stop offset=".6" stop-color="#2a7080"/><stop offset=".82" stop-color="#48b8c0"/>
+        <stop offset="1" stop-color="#60c8c8"/>
+      </linearGradient>
+      <radialGradient id="wobSun" cx="72%" cy="34%" r="26%">
+        <stop offset="0" stop-color="#f8d060" stop-opacity=".6"/>
+        <stop offset="1" stop-color="#f8d060" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#wobSky)"/>
+    <rect width="300" height="450" fill="url(#wobSun)"/>
+    <circle cx="216" cy="162" r="18" fill="#f8e060" opacity=".72"/>
+    <path d="M0 286 Q150 270 300 282 L300 450 L0 450 Z" fill="#38a0b0" opacity=".65"/>
+    <path d="M0 330 Q150 316 300 328 L300 450 L0 450 Z" fill="#2c7060"/>
+    <path d="M0 384 Q150 370 300 382 L300 450 L0 450 Z" fill="#1c5040"/>
+    <g fill="#1a4830" opacity=".85">
+      <path d="M150 204 Q180 172 220 190 Q200 198 210 214 Q188 206 178 222 Q164 210 150 204 Z"/>
+      <path d="M150 204 Q120 172 80 190 Q100 198 90 214 Q112 206 122 222 Q136 210 150 204 Z"/>
+    </g>
+    <g fill="#c88040" opacity=".85">
+      <polygon points="90,280 210,280 220,238 80,238"/>
+      <rect x="90" y="278" width="120" height="6" rx="1"/>
+    </g>
+    <g fill="#a06030" opacity=".7">
+      ${Array.from({length:8}).map((_,i)=>`<rect x="${94+i*15}" y="${242}" width="3" height="${38}" opacity=".8"/>`).join('')}
+    </g>
+    <rect x="80" y="238" width="140" height="8" fill="#b87030" opacity=".8"/>
+    ${[[86,290],[100,294],[188,292],[202,288]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="10" fill="#f0a0c0" opacity=".7"/>`).join('')}
+    <g fill="#0c1820">
+      <circle cx="150" cy="280" r="5.5"/>
+      <rect x="147" y="285" width="5" height="8" rx="1"/>
+    </g>
+  `),
+
+  /* ── Frangipani · Papeete, Tahiti — harbour, blooms, Tahitian warmth ── */
+  frangipani: scene(`
+    <defs>
+      <linearGradient id="franSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#080e18"/><stop offset=".32" stop-color="#102040"/>
+        <stop offset=".6" stop-color="#1c5878"/><stop offset=".82" stop-color="#3090b8"/>
+        <stop offset="1" stop-color="#50b0c8"/>
+      </linearGradient>
+      <radialGradient id="franSun" cx="35%" cy="30%" r="28%">
+        <stop offset="0" stop-color="#f8c040" stop-opacity=".65"/>
+        <stop offset="1" stop-color="#f8c040" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#franSky)"/>
+    ${stars(4, 481)}
+    <rect width="300" height="450" fill="url(#franSun)"/>
+    <circle cx="105" cy="148" r="16" fill="#f8d840" opacity=".7"/>
+    <path d="M0 272 Q150 258 300 270 L300 450 L0 450 Z" fill="#2888b8" opacity=".6"/>
+    <path d="M0 316 Q150 302 300 314 L300 450 L0 450 Z" fill="#205870"/>
+    <path d="M0 370 Q150 358 300 368 L300 450 L0 450 Z" fill="#183c4c"/>
+    <g fill="#c0b080" opacity=".75">
+      <rect x="76" y="192" width="148" height="82"/>
+      <path d="M68 196 L150 162 L232 196 Z"/>
+      <rect x="100" y="162" width="100" height="36"/>
+    </g>
+    ${[[80,210],[96,210],[80,246],[96,246],[188,210],[204,210],[188,246],[204,246],[120,210],[136,210]].map(([x,y])=>`<rect x="${x}" y="${y}" width="12" height="24" fill="#f0e898" opacity="${y<230?'.48':'.32'}"/>`).join('')}
+    <g fill="#e8b0d0" opacity=".8">
+      ${[60,88,192,224,248].map((x,i)=>`<circle cx="${x}" cy="${260+i%2*12}" r="${14+i%3*3}"/><circle cx="${x+8}" cy="${270+i%2*8}" r="${10+i%3*2}" opacity=".7"/>`).join('')}
+    </g>
+    <g fill="#0c1420">
+      <circle cx="150" cy="264" r="5.5"/>
+      <rect x="147" y="269" width="5" height="8" rx="1"/>
+    </g>
+  `),
+
+  /* ── The Crocodile · Gulf Province, PNG — jungle river, mangroves, starlit night ── */
+  thecrocodile: scene(`
+    <defs>
+      <linearGradient id="crocSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#020408"/><stop offset=".38" stop-color="#04080c"/>
+        <stop offset=".65" stop-color="#040e0a"/><stop offset="1" stop-color="#081408"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#crocSky)"/>
+    ${stars(14, 483)}
+    <path d="M0 284 Q150 270 300 282 L300 450 L0 450 Z" fill="#081808" opacity=".9"/>
+    <path d="M0 288 Q60 282 100 278 Q120 276 140 272 Q160 268 180 274 Q220 284 260 276 Q280 272 300 268 L300 292 Q270 300 240 294 Q200 288 170 294 Q150 298 130 294 Q100 288 60 296 Q28 302 0 294 Z" fill="#0c2810" opacity=".9"/>
+    <path d="M0 364 Q150 350 300 362 L300 450 L0 450 Z" fill="#062008"/>
+    <path d="M0 412 Q150 400 300 410 L300 450 L0 450 Z" fill="#041808"/>
+    <g fill="#0a2008" opacity=".9">
+      ${[18,52,86,128,172,210,248,278].map((x,i)=>`<path d="M${x} 288 Q${x+10} ${258+i%3*12} ${x+20} 286 Q${x+14} ${274+i%3*8} ${x+8} 284 Z"/>`).join('')}
+    </g>
+    <path d="M88 300 Q110 292 132 300 Q110 304 88 300 Z" fill="#203828" opacity=".7"/>
+    <ellipse cx="110" cy="299" rx="4" ry="2" fill="#203828" opacity=".7"/>
+    <ellipse cx="130" cy="298" rx="4" ry="2.5" fill="#203828" opacity=".7"/>
+    <g fill="#182028">
+      <circle cx="150" cy="286" r="5.5"/>
+      <rect x="147" y="291" width="5" height="8" rx="1"/>
+    </g>
+  `),
+
+  /* ── The Color of Air · Hilo, Hawaii — Mauna Loa erupting at night, cane fields ── */
+  colorofair: scene(`
+    <defs>
+      <linearGradient id="coaSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#020406"/><stop offset=".3" stop-color="#08060a"/>
+        <stop offset=".55" stop-color="#180808"/><stop offset=".75" stop-color="#381008"/>
+        <stop offset="1" stop-color="#602010"/>
+      </linearGradient>
+      <radialGradient id="coaGlow" cx="50%" cy="40%" r="36%">
+        <stop offset="0" stop-color="#e04010" stop-opacity=".55"/>
+        <stop offset="1" stop-color="#e04010" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#coaSky)"/>
+    ${stars(12, 485)}
+    <rect width="300" height="450" fill="url(#coaGlow)"/>
+    <path d="M50 264 Q150 194 250 264 L260 450 L40 450 Z" fill="#280808" opacity=".9"/>
+    <path d="M80 264 Q150 214 220 264 L225 450 L75 450 Z" fill="#1e0606" opacity=".9"/>
+    <path d="M100 264 Q150 228 200 264 L204 450 L96 450 Z" fill="#180404"/>
+    <path d="M130 242 Q150 224 170 242 Q162 248 150 244 Q138 248 130 242 Z" fill="#e84020" opacity=".6"/>
+    <path d="M140 234 Q150 218 160 234 Q155 240 150 238 Q145 240 140 234 Z" fill="#f06030" opacity=".5"/>
+    ${Array.from({length:5}).map((_,i)=>`<path d="M${146+i*3} ${228-i*2} Q${148+i*3} ${212-i*3} ${150+i*3} ${224-i*2}" stroke="#f08040" stroke-width="${1+i*.3}" fill="none" opacity="${0.15+i*.05}"/>`).join('')}
+    <path d="M0 322 Q150 308 300 320 L300 450 L0 450 Z" fill="#101008" opacity=".9"/>
+    <path d="M0 372 Q150 360 300 370 L300 450 L0 450 Z" fill="#0a0c08"/>
+    <g fill="#182010" opacity=".6">
+      ${Array.from({length:14}).map((_,i)=>`<path d="M${10+i*22} ${320} Q${16+i*22} ${300+i%3*8} ${22+i*22} ${318}" stroke="#202810" stroke-width="1.2" fill="none" opacity=".6"/>`).join('')}
+    </g>
+    <g fill="#0c100c">
+      <circle cx="150" cy="314" r="5.5"/>
+      <rect x="147" y="319" width="5" height="8" rx="1"/>
+    </g>
+  `),
+
+  /* ── The Last Aloha · Honolulu — Iolani Palace, palms, Diamond Head, dusk ── */
+  lastaloha: scene(`
+    <defs>
+      <linearGradient id="lalSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0a1220"/><stop offset=".34" stop-color="#182440"/>
+        <stop offset=".65" stop-color="#2c6080"/><stop offset=".84" stop-color="#5098b8"/>
+        <stop offset="1" stop-color="#68b0c4"/>
+      </linearGradient>
+      <radialGradient id="lalSun" cx="64%" cy="35%" r="26%">
+        <stop offset="0" stop-color="#f0c858" stop-opacity=".6"/>
+        <stop offset="1" stop-color="#f0c858" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#lalSky)"/>
+    ${stars(5, 487)}
+    <rect width="300" height="450" fill="url(#lalSun)"/>
+    <circle cx="192" cy="168" r="15" fill="#f8e060" opacity=".7"/>
+    <path d="M0 302 Q150 290 300 300 L300 450 L0 450 Z" fill="#2878a8" opacity=".6"/>
+    <path d="M0 348 Q150 336 300 346 L300 450 L0 450 Z" fill="#205870"/>
+    <path d="M0 400 Q150 388 300 398 L300 450 L0 450 Z" fill="#183048"/>
+    <path d="M202 248 Q218 222 234 248 L246 306 L190 306 Z" fill="#604828" opacity=".8"/>
+    <g fill="#d0b870" opacity=".78">
+      <rect x="68" y="210" width="130" height="94"/>
+      <path d="M60 214 L133 176 L206 214 Z"/>
+      <rect x="92" y="176" width="82" height="40"/>
+      ${Array.from({length:3}).map((_,i)=>`<rect x="68" y="${210+i*32}" width="130" height="5" fill="#b89850" opacity=".4"/>`).join('')}
+    </g>
+    ${[[72,228],[88,228],[72,264],[88,264],[156,228],[172,228],[156,264],[172,264],[108,228],[124,228],[108,264],[124,264]].map(([x,y])=>`<rect x="${x}" y="${y}" width="12" height="24" fill="#f8f0c8" opacity="${y<250?'.42':'.28'}"/>`).join('')}
+    <g fill="#284820" opacity=".75">
+      ${[44,68,208,232].map((x,i)=>`<rect x="${x}" y="${268+i%2*8}" width="4" height="${36-i%2*8}" rx="1"/><ellipse cx="${x+2}" cy="${252+i%2*6}" rx="${16+i%2*4}" ry="${18+i%2*4}"/>`).join('')}
+    </g>
+    <g fill="#0c1820">
+      <circle cx="150" cy="294" r="5.5"/>
+      <rect x="147" y="299" width="5" height="8" rx="1"/>
+    </g>
+  `),
+
+  /* ── Life of Pi · Pacific Ocean — a lifeboat, a Bengal tiger, stars and endless sea ── */
+  lifeofpi: scene(`
+    <defs>
+      <linearGradient id="lopSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#020408"/><stop offset=".28" stop-color="#040c14"/>
+        <stop offset=".55" stop-color="#061828"/><stop offset=".78" stop-color="#0c3050"/>
+        <stop offset="1" stop-color="#1050a0"/>
+      </linearGradient>
+      <radialGradient id="lopMoon" cx="75%" cy="22%" r="22%">
+        <stop offset="0" stop-color="#c0d8f8" stop-opacity=".7"/>
+        <stop offset="1" stop-color="#c0d8f8" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#lopSky)"/>
+    ${stars(20, 489)}
+    <rect width="300" height="450" fill="url(#lopMoon)"/>
+    <circle cx="224" cy="102" r="12" fill="#d8ecf8" opacity=".78"/>
+    <path d="M0 268 Q60 256 90 250 Q120 244 150 252 Q180 260 210 250 Q240 240 270 250 Q286 254 300 248 L300 270 Q270 278 240 270 Q210 262 180 272 Q160 278 140 272 Q110 266 80 274 Q46 280 0 274 Z" fill="#102848" opacity=".82"/>
+    <path d="M0 316 Q150 302 300 314 L300 450 L0 450 Z" fill="#081e42"/>
+    <path d="M0 374 Q150 362 300 372 L300 450 L0 450 Z" fill="#040e24"/>
+    <g fill="#e08830" opacity=".72">
+      <ellipse cx="150" cy="260" rx="40" ry="9"/>
+      <rect x="116" y="250" width="68" height="12" rx="3"/>
+    </g>
+    <g fill="#c06818" opacity=".6">
+      <rect x="120" y="248" width="4" height="14"/>
+      <rect x="176" y="248" width="4" height="14"/>
+    </g>
+    <g fill="#c87030" opacity=".85">
+      <ellipse cx="150" cy="248" rx="18" ry="11"/>
+      <path d="M136 244 Q150 234 164 244 Q157 248 150 246 Q143 248 136 244 Z"/>
+      ${Array.from({length:6}).map((_,i)=>`<path d="M${135+i*6} ${248} Q${136+i*6} ${241} ${137+i*6} ${247}" stroke="#a05020" stroke-width=".8" fill="none"/>`).join('')}
+    </g>
+    <g fill="#0a1828">
+      <circle cx="150" cy="252" r="5.5"/>
+      <rect x="147" y="257" width="5" height="8" rx="1"/>
+    </g>
+  `),
 };
