@@ -154,18 +154,19 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
     return dot > -0.08; // slightly past horizon so edge markers don't pop
   }
 
-  // ---- stars ----
+  // ---- stars (canvas) ----
+
+  interface StarDot { x: number; y: number; r: number; a: number; }
+  let starDots: StarDot[] = [];
 
   function makeStars() {
+    // Stars are drawn on the canvas (below land), so they don't bleed over continents.
+    // SVG gStars layer is kept empty.
     gStars.selectAll('*').remove();
     const rnd = mulberry32(99);
+    starDots = [];
     for (let i = 0; i < 150; i++) {
-      gStars.append('circle')
-        .attr('cx', rnd() * W)
-        .attr('cy', rnd() * H)
-        .attr('r', 0.3 + rnd() * 1.1)
-        .attr('class', 'star')
-        .style('opacity', String(0.25 + rnd() * 0.55));
+      starDots.push({ x: rnd() * W, y: rnd() * H, r: 0.3 + rnd() * 1.1, a: 0.25 + rnd() * 0.55 });
     }
   }
 
@@ -173,6 +174,14 @@ export function initGlobe(stage: HTMLElement, callbacks: MapCallbacks): MapHandl
 
   function drawBase() {
     ctx.clearRect(0, 0, W, H);
+
+    // Stars — painted first so land covers them
+    for (const s of starDots) {
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${s.a})`;
+      ctx.fill();
+    }
 
     const cx = W / 2, cy = H / 2, r = currentScale();
 
