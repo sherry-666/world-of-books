@@ -283,6 +283,249 @@ export const EUROPE_COVERS: Record<string, string> = {
     <g transform="translate(196 250)" fill="#0c0e1c"><ellipse cx="0" cy="0" rx="8" ry="6"/><path d="M-6 -4 L-9 -10 L-3 -6 Z"/><path d="M6 -4 L9 -10 L3 -6 Z"/><path d="M8 2 q8 0 10 8" stroke="#0c0e1c" stroke-width="2" fill="none"/></g>
   `),
 
+  /* ── Dracula · Transylvania — a castle on a crag, bats against a full moon, Carpathian mist ── */
+  dracula: scene(`
+    <defs>
+      <linearGradient id="drcSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#030308"/><stop offset=".38" stop-color="#080c18"/>
+        <stop offset=".68" stop-color="#101424"/><stop offset="1" stop-color="#1a1c28"/>
+      </linearGradient>
+      <radialGradient id="drcMoon" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#e8f0e8" stop-opacity=".9"/>
+        <stop offset="1" stop-color="#e8f0e8" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#drcSky)"/>
+    ${stars(16, 397)}
+    <circle cx="150" cy="138" r="72" fill="url(#drcMoon)"/>
+    <circle cx="150" cy="138" r="22" fill="#e8f0e8" opacity=".9"/>
+    <path d="M0 310 Q60 270 100 284 Q130 294 150 274 Q170 254 200 270 Q250 290 300 268 L300 450 L0 450 Z" fill="#0c0c14"/>
+    <path d="M0 362 Q150 350 300 360 L300 450 L0 450 Z" fill="#080810"/>
+    <g fill="#080810">
+      <rect x="94" y="158" width="112" height="154"/>
+      <path d="M86 164 L150 120 L214 164 Z"/>
+      <rect x="110" y="120" width="80" height="46"/>
+      <path d="M104 128 L150 92 L196 128 Z"/>
+      <rect x="128" y="92" width="44" height="38"/>
+      <rect x="138" y="78" width="24" height="16"/>
+      ${[98,118,138,158,178,196].map((x,i)=>`<path d="M${x} ${158} L${x} ${140} Q${x+9} ${130} ${x+9} ${140} L${x+9} ${158} Z" fill="#0c0c18"/>`).join('')}
+    </g>
+    ${[[98,178],[114,178],[170,178],[186,178],[98,214],[114,214],[170,214],[186,214]].map(([x,y])=>`<rect x="${x}" y="${y}" width="10" height="18" fill="#c04020" opacity="${y<196?'.5':'.32'}"/>`).join('')}
+    ${Array.from({length:6}).map((_,i)=>{const x=100+i*18,y=118+i%2*16; return `<path d="M${x} ${y} Q${x+4} ${y-10} ${x+8} ${y} Q${x+6} ${y-4} ${x+4} ${y-12} Q${x+2} ${y-4} ${x} ${y} Z" fill="#060608"/>`;}).join('')}
+    <path d="M0 310 Q150 304 300 308" stroke="#1a1c28" stroke-width=".5" fill="none" opacity=".5"/>
+    <g fill="#040408">
+      <circle cx="150" cy="302" r="5.5"/>
+      <rect x="147" y="307" width="5" height="8" rx="1"/>
+    </g>
+  `),
+
+  /* ── Embers · Hungarian highlands — a Carpathian manor at autumn dusk, two chairs, a fireplace ── */
+  embers: scene(`
+    <defs>
+      <linearGradient id="embSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a1008"/><stop offset=".4" stop-color="#2c1808"/>
+        <stop offset=".72" stop-color="#503018"/><stop offset=".9" stop-color="#804020"/>
+        <stop offset="1" stop-color="#a86030"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#embSky)"/>
+    ${stars(7, 399)}
+    <path d="M0 314 Q150 302 300 312 L300 450 L0 450 Z" fill="#2c3820"/>
+    <path d="M0 364 Q150 354 300 362 L300 450 L0 450 Z" fill="#202c18"/>
+    <g fill="#1c1008">
+      <rect x="72" y="168" width="156" height="148"/>
+      <path d="M64 172 L150 130 L236 172 Z"/>
+      <rect x="96" y="130" width="108" height="44"/>
+      ${Array.from({length:6}).map((_,i)=>`<rect x="${76+i*26}" y="${172}" width="18" height="144" fill="#241408" opacity=".25"/>`).join('')}
+    </g>
+    ${[[76,192],[96,192],[76,230],[96,230],[182,192],[202,192],[182,230],[202,230]].map(([x,y])=>`<rect x="${x}" y="${y}" width="14" height="24" fill="#e8a040" opacity="${y<212?'.45':'.3'}"/>`).join('')}
+    <rect x="114" y="260" width="72" height="56" fill="#200c04"/>
+    <path d="M114 260 Q150 248 186 260 L186 272 Q150 264 114 272 Z" fill="#c04010" opacity=".6"/>
+    ${Array.from({length:5}).map((_,i)=>`<path d="M${130+i*8} ${270} Q${132+i*8} ${256} ${134+i*8} ${248} Q${136+i*8} ${256} ${138+i*8} ${270}" stroke="#e06010" stroke-width="2" fill="none" opacity="${0.3+i%2*0.2}"/>`).join('')}
+    <g fill="#181008">
+      <rect x="100" y="296" width="30" height="22" rx="2"/>
+      <rect x="170" y="296" width="30" height="22" rx="2"/>
+      <circle cx="115" cy="312" r="4"/>
+      <circle cx="185" cy="312" r="4"/>
+    </g>
+    <g fill="#0e0c08">
+      <circle cx="150" cy="306" r="5.5"/>
+      <rect x="147" y="311" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 314 Q150 308 300 312" stroke="#a86030" stroke-width=".5" fill="none" opacity=".35"/>
+  `),
+
+  /* ── Death and the Penguin · Kyiv — a snowy Kyiv street, a penguin in a scarf, dim apartment light ── */
+  deathpenguin: scene(`
+    <defs>
+      <linearGradient id="dpgSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0a0c14"/><stop offset=".4" stop-color="#10141e"/>
+        <stop offset=".72" stop-color="#181c28"/><stop offset="1" stop-color="#222630"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#dpgSky)"/>
+    ${stars(10, 401)}
+    <path d="M0 318 Q150 306 300 316 L300 450 L0 450 Z" fill="#d8dce0" opacity=".88"/>
+    <path d="M0 368 Q150 358 300 366 L300 450 L0 450 Z" fill="#c8ccd0" opacity=".9"/>
+    <path d="M0 418 Q150 410 300 416 L300 450 L0 450 Z" fill="#b8bcc0"/>
+    ${Array.from({length:8}).map((_,i)=>`<path d="M${24+i*36} ${328+i%2*14} Q${34+i*36} ${316+i%2*12} ${44+i*36} ${328+i%2*12}" stroke="#c8ccd0" stroke-width=".6" fill="none" opacity=".5"/>`).join('')}
+    <g fill="#101418">
+      ${[34,78,124,170,216,260].map((x,i)=>`<rect x="${x}" y="${156+i%3*18}" width="36" height="${164-i%3*18}"/>`).join('')}
+    </g>
+    ${Array.from({length:14}).map((_,i)=>{const x=(i*58+8)%298,y=166+(i*40)%130; return `<rect x="${x}" y="${y}" width="10" height="16" fill="#e8d060" opacity="${0.08+(i%4)*0.04}"/>`;}).join('')}
+    <g fill="#0c1010">
+      <ellipse cx="150" cy="284" rx="18" ry="24"/>
+      <ellipse cx="150" cy="272" rx="12" ry="14" fill="#e8e8e8"/>
+      <circle cx="150" cy="268" r="10" fill="#e8e8e8"/>
+    </g>
+    <g fill="#e04020" opacity=".8">
+      <path d="M136 284 Q130 290 128 300 Q136 298 142 292 Z"/>
+      <path d="M164 284 Q170 290 172 300 Q164 298 158 292 Z"/>
+    </g>
+    <rect x="134" y="298" width="32" height="6" rx="2" fill="#1a60a0" opacity=".7"/>
+    <circle cx="146" cy="268" r="2" fill="#101010"/>
+    <circle cx="154" cy="268" r="2" fill="#101010"/>
+    <path d="M148 274 Q150 277 152 274" stroke="#e09050" stroke-width="1.5" fill="none"/>
+    <g fill="#0a0c10">
+      <circle cx="150" cy="310" r="5.5"/>
+      <rect x="147" y="315" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 318 Q150 312 300 316" stroke="#222630" stroke-width=".5" fill="none" opacity=".4"/>
+  `),
+
+  /* ── Everything is Illuminated · Volhynia — a Ukrainian sunflower field, a shtetl at dusk ── */
+  illuminated: scene(`
+    <defs>
+      <linearGradient id="eilSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a1808"/><stop offset=".38" stop-color="#302808"/>
+        <stop offset=".68" stop-color="#706028"/><stop offset=".9" stop-color="#b09040"/>
+        <stop offset="1" stop-color="#d0b060"/>
+      </linearGradient>
+      <radialGradient id="eilSun" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#ffe060" stop-opacity=".7"/>
+        <stop offset="1" stop-color="#ffe060" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#eilSky)"/>
+    ${stars(6, 403)}
+    <circle cx="220" cy="248" r="80" fill="url(#eilSun)"/>
+    <circle cx="220" cy="248" r="20" fill="#ffe878" opacity=".82"/>
+    <path d="M0 308 Q150 296 300 306 L300 450 L0 450 Z" fill="#4a6828"/>
+    <path d="M0 358 Q150 348 300 356 L300 450 L0 450 Z" fill="#3c5820"/>
+    <path d="M0 408 Q150 400 300 406 L300 450 L0 450 Z" fill="#2e4818"/>
+    ${Array.from({length:14}).map((_,i)=>{const x=20+(i*20)%280,stem=60+i%3*20; return `<path d="M${x} ${308} Q${x+4} ${308-stem/2} ${x} ${308-stem}" stroke="#4a6828" stroke-width="3" fill="none"/><circle cx="${x}" cy="${308-stem}" r="${8+i%2*3}" fill="#e8b020" opacity=".82"/><circle cx="${x}" cy="${308-stem}" r="${4+i%2*2}" fill="#804010"/>`;}).join('')}
+    <g fill="#281c08">
+      <rect x="100" y="218" width="100" height="92"/>
+      <path d="M92 222 L150 188 L208 222 Z"/>
+      <rect x="122" y="188" width="56" height="36"/>
+      <rect x="136" y="178" width="28" height="12"/>
+    </g>
+    ${[[104,238],[120,238],[160,238],[176,238],[104,268],[120,268]].map(([x,y])=>`<rect x="${x}" y="${y}" width="12" height="20" fill="#f8e080" opacity="${y<250?'.4':'.28'}"/>`).join('')}
+    <g fill="#181008">
+      <circle cx="150" cy="300" r="5.5"/>
+      <rect x="147" y="305" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 308 Q150 302 300 306" stroke="#d0b060" stroke-width=".5" fill="none" opacity=".35"/>
+  `),
+
+  /* ── The Doll · Warsaw — 19th-century Warsaw market street, iron gaslight, a merchant's longing ── */
+  thedoll: scene(`
+    <defs>
+      <linearGradient id="tdwSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a1808"/><stop offset=".4" stop-color="#302818"/>
+        <stop offset=".72" stop-color="#504030"/><stop offset="1" stop-color="#706050"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#tdwSky)"/>
+    ${stars(8, 405)}
+    <path d="M0 320 Q150 308 300 318 L300 450 L0 450 Z" fill="#2a2018"/>
+    <path d="M0 370 Q150 360 300 368 L300 450 L0 450 Z" fill="#201808"/>
+    <g fill="#281e10">
+      <rect x="46" y="164" width="64" height="160"/>
+      <path d="M38 168 L78 132 L118 168 Z"/>
+      <rect x="58" y="132" width="40" height="38"/>
+      <rect x="190" y="176" width="64" height="148"/>
+      <path d="M182 180 L222 144 L262 180 Z"/>
+      <rect x="202" y="144" width="40" height="38"/>
+      <rect x="104" y="148" width="92" height="176"/>
+      <path d="M96 152 L150 112 L204 152 Z"/>
+      <rect x="120" y="112" width="60" height="42"/>
+    </g>
+    ${[[50,188],[66,188],[50,224],[66,224],[108,172],[124,172],[108,208],[124,208],[164,172],[180,172],[164,208],[180,208],[194,196],[210,196],[194,232],[210,232]].map(([x,y])=>`<rect x="${x}" y="${y}" width="12" height="20" fill="#e8b840" opacity="${y<200?'.42':'.28'}"/>`).join('')}
+    <path d="M68 320 L68 164 M192 320 L192 176" stroke="#201808" stroke-width="3" opacity=".4"/>
+    <rect x="46" y="316" width="208" height="8" fill="#382c18"/>
+    <g fill="#180e08">
+      <circle cx="96" cy="308" r="5.5"/>
+      <rect x="93" y="313" width="5" height="10" rx="1"/>
+      <circle cx="200" cy="310" r="5"/>
+      <rect x="197" y="315" width="5" height="8" rx="1"/>
+    </g>
+    <path d="M0 320 Q150 314 300 318" stroke="#706050" stroke-width=".5" fill="none" opacity=".35"/>
+  `),
+
+  /* ── The Unwomanly Face of War · Belarus — birch forest, a woman soldier, a red star at dusk ── */
+  unwomanlywar: scene(`
+    <defs>
+      <linearGradient id="uwwSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0a0808"/><stop offset=".38" stop-color="#1a1008"/>
+        <stop offset=".68" stop-color="#401808"/><stop offset=".88" stop-color="#702810"/>
+        <stop offset="1" stop-color="#904030"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#uwwSky)"/>
+    ${stars(8, 407)}
+    <path d="M0 306 Q150 294 300 304 L300 450 L0 450 Z" fill="#3a4828"/>
+    <path d="M0 356 Q150 346 300 354 L300 450 L0 450 Z" fill="#2c3820"/>
+    <path d="M0 406 Q150 398 300 404 L300 450 L0 450 Z" fill="#202c18"/>
+    <g fill="#e8e8e0" opacity=".75">
+      ${[46,86,128,172,214,256].map((x,i)=>`<rect x="${x-3}" y="${106+i%2*20}" width="6" height="${200-i%2*20}" rx="2"/>`).join('')}
+      ${[46,86,128,172,214,256].map((x,i)=>`<path d="M${x-3} ${106+i%2*20} Q${x} ${86+i%2*16} ${x+3} ${106+i%2*20} Z" fill="#e8e8e0"/>`).join('')}
+    </g>
+    <path d="M0 306 Q150 300 300 304" stroke="#904030" stroke-width=".5" fill="none" opacity=".4"/>
+    <g fill="#801808">
+      <path d="M150 176 L156 194 L175 194 L160 205 L166 224 L150 213 L134 224 L140 205 L125 194 L144 194 Z"/>
+    </g>
+    <g fill="#0e0e08">
+      <circle cx="150" cy="296" r="6"/>
+      <rect x="146" y="302" width="6" height="12" rx="1"/>
+      <path d="M138 308 L146 304 L154 304 L162 308 L160 322 L140 322 Z"/>
+      <path d="M132 316 L138 312 L138 328 Q134 330 130 328 Z"/>
+      <path d="M168 316 L162 312 L162 328 Q166 330 170 328 Z"/>
+    </g>
+  `),
+
+  /* ── Under the Yoke · Koprivshtitsa — a rose-town cobbled street, the Balkan Range, a revolt ── */
+  underyoke: scene(`
+    <defs>
+      <linearGradient id="uykSky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1a1828"/><stop offset=".38" stop-color="#2c2840"/>
+        <stop offset=".68" stop-color="#504858"/><stop offset=".9" stop-color="#907868"/>
+        <stop offset="1" stop-color="#b09878"/>
+      </linearGradient>
+    </defs>
+    <rect width="300" height="450" fill="url(#uykSky)"/>
+    ${stars(8, 409)}
+    <path d="M0 292 Q60 256 100 270 Q130 280 150 262 Q170 244 200 260 Q250 278 300 256 L300 450 L0 450 Z" fill="#505848"/>
+    <path d="M0 346 Q150 334 300 344 L300 450 L0 450 Z" fill="#404838"/>
+    <path d="M0 396 Q150 386 300 394 L300 450 L0 450 Z" fill="#303828"/>
+    <g fill="#2a2018">
+      <rect x="78" y="194" width="64" height="100"/>
+      <path d="M70 198 L110 166 L150 198 Z"/>
+      <rect x="88" y="166" width="44" height="34"/>
+      <rect x="158" y="202" width="64" height="92"/>
+      <path d="M150 206 L190 174 L230 206 Z"/>
+      <rect x="168" y="174" width="44" height="34"/>
+    </g>
+    ${[[82,218],[98,218],[82,250],[98,250],[162,222],[178,222],[162,254],[178,254]].map(([x,y])=>`<rect x="${x}" y="${y}" width="12" height="20" fill="#f0d080" opacity="${y<240?'.4':'.28'}"/>`).join('')}
+    ${Array.from({length:8}).map((_,i)=>`<circle cx="${60+(i%4)*50}" cy="${268+(Math.floor(i/4))*16}" r="${4+i%2*2}" fill="#c03040" opacity="${0.5+i%2*0.1}"/>`).join('')}
+    ${Array.from({length:6}).map((_,i)=>`<circle cx="${72+(i%3)*50}" cy="${278+(Math.floor(i/3))*14}" r="${3+i%2*2}" fill="#d05060" opacity="${0.4+i%2*0.1}"/>`).join('')}
+    <path d="M0 292 Q150 286 300 290" stroke="#b09878" stroke-width=".5" fill="none" opacity=".35"/>
+    <g fill="#181010">
+      <circle cx="150" cy="284" r="5.5"/>
+      <rect x="147" y="289" width="5" height="8" rx="1"/>
+    </g>
+  `),
+
   /* ── Anna Karenina · Moscow — a train, snow, a gilded ballroom ── */
   annakarenina: scene(`
     <defs>
